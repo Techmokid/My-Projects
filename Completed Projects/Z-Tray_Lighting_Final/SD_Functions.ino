@@ -1,0 +1,93 @@
+bool validPartCode(String code) {
+  if (code.length() != 6) { return false; }
+  if (isAlpha(code[0]) && isAlpha(code[1]) && isDigit(code[2]) && isDigit(code[3]) && isDigit(code[4]) && isDigit(code[5])) { return true; }
+  return false;
+}
+
+void sdInit() {
+  Serial.begin(74880);
+  while (!Serial) { SysCall::yield(); } delay(100);
+  
+  Serial.print("\n\nInitialising SD...");
+  //if (!sd.begin(chipSelect, SD_SCK_MHZ(50))) { sd.initErrorHalt(); }
+  if (!sd.begin(chipSelect, SD_SCK_MHZ(50))) {
+    Serial.println("ERROR: Could not initialise SD!");
+    while(true) {SysCall::yield();};
+  }
+  
+  Serial.println("Initialised SD!");
+}
+
+void getItem(String itemID) {
+  Item_Position_X = -1;
+  Item_Position_Y = -1;
+  
+  itemID.toUpperCase();
+  
+  File f = sd.open("ITEMID~1.TXT",FILE_READ);
+  if (!f) { Serial.println(F("Could not read file!")); while(true) {} }
+  
+  //The file exists. Now read from it
+  String result = "";
+  while (f.available()) {
+    SysCall::yield();
+    
+    //Read from it and iterate over every line
+    char nextVal = f.read();
+    if (nextVal == '\n') {
+      result.toUpperCase();
+      
+      //Here we have a complete sentence to work with without a newline at the end. We can decode it now
+      String positionData = result.substring(0,result.indexOf(':'));
+      String item = result.substring(result.indexOf(':') + 1,result.length() - 1);
+      
+      if (item == itemID) {
+        Item_Position_X = positionData.substring(0,result.indexOf(',')).toInt();
+        Item_Position_Y = positionData.substring(result.indexOf(',')+1,result.indexOf(':')).toInt();
+        return;
+      }
+      
+      result = "";
+    } else { result += nextVal; }
+  }
+  
+  //Here we have a complete sentence to work with without a newline at the end. We can decode it now
+  String positionData = result.substring(0,result.indexOf(':'));
+  String item = result.substring(result.indexOf(':') + 1,result.length());
+  item.toUpperCase();
+  
+  if (item == itemID) {
+    Item_Position_X = positionData.substring(0,result.indexOf(',')).toInt();
+    Item_Position_Y = positionData.substring(result.indexOf(',')+1,result.indexOf(':')).toInt();
+    return;
+  }
+  
+  f.close();
+}
+
+void AddPartCode(String in) {
+  String partCode = getValue(in,':',1);
+  String x = getValue(in,':',2);
+  String y = getValue(in,':',3);
+  
+  getItem(partCode); if (Item_Position_X != -1) { return; }
+  
+  File f = sd.open("ITEMID~1.TXT",FILE_WRITE);
+  f.println(x + "," + y + ":" + partCode);
+  f.close();
+  
+  Serial.println("Part code " + partCode + " at position (" + x + "," + y + ") added to SD");
+  client.println("Part code " + partCode + " at position (" + x + "," + y + ") added to SD");
+}
+
+void RemovePartCode(String in) {
+  String partCode = getValue(in,':',1);
+  String x = getValue(in,':',2);
+  String y = getValue(in,':',3);
+  
+  getItem(partCode); if (Item_Position_X == -1) { return; }
+  
+  client.println("WARNING: THIS PROCESS IT INCOMPLETE AND NONFUNCTIONAL");
+  Serial.println("Part code " + partCode + " at position (" + x + "," + y + ") removed from SD");
+  client.println("Part code " + partCode + " at position (" + x + "," + y + ") removed from SD");
+}

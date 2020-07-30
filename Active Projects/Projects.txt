@@ -1,0 +1,20 @@
+NS - Not Started
+PP - Planning and testing Phase
+IP - In Progress
+CP - Completed Project
+RC - Ready for Completion/Collection
+--------------------------------------------------------------------------------
+NS - Underwater Drone For Exploration
+NS - R6S drone
+NS - Roomba
+NS - Work Wire Measurer/Cutter
+--------------------------------------------------------------------------------
+PP - RPi Flying Drone Swarm with Fire detection AI (Thermal and visual)
+PP - Auger plastic retrieval system
+--------------------------------------------------------------------------------
+IP - Arduino OS On An SD Card (Use files as variables)
+IP - Unity3D Neat AI
+IP - Rug Weaving Machine
+--------------------------------------------------------------------------------
+RC - Old lady multiple USB duplicate code
+RC - Germicide Device

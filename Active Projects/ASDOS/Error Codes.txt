@@ -1,0 +1,7 @@
+3 Slow Blinks                       	= SD not detected error		- Insert SD card or check wiring
+3 Fast Blinks                       	= SD file instability error	- Check wiring or insert different SD
+5 Slow Blinks                       	= SD I/O error			- The SD card could not be written or read from. Did you remove the card while in operation?
+5 Fast Blinks                       	= Script runtime exception	- The main script ran across an error that was not escaped correctly
+1 Slow Blink                        	= Internal system error		- ASDOS has encountered an internal error. This is an OS issue, not a script or wiring issue. SHOULD NEVER OCCUR
+1 Fast Blink				= Command Not Recognised	- Boot file contains an invalid syntax or the command called doesn't exist
+2 Super Fast Blinks (Not Recurring) 	= Script completion		- The boot file script has completed it's task ("ASDOS.endCode;" was called)
