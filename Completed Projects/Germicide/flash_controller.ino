@@ -9,8 +9,11 @@ void flashLED() {
   }
 }
 
-unsigned long delayTimer = 0;
-void delayFunction(int timeToDelay) {
-  delayTimer = millis();
-  while (millis() - delayTimer < timeToDelay) { flashLED(); }
-}
+//unsigned long delayTimer = 0;
+//void delayFunction(int timeToDelay) {
+//  delayTimer = millis();
+//  while (millis() - delayTimer < timeToDelay) {
+//    yield();
+//    flashLED();
+//  }
+//}

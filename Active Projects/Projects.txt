@@ -3,18 +3,21 @@ PP - Planning and testing Phase
 IP - In Progress
 CP - Completed Project
 RC - Ready for Completion/Collection
+
+(0) - Not urgent
+(1) - Urgent
 --------------------------------------------------------------------------------
-NS - Underwater Drone For Exploration
-NS - R6S drone
-NS - Roomba
-NS - Work Wire Measurer/Cutter
+NS(0) - Underwater Drone For Exploration
+NS(0) - R6S drone
+NS(0) - Roomba
+NS(0) - Work Wire Measurer/Cutter
 --------------------------------------------------------------------------------
-PP - RPi Flying Drone Swarm with Fire detection AI (Thermal and visual)
-PP - Auger plastic retrieval system
+PP(0) - RPi Flying Drone Swarm with Fire detection AI (Thermal and visual)
+PP(1) - Auger plastic retrieval system
 --------------------------------------------------------------------------------
-IP - Arduino OS On An SD Card (Use files as variables)
-IP - Unity3D Neat AI
-IP - Rug Weaving Machine
+IP(0) - Arduino OS On An SD Card (Use files as variables)
+IP(0) - Unity3D Neat AI
+IP(1) - Rug Weaving Machine
 --------------------------------------------------------------------------------
 RC - Old lady multiple USB duplicate code
 RC - Germicide Device

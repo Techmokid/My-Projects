@@ -24,7 +24,7 @@ void getItem(String itemID) {
   
   itemID.toUpperCase();
   
-  File f = sd.open("ITEMID~1.TXT",FILE_READ);
+  sdfat::File f = sd.open("ITEMID~1.TXT",FILE_READ);
   if (!f) { Serial.println(F("Could not read file!")); while(true) {} }
   
   //The file exists. Now read from it
@@ -72,7 +72,7 @@ void AddPartCode(String in) {
   
   getItem(partCode); if (Item_Position_X != -1) { return; }
   
-  File f = sd.open("ITEMID~1.TXT",FILE_WRITE);
+  sdfat::File f = sd.open("ITEMID~1.TXT",FILE_WRITE);
   f.println(x + "," + y + ":" + partCode);
   f.close();
   
