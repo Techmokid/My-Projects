@@ -24,13 +24,8 @@ void startProcess() {
   
   running = true;
   digitalWrite(p.pinToGPIO(Strobe_Pin),HIGH);
-  getRoomSize();
   digitalWrite(p.pinToGPIO(Relay_Pin),HIGH);
   
   timer = millis();
   Serial.println("Started");
-}
-
-void getRoomSize() {
-  
 }

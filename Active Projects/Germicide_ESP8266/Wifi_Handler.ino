@@ -11,9 +11,9 @@ struct station_info *stat_info;
 struct ipv4_addr *IPaddress;
 const char *ssid = "GERMICIDE INTERFACE v1.0";
 
-void setupWifi() {
+void setupWifi(const char *ssid,const char *password) {
   WiFi.mode(WIFI_AP);
-  WiFi.softAP(ssid);
+  WiFi.softAP(ssid,password);
   WiFi.softAPConfig(IP, IP, mask);
   server.begin();
  
