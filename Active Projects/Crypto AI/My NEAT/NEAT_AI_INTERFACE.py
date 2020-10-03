@@ -117,7 +117,18 @@ class genome():
         return result
 
 class network():
-    def __init__(self,configPath,printTrainingTimes=False):
+    def __init__(self,configPath,updateValuesRealtime=True,printTrainingTimes=False):
+        self.liveConfigUpdate(configPath)
+
+        self.printTrainingTimes = printTrainingTimes
+        self.previousValidGenomes = []
+        self.generateNewRandomNetwork()
+
+        print("NEAT AI: Population size set to " + str(self.pop_size))
+        print("NEAT AI: Input count " + str(self.num_inputs))
+        print("NEAT AI: Output count " + str(self.num_outputs))
+
+    def liveConfigUpdate(self,configPath):
         #NEAT
         self.fitness_criterion =   self.getConfigValue(configPath,"fitness_criterion")          #
         self.pop_size =            int(self.getConfigValue(configPath,"pop_size"))              #
@@ -147,15 +158,8 @@ class network():
         
         #Default Reproduction
         self.survival_threshold =  float(self.getConfigValue(configPath,"survival_threshold"))  #
-
-        self.printTrainingTimes = printTrainingTimes
-        self.generateNewRandomNetwork()
-
-        print("NEAT AI: Population size set to " + str(self.pop_size))
-        print("NEAT AI: Input count " + str(self.num_inputs))
-        print("NEAT AI: Output count " + str(self.num_outputs))
-        print("NEAT AI: Predicted Time Per Generation: " + str(int((0.00077498*self.pop_size-0.028893)*1000)/1000) + "s")
-
+        self.minimum_network_size = int(self.getConfigValue(configPath,"minimum_network_size")) #
+    
     def getConfigValue(self, path, key):
         with open(path) as f:
             for line in f.readlines():
@@ -175,7 +179,7 @@ class network():
         #result.genome gives the list of nodes
         result = copy.deepcopy(orig)
         
-        if (random.random() > self.conn_add_prob): #Leaky!!!
+        if (random.random() > self.conn_add_prob):
             #Add connection
             index_1 = random.randint(0, len(result.genome) - 1)
             index_2 = random.randint(0, len(result.genome) - 1)
@@ -185,13 +189,13 @@ class network():
             temp = copy.deepcopy(result)
             node_1 = temp.genome[index_1]
             node_2 = temp.genome[index_2]
-            temp.genome[index_1].connected_nodes.append(temp.genome[index_2])
-            temp.genome[index_1].connection_weights.append(random.random())
+            node_1.connected_nodes.append(node_2)
+            node_1.connection_weights.append(random.random())
             
             if (temp.isGenomeStable() == False):
                 temp = copy.deepcopy(result)
-                temp.genome[index_2].connected_nodes.append(temp.genome[index_1])
-                temp.genome[index_2].connection_weights.append(random.random())
+                node_2.connected_nodes.append(node_1)
+                node_2.connection_weights.append(random.random())
             if (temp.isGenomeStable()):
                 result = temp
         if (random.random() > self.conn_delete_prob):
@@ -247,7 +251,7 @@ class network():
                     index = random.randint(0, len(result.genome) - 1)
                 
                 result.genome[index].node_bias += self.clamp(random.random()-0.5,self.bias_min_value,self.bias_max_value)
-        if (random.random() > self.bias_mutate_rate): #Leaky!!!
+        if (random.random() > self.bias_mutate_rate):
             #Mutate a random nodes bias value
             if (len(result.genome) != 0):
                 index = random.randint(0, len(result.genome) - 1)
@@ -264,7 +268,7 @@ class network():
     def clamp(self,n, minn, maxn):
         return max(min(maxn, n), minn)
 
-    def updateGenomeList(self):
+    def updateGenomeList(self,optionalSecondaryFitnessCalculator=None):
         startTime = time.time()
         # We now have the entire genome list ordered by fitness
         #  1 - Get the fitness list of all the genomes
@@ -272,7 +276,7 @@ class network():
         #  3 - Perform the genetic death algorithms to wittle out poor performing genomes
         #  4 - Create mutated clones of winning genomes
         #  5 - Breed the winning genomes (NOT IMPLEMENTED)
-
+        
         # Step 1
         fitnessesList = []
         genomesList = copy.deepcopy(self.genomes)
@@ -288,6 +292,9 @@ class network():
         elif(self.fitness_criterion != "max"):
             raise Exception("Invalid Fitness Criterion In Configuration File!")
         
+        if (optionalSecondaryFitnessCalculator != None):
+            genomesList = optionalSecondaryFitnessCalculator(genomesList)
+        
         # Step 3
         looper = 0
         temp = copy.deepcopy(genomesList)
@@ -298,24 +305,45 @@ class network():
             survivalThreshold = (1-s_t)*math.pow(math.sin((math.pi/2)*(looper/p_s)),2) + s_t
             if (random.random() < survivalThreshold):
                 genomesList.append(i)
-            #genomesList is a list of genomes
-                #i is a single genome object
             elif (i.generationsSurvived > 5):
                 i.generationsSurvived -= 5
                 genomesList.append(i)
             looper += 1
         
         # Step 4
-        numberOfSplits = 8
-        requiredMutatedGenomes_split = int((p_s - len(genomesList))/(numberOfSplits+1))
-        for x in range(0,numberOfSplits):
-            for i in random.sample(genomesList,requiredMutatedGenomes_split):
-                genomesList.append(self.getMutatedGenomeCopy(i))
-
-        if (len(genomesList) != p_s):
-            for i in random.sample(genomesList,p_s - len(genomesList)):
+        #requiredMutatedGenomes_split = int(p_s - len(genomesList))
+        if (len(genomesList) != 0):
+            if (len(genomesList) > self.minimum_network_size):
+                print("NEAT AI: Number of surviving genomes:",len(genomesList))
+                while (len(genomesList) != p_s):
+                    i = random.choice(genomesList)
                     genomesList.append(self.getMutatedGenomeCopy(i))
-        self.genomes = copy.deepcopy(genomesList)
+                self.genomes = genomesList
+            elif(len(self.previousValidGenomes) > self.minimum_network_size):
+                print("NEAT AI: Rebooting genome from previous success attempts")
+                genomesList = copy.deepcopy(self.previousValidGenomes)
+                while (len(genomesList) != p_s):
+                    i = random.choice(genomesList)
+                    genomesList.append(self.getMutatedGenomeCopy(i))
+                self.genomes = genomesList
+            elif(len(self.previousValidGenomes) + len(genomesList) > self.minimum_network_size):
+                for i in self.previousValidGenomes:
+                    genomesList.append(i)
+                print("NEAT AI: Rebooting genome from previous success attempts appended to current network data")
+                while (len(genomesList) != p_s):
+                    i = random.choice(genomesList)
+                    genomesList.append(self.getMutatedGenomeCopy(i))
+                self.genomes = genomesList
+            else:
+                if (len(genomesList) == 1):
+                    print("NEAT AI: Discovered functional node. Storing node for later...")
+                else:
+                    print("NEAT AI: Discovered functional nodes. Storing",len(genomesList),"nodes for later...")
+                for i in genomesList:
+                    self.previousValidGenomes.append(i)
+        else:
+            print("NEAT AI: Complete extinction event, regenerating network!")
+            self.generateNewRandomNetwork()
         
         if (self.printTrainingTimes):
             print("NEAT AI: Generation Learning Time: " + str(int((time.time() - startTime)*1000)/1000) + "s")

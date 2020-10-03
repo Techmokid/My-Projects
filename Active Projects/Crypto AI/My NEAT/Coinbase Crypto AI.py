@@ -1,5 +1,5 @@
-import NEAT_AI_INTERFACE as naii
 import coinbase_handler as cbh
+import NEAT_AI_INTERFACE as naii
 import os,time
 
 AIData = cbh.getBaseAIData("config.txt")
@@ -8,6 +8,13 @@ AIData = cbh.getBaseAIData("config.txt")
 coinbaseData = cbh.getPreviousPricesList()
 with open("Fitness Monitor.txt","w+") as f:
     f.write("")
+
+def deathHandler(genomes):
+    listCopy = []
+    for i in genomes:
+        if ((i.fitness != 500) and (i.fitness != 0)):
+            listCopy.append(i)
+    return listCopy
 
 #Start of AI code
 numberOfGenerations = 0
@@ -61,17 +68,18 @@ def RunAIs(nn, config):
         g.fitness = exampleWallet
         if (exampleWallet > maxFitness):
             maxFitness = exampleWallet
-    nn.updateGenomeList()
+    nn.updateGenomeList(deathHandler)
     print(" - Best fitness: " + str(maxFitness))
     with open("Fitness Monitor.txt","a+") as f:
         f.write(str(numberOfGenerations) + "\t\t\t" + str(maxFitness) + "\n")
-    print(" - Training Time:  " + str(int((time.time() - start_time)*100)/100) + " seconds\n")
-
+    print(" - Training Time:  " + str(int((time.time() - start_time)*100)/100) + " seconds")
+    print(" - Number Of Stored Nodes: " + str(len(nn.previousValidGenomes)) + "/" + str(nn.minimum_network_size) + "\n")
 print("NEAT AI: Configuring NEAT AI file data...")
 print("NEAT AI: Note, depending on your configuration, this may take awhile")
 print("NEAT AI: To speed this up, please edit the \"num_hidden\" and \"num_connections\" values in the config file")
 nn = naii.network("config.txt",False)
 
 print()
-for i in range(0,100):
+while(True):
     RunAIs(nn,"config.txt")
+    nn.liveConfigUpdate("config.txt")

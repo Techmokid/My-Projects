@@ -1,6 +1,6 @@
-#define trigPin 2
-#define echoPin 3
-#define outPin  4
+#define trigPin A2
+#define echoPin A1
+#define outPin  A0
 
 #define senseDist 40
 

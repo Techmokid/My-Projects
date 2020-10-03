@@ -7,7 +7,7 @@ currencyCode = "AUD"
 client = Client("6ZG1i5yjMnkdUKdD","OUmaKOY9hW4MqfKCm9V6FzVY0OX30D0D")
 
 user = client.get_current_user()
-accounts = client.get_primary_account()
+accounts = [client.get_primary_account()]
 
 def getValueFromJSON(inputString,value):
     inputString = str(inputString)
@@ -25,6 +25,13 @@ def getValueFromJSON(inputString,value):
         if ("\"" + value + "\"" in x):
             return stripValueFromJSONLine(x)
     return ""
+
+def getAccount(currency):
+    rawData = client.get_accounts()
+    for i in rawData.data:
+        if (str(i.balance.currency) == currency):
+            return i
+    return None
 
 def stripValueFromJSONLine(x,key=False):
     running = False
@@ -127,7 +134,15 @@ def getConversionRate():
     return getValueFromJSON(client.get_exchange_rates(),currencyCode)
 def getBaseAIData(configPath):
     return AI_Data(configPath)
+def updatePrices():
+    global HistoricPrices_Currency,HistoricPrices_Values,accounts
+    HistoricPrices_Currency = []
+    HistoricPrices_Values = []
+    accounts = [client.get_primary_account()]
+    
+    for i in getAllCurrencies():
+        getHistoricPrices(i)
+        accounts.append(getAccount(i))
 
 print("COINBASE: Populating historic crypto prices")
-for i in getAllCurrencies():
-    getHistoricPrices(i)
+updatePrices()
