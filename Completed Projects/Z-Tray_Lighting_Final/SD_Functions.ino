@@ -70,7 +70,7 @@ void AddPartCode(String in) {
   String x = getValue(in,':',2);
   String y = getValue(in,':',3);
   
-  getItem(partCode); if (Item_Position_X != -1) { return; }
+  getItem(partCode); if (Item_Position_X != -1) { RemovePartCode(in); }
   
   sdfat::File f = sd.open("ITEMID~1.TXT",FILE_WRITE);
   f.println(x + "," + y + ":" + partCode);
@@ -90,4 +90,6 @@ void RemovePartCode(String in) {
   client.println("WARNING: THIS PROCESS IT INCOMPLETE AND NONFUNCTIONAL");
   Serial.println("Part code " + partCode + " at position (" + x + "," + y + ") removed from SD");
   client.println("Part code " + partCode + " at position (" + x + "," + y + ") removed from SD");
+  
+  
 }
