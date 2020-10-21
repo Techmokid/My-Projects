@@ -1,0 +1,18 @@
+{
+	"name": "uHTTP",
+	"keywords": "tcp, web server, http, html, rest, sd, bootstrap, responsive, js, css",
+	"description": "uHTTP is a tiny library for Arduino that provide a very manner way to access to HTTP request data",
+	"authors": {
+		"name": "Nomad NT",
+		"email": "info@nomadnt.com",
+		"url": "https://github.com/nomadnt/uHTTP"
+	},
+	"repository":
+	{
+		"type": "git",
+		"url": "https://github.com/nomadnt/uHTTP.git"
+	},	
+	"version": "1.4",
+	"frameworks": "arduino",
+	"platforms": ["atmelavr"]
+}

@@ -1,0 +1,5 @@
+Wiimote			KEYWORD1
+
+init			KEYWORD2
+handle			KEYWORD2
+register_callback	KEYWORD2

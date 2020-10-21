@@ -1,0 +1,1 @@
+pinToGPIO	KEYWORD 1

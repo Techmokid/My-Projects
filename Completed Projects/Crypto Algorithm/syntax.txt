@@ -1,0 +1,35 @@
+products {
+    'id': 'XRP-EUR',
+    'base_currency': 'XRP',
+    'quote_currency': 'EUR',
+    'base_min_size': '1.00000000',
+    'base_max_size': '500000.00000000',
+    'quote_increment': '0.00010000',
+    'base_increment': '0.00000100',
+    'display_name': 'XRP/EUR',
+    'min_market_funds': '10',
+    'max_market_funds': '100000',
+    'margin_enabled': False,
+    'post_only': False,
+    'limit_only': False,
+    'cancel_only': False,
+    'trading_disabled': False,
+    'status': 'online',
+    'status_message': ''
+}
+
+currencies {
+    'id': 'BAL',
+    'name': 'Balancer',
+    'min_size': '0.1',
+    'status': 'online',
+    'message': "We've started accepting BAL deposits. Trading will begin shortly",
+    'details': {
+        'type': 'crypto',
+        'network_confirmations': 35,
+        'sort_order': 230,
+        'crypto_address_link': 'https://etherscan.io/token/0xba100000625a3754423978a60c9317c58a424e3D?a={{address}}',
+        'crypto_transaction_link': 'https://etherscan.io/tx/0x{{txId}}',
+        'push_payment_methods': ['crypto']},
+    'max_precision': '0.01'
+}

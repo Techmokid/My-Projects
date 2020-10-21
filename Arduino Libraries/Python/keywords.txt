@@ -1,0 +1,5 @@
+
+
+writeLine	KEYWORD2
+
+readLine	KEYWORD2
