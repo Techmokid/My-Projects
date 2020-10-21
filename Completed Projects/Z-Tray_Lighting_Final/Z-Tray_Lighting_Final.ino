@@ -56,7 +56,7 @@ void loop() {
   updateLaser();
   
   client = server.available();
-  client.setTimeout(5000);
+  client.setTimeout(60000);
   if (!client) { return; }
   Serial.println("\nWaiting for part code...");
   String request = client.readStringUntil('\n');
