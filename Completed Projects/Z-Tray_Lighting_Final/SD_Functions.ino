@@ -80,16 +80,29 @@ void AddPartCode(String in) {
   client.println("Part code " + partCode + " at position (" + x + "," + y + ") added to SD");
 }
 
-void RemovePartCode(String in) {
+void EditPartCode(String in) {
+  RemovePartCode(in,false);
+  AddPartCode(in);
+}
+
+void RemovePartCode(String in) { RemovePartCode(in,true); }
+void RemovePartCode(String in,bool printData) {
   String partCode = getValue(in,':',1);
-  String x = getValue(in,':',2);
-  String y = getValue(in,':',3);
-  
-  getItem(partCode); if (Item_Position_X == -1) { return; }
+  getItem(partCode);
+  if (Item_Position_X == -1) {
+    if (printData) {
+      Serial.println("Part code not found");
+      client.println("Part code not found");
+    }
+    return;
+  }
   
   client.println("WARNING: THIS PROCESS IT INCOMPLETE AND NONFUNCTIONAL");
-  Serial.println("Part code " + partCode + " at position (" + x + "," + y + ") removed from SD");
-  client.println("Part code " + partCode + " at position (" + x + "," + y + ") removed from SD");
   
   
+  
+  if (printData) {
+    Serial.println("Part code " + partCode + " at position (" + Item_Position_X + "," + Item_Position_Y + ") removed from SD");
+    client.println("Part code " + partCode + " at position (" + Item_Position_X + "," + Item_Position_Y + ") removed from SD");
+  }
 }

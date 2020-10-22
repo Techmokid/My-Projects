@@ -73,7 +73,8 @@ void loop() {
     client.println("Help: ");
     client.println(" - Config:EEPROM Addr:Value:Units");
     client.println(" - ADCODE:Part Code:X:Y");
-    client.println(" - RMCODE:Part Code(NONFUNCTIONAL)");
+    client.println(" - RMCODE:Part Code");
+    client.println(" - EDITCD:Part Code:New X:New Y");
     client.println(" - READAT:");
     client.println(" - MNTMOD:");
   } else if (request.substring(0,12) == "CONFIG HELP:") {
@@ -85,7 +86,7 @@ void loop() {
     client.println(" - Address 3: Height of tray");
     client.println(" - Address 4: Distance of device from left of trays");
     client.println(" - Address 5: Activate Dev Lock (0 or 1)");
-    client.println(" - Address 6: Speed of circle drawing");
+    client.println(" - Address 6: Speed of circle");
     client.println(" - Address 7: Radius of circle");
   } else if (request.substring(0,7) == "CONFIG:") {
     EEPROM_Writer(request);
@@ -93,6 +94,8 @@ void loop() {
     AddPartCode(request);
   } else if (request.substring(0,7) == "RMCODE:") {
     RemovePartCode(request);
+  } else if (request.substring(0,7) == "EDITCD:") {
+    EditPartCode(request);
   } else if (request.substring(0,7) == "READAT:") {
     EEPROM_Reader();
   } else if (request.substring(0,7) == "MNTMOD:") {
@@ -123,5 +126,5 @@ void loop() {
   }
   
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(100);
+  delay(50);
 }
