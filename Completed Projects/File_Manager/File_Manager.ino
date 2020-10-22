@@ -8,7 +8,7 @@ struct file {
   
   void updateLineCount() {
     lineCount = 0;
-    File temp = SD.open(filepath);
+    fs::File temp = SD.open(filepath);
     while (temp.available()) { char i = temp.read(); if (i == '\n') { lineCount++; } }
     temp.close();
   }
@@ -16,7 +16,7 @@ struct file {
   String readline() {
     currentLine++;
     int x = 0;
-    File temp = SD.open(filepath);
+    fs::File temp = SD.open(filepath);
     while (x < currentLine) { char i = temp.read(); if (i == '\n') { x++; } }
     
     char i = temp.read();
@@ -28,7 +28,7 @@ struct file {
   
   void writeline() { writeline(""); }
   void writeline(String data) {
-    File temp = SD.open(filepath);
+    fs::File temp = SD.open(filepath);
     for (int i = 0; i < sizeof(data)/sizeof(data[0]); i++) { temp.write(data[i]); }
     temp.write('\n');
     temp.close();
@@ -39,7 +39,7 @@ struct file {
   void skipline() { currentLine++; }
   void skiplines(int temp) { currentLine += temp; }
   
-  void softFileCreate() { File temp = SD.open(filepath, FILE_WRITE); temp.close(); }
+  void softFileCreate() { fs::File temp = SD.open(filepath, FILE_WRITE); temp.close(); }
 };
 
 file bufferFile;
@@ -50,7 +50,7 @@ void setup() {
   bufferFile.softFileCreate();
 }
 
-File toFile(file temp) { return SD.open(temp.filepath); }
+fs::File toFile(file temp) { return SD.open(temp.filepath); }
 
 void addLine(file fileToEdit, String dataToAdd) { addLine(fileToEdit, fileToEdit.lineCount - 1, dataToAdd); }
 void addLine(file fileToEdit, int index, String dataToAdd) {

@@ -1,3 +1,6 @@
+//#include <File_Manager.h>
+//file myFileStruct;
+
 bool validPartCode(String code) {
   if (code.length() != 6) { return false; }
   if (isAlpha(code[0]) && isAlpha(code[1]) && isDigit(code[2]) && isDigit(code[3]) && isDigit(code[4]) && isDigit(code[5])) { return true; }
@@ -5,6 +8,9 @@ bool validPartCode(String code) {
 }
 
 void sdInit() {
+  //myFileStruct.filepath = "TEMP.TXT";
+  //myFileStruct.softFileCreate();
+  
   Serial.begin(74880);
   while (!Serial) { SysCall::yield(); } delay(100);
   
@@ -12,7 +18,10 @@ void sdInit() {
   //if (!sd.begin(chipSelect, SD_SCK_MHZ(50))) { sd.initErrorHalt(); }
   if (!sd.begin(chipSelect, SD_SCK_MHZ(50))) {
     Serial.println("ERROR: Could not initialise SD!");
-    while(true) {SysCall::yield();};
+    while(true) {
+      digitalWrite(LED_BUILTIN,HIGH); SysCall::yield(); delay(500);
+      digitalWrite(LED_BUILTIN,LOW);  SysCall::yield(); delay(500);
+    };
   }
   
   Serial.println("Initialised SD!");
@@ -97,9 +106,12 @@ void RemovePartCode(String in,bool printData) {
     return;
   }
   
-  client.println("WARNING: THIS PROCESS IT INCOMPLETE AND NONFUNCTIONAL");
+  client.println("ERROR: THIS PROCESS IT INCOMPLETE AND NONFUNCTIONAL");
   
-  
+  //Here we wanna copy across everything to a temporary file
+  //sdfat::File f = sd.open("TEMP.TXT",FILE_WRITE);
+  //f.println(x + "," + y + ":" + partCode);
+  //f.close();
   
   if (printData) {
     Serial.println("Part code " + partCode + " at position (" + Item_Position_X + "," + Item_Position_Y + ") removed from SD");
