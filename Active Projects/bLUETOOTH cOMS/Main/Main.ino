@@ -3,14 +3,16 @@
 //delay(10000);
 //AT+INQC
 
+#define mySerial Serial1
+
 void setup() {
   Serial.begin(38400);
-  Serial1.begin(38400);
+  mySerial.begin(38400);
   delay(1000);
   
-  setATModeToReceiever("Test Bluetooth Transmition Node",true);
-  //while(Serial1.available() > 0) { Serial.print(char(Serial1.read())); }
-  while(Serial1.available() > 0) { Serial1.read(); }
+  setATModeToTransmitter("Test Bluetooth Transmition Node",true);
+  while(mySerial.available() > 0) { Serial.print(char(mySerial.read())); }
+  //while(mySerial.available() > 0) { mySerial.read(); }
 }
 
 void loop() { }
@@ -21,24 +23,28 @@ void setATModeToReceiever(String name, bool reset) {
   sendATCommand("AT");
   sendATCommand("AT+ORGL");
   sendATCommand("AT+RMAAD");
-  sendATCommand("AT+CLASS=0");
+  sendATCommand("AT+CMODE=0");
   sendATCommand("AT+NAME=\"" + name + "\"");
   sendATCommand("AT+ADDR?");
   if (reset) sendATCommand("AT+RESET");
 }
 
-void setATModeToTransmitter(String name, bool reset) {
+void setATModeToTransmitter(String name, bool reset) { setATModeToTransmitter(name, reset, ""); }
+void setATModeToTransmitter(String name, bool reset, String bindAddress) {
   name = makeStringSafe(name);
   sendATCommand("AT");
   sendATCommand("AT+ORGL");
   sendATCommand("AT+RMAAD");
   sendATCommand("AT+NAME=\"" + name + "\"");
-  sendATCommand("AT+ROLE=1");
+  //sendATCommand("AT+ROLE=1");
+  sendATCommand("AT+CMODE=1");
+  if (bindAddress != "") { sendATCommand("AT+BIND=" + bindAddress); }
+  
   sendATCommand("AT+ADDR?");
   if (reset) sendATCommand("AT+RESET");
 }
 
-void sendATCommand(String command) { Serial1.print(command + "\r\n"); delay(200); }
+void sendATCommand(String command) { mySerial.print(command + "\r\n"); delay(200); }
 
 String makeStringSafe(String in) {
   String out = "";

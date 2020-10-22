@@ -1,11 +1,11 @@
-//EEPROM.read(0) = 400        - This is the z offset from the tray
+//EEPROM.read(0) = 400        - This is the z offset from the tray (How far away from the main wall the trays are on)
 //EEPROM.read(1) = 220        - This is the height offset to the trays
 //EEPROM.read(2) = 76         - This is the average width of each tray
 //EEPROM.read(3) = 46.25      - This is the average height of each tray
 //EEPROM.read(4) = 14.5       - This is an internal variable for X offset of mechanism from the left of the trays
-//EEPROM.read(5) = 1          - This tells the system whether to activate the "dev lock"
+//EEPROM.read(5) = 0          - This tells the system whether to activate the "dev lock" (0 is off, 1 is on)
 //EEPROM.read(6) = 0.003      - This is the variable for how fast the servos should rotate around the circle
-//EEPROM.read(7) = 200         - This is the readius of the circle
+//EEPROM.read(7) = 200        - This is the radius of the drawn circle
 
 //Trays (28 across and 40 high) are 7.6cm wide and 4.625 high
 float lastTimer = 0;

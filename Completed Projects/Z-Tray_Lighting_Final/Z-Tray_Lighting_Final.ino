@@ -1,3 +1,5 @@
+//For EEPROM listings, see "Laser_Controller" script
+
 #include <ESP8266WiFi.h>
 #include <PinToGPIO.h>
 #include <EEPROM.h>
@@ -74,6 +76,17 @@ void loop() {
     client.println(" - RMCODE:Part Code(NONFUNCTIONAL)");
     client.println(" - READAT:");
     client.println(" - MNTMOD:");
+  } else if (request.substring(0,12) == "CONFIG HELP:") {
+    Serial.println("Listing config help to client");
+    client.println("Config Values: ");
+    client.println(" - Address 0: Distance to wall");
+    client.println(" - Address 1: Height offset from trays");
+    client.println(" - Address 2: Width of tray");
+    client.println(" - Address 3: Height of tray");
+    client.println(" - Address 4: Distance of device from left of trays");
+    client.println(" - Address 5: Activate Dev Lock (0 or 1)");
+    client.println(" - Address 6: Speed of circle drawing");
+    client.println(" - Address 7: Radius of circle");
   } else if (request.substring(0,7) == "CONFIG:") {
     EEPROM_Writer(request);
   } else if (request.substring(0,7) == "ADCODE:") {
@@ -110,5 +123,5 @@ void loop() {
   }
   
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(50);
+  delay(100);
 }
