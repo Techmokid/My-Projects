@@ -11,7 +11,7 @@ IPAddress address;
 
 struct station_info *stat_info;
 struct ipv4_addr *IPaddress;
-const char *ssid = "ESP8266 v1.6";
+const char *ssid = "ESP8266 v1.7";
 
 void setupWifi() {
  WiFi.mode(WIFI_AP);
