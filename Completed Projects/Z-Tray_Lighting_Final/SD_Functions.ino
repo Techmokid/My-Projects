@@ -1,5 +1,6 @@
-//#include <File_Manager.h>
-//file myFileStruct;
+#include <File_Manager.h>
+
+File_Manager::file_struct myFileStruct;
 
 bool validPartCode(String code) {
   if (code.length() != 6) { return false; }
@@ -8,8 +9,8 @@ bool validPartCode(String code) {
 }
 
 void sdInit() {
-  //myFileStruct.filepath = "TEMP.TXT";
-  //myFileStruct.softFileCreate();
+  myFileStruct.filepath = "TEMP.TXT";
+  myFileStruct.softFileCreate();
   
   Serial.begin(74880);
   while (!Serial) { SysCall::yield(); } delay(100);
@@ -109,9 +110,15 @@ void RemovePartCode(String in,bool printData) {
   client.println("ERROR: THIS PROCESS IT INCOMPLETE AND NONFUNCTIONAL");
   
   //Here we wanna copy across everything to a temporary file
-  //sdfat::File f = sd.open("TEMP.TXT",FILE_WRITE);
-  //f.println(x + "," + y + ":" + partCode);
-  //f.close();
+  
+  //myFileStruct.updateLineCount();
+  //myFileStruct.readline();
+  //myFileStruct.writeline();
+  //myFileStruct.writeline(String data);
+  //myFileStruct.skipline();
+  //myFileStruct.skipline(int numberOfLines);
+  //myFileStruct.softFileCreate();
+  //
   
   if (printData) {
     Serial.println("Part code " + partCode + " at position (" + Item_Position_X + "," + Item_Position_Y + ") removed from SD");

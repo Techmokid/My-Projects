@@ -5,6 +5,7 @@
 #include <EEPROM.h>
 #include <servo.h>
 #include <SPI.h>
+#include <SD.h>
 #include "SdFat.h"
 #include "sdios.h"
 
