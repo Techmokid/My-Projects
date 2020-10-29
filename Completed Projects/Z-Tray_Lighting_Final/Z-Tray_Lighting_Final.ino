@@ -61,9 +61,9 @@ void loop() {
   client = server.available();
   client.setTimeout(60000);
   if (!client) { return; }
+  
   Serial.println("\nWaiting for part code...");
   String request = client.readStringUntil('\n');
-  
   request.toUpperCase();
   
   if (request.length() < 1) { Serial.println("Blank"); return; }

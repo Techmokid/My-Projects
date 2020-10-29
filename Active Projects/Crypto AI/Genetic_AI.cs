@@ -135,10 +135,136 @@ namespace NEAT_AI {
     }
 
     public class Network {
-        //public Network(String configPath) { return Network(configPath, true, false); }
-        //public Network(String configPath, bool updateValuesRealtime) { return Network(configPath, updateValuesRealtime,false); }
-        public Network(String configPath, bool updateValuesRealtime, bool printTrainingTimes) {
+		bool printTrainingTimes;
+		List<Genome> previousValidGenomes = new List<Genome>();
+		List<Genome> genomes = new List<Genome>();
+		
+		//NEAT Variables
+		string fitness_criterion;
+		int pop_size;
+		float bias_max_value;
+		float bias_min_value;
+		float bias_mutate_rate;
+		float conn_add_prob;
+		float conn_delete_prob;
+		float node_add_prob;
+		float node_delete_prob;
+		int num_inputs;
+		int num_outputs;
+		int num_hidden;
+		int num_connections;
+		float weight_mutate_prob;
+		float weight_replace_prob;
+		float survival_threshold;
+		int minimum_network_size;
+		
+        public Network(String configPath) { return Network(configPath, true, false); }
+        public Network(String configPath, bool updateValuesRealtime) { return Network(configPath, updateValuesRealtime,false); }
+        public Network(String configPath, bool updateValuesRealtime, bool _printTrainingTimes) {
+			liveConfigUpdate(configPath);
 
+			printTrainingTimes = _printTrainingTimes;
+			generateNewRandomNetwork();
+
+			System.Console.WriteLine("NEAT AI: Population size set to " + self.pop_size.ToString());
+			System.Console.WriteLine("NEAT AI: Input count " + self.num_inputs.ToString());
+			System.Console.WriteLine("NEAT AI: Output count " + self.num_outputs.ToString());
         }
+		
+		void liveConfigUpdate(self,configPath) {
+			//NEAT
+			fitness_criterion = 	getConfigValue(configPath,"fitness_criterion");
+			pop_size = 				int(getConfigValue(configPath,"pop_size"));
+			
+			//Node Bias
+			bias_max_value = 		float(getConfigValue(configPath,"bias_max_value"));
+			bias_min_value = 		float(getConfigValue(configPath,"bias_min_value"));
+			bias_mutate_rate = 		float(getConfigValue(configPath,"bias_mutate_rate"));
+			
+			//Connection Rates
+			conn_add_prob = 		float(getConfigValue(configPath,"conn_add_prob"));
+			conn_delete_prob = 		float(getConfigValue(configPath,"conn_delete_prob"));
+
+			//Node Rates
+			node_add_prob = 		float(getConfigValue(configPath,"node_add_prob"));
+			node_delete_prob = 		float(getConfigValue(configPath,"node_delete_prob"));
+
+			//Network Parameters
+			num_inputs = 			int(getConfigValue(configPath,"num_inputs"));
+			num_outputs = 			int(getConfigValue(configPath,"num_outputs"));
+			num_hidden = 			int(getConfigValue(configPath,"num_hidden"));
+			num_connections = 		int(getConfigValue(configPath,"num_connections"));
+			
+			//Connection Weight
+			weight_mutate_prob = 	float(getConfigValue(configPath,"weight_mutate_prob"));
+			weight_replace_prob = 	float(getConfigValue(configPath,"weight_replace_prob"));
+			
+			//Default Reproduction
+			survival_threshold = 	float(getConfigValue(configPath,"survival_threshold"));
+			minimum_network_size = 	int(getConfigValue(configPath,"minimum_network_size"));
+		}
+		
+		float clamp(float n, float minn, float maxn) {
+			return Math.Max(Math.Min(maxn,n),minn);
+		}
+		
+		void generateNewRandomNetwork() {
+			genomes = new List<Genome>();
+			for(int i = 0; i < pop_size; i++) {
+				Genome temp = new Genome();
+				temp.generateNewRandomGenome(num_inputs,num_outputs,num_hidden,num_connections);
+				genomes.append(temp);
+			}
+		}
+		
+		string getConfigValue(string path, string key) {
+			System.IO.StreamReader file = new System.IO.StreamReader(@path);
+			while((line = file.ReadLine()) != null) {
+				if (line.Contains(key)) {
+					line = line.Replace(' ','');
+					line = line.Replace('\t','');
+					line = line.Replace('\n','');
+					
+					return line.Split('=')[1];
+				}
+			}
+		}
+		
+		void updateGenomeList() { updateGenomeList(null); }
+		void updateGenomeList(void optionalSecondaryFitnessCalculator) {
+			
+		}
+		
+		//void generateNewRandomNetwork() {}
+		//Genome getMutatedGenomeCopy(Genome orig) {}
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
