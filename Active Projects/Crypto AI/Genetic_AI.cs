@@ -1,3 +1,5 @@
+//Might have to go through and spam "this.function();"
+
 using System.Collections.Generic;
 using System;
 
@@ -171,37 +173,37 @@ namespace NEAT_AI {
 			System.Console.WriteLine("NEAT AI: Output count " + self.num_outputs.ToString());
         }
 		
-		void liveConfigUpdate(self,configPath) {
+		void liveConfigUpdate(string configPath) {
 			//NEAT
 			fitness_criterion = 	getConfigValue(configPath,"fitness_criterion");
-			pop_size = 				int(getConfigValue(configPath,"pop_size"));
+			pop_size = 				int.Parse(getConfigValue(configPath,"pop_size"));
 			
 			//Node Bias
-			bias_max_value = 		float(getConfigValue(configPath,"bias_max_value"));
-			bias_min_value = 		float(getConfigValue(configPath,"bias_min_value"));
-			bias_mutate_rate = 		float(getConfigValue(configPath,"bias_mutate_rate"));
+			bias_max_value = 		float.Parse(getConfigValue(configPath,"bias_max_value"));
+			bias_min_value = 		float.Parse(getConfigValue(configPath,"bias_min_value"));
+			bias_mutate_rate = 		float.Parse(getConfigValue(configPath,"bias_mutate_rate"));
 			
 			//Connection Rates
-			conn_add_prob = 		float(getConfigValue(configPath,"conn_add_prob"));
-			conn_delete_prob = 		float(getConfigValue(configPath,"conn_delete_prob"));
+			conn_add_prob = 		float.Parse(getConfigValue(configPath,"conn_add_prob"));
+			conn_delete_prob = 		float.Parse(getConfigValue(configPath,"conn_delete_prob"));
 
 			//Node Rates
-			node_add_prob = 		float(getConfigValue(configPath,"node_add_prob"));
-			node_delete_prob = 		float(getConfigValue(configPath,"node_delete_prob"));
+			node_add_prob = 		float.Parse(getConfigValue(configPath,"node_add_prob"));
+			node_delete_prob = 		float.Parse(getConfigValue(configPath,"node_delete_prob"));
 
 			//Network Parameters
-			num_inputs = 			int(getConfigValue(configPath,"num_inputs"));
-			num_outputs = 			int(getConfigValue(configPath,"num_outputs"));
-			num_hidden = 			int(getConfigValue(configPath,"num_hidden"));
-			num_connections = 		int(getConfigValue(configPath,"num_connections"));
+			num_inputs = 			int.Parse(getConfigValue(configPath,"num_inputs"));
+			num_outputs = 			int.Parse(getConfigValue(configPath,"num_outputs"));
+			num_hidden = 			int.Parse(getConfigValue(configPath,"num_hidden"));
+			num_connections = 		int.Parse(getConfigValue(configPath,"num_connections"));
 			
 			//Connection Weight
-			weight_mutate_prob = 	float(getConfigValue(configPath,"weight_mutate_prob"));
-			weight_replace_prob = 	float(getConfigValue(configPath,"weight_replace_prob"));
+			weight_mutate_prob = 	float.Parse(getConfigValue(configPath,"weight_mutate_prob"));
+			weight_replace_prob = 	float.Parse(getConfigValue(configPath,"weight_replace_prob"));
 			
 			//Default Reproduction
-			survival_threshold = 	float(getConfigValue(configPath,"survival_threshold"));
-			minimum_network_size = 	int(getConfigValue(configPath,"minimum_network_size"));
+			survival_threshold = 	float.Parse(getConfigValue(configPath,"survival_threshold"));
+			minimum_network_size = 	int.Parse(getConfigValue(configPath,"minimum_network_size"));
 		}
 		
 		float clamp(float n, float minn, float maxn) {
@@ -221,22 +223,134 @@ namespace NEAT_AI {
 			System.IO.StreamReader file = new System.IO.StreamReader(@path);
 			while((line = file.ReadLine()) != null) {
 				if (line.Contains(key)) {
-					line = line.Replace(' ','');
-					line = line.Replace('\t','');
-					line = line.Replace('\n','');
+					line = line.Replace(" ","");
+					line = line.Replace("\t","");
+					line = line.Replace("\n","");
 					
 					return line.Split('=')[1];
 				}
 			}
 		}
 		
-		void updateGenomeList() { updateGenomeList(null); }
-		void updateGenomeList(void optionalSecondaryFitnessCalculator) {
+		public static double NextDouble(double minValue, double maxValue) {
+            return new Random().NextDouble() * (maxValue - minValue) + minValue;
+        }
+		
+		Genome getMutatedGenomeCopy(Genome orig) {
+			Genome result = new Genome(orig);
+
+            if (new Random().NextDouble() > conn_add_prob) {
+                int index_1 = NextDouble(0, result.genome.Count - 1);
+                int index_2 = NextDouble(0, result.genome.Count - 1);
+                while (index_1 == index_2) { index_2 = NextDouble(0, result.genome.Count - 1); }
+
+                Node node_1 = result.genome[index_1];
+                Node node_2 = result.genome[index_2];
+
+                node_1.connected_nodes.append(node_2);
+                node_1.connection_weights.append(new Random().NextDouble());
+
+                if (!temp.isGenomeStable()) {
+                    node_1.connected_nodes.RemoveAt(node_1.connected_nodes.Count - 1);
+                    node_1.connection_weights.RemoveAt(node_1.connection_weights.Count - 1);
+
+                    node_2.connected_nodes.append(node_1);
+                    node_2.connection_weights.append(new Random().NextDouble());
+                }
+            }
+
+            if (new Random().NextDouble() > conn_delete_prob) {
+                if (result.genome.Count > 0) {
+                    int index = NextDouble(0, result.genome.Count - 1);
+                    while (result.genome[index].node_type == "input") {
+                        index = NextDouble(0, result.genome.Count - 1);
+                    }
+
+                    if (result.genome[index].connected_nodes > 0) {
+                        int index_2 = NextDouble(0, result.genome[index].connected_nodes - 1);
+                        result.genome[index].connected_nodes.RemoveAt(index_2);
+                        result.genome[index].connection_weights.RemoveAt(index_2);
+                    }
+                }
+            }
+
+            if (new Random().NextDouble() > node_add_prob) {
+                result.genome.append(new Node { node_type = "hidden" });
+            }
+
+            if ((new Random().NextDouble() > node_delete_prob) && (result.getHiddenNodes().count != 0)) {
+                if (result.genome.Count > 0) {
+                    int index = NextDouble(0, result.genome.Count - 1);
+                    while ((result.genome[index].node_type == "input") || (result.genome[index].node_type == "output")) {
+                        index = NextDouble(0, result.genome.Count - 1);
+                    }
+
+                    result.genome.RemoveAt(index);
+                }
+            }
+
+            if (new Random().NextDouble() > weight_mutate_prob) {
+                if (result.genome.Count > 0) {
+                    int index = NextDouble(0, result.genome.Count - 1);
+                    while (result.genome[index].node_type == "input") {
+                        index = NextDouble(0, result.genome.Count - 1);
+                    }
+
+                    if (result.genome[index].connected_nodes.Count > 0) {
+                        int index_2 = NextDouble(0, result.genome[index].connected_nodes.Count - 1);
+                        result.genome[index].connection_weights[index_2] = new Random().NextDouble();
+                    }
+                }
+            }
+
+            if (new Random().NextDouble() > weight_replace_prob) {
+                if (result.genome.Count > 0) {
+                    int index = NextDouble(0, result.genome.Count - 1);
+                    while (result.genome[index].node_type == "input") {
+                        index = NextDouble(0, result.genome.Count - 1);
+                    }
+
+                    if (result.genome[index].connected_nodes.Count > 0) {
+                        for (int looper = 0; looper < result.genome[index].connected_nodes.Count; looper++) {
+                            result.genome[index].connection_weights[looper] = new Random().NextDouble();
+                        }
+                    }
+                }
+            }
+
+            if (new Random().NextDouble() > bias_mutate_rate) {
+                if (result.genome.Count > 0) {
+                    int index = NextDouble(0, result.genome.Count - 1);
+                    while (result.genome[index].node_type == "input") {
+                        index = NextDouble(0, result.genome.Count - 1);
+                    }
+
+                    result.genome[index].upperTriggerThreshold = clamp(new Random().NextDouble() - 0.5f, bias_min_value, bias_max_value);
+                    result.genome[index].lowerTriggerThreshold = clamp(new Random().NextDouble() - 0.5f, bias_min_value, result.genome[index].upperTriggerThreshold);
+                }
+            }
 			
+			if (result.isGenomeStable()) { return result; }
+			return getMutatedGenomeCopy(orig);
+            //return orig;
 		}
 		
-		//void generateNewRandomNetwork() {}
-		//Genome getMutatedGenomeCopy(Genome orig) {}
+		void updateGenomeList() {
+            // We now have the entire genome list ordered by fitness
+            // 1 - Get the fitness list of all the genomes
+            // 2 - Sort the genomes by fitness (Flip if we want minimums to win):
+            // 3 - Perform the genetic death algorithms to wittle out poor performing genomes
+            // 4 - Create mutated clones of winning genomes
+            // 5 - Breed the winning genomes (NOT IMPLEMENTED)
+
+            //We have a unique problem that I just ignored in python.
+            //We have to sort list 1 by list 2 values
+            List<float> fitnessesList = new List<float>();
+            List<Genome> genomesList = new List<Genome>(genomes);
+            for (int index = 0; index < genomesList.Count; index++) {
+                fitnessesList.append(i.fitness);
+            }
+        }
     }
 }
 

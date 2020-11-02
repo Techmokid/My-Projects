@@ -251,19 +251,18 @@ class network():
                     index = random.randint(0, len(result.genome) - 1)
                 
                 result.genome[index].node_bias += self.clamp(random.random()-0.5,self.bias_min_value,self.bias_max_value)
-        if (random.random() > self.bias_mutate_rate):
+        if (random.random() > self.weight_replace_prob):
             #Mutate a random nodes bias value
             if (len(result.genome) != 0):
                 index = random.randint(0, len(result.genome) - 1)
                 while(result.genome[index].node_type == "input"):
                     index = random.randint(0, len(result.genome) - 1)
                 
-                result.genome[index].node_bias = random.uniform(self.bias_min_value,self.bias_max_value)
-
+                result.genome[index].node_weight = random.uniform(self.bias_min_value,self.bias_max_value)
         if (result.isGenomeStable()):
             return result
         return self.getMutatedGenomeCopy(orig)
-        return orig
+        #return orig
 
     def clamp(self,n, minn, maxn):
         return max(min(maxn, n), minn)
