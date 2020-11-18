@@ -1,0 +1,66 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\My-Projects\\Active Projects\\Crypto AI\\Compiled NEAT\\C#\\Crypto AI.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\My-Projects\\Active Projects\\Crypto AI\\Compiled NEAT\\C#\\Crypto AI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\My-Projects\\Active Projects\\Crypto AI\\Compiled NEAT\\C#\\Crypto AI.csproj",
+        "projectName": "Crypto AI",
+        "projectPath": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\My-Projects\\Active Projects\\Crypto AI\\Compiled NEAT\\C#\\Crypto AI.csproj",
+        "packagesPath": "C:\\Users\\aj200\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\My-Projects\\Active Projects\\Crypto AI\\Compiled NEAT\\C#\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\aj200\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Unirest-API": {
+              "target": "Package",
+              "version": "[1.0.7.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
