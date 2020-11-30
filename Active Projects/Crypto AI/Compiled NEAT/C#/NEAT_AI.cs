@@ -265,7 +265,7 @@ namespace NEAT_AI
         {
             Random.SetupRandom();
 
-            Console.WriteLine("NEAT AI: Setting up Variables. Please be aware this can take quite some time depending on config");
+            Console.WriteLine("[NEAT AI][Info]: Setting up Variables. Please be aware this can take quite some time depending on config");
 
             LiveConfigUpdate(configPath);
 
@@ -277,9 +277,9 @@ namespace NEAT_AI
 				GenerateNewRandomNetwork();
 			}
 
-            Console.WriteLine("NEAT AI: Population size set to " + pop_size.ToString());
-            Console.WriteLine("NEAT AI: Input count " + num_inputs.ToString());
-            Console.WriteLine("NEAT AI: Output count " + num_outputs.ToString());
+            Console.WriteLine("[NEAT AI][Info]: Population size set to " + pop_size.ToString());
+            Console.WriteLine("[NEAT AI][Info]: Input count " + num_inputs.ToString());
+            Console.WriteLine("[NEAT AI][Info]: Output count " + num_outputs.ToString());
         }
 		
         public void LiveConfigUpdate(string configPath)
@@ -337,7 +337,7 @@ namespace NEAT_AI
         }
 		
 		public void GenerateNewPrepopulatedNetwork() {
-			Console.WriteLine("Prepopulating the network");
+			Console.WriteLine("[NEAT AI][Info]: Prepopulating the network");
 			genomes = new List<Genome>();
 			for (int i = 0; i < pop_size; i++) {
                 Genome temp = new Genome();
@@ -557,7 +557,7 @@ namespace NEAT_AI
             {
                 if (genomesList.Count > minimum_network_size)
                 {
-                    Console.WriteLine("NEAT AI: Number of surviving genomes: " + genomesList.Count.ToString());
+                    Console.WriteLine("[NEAT AI][Info]: Number of surviving genomes: " + genomesList.Count.ToString());
 
                     while (genomesList.Count < p_s)
                     {
@@ -570,7 +570,7 @@ namespace NEAT_AI
                 }
                 else if (previousValidGenomes.Count > minimum_network_size)
                 {
-                    Console.WriteLine("NEAT AI: Rebooting genome from previous success attempts");
+                    Console.WriteLine("[NEAT AI][Info]: Rebooting genome from previous success attempts");
 
                     genomesList = new List<Genome>(previousValidGenomes);
                     while (genomesList.Count != p_s)
@@ -589,7 +589,7 @@ namespace NEAT_AI
                         genomesList.Add(i);
                     }
 
-                    Console.WriteLine("NEAT AI: Rebooting genome from previous success attempts appended to current network data");
+                    Console.WriteLine("[NEAT AI][Info]: Rebooting genome from previous success attempts appended to current network data");
                     while (genomesList.Count != p_s)
                     {
                         int index = Random.rand.Next(genomesList.Count);
@@ -603,11 +603,11 @@ namespace NEAT_AI
                 {
                     if (genomesList.Count == 1)
                     {
-                        Console.WriteLine("NEAT AI: Discovered functional node. Storing node for later...");
+                        Console.WriteLine("[NEAT AI][Info]: Discovered functional node. Storing node for later...");
                     }
                     else
                     {
-                        Console.WriteLine("NEAT AI: Discovered functional nodes. Storing " + genomesList.Count.ToString() + " nodes for later...");
+                        Console.WriteLine("[NEAT AI][Info]: Discovered functional nodes. Storing " + genomesList.Count.ToString() + " nodes for later...");
                     }
 
                     foreach (Genome i in genomesList)
@@ -618,7 +618,7 @@ namespace NEAT_AI
             }
             else
             {
-                Console.WriteLine("NEAT AI: Complete extinction event, regenerating network!");
+                Console.WriteLine("[NEAT AI][Info]: Complete extinction event, regenerating network!");
                 if (prepopulated) {
 					GenerateNewPrepopulatedNetwork();
 				} else {
@@ -630,9 +630,8 @@ namespace NEAT_AI
 
             if (printTrainingTimes)
             {
-                Console.WriteLine("NEAT AI: Generation Learning Time: " + ((float)watch.ElapsedMilliseconds / 1000).ToString() + "s");
-                Console.WriteLine(" - Number of genomes: " + genomesList.Count.ToString());
-                Console.WriteLine();
+                Console.WriteLine("[NEAT AI][Info]: Generation Learning Time: " + ((float)watch.ElapsedMilliseconds / 1000).ToString() + "s");
+                Console.WriteLine("[NEAT AI][Info]:  - Number of genomes: " + genomesList.Count.ToString());
             }
 			
 			saveNetwork();
@@ -652,7 +651,9 @@ namespace NEAT_AI
 				//1 - The system was interrupted while saving "0"
 				file = new StreamReader(path + "1.json");
 			} else {
-				Console.WriteLine("ERROR: Network error in reading from file: " + saveStatusPath);
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine("[NEAT AI][Error]: Network error in reading from file: " + saveStatusPath);
+				Console.ResetColor();
 			}
 			
 			string line = file.ReadLine();
@@ -666,9 +667,11 @@ namespace NEAT_AI
 		}
 		
 		public void saveNetwork() {
-			Console.WriteLine("Press Key To Save Network Data");
+			Console.ForegroundColor = ConsoleColor.Magenta;
+			Console.WriteLine("[NEAT AI][Request]: Press Key To Save Network Data");
+			Console.ResetColor();
 			Console.ReadKey(true);
-			Console.WriteLine("Saving Network Data...");
+			Console.WriteLine("[NEAT AI][Info]: Saving Network Data...");
 			
 			string path = "C:/Users/aj200/Documents/GitHub/My-Projects/My-Projects/Active Projects/Crypto AI/Compiled NEAT/C#/SaveData/networkDump";
 			
@@ -683,14 +686,12 @@ namespace NEAT_AI
 					sw.WriteLine("\t\t\t{");
 					for (int nodeIndex = 0; nodeIndex < genomes[genomeIndex].genome.Count; nodeIndex++) {
 						sw.WriteLine("\t\t\t\t\"Current Node ID\": " + genomes[genomeIndex].genome[nodeIndex].ID.ToString() + ",");
-						sw.WriteLine("\t\t\t\t\"Current Node Type\": \"" + genomes[genomeIndex].genome[nodeIndex].node_type.ToString() + "\"");
 						
 						if (genomes[genomeIndex].genome[nodeIndex].node_type.ToString() != "input") {
-							sw.WriteLine(",");
+							sw.WriteLine("\t\t\t\t\"Current Node Type\": \"" + genomes[genomeIndex].genome[nodeIndex].node_type.ToString() + "\",");
 							sw.WriteLine("\t\t\t\t\"Node Connections\": [");
 							sw.WriteLine("\t\t\t\t\t{");
 							
-							bool isRunning = false;
 							for (int index = 0; index < genomes[genomeIndex].genome[nodeIndex].connected_nodes.Count; index++) {
 								sw.WriteLine("\t\t\t\t\t\t\"Node ID\":" + genomes[genomeIndex].genome[nodeIndex].connected_nodes[index].ID + ",");
 								sw.WriteLine("\t\t\t\t\t\t\"Node Weight\":" + genomes[genomeIndex].genome[nodeIndex].connection_weights[index] + "");
@@ -702,6 +703,8 @@ namespace NEAT_AI
 							}
 							
 							sw.WriteLine("\t\t\t\t]");
+						} else {
+							sw.WriteLine("\t\t\t\t\"Current Node Type\": \"" + genomes[genomeIndex].genome[nodeIndex].node_type.ToString() + "\"");
 						}
 						
 						if (nodeIndex != genomes[genomeIndex].genome.Count - 1) {
@@ -711,14 +714,18 @@ namespace NEAT_AI
 						}
 					}
 					
-					sw.WriteLine("\t\t]\n");
-					sw.WriteLine("\t},{\n");
+					sw.WriteLine("\t\t]");
+					if (genomeIndex != genomes.Count - 1) {
+						sw.WriteLine("\t},{");
+					} else {
+						sw.WriteLine("\t}");
+					}
 				}
 				
 				sw.WriteLine("]");
 			}
 			
-			Console.WriteLine("Backing Up Network Data...");
+			Console.WriteLine("[NEAT AI][Info]: Backing Up Network Data...");
 			File.WriteAllText(saveStatusPath, "2");
 			if (File.Exists(path + "1.json")) { File.Delete(path + "1.json"); }
 			using (StreamWriter sw = File.CreateText(path + "1.json")) { }
@@ -730,14 +737,12 @@ namespace NEAT_AI
 					sw.WriteLine("\t\t\t{");
 					for (int nodeIndex = 0; nodeIndex < genomes[genomeIndex].genome.Count; nodeIndex++) {
 						sw.WriteLine("\t\t\t\t\"Current Node ID\": " + genomes[genomeIndex].genome[nodeIndex].ID.ToString() + ",");
-						sw.WriteLine("\t\t\t\t\"Current Node Type\": \"" + genomes[genomeIndex].genome[nodeIndex].node_type.ToString() + "\"");
 						
 						if (genomes[genomeIndex].genome[nodeIndex].node_type.ToString() != "input") {
-							sw.WriteLine(",");
+							sw.WriteLine("\t\t\t\t\"Current Node Type\": \"" + genomes[genomeIndex].genome[nodeIndex].node_type.ToString() + "\",");
 							sw.WriteLine("\t\t\t\t\"Node Connections\": [");
 							sw.WriteLine("\t\t\t\t\t{");
 							
-							bool isRunning = false;
 							for (int index = 0; index < genomes[genomeIndex].genome[nodeIndex].connected_nodes.Count; index++) {
 								sw.WriteLine("\t\t\t\t\t\t\"Node ID\":" + genomes[genomeIndex].genome[nodeIndex].connected_nodes[index].ID + ",");
 								sw.WriteLine("\t\t\t\t\t\t\"Node Weight\":" + genomes[genomeIndex].genome[nodeIndex].connection_weights[index] + "");
@@ -749,6 +754,8 @@ namespace NEAT_AI
 							}
 							
 							sw.WriteLine("\t\t\t\t]");
+						} else {
+							sw.WriteLine("\t\t\t\t\"Current Node Type\": \"" + genomes[genomeIndex].genome[nodeIndex].node_type.ToString() + "\"");
 						}
 						
 						if (nodeIndex != genomes[genomeIndex].genome.Count - 1) {
@@ -758,8 +765,12 @@ namespace NEAT_AI
 						}
 					}
 					
-					sw.WriteLine("\t\t]\n");
-					sw.WriteLine("\t},{\n");
+					sw.WriteLine("\t\t]");
+					if (genomeIndex != genomes.Count - 1) {
+						sw.WriteLine("\t},{");
+					} else {
+						sw.WriteLine("\t}");
+					}
 				}
 				
 				sw.WriteLine("]");
@@ -769,7 +780,11 @@ namespace NEAT_AI
 		}
 		
 		public void loadNetwork() {
-			
+			Console.ForegroundColor = ConsoleColor.Yellow;
+			Console.WriteLine("[NEAT AI][Warning]: Network Loading Failure: Empty Function!");
+			Console.WriteLine("[NEAT AI][Warning]:  - Using blank network");
+			Console.ResetColor();
+			return;
 		}
     }
 }
