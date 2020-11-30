@@ -3,7 +3,6 @@
 using System;
 using System.Net;
 using System.Security.Cryptography;
-using System.Threading.Tasks;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -22,6 +21,10 @@ using unirest_net.http;
 
 namespace Binance_API {
     public static class API {
+		static string key = "wWsD2wSqNNyyzAdk6RNeHwrF0chaREPLTIQBKAKUe6QkNlXXS4eEK5zEn5IKu0I7";
+		static string secret = "IHMgTvIRQgcV0I3UiqFZqoj647K4YsaTC9DsEPK6v01HSYbsgb9h3NEiU9HEssiR";
+		static bool createdJSON = false;
+		
 		class deserializedJSON {
 			[JsonPropertyName("serverTime")]
 			public double time { get; set; }
@@ -69,13 +72,29 @@ namespace Binance_API {
 		public static string getHistoricTrades(string symbol) { return getHistoricTrades(symbol,500,-1); }
 		public static string getHistoricTrades(string symbol, int limit) { return getHistoricTrades(symbol,limit,-1); }
 		public static string getHistoricTrades(string symbol, int limit, long fromId) {
-			if (!getServerConnectivity()) { throw new Exception("No Server Connection"); }
+			string filePath = "C:/Users/aj200/Documents/GitHub/My-Projects/My-Projects/Active Projects/Crypto AI/Compiled NEAT/C#/SaveData/HistoricDataCache.txt";
 			
-			string resultingString = "https://api.binance.com/api/v3/historicalTrades?symbol=" + symbol;
-			if (limit > 0) { resultingString += "&limit=" + limit.ToString(); }
-			if (fromId > 0) { resultingString += "&fromId=" + fromId.ToString(); }
+			if (!createdJSON) {
+				createdJSON = true;
+				if (!getServerConnectivity()) { throw new Exception("No Server Connection"); }
+				
+				string resultingString = "https://api.binance.com/api/v3/historicalTrades?symbol=" + symbol;
+				if (limit > 0) { resultingString += "&limit=" + limit.ToString(); }
+				if (fromId > 0) { resultingString += "&fromId=" + fromId.ToString(); }
+				
+				string fileDataResult2 = Unirest.get(resultingString).header("X-MBX-APIKEY",key).asJson<string>().Body.ToString();
+				System.IO.File.WriteAllText(filePath, fileDataResult2);
+			}
 			
-			return Unirest.get(resultingString).asJson<string>().Body.ToString();
+			System.IO.StreamReader file = new System.IO.StreamReader(filePath);
+            string line = file.ReadLine();
+			string fileDataResult = "";
+            while (line != null) {
+                fileDataResult += line + "\n";
+                line = file.ReadLine();
+            }
+			
+			return fileDataResult;
 		}
 		
 		public static string getAggregateTrades(string symbol)                         { return getAggregateTrades(symbol,0,0,0,0); }
@@ -134,9 +153,6 @@ namespace Binance_API {
 		public static string makeSecureCall(string URL) { return makeSecureCall(URL,""); }
 		public static string makeSecureCall(string URL, string totalParams) {
 			if (!getServerConnectivity()) { throw new Exception("No Server Connection"); }
-			
-			string key = "wWsD2wSqNNyyzAdk6RNeHwrF0chaREPLTIQBKAKUe6QkNlXXS4eEK5zEn5IKu0I7";
-			string secret = "IHMgTvIRQgcV0I3UiqFZqoj647K4YsaTC9DsEPK6v01HSYbsgb9h3NEiU9HEssiR";
 			
 			totalParams += "&timestamp=" + getServerTime();
 			

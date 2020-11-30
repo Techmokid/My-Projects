@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using System.Collections.Generic;
 
 using NEAT_AI;
@@ -7,30 +6,38 @@ using Binance_API;
 
 namespace WebAPIClient {
 	class Program {
-        static void CleanupGenomes(ref Network nn) {
-			for (int i = 0; i < nn.genomes.Count; i++) {
-				if (nn.genomes[i].fitness == 500) {
-					nn.genomes.RemoveAt(i);
-				}
-			}
-		}
+		static int iterations = 500;
 
-        
         static void Main(string[] args) {
-            //Network nn = new Network("C:/Users/aj200/Documents/GitHub/My-Projects/My-Projects/Active Projects/Crypto AI/Compiled NEAT/C#/config.txt",true,true);
+            Network nn = new Network("C:/Users/aj200/Documents/GitHub/My-Projects/My-Projects/Active Projects/Crypto AI/Compiled NEAT/C#/SaveData/config.txt",true,true,true);
+			nn.loadNetwork();
 			
-			//for (int i = 0; i < nn.genomes.Count; i++) {
-			//	nn.genomes[i].fitness = (float)NEAT_AI.Random.rand.NextDouble();
-			//}
-			
-			//CleanupGenomes(ref nn);
-			//nn.UpdateGenomeList();
-
-            //Console.WriteLine(Binance_API.API.makeCall("https://api.binance.com/sapi/v1/capital/config/getall","symbol=LTCBTC",true));
-			//Console.WriteLine(Binance_API.API.getServerConnectivity());
-			//Console.WriteLine(Binance_API.API.getServerTime());
+			Console.WriteLine("Running Network....");
+			for (int currentIteration = 0; currentIteration < iterations; currentIteration++) {
+				for (int i = 0; i < nn.genomes.Count; i++) {
+					nn.genomes[i].fitness = getGenomeFitness(nn.genomes[i]);
+				}
+				
+				for (int i = 0; i < nn.genomes.Count; i++) {
+					if (nn.genomes[i].fitness == 500) {
+						nn.genomes.RemoveAt(i);
+					}
+				}
+				
+				nn.UpdateGenomeList();
+			}
 			
             return;
+		}
+		
+		static float getGenomeFitness(Genome genome) {
+			float fakeWallet = 501;
+			
+			//Console.WriteLine("INCOMPLETE SECTION: This is the last function before the code is ready");
+			//Console.WriteLine(Binance_API.API.getHistoricTrades("ETHBTC"));
+			//Console.ReadKey(true);
+			
+			return fakeWallet;
 		}
 	}
 }
