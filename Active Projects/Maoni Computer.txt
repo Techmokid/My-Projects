@@ -1,8 +1,0 @@
-$250       - 1TB SSD      	- https://www.ple.com.au/Products/630975/Samsung-860-EVO-Series-25-7mm-1TB-SSD
-$129       - 16GB RAM     	- https://www.ple.com.au/Products/638806/GeIL-16GB-Single-DDR4-EVO-SPEAR-C16-3000MHz
-$496       - GTX1660      	- https://www.ple.com.au/Products/637229/ASUS-GeForce-GTX1660-TUF-Gaming-X3-6GB-GDDR5
-$199       - Motherboard        - https://www.ple.com.au/Products/631545/ASUS-PRIME-H370-A-LGA1151-CL-ATX-Desktop-Motherboard
-$65        - PSU		- https://www.ple.com.au/Products/635785/Cooler-Master-MWE-450W-80PLUS-White-Power-Supply
-$18	   - Keyboard/mouse	- https://www.bigw.com.au/product/gecko-wireless-keyboard-and-mouse-bundle-black/p/814758/
-
-Total Costs: $1,157
