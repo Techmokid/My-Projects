@@ -1,0 +1,4 @@
+CPU			AMD Ryzen 9 3950X			$1149
+Graphics Card		8 x ASUS Radeon RX 5700 XT		$599
+PSU			Corsair RM650 650W			$189
+Motherboard		

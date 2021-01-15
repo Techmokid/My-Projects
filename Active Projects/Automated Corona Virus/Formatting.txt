@@ -14,16 +14,16 @@
 13: <td style="font-weight: bold; text-align:right"><a href="/world-population/india-population/">1,384,382,302</a> </td>
 
 Formatting:
-1.  Total Cases
-2.  New Cases
-3.  Total Deaths
-4.  New Deaths (In this case, none)
-5.  Total Recovered
-6.  ?
-7.  Active Cases
-8.  Serious/Critical
-9.  Total cases/1M Pop
-10. Deaths/1M Pop
-11. Total Tests
-12. Tests/1M Pop
-13. Country Population
+0.  Total Cases
+1.  New Cases
+2.  Total Deaths
+3.  New Deaths (In this case, none)
+4.  Total Recovered
+5.  ?
+6.  Active Cases
+7.  Serious/Critical
+8.  Total cases/1M Pop
+9.  Deaths/1M Pop
+10. Total Tests
+11. Tests/1M Pop
+12. Country Population

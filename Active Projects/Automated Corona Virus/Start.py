@@ -3,6 +3,8 @@
 #https://www.worldometers.info/coronavirus/?fbclid=IwAR1QqQBkcGY3I2r0f4lHSQibBXZDJWaQtP6yQhPVuHn-fJo1JiedXEDDDVM
 
 import requests,time,os,urllib,shutil,openpyxl
+from openpyxl.styles import NamedStyle, Font, Border, Side, PatternFill
+from openpyxl.formatting.rule import ColorScaleRule, CellIsRule, FormulaRule
 from datetime import datetime, timedelta
 
 def splitTextToLines(text):
@@ -123,7 +125,7 @@ def reformatData(rawData):
                     CountryDirectory = temp[:temp.find("\"")]
                     RawCountryName = CountryDirectory[CountryDirectory[:-1].rfind("/") + 1:-1]
                     PureCountryName = RawCountryName.split("-")[0]
-                    countryDataList.append("Country Name: \t\t" + PureCountryName)
+                    countryDataList.append(PureCountryName)
         worldDataList.append(countryDataList)
     return worldDataList
 
@@ -157,7 +159,7 @@ os.mkdir(path)
 
 print("[Database Creation]: Saving raw data to file...")
 
-book = openpyxl.Workbook()
+book = openpyxl.load_workbook('C:/Users/aj200/Documents/GitHub/My-Projects/My-Projects/Active Projects/Automated Corona Virus/Active-Coronavirus-cases.xlsx')
 sheet = book.active
 sheet.title = "Worldwide Active Cases"
 
@@ -170,213 +172,126 @@ for countryDataList in worldDataList:
     if (len(temp) != 0):
         activeCaseCount += int(temp)
 
-#Display basic data at top of list
-sentence = "\"Was\" numbers are from " + (datetime.now() - timedelta(days=7)).strftime("%B %d, %Y") + ""
-
-temp = datetime.today().strftime("%d")
-if (temp[-1] == "1"):
-    temp += "st"
-elif (temp[-1] == "2"):
-    temp += "nd"
-elif (temp[-1] == "3"):
-    temp += "rd"
-else:
-    temp += "th"
-tempDate = temp + "of" + datetime.today().strftime("%B")
-
-sentence += "As of the " + tempDate + ", the world currently has " + ('{:,}'.format(activeCaseCount)) + " active cases"
-
-sheet["A1"] = sentence
-sheet["A2"] = "Past Worldwide Increases/Decreases can be found on a seperate sheet (Found below)."
-sheet["A4"] = "This will be updated every 7 days."
-
-temp = (datetime.now() + timedelta(days=7)).strftime("%d")
-if (temp[-1] == "1"):
-    temp += "st"
-elif (temp[-1] == "2"):
-    temp += "nd"
-elif (temp[-1] == "3"):
-    temp += "rd"
-else:
-    temp += "th"
-tempDate = temp + "of" + (datetime.now() + timedelta(days=7)).strftime("%B")
-
-sheet["C4"] = "Next update: " + tempDate
-sheet["H1"] = "Reinfected"
-sheet["H2"] = "Recovered"
-sheet["H3"] = "30% or more Decrease"
-sheet["H4"] = "70% or more Increase"
-sheet["K1"] = "Newly Infected"
-
-#Fill in solid colours
-sheet["J1"].fill = openpyxl.styles.PatternFill(fgColor="45818E", fill_type = "solid")
-sheet["G1"].fill = openpyxl.styles.PatternFill(fgColor="E06666", fill_type = "solid")
-sheet["G2"].fill = openpyxl.styles.PatternFill(fgColor="6AA84F", fill_type = "solid")
-sheet["G3"].fill = openpyxl.styles.PatternFill(fgColor="34A853", fill_type = "solid")
-sheet["G4"].fill = openpyxl.styles.PatternFill(fgColor="CC0000", fill_type = "solid")
-
-#Display data caps
-sheet["A6"] = "COUNTRIES:"
-sheet["B6"] = "ACTIVE CASES:"
-sheet["C6"] = "WAS:"
-sheet["D6"] = "INCREASE/DECREASE:"
-sheet["E6"] = "PERCENTAGE:"
-sheet["F6"] = "TOTAL CASES:"
-sheet["G6"] = "RECOVERED:"
-sheet["H6"] = "DIED:"
-sheet["I6"] = "OUTCOMES:"
-sheet["J6"] = "OUTCOME PERCENTAGE:"
-
-#Display world data
-def fillRowWithBorder(sheet,rowNumber):
-    sty = openpyxl.styles.Side(border_style="thin")
-    sheet["A" + str(rowNumber)].border = openpyxl.styles.Border(top=sty, right=sty, bottom=sty, left=sty)
-    sheet["B" + str(rowNumber)].border = openpyxl.styles.Border(top=sty, right=sty, bottom=sty, left=sty)
-    sheet["C" + str(rowNumber)].border = openpyxl.styles.Border(top=sty, right=sty, bottom=sty, left=sty)
-    sheet["D" + str(rowNumber)].border = openpyxl.styles.Border(top=sty, right=sty, bottom=sty, left=sty)
-    sheet["E" + str(rowNumber)].border = openpyxl.styles.Border(top=sty, right=sty, bottom=sty, left=sty)
-    sheet["F" + str(rowNumber)].border = openpyxl.styles.Border(top=sty, right=sty, bottom=sty, left=sty)
-    sheet["G" + str(rowNumber)].border = openpyxl.styles.Border(top=sty, right=sty, bottom=sty, left=sty)
-    sheet["H" + str(rowNumber)].border = openpyxl.styles.Border(top=sty, right=sty, bottom=sty, left=sty)
-    sheet["I" + str(rowNumber)].border = openpyxl.styles.Border(top=sty, right=sty, bottom=sty, left=sty)
-    sheet["J" + str(rowNumber)].border = openpyxl.styles.Border(top=sty, right=sty, bottom=sty, left=sty)
-    
-
-def fillRowWithColour(sheet,rowNumber,color="DEFAULT"):
-    if (color == "GREEN"):
-        sheet["A" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="6AA84F", fill_type = "solid")
-        sheet["B" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="6AA84F", fill_type = "solid")
-        sheet["C" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="6AA84F", fill_type = "solid")
-        sheet["D" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="6AA84F", fill_type = "solid")
-        sheet["E" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="6AA84F", fill_type = "solid")
-        sheet["F" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="6AA84F", fill_type = "solid")
-        sheet["G" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="6AA84F", fill_type = "solid")
-        sheet["H" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="6AA84F", fill_type = "solid")
-        sheet["I" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="6AA84F", fill_type = "solid")
-        sheet["J" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="6AA84F", fill_type = "solid")
-    if (color == "RED"):
-        sheet["A" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="E06666", fill_type = "solid")
-        sheet["B" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="E06666", fill_type = "solid")
-        sheet["C" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="E06666", fill_type = "solid")
-        sheet["D" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="E06666", fill_type = "solid")
-        sheet["E" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="E06666", fill_type = "solid")
-        sheet["F" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="E06666", fill_type = "solid")
-        sheet["G" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="E06666", fill_type = "solid")
-        sheet["H" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="E06666", fill_type = "solid")
-        sheet["I" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="E06666", fill_type = "solid")
-        sheet["J" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="E06666", fill_type = "solid")
-    else:
-        sheet["A" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="CCCCCC", fill_type = "solid")
-        sheet["B" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="EFEFEF", fill_type = "solid")
-        sheet["C" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="CCCCCC", fill_type = "solid")
-        sheet["D" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="EFEFEF", fill_type = "solid")
-        sheet["E" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="CCCCCC", fill_type = "solid")
-        sheet["F" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="EFEFEF", fill_type = "solid")
-        sheet["G" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="CCCCCC", fill_type = "solid")
-        sheet["H" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="EFEFEF", fill_type = "solid")
-        sheet["I" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="CCCCCC", fill_type = "solid")
-        sheet["J" + str(rowNumber)].fill = openpyxl.styles.PatternFill(fgColor="EFEFEF", fill_type = "solid")
-
-fillRowWithBorder(sheet,6)
-fillRowWithColour(sheet,6)
-
-#sheet["A6"] = "COUNTRIES:"
-#sheet["B6"] = "ACTIVE CASES:"
-#sheet["C6"] = "WAS:"
-#sheet["D6"] = "INCREASE/DECREASE:"
-#sheet["E6"] = "PERCENTAGE:"
-#sheet["F6"] = "TOTAL CASES:"
-#sheet["G6"] = "RECOVERED:"
-#sheet["H6"] = "DIED:"
-#sheet["I6"] = "OUTCOMES:"
-#sheet["J6"] = "OUTCOME PERCENTAGE:"
-
-def strToInt(inputVal):
-    if (isinstance(inputVal, int)):
-        return inputVal
-    
+def cleanDigit(x):
     result = ""
-    for i in inputVal:
-        
+    for i in x:
         if (i.isdigit()):
             result += i
-    
-    if (len(result) > 0):
-        return int(result)
-    return 0
+    return result
 
-currentLine = 7
-for countryDataList in worldDataList:
-    sheet["A" + str(currentLine)] = countryDataList[12]
-    sheet["B" + str(currentLine)] = countryDataList[6]
-    sheet["C" + str(currentLine)] = "15"      #------------------------------------------------------------------------------------------------------
-    sheet["D" + str(currentLine)] = strToInt(sheet["B" + str(currentLine)].value) - strToInt(sheet["C" + str(currentLine)].value)
-    sheet["E" + str(currentLine)] = strToInt(sheet["D" + str(currentLine)].value) / strToInt(sheet["C" + str(currentLine)].value)
-    sheet["F" + str(currentLine)] = countryDataList[0]
-    sheet["G" + str(currentLine)] = countryDataList[4]
-    sheet["H" + str(currentLine)] = countryDataList[2]
-    sheet["I" + str(currentLine)] = strToInt(sheet["G" + str(currentLine)].value) + strToInt(sheet["H" + str(currentLine)].value)
-    sheet["J" + str(currentLine)] = 100 * strToInt(sheet["I" + str(currentLine)].value) / strToInt(sheet["F" + str(currentLine)].value)
-    
-    fillRowWithBorder(sheet,currentLine)
-    fillRowWithColour(sheet,currentLine)
-    
-    if (sheet["E" + str(currentLine)].value > 70):
-        sheet["A" + str(currentLine)].fill = openpyxl.styles.PatternFill(fgColor="CC0000", fill_type = "solid")
-    if (sheet["E" + str(currentLine)].value < -30):
-        sheet["A" + str(currentLine)].fill = openpyxl.styles.PatternFill(fgColor="34A853", fill_type = "solid")
-    
-    if (sheet["B" + str(currentLine)].value == 0):
-        fillRowWithColour(sheet,currentLine,"GREEN")
-    elif ((strToInt(sheet["B" + str(currentLine)].value) > 0) and (strToInt(sheet["C" + str(currentLine)].value) == 0)):
-        fillRowWithColour(sheet,currentLine,"RED")
-    else:
-        fillRowWithColour(sheet,currentLine)
-    
-    sheet["E" + str(currentLine)] = str(sheet["E" + str(currentLine)].value) + "%"
-    currentLine += 1
-
-#Now we have got most of the data, we create the tracking sheet
-#To do this, we simply make a copy of the sheet from the previously made tracking file and add our values to it
-
-pastDataSheet = book.create_sheet("Past Worldwide Graphs")
-
-directoryToPreviousSpreadsheet = ""
-wb2 = openpyxl.load_workbook(directoryToPreviousSpreadsheet)
-ws2 = wb2["Past Worldwide Graphs.xlsx"]
-
-mr = ws2.max_row
-mc = ws2.max_column
-
-for i in range (1, mr + 1): 
-    for j in range (1, mc + 1): 
-        # reading cell value from source excel file 
-        c = ws2.cell(row = i, column = j) 
-  
-        # writing the read value to destination excel file 
-        pastDataSheet.cell(row = i, column = j).value = c.value
-
-running = True
-line = 0
-for i in range(7,max_row):
-    if ((len(pastDataSheet.value) < 2) and running):
-        running = False
-        line = i
-
-temp = datetime.today().strftime("%d")
-if (temp[-1] == "1"):
-    temp += "st"
-elif (temp[-1] == "2"):
-    temp += "nd"
-elif (temp[-1] == "3"):
-    temp += "rd"
+tempNow = str(int(datetime.today().strftime("%d")))
+if (tempNow[-1] == "1"):
+    tempNow += "st"
+elif (tempNow[-1] == "2"):
+    tempNow += "nd"
+elif (tempNow[-1] == "3"):
+    tempNow += "rd"
 else:
-    temp += "th"
-sheet["A" + str(line)] = temp + "of" + datetime.today().strftime("%B")
+    tempNow += "th"
+tempNow += " of " + datetime.today().strftime("%B")
+
+activeCaseCount = "#VALUE"
+oldDate = sheet["C4"].value.split(':')[1]
+
+date_time_obj = datetime.strptime(cleanDigit(oldDate.split('of')[0][1:]) + oldDate.split('of')[1][:4], '%d %b')
+date_time_future = datetime.today() + timedelta(weeks=1)
+tempPlusWeek = str(int(date_time_future.strftime("%d")))
+if (tempPlusWeek[-1] == "1"):
+    tempPlusWeek += "st"
+elif (tempPlusWeek[-1] == "2"):
+    tempPlusWeek += "nd"
+elif (tempPlusWeek[-1] == "3"):
+    tempPlusWeek += "rd"
+else:
+    tempPlusWeek += "th"
+tempPlusWeek += " of " + datetime.today().strftime("%B")
+
+sheet["C4"] = "Next update: " + tempPlusWeek
+sheet["B7"].value = "=SUM(B9:B" + str(sheet.max_row) + ")"
+sheet["C7"].value = "=SUM(C9:C" + str(sheet.max_row) + ")"
+sheet["F7"].value = "=SUM(F9:F" + str(sheet.max_row) + ")"
+sheet["G7"].value = "=SUM(G9:G" + str(sheet.max_row) + ")"
+sheet["H7"].value = "=SUM(H9:H" + str(sheet.max_row) + ")"
+
+for i in range(9,sheet.max_row + 1):
+    if (str(sheet["B" + str(i)].value) != "None"):
+        sheet["C" + str(i)] = sheet["B" + str(i)].value
+        sheet["D" + str(i)] = "=B" + str(i) + "-C" + str(i)
+        sheet["E" + str(i)] = "=D" + str(i) + "/C" + str(i)
+        sheet["F" + str(i)] = "=SUM(B" + str(i) + ",G" + str(i) + ",H" + str(i) + ")"
+        sheet["G" + str(i)] = ""
+        sheet["H" + str(i)] = ""
+        sheet["I" + str(i)] = "=G" + str(i) + "+H" + str(i)
+        sheet["J" + str(i)] = "=I" + str(i) + "/F" + str(i)
+        
+        sheet["B" + str(i)] = ""
+        #Here is where we actually insert the data
+        #0 - total cases[F?]
+        #1 - new cases
+        #2 - total deaths[H?]
+        #3 - new deaths
+        #4 - total recovered[G?]
+        #5 - ?
+        #6 - active cases[B?]
+        #13 - name [A?]
+
+        #We require B, G, H (And technically for identification "A")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Here we are setting up conditional formatting
+Reinfected = PatternFill(start_color='E06666', end_color='E06666', fill_type='solid')
+Recovered = PatternFill(start_color='6AA84F', end_color='6AA84F', fill_type='solid')
+GoodDecrease = PatternFill(start_color='34A853', end_color='34A853', fill_type='solid')
+badIncrease = PatternFill(start_color='CC0000', end_color='CC0000', fill_type='solid')
+
+sheet2 = book["Past Worldwide Graphs"]
+sheet2["A" + str(sheet2.max_row)].value = tempPlusWeek
+#sheet2["B" + str(sheet2.max_row)].value = "='Worldwide Active Cases'!D7"
+sheet2["I" + str(sheet2.max_row + 1)].value = tempPlusWeek
+#sheet2["J" + str(sheet2.max_row)].value = sheet["B7"].value
+
+sheet2["B" + str(sheet2.max_row - 1)].style = 'Comma'
+sheet2["J" + str(sheet2.max_row)].style = 'Comma'
+
+bd = Side(style='thin', color="000000")
+sheet2["A" + str(sheet2.max_row - 1)].border = Border(left=bd, top=bd, right=bd, bottom=bd)
+sheet2["B" + str(sheet2.max_row - 1)].border = Border(left=bd, top=bd, right=bd, bottom=bd)
+sheet2["I" + str(sheet2.max_row)].border = Border(left=bd, top=bd, right=bd, bottom=bd)
+sheet2["J" + str(sheet2.max_row)].border = Border(left=bd, top=bd, right=bd, bottom=bd)
+
+#set to font size 10
+sheet2["B" + str(sheet2.max_row - 1)].font = Font(size=10)
+sheet2["J" + str(sheet2.max_row)].font = Font(size=10)
+
+sheet["A1"].value = "=\"\"\"Was\"\" numbers are from the " + oldDate + ". As of the " + tempNow + " the world has passed \"&B7&\" active cases. \""
 
 book.save(path + "worldometers_data.xlsx")
-print("ERROR: INCOMPLETE SECTION DETECTED! HIT ENTER TO END SCRIPT")
-input()
 
 
 
