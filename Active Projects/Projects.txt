@@ -17,7 +17,6 @@ NS(0) - Unity3D Game (You are the only one of multiple clones that is not part o
 PP(0) - RPi Flying Drone Swarm with Fire detection AI (Thermal and visual)
 --------------------------------------------------------------------------------
 IP(0) - Arduino OS On An SD Card (Use files as variables)
-IP(0) - Unity3D Neat AI
 IP(0) - Rug Weaving Machine
 IP(1) - Coinbase AI
 IP(1) - Auger plastic retrieval system

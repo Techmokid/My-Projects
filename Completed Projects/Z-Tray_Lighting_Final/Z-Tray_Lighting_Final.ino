@@ -78,6 +78,7 @@ void loop() {
     client.println(" - EDITCD:Part Code:New X:New Y");
     client.println(" - READAT:");
     client.println(" - MNTMOD:");
+    client.println("\"Config Help\" for config values");
   } else if (request.substring(0,12) == "CONFIG HELP:") {
     Serial.println("Listing config help to client");
     client.println("Config Values: ");

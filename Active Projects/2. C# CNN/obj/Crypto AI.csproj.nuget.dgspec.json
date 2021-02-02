@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\My-Projects\\Completed Projects\\C# NEAT AI\\Crypto AI.csproj": {}
+    "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\My-Projects\\Active Projects\\4. C# CNN\\Crypto AI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\My-Projects\\Completed Projects\\C# NEAT AI\\Crypto AI.csproj": {
+    "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\My-Projects\\Active Projects\\4. C# CNN\\Crypto AI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\My-Projects\\Completed Projects\\C# NEAT AI\\Crypto AI.csproj",
+        "projectUniqueName": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\My-Projects\\Active Projects\\4. C# CNN\\Crypto AI.csproj",
         "projectName": "Crypto AI",
-        "projectPath": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\My-Projects\\Completed Projects\\C# NEAT AI\\Crypto AI.csproj",
+        "projectPath": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\My-Projects\\Active Projects\\4. C# CNN\\Crypto AI.csproj",
         "packagesPath": "C:\\Users\\aj200\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\My-Projects\\Completed Projects\\C# NEAT AI\\obj\\",
+        "outputPath": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\My-Projects\\Active Projects\\4. C# CNN\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\aj200\\AppData\\Roaming\\NuGet\\NuGet.Config",
