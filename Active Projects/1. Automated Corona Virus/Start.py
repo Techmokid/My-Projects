@@ -160,6 +160,7 @@ os.mkdir(path)
 print("[Database Creation]: Saving raw data to file...")
 
 book = openpyxl.load_workbook('C:/Users/aj200/Documents/GitHub/My-Projects/My-Projects/Active Projects/1. Automated Corona Virus/Active-Coronavirus-cases.xlsx')
+book = openpyxl.load_workbook('C:/Users/aj200/Documents/GitHub/My-Projects/My-Projects/Active Projects/Automated Corona Virus/Active-Coronavirus-cases.xlsx')
 sheet = book.active
 sheet.title = "Worldwide Active Cases"
 

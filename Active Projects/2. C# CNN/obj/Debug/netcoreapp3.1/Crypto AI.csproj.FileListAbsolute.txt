@@ -75,6 +75,7 @@ C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\4. C# CN
 C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\4. C# CNN\obj\Debug\netcoreapp3.1\Crypto AI.csproj.CopyComplete
 C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\4. C# CNN\obj\Debug\netcoreapp3.1\Crypto AI.dll
 C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\4. C# CNN\obj\Debug\netcoreapp3.1\Crypto AI.pdb
+<<<<<<< HEAD
 C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\2. C# CNN\obj\Debug\netcoreapp3.1\Crypto AI.csprojAssemblyReference.cache
 C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\2. C# CNN\obj\Debug\netcoreapp3.1\Crypto AI.dll.config
 C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\2. C# CNN\obj\Debug\netcoreapp3.1\Crypto AI.AssemblyInfoInputs.cache
@@ -97,3 +98,5 @@ C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\2. C# CN
 C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\2. C# CNN\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\2. C# CNN\bin\Debug\netcoreapp3.1\unirest-net.dll
 C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\2. C# CNN\obj\Debug\netcoreapp3.1\Crypto AI.csproj.CopyComplete
+=======
+>>>>>>> bf71fb01dd2582e9a7106c7c8807ec1de14ba95c

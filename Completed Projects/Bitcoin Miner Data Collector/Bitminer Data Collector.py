@@ -67,7 +67,11 @@ def calculateResult():
 # use firefox to get page with javascript generated content
 print("[Data Collection]: Loading \"NiceHash\"...")
 w = WebDriverWait(driver, 8)
+<<<<<<< HEAD
 time.sleep(8)
+=======
+time.sleep(3)
+>>>>>>> bf71fb01dd2582e9a7106c7c8807ec1de14ba95c
 
 button = driver.find_element_by_xpath("//button[@class='btn primary success normal']")
 button.click()
