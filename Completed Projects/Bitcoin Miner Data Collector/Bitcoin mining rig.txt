@@ -1,0 +1,18 @@
+CPU			Intel i5-9500				$304		$304		https://www.ple.com.au/Products/635946/Intel-Core-i5-9500-30GHz-Coffee-Lake-R-6-Core-6-Thread-LGA1151-CL---Retail-Box
+Motherboard		Z390 6 GPU				$177		$177		https://www.ple.com.au/Products/633551/Gigabyte-Z390-UD-LGA1151-CL-ATX-Desktop-Motherboard
+
+RAM			16GB DDR4 3200MHz			$109		$109		https://www.ple.com.au/Products/636467/Corsair-16GB-Kit-2x8GB-DDR4-Vengeance-LPX-Black-C16-3200Mhz
+SSD			500GB NVME M.2				$94		$94		https://www.ple.com.au/Products/638585/WD-Blue-SN550-500GB-NVMe-M2-SSD
+
+Graphics Card		6 x RTX3060Ti				$729		$4,374		https://www.ple.com.au/Products/644136/eVGA-GeForce-RTX-3060-Ti-XC-8GB-GDDR6
+
+PSU			Corsair HX1200 1200w Platinum Modular	$429		$429		https://www.ple.com.au/Products/627649/Corsair-HX1200-1200W-80PLUS-Platinum-Modular-Power-Supply
+
+
+
+
+
+
+Cost without GPU's or PSU    = $684
+Cost without GPU's but w/PSU = $1,113
+Cost with Everything         = $5,487

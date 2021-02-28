@@ -1,0 +1,55 @@
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\C#\obj\Debug\netcoreapp3.1\Crypto AI.csprojAssemblyReference.cache
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\C#\obj\Debug\netcoreapp3.1\Crypto AI.AssemblyInfoInputs.cache
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\C#\obj\Debug\netcoreapp3.1\Crypto AI.AssemblyInfo.cs
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\C#\bin\Debug\netcoreapp3.1\Crypto AI.exe
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\C#\bin\Debug\netcoreapp3.1\Crypto AI.deps.json
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\C#\bin\Debug\netcoreapp3.1\Crypto AI.runtimeconfig.json
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\C#\bin\Debug\netcoreapp3.1\Crypto AI.runtimeconfig.dev.json
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\C#\bin\Debug\netcoreapp3.1\Crypto AI.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\C#\bin\Debug\netcoreapp3.1\Crypto AI.pdb
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\C#\obj\Debug\netcoreapp3.1\Crypto AI.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\C#\obj\Debug\netcoreapp3.1\Crypto AI.pdb
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\Compiled NEAT\C#\bin\Debug\netcoreapp3.1\Crypto AI.exe
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\Compiled NEAT\C#\bin\Debug\netcoreapp3.1\Crypto AI.deps.json
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\Compiled NEAT\C#\bin\Debug\netcoreapp3.1\Crypto AI.runtimeconfig.json
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\Compiled NEAT\C#\bin\Debug\netcoreapp3.1\Crypto AI.runtimeconfig.dev.json
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\Compiled NEAT\C#\bin\Debug\netcoreapp3.1\Crypto AI.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\Compiled NEAT\C#\bin\Debug\netcoreapp3.1\Crypto AI.pdb
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\Compiled NEAT\C#\obj\Debug\netcoreapp3.1\Crypto AI.csprojAssemblyReference.cache
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\Compiled NEAT\C#\obj\Debug\netcoreapp3.1\Crypto AI.AssemblyInfoInputs.cache
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\Compiled NEAT\C#\obj\Debug\netcoreapp3.1\Crypto AI.AssemblyInfo.cs
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\Compiled NEAT\C#\obj\Debug\netcoreapp3.1\Crypto AI.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\Compiled NEAT\C#\obj\Debug\netcoreapp3.1\Crypto AI.pdb
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\Compiled NEAT\C#\bin\Debug\netcoreapp3.1\Crypto AI.dll.config
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\Compiled NEAT\C#\bin\Debug\netcoreapp3.1\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\Compiled NEAT\C#\bin\Debug\netcoreapp3.1\Microsoft.Threading.Tasks.Extensions.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\Compiled NEAT\C#\bin\Debug\netcoreapp3.1\Microsoft.Threading.Tasks.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\Compiled NEAT\C#\bin\Debug\netcoreapp3.1\System.Net.Http.Extensions.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\Compiled NEAT\C#\bin\Debug\netcoreapp3.1\System.Net.Http.Primitives.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\Compiled NEAT\C#\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\Compiled NEAT\C#\bin\Debug\netcoreapp3.1\unirest-net.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\Compiled NEAT\C#\obj\Debug\netcoreapp3.1\Crypto AI.dll.config
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\Compiled NEAT\C#\obj\Debug\netcoreapp3.1\Crypto AI.csproj.CopyComplete
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Active Projects\Crypto AI\Compiled NEAT\C#\bin\Debug\netcoreapp3.1\Json.Net.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Completed Projects\C# NEAT AI\bin\Debug\netcoreapp3.1\Crypto AI.exe
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Completed Projects\C# NEAT AI\bin\Debug\netcoreapp3.1\Crypto AI.dll.config
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Completed Projects\C# NEAT AI\bin\Debug\netcoreapp3.1\Crypto AI.deps.json
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Completed Projects\C# NEAT AI\bin\Debug\netcoreapp3.1\Crypto AI.runtimeconfig.json
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Completed Projects\C# NEAT AI\bin\Debug\netcoreapp3.1\Crypto AI.runtimeconfig.dev.json
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Completed Projects\C# NEAT AI\bin\Debug\netcoreapp3.1\Crypto AI.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Completed Projects\C# NEAT AI\bin\Debug\netcoreapp3.1\Crypto AI.pdb
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Completed Projects\C# NEAT AI\bin\Debug\netcoreapp3.1\Json.Net.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Completed Projects\C# NEAT AI\bin\Debug\netcoreapp3.1\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Completed Projects\C# NEAT AI\bin\Debug\netcoreapp3.1\Microsoft.Threading.Tasks.Extensions.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Completed Projects\C# NEAT AI\bin\Debug\netcoreapp3.1\Microsoft.Threading.Tasks.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Completed Projects\C# NEAT AI\bin\Debug\netcoreapp3.1\System.Net.Http.Extensions.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Completed Projects\C# NEAT AI\bin\Debug\netcoreapp3.1\System.Net.Http.Primitives.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Completed Projects\C# NEAT AI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Completed Projects\C# NEAT AI\bin\Debug\netcoreapp3.1\unirest-net.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Completed Projects\C# NEAT AI\obj\Debug\netcoreapp3.1\Crypto AI.csprojAssemblyReference.cache
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Completed Projects\C# NEAT AI\obj\Debug\netcoreapp3.1\Crypto AI.dll.config
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Completed Projects\C# NEAT AI\obj\Debug\netcoreapp3.1\Crypto AI.AssemblyInfoInputs.cache
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Completed Projects\C# NEAT AI\obj\Debug\netcoreapp3.1\Crypto AI.AssemblyInfo.cs
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Completed Projects\C# NEAT AI\obj\Debug\netcoreapp3.1\Crypto AI.csproj.CopyComplete
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Completed Projects\C# NEAT AI\obj\Debug\netcoreapp3.1\Crypto AI.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\My-Projects\Completed Projects\C# NEAT AI\obj\Debug\netcoreapp3.1\Crypto AI.pdb

@@ -1,0 +1,17 @@
+ID:1950
+node_type:hidden
+algorithm_type:sin
+upperTriggerThreshold:1
+lowerTriggerThreshold:-1
+Connected Nodes:{
+	ID:1935|	Weight:0.23305911,
+	ID:1936|	Weight:0.9691947,
+	ID:1937|	Weight:0.63186663,
+	ID:1938|	Weight:0.9445956,
+	ID:1939|	Weight:0.5971441,
+	ID:1940|	Weight:0.7705302,
+	ID:1941|	Weight:0.20803457,
+	ID:1942|	Weight:0.14053018,
+	ID:1943|	Weight:0.3727861,
+	ID:1944|	Weight:0.6194688
+}

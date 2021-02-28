@@ -1,0 +1,17 @@
+ID:428
+node_type:hidden
+algorithm_type:sub
+upperTriggerThreshold:1
+lowerTriggerThreshold:-1
+Connected Nodes:{
+	ID:413|	Weight:0.7983967,
+	ID:414|	Weight:0.5380656,
+	ID:415|	Weight:0.9504175,
+	ID:416|	Weight:0.91398317,
+	ID:417|	Weight:0.40788266,
+	ID:418|	Weight:0.7440297,
+	ID:419|	Weight:0.20675044,
+	ID:420|	Weight:0.1394415,
+	ID:421|	Weight:0.88965076,
+	ID:422|	Weight:0.2782257
+}

@@ -1,0 +1,17 @@
+ID:2227
+node_type:hidden
+algorithm_type:sin
+upperTriggerThreshold:1
+lowerTriggerThreshold:-1
+Connected Nodes:{
+	ID:2217|	Weight:0.7530146,
+	ID:2218|	Weight:0.8875039,
+	ID:2219|	Weight:0.9612524,
+	ID:2220|	Weight:0.27586797,
+	ID:2221|	Weight:0.8085334,
+	ID:2222|	Weight:0.8301255,
+	ID:2223|	Weight:0.60673213,
+	ID:2224|	Weight:0.57455623,
+	ID:2225|	Weight:0.43584853,
+	ID:2226|	Weight:0.5112474
+}

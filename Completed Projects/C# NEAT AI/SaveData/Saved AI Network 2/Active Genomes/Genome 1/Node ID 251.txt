@@ -1,0 +1,17 @@
+ID:251
+node_type:output
+algorithm_type:sub
+upperTriggerThreshold:1
+lowerTriggerThreshold:-1
+Connected Nodes:{
+	ID:241|	Weight:0.16278066,
+	ID:242|	Weight:0.7555973,
+	ID:243|	Weight:0.8586044,
+	ID:244|	Weight:0.4762336,
+	ID:245|	Weight:0.15378992,
+	ID:246|	Weight:0.20890774,
+	ID:247|	Weight:0.11221952,
+	ID:248|	Weight:0.26727945,
+	ID:249|	Weight:0.08751802,
+	ID:250|	Weight:0.59569836
+}

@@ -1,0 +1,17 @@
+ID:466
+node_type:hidden
+algorithm_type:sin
+upperTriggerThreshold:1
+lowerTriggerThreshold:-1
+Connected Nodes:{
+	ID:453|	Weight:0.9800543,
+	ID:454|	Weight:0.086223245,
+	ID:455|	Weight:0.4008909,
+	ID:456|	Weight:0.75476456,
+	ID:457|	Weight:0.31621057,
+	ID:458|	Weight:0.1906511,
+	ID:459|	Weight:0.4567649,
+	ID:460|	Weight:0.17427766,
+	ID:461|	Weight:0.28149974,
+	ID:462|	Weight:0.14921443
+}

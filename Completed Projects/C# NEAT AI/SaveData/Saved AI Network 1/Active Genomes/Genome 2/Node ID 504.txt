@@ -1,0 +1,17 @@
+ID:504
+node_type:output
+algorithm_type:sub
+upperTriggerThreshold:1
+lowerTriggerThreshold:-1
+Connected Nodes:{
+	ID:493|	Weight:0.5757918,
+	ID:494|	Weight:0.23356423,
+	ID:495|	Weight:0.11298054,
+	ID:496|	Weight:0.9357055,
+	ID:497|	Weight:0.6613942,
+	ID:498|	Weight:0.8135141,
+	ID:499|	Weight:0.9831767,
+	ID:500|	Weight:0.2046806,
+	ID:501|	Weight:0.12995216,
+	ID:502|	Weight:0.5618295
+}

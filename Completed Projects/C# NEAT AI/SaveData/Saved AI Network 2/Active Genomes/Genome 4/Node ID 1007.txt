@@ -1,0 +1,17 @@
+ID:1007
+node_type:output
+algorithm_type:div
+upperTriggerThreshold:1
+lowerTriggerThreshold:-1
+Connected Nodes:{
+	ID:997|	Weight:0.713681,
+	ID:998|	Weight:0.26527214,
+	ID:999|	Weight:0.72887605,
+	ID:1000|	Weight:0.2035538,
+	ID:1001|	Weight:0.086743094,
+	ID:1002|	Weight:0.9170975,
+	ID:1003|	Weight:0.8709892,
+	ID:1004|	Weight:0.84210783,
+	ID:1005|	Weight:0.16546336,
+	ID:1006|	Weight:0.72520804
+}

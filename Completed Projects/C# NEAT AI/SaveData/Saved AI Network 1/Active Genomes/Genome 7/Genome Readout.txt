@@ -1,0 +1,3 @@
+ID:7
+fitness:498.4795
+generationsSurvived:0

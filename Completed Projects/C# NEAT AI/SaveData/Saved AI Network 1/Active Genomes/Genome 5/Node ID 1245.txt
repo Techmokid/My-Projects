@@ -1,0 +1,17 @@
+ID:1245
+node_type:hidden
+algorithm_type:sub
+upperTriggerThreshold:1
+lowerTriggerThreshold:-1
+Connected Nodes:{
+	ID:1229|	Weight:0.30377346,
+	ID:1230|	Weight:0.87244916,
+	ID:1231|	Weight:0.5197718,
+	ID:1232|	Weight:0.15443924,
+	ID:1233|	Weight:0.013352686,
+	ID:1234|	Weight:0.47024688,
+	ID:1235|	Weight:0.3760229,
+	ID:1236|	Weight:0.6791173,
+	ID:1237|	Weight:0.37266815,
+	ID:1238|	Weight:0.95
+}

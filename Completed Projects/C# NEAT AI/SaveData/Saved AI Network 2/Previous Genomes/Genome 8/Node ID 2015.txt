@@ -1,0 +1,17 @@
+ID:2015
+node_type:output
+algorithm_type:mult
+upperTriggerThreshold:1
+lowerTriggerThreshold:-1
+Connected Nodes:{
+	ID:2005|	Weight:0.6680954,
+	ID:2006|	Weight:0.60204405,
+	ID:2007|	Weight:0.88380814,
+	ID:2008|	Weight:0.74352145,
+	ID:2009|	Weight:0.47525173,
+	ID:2010|	Weight:0.63263094,
+	ID:2011|	Weight:0.9592318,
+	ID:2012|	Weight:0.77017355,
+	ID:2013|	Weight:0.29438007,
+	ID:2014|	Weight:0.25234234
+}

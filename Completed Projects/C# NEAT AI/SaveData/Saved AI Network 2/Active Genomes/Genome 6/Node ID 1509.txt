@@ -1,0 +1,17 @@
+ID:1509
+node_type:hidden
+algorithm_type:mult
+upperTriggerThreshold:1
+lowerTriggerThreshold:-1
+Connected Nodes:{
+	ID:1491|	Weight:0.4914268,
+	ID:1492|	Weight:0.50204664,
+	ID:1493|	Weight:0.1225129,
+	ID:1494|	Weight:0.8764726,
+	ID:1495|	Weight:0.8937111,
+	ID:1496|	Weight:0.0763798,
+	ID:1497|	Weight:0.5086842,
+	ID:1498|	Weight:0.050265815,
+	ID:1499|	Weight:0.051974457,
+	ID:1500|	Weight:0.7452923
+}

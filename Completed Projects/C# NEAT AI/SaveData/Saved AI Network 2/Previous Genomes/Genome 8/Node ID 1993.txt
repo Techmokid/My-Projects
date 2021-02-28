@@ -1,0 +1,17 @@
+ID:1993
+node_type:hidden
+algorithm_type:add
+upperTriggerThreshold:1
+lowerTriggerThreshold:-1
+Connected Nodes:{
+	ID:1975|	Weight:0.9595706,
+	ID:1976|	Weight:0.050065897,
+	ID:1977|	Weight:0.74554944,
+	ID:1978|	Weight:0.3084607,
+	ID:1979|	Weight:0.53148115,
+	ID:1980|	Weight:0.18886952,
+	ID:1981|	Weight:0.18435235,
+	ID:1982|	Weight:0.8480844,
+	ID:1983|	Weight:0.057221245,
+	ID:1984|	Weight:0.46509752
+}

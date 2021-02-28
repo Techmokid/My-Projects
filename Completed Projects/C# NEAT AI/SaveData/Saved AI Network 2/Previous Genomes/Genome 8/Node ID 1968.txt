@@ -1,0 +1,17 @@
+ID:1968
+node_type:hidden
+algorithm_type:sin
+upperTriggerThreshold:1
+lowerTriggerThreshold:-1
+Connected Nodes:{
+	ID:1955|	Weight:0.887569,
+	ID:1956|	Weight:0.8544292,
+	ID:1957|	Weight:0.89378726,
+	ID:1958|	Weight:0.35142362,
+	ID:1959|	Weight:0.9329456,
+	ID:1960|	Weight:0.2952309,
+	ID:1961|	Weight:0.06650143,
+	ID:1962|	Weight:0.08529018,
+	ID:1963|	Weight:0.19250557,
+	ID:1964|	Weight:0.6632846
+}

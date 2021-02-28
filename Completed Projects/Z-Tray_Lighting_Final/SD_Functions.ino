@@ -1,3 +1,7 @@
+#include <File_Manager.h>
+
+File_Manager::file_struct myFileStruct;
+
 bool validPartCode(String code) {
   if (code.length() != 6) { return false; }
   if (isAlpha(code[0]) && isAlpha(code[1]) && isDigit(code[2]) && isDigit(code[3]) && isDigit(code[4]) && isDigit(code[5])) { return true; }
@@ -5,6 +9,9 @@ bool validPartCode(String code) {
 }
 
 void sdInit() {
+  myFileStruct.filepath = "TEMP.TXT";
+  myFileStruct.softFileCreate();
+  
   Serial.begin(74880);
   while (!Serial) { SysCall::yield(); } delay(100);
   
@@ -12,7 +19,10 @@ void sdInit() {
   //if (!sd.begin(chipSelect, SD_SCK_MHZ(50))) { sd.initErrorHalt(); }
   if (!sd.begin(chipSelect, SD_SCK_MHZ(50))) {
     Serial.println("ERROR: Could not initialise SD!");
-    while(true) {SysCall::yield();};
+    while(true) {
+      digitalWrite(LED_BUILTIN,HIGH); SysCall::yield(); delay(500);
+      digitalWrite(LED_BUILTIN,LOW);  SysCall::yield(); delay(500);
+    };
   }
   
   Serial.println("Initialised SD!");
@@ -80,16 +90,38 @@ void AddPartCode(String in) {
   client.println("Part code " + partCode + " at position (" + x + "," + y + ") added to SD");
 }
 
-void RemovePartCode(String in) {
+void EditPartCode(String in) {
+  RemovePartCode(in,false);
+  AddPartCode(in);
+}
+
+void RemovePartCode(String in) { RemovePartCode(in,true); }
+void RemovePartCode(String in,bool printData) {
   String partCode = getValue(in,':',1);
-  String x = getValue(in,':',2);
-  String y = getValue(in,':',3);
+  getItem(partCode);
+  if (Item_Position_X == -1) {
+    if (printData) {
+      Serial.println("Part code not found");
+      client.println("Part code not found");
+    }
+    return;
+  }
   
-  getItem(partCode); if (Item_Position_X == -1) { return; }
+  client.println("ERROR: THIS PROCESS IT INCOMPLETE AND NONFUNCTIONAL");
   
-  client.println("WARNING: THIS PROCESS IT INCOMPLETE AND NONFUNCTIONAL");
-  Serial.println("Part code " + partCode + " at position (" + x + "," + y + ") removed from SD");
-  client.println("Part code " + partCode + " at position (" + x + "," + y + ") removed from SD");
+  //Here we wanna copy across everything to a temporary file
   
+  //myFileStruct.updateLineCount();
+  //myFileStruct.readline();
+  //myFileStruct.writeline();
+  //myFileStruct.writeline(String data);
+  //myFileStruct.skipline();
+  //myFileStruct.skipline(int numberOfLines);
+  //myFileStruct.softFileCreate();
+  //
   
+  if (printData) {
+    Serial.println("Part code " + partCode + " at position (" + Item_Position_X + "," + Item_Position_Y + ") removed from SD");
+    client.println("Part code " + partCode + " at position (" + Item_Position_X + "," + Item_Position_Y + ") removed from SD");
+  }
 }

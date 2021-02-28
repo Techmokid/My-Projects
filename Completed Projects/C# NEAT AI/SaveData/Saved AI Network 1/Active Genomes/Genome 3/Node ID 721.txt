@@ -1,0 +1,17 @@
+ID:721
+node_type:hidden
+algorithm_type:sub
+upperTriggerThreshold:1
+lowerTriggerThreshold:-1
+Connected Nodes:{
+	ID:705|	Weight:0.8202748,
+	ID:706|	Weight:0.3176937,
+	ID:707|	Weight:0.20987909,
+	ID:708|	Weight:0.77672476,
+	ID:709|	Weight:0.7908936,
+	ID:710|	Weight:0.23815839,
+	ID:711|	Weight:0.8987866,
+	ID:712|	Weight:0.8762574,
+	ID:713|	Weight:0.72490877,
+	ID:714|	Weight:0.75742346
+}

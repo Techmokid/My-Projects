@@ -1,0 +1,17 @@
+ID:1450
+node_type:hidden
+algorithm_type:sin
+upperTriggerThreshold:1
+lowerTriggerThreshold:-1
+Connected Nodes:{
+	ID:1431|	Weight:0.47971722,
+	ID:1432|	Weight:0.037819576,
+	ID:1433|	Weight:0.98370284,
+	ID:1434|	Weight:0.6241118,
+	ID:1435|	Weight:0.7412331,
+	ID:1436|	Weight:0.0074274004,
+	ID:1437|	Weight:0.9280584,
+	ID:1438|	Weight:0.35030618,
+	ID:1439|	Weight:0.70198816,
+	ID:1440|	Weight:0.92006445
+}

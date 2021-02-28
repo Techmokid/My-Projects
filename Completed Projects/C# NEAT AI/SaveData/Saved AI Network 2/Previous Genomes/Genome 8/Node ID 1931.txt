@@ -1,0 +1,17 @@
+ID:1931
+node_type:hidden
+algorithm_type:sin
+upperTriggerThreshold:1
+lowerTriggerThreshold:-1
+Connected Nodes:{
+	ID:1915|	Weight:0.45356277,
+	ID:1916|	Weight:0.24011913,
+	ID:1917|	Weight:0.6508256,
+	ID:1918|	Weight:0.81441796,
+	ID:1919|	Weight:0.015057395,
+	ID:1920|	Weight:0.50687516,
+	ID:1921|	Weight:0.8366642,
+	ID:1922|	Weight:0.051224403,
+	ID:1923|	Weight:0.047257967,
+	ID:1924|	Weight:0.1327597
+}

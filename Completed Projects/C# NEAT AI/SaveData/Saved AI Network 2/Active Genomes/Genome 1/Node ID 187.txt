@@ -1,0 +1,17 @@
+ID:187
+node_type:hidden
+algorithm_type:div
+upperTriggerThreshold:1
+lowerTriggerThreshold:-1
+Connected Nodes:{
+	ID:171|	Weight:0.34087142,
+	ID:172|	Weight:0.8226166,
+	ID:173|	Weight:0.7592556,
+	ID:174|	Weight:0.6535128,
+	ID:175|	Weight:0.8793087,
+	ID:176|	Weight:0.83919024,
+	ID:177|	Weight:0.29880467,
+	ID:178|	Weight:0.7093754,
+	ID:179|	Weight:0.8115572,
+	ID:180|	Weight:0.38045835
+}

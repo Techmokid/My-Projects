@@ -1,0 +1,17 @@
+ID:2016
+node_type:output
+algorithm_type:sin
+upperTriggerThreshold:1
+lowerTriggerThreshold:-1
+Connected Nodes:{
+	ID:2005|	Weight:0.41939667,
+	ID:2006|	Weight:0.1331812,
+	ID:2007|	Weight:0.6657822,
+	ID:2008|	Weight:0.14465567,
+	ID:2009|	Weight:0.7113545,
+	ID:2010|	Weight:0.25716028,
+	ID:2011|	Weight:0.33942544,
+	ID:2012|	Weight:0.5944384,
+	ID:2013|	Weight:0.42643985,
+	ID:2014|	Weight:0.7329477
+}

@@ -1,0 +1,17 @@
+ID:1008
+node_type:output
+algorithm_type:mult
+upperTriggerThreshold:1
+lowerTriggerThreshold:-1
+Connected Nodes:{
+	ID:997|	Weight:0.25029984,
+	ID:998|	Weight:0.7579461,
+	ID:999|	Weight:0.07589319,
+	ID:1000|	Weight:0.81889075,
+	ID:1001|	Weight:0.7577847,
+	ID:1002|	Weight:0.9688548,
+	ID:1003|	Weight:0.9177919,
+	ID:1004|	Weight:0.42994785,
+	ID:1005|	Weight:0.68169546,
+	ID:1006|	Weight:0.76102674
+}

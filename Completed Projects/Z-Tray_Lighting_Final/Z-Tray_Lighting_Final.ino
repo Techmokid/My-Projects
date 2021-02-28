@@ -1,8 +1,11 @@
+//For EEPROM listings, see "Laser_Controller" script
+
 #include <ESP8266WiFi.h>
 #include <PinToGPIO.h>
 #include <EEPROM.h>
 #include <servo.h>
 #include <SPI.h>
+#include <SD.h>
 #include "SdFat.h"
 #include "sdios.h"
 
@@ -58,9 +61,9 @@ void loop() {
   client = server.available();
   client.setTimeout(60000);
   if (!client) { return; }
+  
   Serial.println("\nWaiting for part code...");
   String request = client.readStringUntil('\n');
-  
   request.toUpperCase();
   
   if (request.length() < 1) { Serial.println("Blank"); return; }
@@ -71,15 +74,30 @@ void loop() {
     client.println("Help: ");
     client.println(" - Config:EEPROM Addr:Value:Units");
     client.println(" - ADCODE:Part Code:X:Y");
-    client.println(" - RMCODE:Part Code(NONFUNCTIONAL)");
+    client.println(" - RMCODE:Part Code");
+    client.println(" - EDITCD:Part Code:New X:New Y");
     client.println(" - READAT:");
     client.println(" - MNTMOD:");
+    client.println("\"Config Help\" for config values");
+  } else if (request.substring(0,12) == "CONFIG HELP:") {
+    Serial.println("Listing config help to client");
+    client.println("Config Values: ");
+    client.println(" - Address 0: Distance to wall");
+    client.println(" - Address 1: Height offset from trays");
+    client.println(" - Address 2: Width of tray");
+    client.println(" - Address 3: Height of tray");
+    client.println(" - Address 4: Distance of device from left of trays");
+    client.println(" - Address 5: Activate Dev Lock (0 or 1)");
+    client.println(" - Address 6: Speed of circle");
+    client.println(" - Address 7: Radius of circle");
   } else if (request.substring(0,7) == "CONFIG:") {
     EEPROM_Writer(request);
   } else if (request.substring(0,7) == "ADCODE:") {
     AddPartCode(request);
   } else if (request.substring(0,7) == "RMCODE:") {
     RemovePartCode(request);
+  } else if (request.substring(0,7) == "EDITCD:") {
+    EditPartCode(request);
   } else if (request.substring(0,7) == "READAT:") {
     EEPROM_Reader();
   } else if (request.substring(0,7) == "MNTMOD:") {

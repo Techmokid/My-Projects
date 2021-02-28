@@ -1,0 +1,17 @@
+ID:1511
+node_type:output
+algorithm_type:sin
+upperTriggerThreshold:1
+lowerTriggerThreshold:-1
+Connected Nodes:{
+	ID:1501|	Weight:0.39218405,
+	ID:1502|	Weight:0.44508365,
+	ID:1503|	Weight:0.79212433,
+	ID:1504|	Weight:0.96630573,
+	ID:1505|	Weight:0.5644716,
+	ID:1506|	Weight:0.22696963,
+	ID:1507|	Weight:0.1762251,
+	ID:1508|	Weight:0.56266755,
+	ID:1509|	Weight:0.29121208,
+	ID:1510|	Weight:0.9271302
+}

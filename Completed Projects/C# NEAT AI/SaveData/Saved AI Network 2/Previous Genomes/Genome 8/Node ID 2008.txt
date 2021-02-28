@@ -1,0 +1,17 @@
+ID:2008
+node_type:hidden
+algorithm_type:mult
+upperTriggerThreshold:1
+lowerTriggerThreshold:-1
+Connected Nodes:{
+	ID:1995|	Weight:0.86971265,
+	ID:1996|	Weight:0.082397945,
+	ID:1997|	Weight:0.6546894,
+	ID:1998|	Weight:0.39824054,
+	ID:1999|	Weight:0.33394086,
+	ID:2000|	Weight:0.038406212,
+	ID:2001|	Weight:0.70905465,
+	ID:2002|	Weight:0.53148824,
+	ID:2003|	Weight:0.46402317,
+	ID:2004|	Weight:0.2971742
+}

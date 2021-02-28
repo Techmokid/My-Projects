@@ -1,0 +1,17 @@
+ID:1260
+node_type:output
+algorithm_type:mult
+upperTriggerThreshold:1
+lowerTriggerThreshold:-1
+Connected Nodes:{
+	ID:1249|	Weight:0.2899718,
+	ID:1250|	Weight:0.9456745,
+	ID:1251|	Weight:0.9521379,
+	ID:1252|	Weight:0.9071124,
+	ID:1253|	Weight:0.59405154,
+	ID:1254|	Weight:0.8458973,
+	ID:1255|	Weight:0.8662296,
+	ID:1256|	Weight:0.9825367,
+	ID:1257|	Weight:0.9334716,
+	ID:1258|	Weight:0.049752273
+}
