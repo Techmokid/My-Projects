@@ -1,0 +1,3 @@
+pop_size:1000
+num_inputs:150
+num_outputs:2
