@@ -1,10 +1,6 @@
 [NEAT]
 fitness_criterion     = max
-<<<<<<< HEAD
 pop_size              = 10
-=======
-pop_size              = 100
->>>>>>> bf71fb01dd2582e9a7106c7c8807ec1de14ba95c
 [1000]
 
 [DefaultGenome]
@@ -37,10 +33,5 @@ survival_threshold = 0.5
 minimum_network_size = 24
 
 [Prepopulation Data]
-<<<<<<< HEAD
 numberOfLayers = 10
 nodesPerLayer = 10
-=======
-numberOfLayers = 5
-nodesPerLayer = 100
->>>>>>> bf71fb01dd2582e9a7106c7c8807ec1de14ba95c

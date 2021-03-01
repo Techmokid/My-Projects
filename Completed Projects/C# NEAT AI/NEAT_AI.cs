@@ -1,11 +1,8 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
-<<<<<<< HEAD
 using System.Text.Json;
 using System.Text.Json.Serialization;
-=======
->>>>>>> bf71fb01dd2582e9a7106c7c8807ec1de14ba95c
 
 namespace NEAT_AI
 {
@@ -30,7 +27,6 @@ namespace NEAT_AI
 			return currentGeneIndex;
 		}
     }
-<<<<<<< HEAD
 	
 	[Serializable]
     public class Node
@@ -43,23 +39,10 @@ namespace NEAT_AI
         public float node_input  { get; set; }
         public float upperTriggerThreshold  { get; set; }
         public float lowerTriggerThreshold  { get; set; }
-=======
-
-    public class Node
-    {
-		public ulong ID = Random.getNextNodeID();
-        public string node_type = "";
-        public List<Node> connected_nodes = new List<Node>();
-        public List<float> connection_weights = new List<float>();
-        public float node_input = -1000;
-        public float upperTriggerThreshold = 1;
-        public float lowerTriggerThreshold = -1;
->>>>>>> bf71fb01dd2582e9a7106c7c8807ec1de14ba95c
 		
         public Node(string nodeType)
         {
             node_type = nodeType;
-<<<<<<< HEAD
 			ID = Random.getNextNodeID();
 			connected_nodes = new List<Node>();
 			connection_weights = new List<float>();
@@ -93,10 +76,6 @@ namespace NEAT_AI
 			}
 		}
 		
-=======
-        }
-
->>>>>>> bf71fb01dd2582e9a7106c7c8807ec1de14ba95c
         public float GetNodeOutput() { return GetNodeOutput(new List<Node>()); }
         public float GetNodeOutput(List<Node> nodeManager)
         {
@@ -119,7 +98,6 @@ namespace NEAT_AI
 
         public void SetNodeInput(float x) { node_input = x; }
     }
-<<<<<<< HEAD
 	
 	[Serializable]
     public class Genome
@@ -156,20 +134,6 @@ namespace NEAT_AI
 			}
 		}
 		
-=======
-
-    public class Genome
-    {
-		public ulong ID = Random.getNextGeneID();
-        public float fitness = 0;
-        public int generationsSurvived = 0;
-        public List<Node> genome = new List<Node>();
-        private Genome orig;
-
-        public Genome() { }
-        public Genome(Genome orig) { this.orig = orig; }
-
->>>>>>> bf71fb01dd2582e9a7106c7c8807ec1de14ba95c
         public void ClearGenomeData() { genome = new List<Node>(); }
 		
 		public void GenerateNewPrepopulatedGenome(int num_inputs, int num_outputs, int numberOfLayers, int nodesPerLayer) {
@@ -334,7 +298,6 @@ namespace NEAT_AI
             return result;
         }
     }
-<<<<<<< HEAD
 	
 	[Serializable]
     public class Network
@@ -381,50 +344,6 @@ namespace NEAT_AI
 			}
 			
             LiveConfigUpdate(folderPath + "/SaveData/config.txt");
-=======
-
-    public class Network
-    {
-		public string trainingDataPath = "";
-        public bool printTrainingTimes = false;
-        public List<Genome> genomes = new List<Genome>();
-        List<Genome> previousValidGenomes = new List<Genome>();
-
-        //NEAT Variables
-        public string fitness_criterion = "";
-        public int pop_size = 0;
-        public float bias_max_value = 0;
-        public float bias_min_value = 0;
-        public float bias_mutate_rate = 0;
-        public float conn_add_prob = 0;
-        public float conn_delete_prob = 0;
-        public float node_add_prob = 0;
-        public float node_delete_prob = 0;
-        public int num_inputs = 0;
-        public int num_outputs = 0;
-        public int num_hidden = 0;
-        public int num_connections = 0;
-        public float weight_mutate_prob = 0;
-        public float weight_replace_prob = 0;
-        public float survival_threshold = 0;
-        public int minimum_network_size = 0;
-		public int numberOfLayers = 0;
-		public int nodesPerLayer = 0;
-		public bool prepopulated = false;
-		
-        public Network(string configPath, bool _printTrainingTimes, bool prepopulate)
-        {
-			trainingDataPath = configPath + "_override training values.txt";
-			using (FileStream fs = File.Create(trainingDataPath)) {}
-			
-            Random.SetupRandom();
-
-            Console.WriteLine("[NEAT AI][Info]: Setting up Variables. Please be aware this can take quite some time depending on config");
-
-            LiveConfigUpdate(configPath);
-
-            printTrainingTimes = _printTrainingTimes;
->>>>>>> bf71fb01dd2582e9a7106c7c8807ec1de14ba95c
 			
 			if (prepopulate) {
 				prepopulated = true;
@@ -432,7 +351,6 @@ namespace NEAT_AI
 			} else {
 				GenerateNewRandomNetwork();
 			}
-<<<<<<< HEAD
 			
 			if (!silenceOutput) {
 				Console.WriteLine("[NEAT AI][Info]: Population size set to " + pop_size.ToString());
@@ -501,13 +419,6 @@ namespace NEAT_AI
 			//Finish up
 			using (StreamWriter sw = saveStatusFile.CreateText()) { sw.WriteLine("0"); }
 		}
-=======
-
-            Console.WriteLine("[NEAT AI][Info]: Population size set to " + pop_size.ToString());
-            Console.WriteLine("[NEAT AI][Info]: Input count " + num_inputs.ToString());
-            Console.WriteLine("[NEAT AI][Info]: Output count " + num_outputs.ToString());
-        }
->>>>>>> bf71fb01dd2582e9a7106c7c8807ec1de14ba95c
 		
         public void LiveConfigUpdate(string configPath)
         {
@@ -756,11 +667,7 @@ namespace NEAT_AI
 				
 				if (runOnce) {
 					runOnce = false;
-<<<<<<< HEAD
 					using (StreamWriter sw = File.AppendText(trainingDataPath + "/SaveData/override training values.txt")) {
-=======
-					using (StreamWriter sw = File.AppendText(trainingDataPath)) {
->>>>>>> bf71fb01dd2582e9a7106c7c8807ec1de14ba95c
 						sw.WriteLine(genomesList[indexOfLargest].fitness.ToString());
 					}
 				}
@@ -873,14 +780,8 @@ namespace NEAT_AI
             }
         }
 		
-<<<<<<< HEAD
 		public string safeLoad(string path) {
 			StreamReader file = new StreamReader(trainingDataPath + "/SaveData/saveStatus.txt");
-=======
-		string saveStatusPath = "C:/Users/aj200/Documents/GitHub/My-Projects/My-Projects/Active Projects/Crypto AI/Compiled NEAT/C#/SaveData/saveStatus.txt";
-		public string safeLoad(string path) {
-			StreamReader file = new StreamReader(saveStatusPath);
->>>>>>> bf71fb01dd2582e9a7106c7c8807ec1de14ba95c
             int saveStatus = int.Parse(file.ReadLine());
 			
 			if ((saveStatus == 0) || (saveStatus == 2)) {
@@ -893,11 +794,7 @@ namespace NEAT_AI
 				file = new StreamReader(path + "1.json");
 			} else {
 				Console.ForegroundColor = ConsoleColor.Red;
-<<<<<<< HEAD
 				Console.WriteLine("[NEAT AI][Error]: Network error in reading from file: " + trainingDataPath + "/SaveData/saveStatus.txt");
-=======
-				Console.WriteLine("[NEAT AI][Error]: Network error in reading from file: " + saveStatusPath);
->>>>>>> bf71fb01dd2582e9a7106c7c8807ec1de14ba95c
 				Console.ResetColor();
 			}
 			
@@ -911,125 +808,6 @@ namespace NEAT_AI
 			return totalData;
 		}
 		
-<<<<<<< HEAD
-=======
-		public void saveNetwork() { saveNetwork(false); }
-		public void saveNetwork(bool overrideUserInputRequirement) {
-			if (!overrideUserInputRequirement) {
-				Console.ForegroundColor = ConsoleColor.Magenta;
-				Console.WriteLine("[NEAT AI][Request]: Press Key To Save Network Data");
-				Console.ResetColor();
-				Console.ReadKey(true);
-			}
-			Console.WriteLine("[NEAT AI][Info]: Saving Network Data...");
-			
-			string path = "C:/Users/aj200/Documents/GitHub/My-Projects/My-Projects/Active Projects/Crypto AI/Compiled NEAT/C#/SaveData/networkDump";
-			
-			File.WriteAllText(saveStatusPath, "1");
-			if (File.Exists(path + "0.json")) { File.Delete(path + "0.json"); }
-			using (StreamWriter sw = File.CreateText(path + "0.json")) { }
-			using (StreamWriter sw = File.AppendText(path + "0.json")) {
-				sw.WriteLine("[");
-				sw.WriteLine("\t{");
-				for(int genomeIndex = 0; genomeIndex < genomes.Count; genomeIndex++) {
-					sw.WriteLine("\t\t\"Genome Data\": [");
-					sw.WriteLine("\t\t\t{");
-					for (int nodeIndex = 0; nodeIndex < genomes[genomeIndex].genome.Count; nodeIndex++) {
-						sw.WriteLine("\t\t\t\t\"Current Node ID\": " + genomes[genomeIndex].genome[nodeIndex].ID.ToString() + ",");
-						
-						if (genomes[genomeIndex].genome[nodeIndex].node_type.ToString() != "input") {
-							sw.WriteLine("\t\t\t\t\"Current Node Type\": \"" + genomes[genomeIndex].genome[nodeIndex].node_type.ToString() + "\",");
-							sw.WriteLine("\t\t\t\t\"Node Connections\": [");
-							sw.WriteLine("\t\t\t\t\t{");
-							
-							for (int index = 0; index < genomes[genomeIndex].genome[nodeIndex].connected_nodes.Count; index++) {
-								sw.WriteLine("\t\t\t\t\t\t\"Node ID\":" + genomes[genomeIndex].genome[nodeIndex].connected_nodes[index].ID + ",");
-								sw.WriteLine("\t\t\t\t\t\t\"Node Weight\":" + genomes[genomeIndex].genome[nodeIndex].connection_weights[index] + "");
-								if (index != genomes[genomeIndex].genome[nodeIndex].connected_nodes.Count - 1) {
-									sw.WriteLine("\t\t\t\t\t},{");
-								} else {
-									sw.WriteLine("\t\t\t\t\t}");
-								}
-							}
-							
-							sw.WriteLine("\t\t\t\t]");
-						} else {
-							sw.WriteLine("\t\t\t\t\"Current Node Type\": \"" + genomes[genomeIndex].genome[nodeIndex].node_type.ToString() + "\"");
-						}
-						
-						if (nodeIndex != genomes[genomeIndex].genome.Count - 1) {
-							sw.WriteLine("\t\t\t},{");
-						} else {
-							sw.WriteLine("\t\t\t}");
-						}
-					}
-					
-					sw.WriteLine("\t\t]");
-					if (genomeIndex != genomes.Count - 1) {
-						sw.WriteLine("\t},{");
-					} else {
-						sw.WriteLine("\t}");
-					}
-				}
-				
-				sw.WriteLine("]");
-			}
-			
-			Console.WriteLine("[NEAT AI][Info]: Backing Up Network Data...");
-			File.WriteAllText(saveStatusPath, "2");
-			if (File.Exists(path + "1.json")) { File.Delete(path + "1.json"); }
-			using (StreamWriter sw = File.CreateText(path + "1.json")) { }
-			using (StreamWriter sw = File.AppendText(path + "1.json")) {
-				sw.WriteLine("[");
-				sw.WriteLine("\t{");
-				for(int genomeIndex = 0; genomeIndex < genomes.Count; genomeIndex++) {
-					sw.WriteLine("\t\t\"Genome Data\": [");
-					sw.WriteLine("\t\t\t{");
-					for (int nodeIndex = 0; nodeIndex < genomes[genomeIndex].genome.Count; nodeIndex++) {
-						sw.WriteLine("\t\t\t\t\"Current Node ID\": " + genomes[genomeIndex].genome[nodeIndex].ID.ToString() + ",");
-						
-						if (genomes[genomeIndex].genome[nodeIndex].node_type.ToString() != "input") {
-							sw.WriteLine("\t\t\t\t\"Current Node Type\": \"" + genomes[genomeIndex].genome[nodeIndex].node_type.ToString() + "\",");
-							sw.WriteLine("\t\t\t\t\"Node Connections\": [");
-							sw.WriteLine("\t\t\t\t\t{");
-							
-							for (int index = 0; index < genomes[genomeIndex].genome[nodeIndex].connected_nodes.Count; index++) {
-								sw.WriteLine("\t\t\t\t\t\t\"Node ID\":" + genomes[genomeIndex].genome[nodeIndex].connected_nodes[index].ID + ",");
-								sw.WriteLine("\t\t\t\t\t\t\"Node Weight\":" + genomes[genomeIndex].genome[nodeIndex].connection_weights[index] + "");
-								if (index != genomes[genomeIndex].genome[nodeIndex].connected_nodes.Count - 1) {
-									sw.WriteLine("\t\t\t\t\t},{");
-								} else {
-									sw.WriteLine("\t\t\t\t\t}");
-								}
-							}
-							
-							sw.WriteLine("\t\t\t\t]");
-						} else {
-							sw.WriteLine("\t\t\t\t\"Current Node Type\": \"" + genomes[genomeIndex].genome[nodeIndex].node_type.ToString() + "\"");
-						}
-						
-						if (nodeIndex != genomes[genomeIndex].genome.Count - 1) {
-							sw.WriteLine("\t\t\t},{");
-						} else {
-							sw.WriteLine("\t\t\t}");
-						}
-					}
-					
-					sw.WriteLine("\t\t]");
-					if (genomeIndex != genomes.Count - 1) {
-						sw.WriteLine("\t},{");
-					} else {
-						sw.WriteLine("\t}");
-					}
-				}
-				
-				sw.WriteLine("]");
-			}
-			
-			File.WriteAllText(saveStatusPath, "0");
-		}
-		
->>>>>>> bf71fb01dd2582e9a7106c7c8807ec1de14ba95c
 		public void loadNetwork() {
 			Console.ForegroundColor = ConsoleColor.Yellow;
 			Console.WriteLine("[NEAT AI][Warning]: Network Loading Failure: Empty Function!");

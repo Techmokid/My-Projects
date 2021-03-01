@@ -6,12 +6,9 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-<<<<<<< HEAD
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
-=======
->>>>>>> bf71fb01dd2582e9a7106c7c8807ec1de14ba95c
 using NEAT_AI;
 using Binance_API;
 
@@ -35,18 +32,11 @@ namespace WebAPIClient {
 			for(int i = 0; i < 50; i++) { Console.WriteLine(); }
 			
 			Console.WriteLine("[Main Thread][Info]: Collecting historic prices....");
-<<<<<<< HEAD
 			
 			API.getHistoricTrades();
 			//string data = API.getExchangeInfo();
 			
             nn = new Network("C:/Users/aj200/Documents/GitHub/My-Projects/My-Projects/Completed Projects/C# NEAT AI",false,true,false);
-=======
-			API.getHistoricTrades();
-			//string data = API.getExchangeInfo();
-			
-            nn = new Network("C:/Users/aj200/Documents/GitHub/My-Projects/My-Projects/Active Projects/Crypto AI/Compiled NEAT/C#/SaveData/config.txt",false,true);
->>>>>>> bf71fb01dd2582e9a7106c7c8807ec1de14ba95c
 			//nn.loadNetwork();
 			
 			Console.WriteLine("[Main Thread][Info]: Running Network....");
@@ -70,7 +60,6 @@ namespace WebAPIClient {
 					}
 				}
 				
-<<<<<<< HEAD
 				Console.WriteLine("[NEAT AI][Info]: Saving Network...");
 				nn.saveNetwork();
 				Console.WriteLine("[NEAT AI][Info]: Saved Network");
@@ -78,21 +67,13 @@ namespace WebAPIClient {
 				nn.UpdateGenomeList();
 				Console.WriteLine("[NEAT AI][Info]: Network Updated");
 				Console.WriteLine("[Main Thread][Info]: Next Iteration");
-=======
-				nn.saveNetwork(true);
-				nn.UpdateGenomeList();
->>>>>>> bf71fb01dd2582e9a7106c7c8807ec1de14ba95c
 			}
 			
             return;
 		}
 		
 		static float getGenomeFitness(Genome genome) {
-<<<<<<< HEAD
 			StreamReader file = new StreamReader("C:/Users/aj200/Documents/GitHub/My-Projects/My-Projects/Completed Projects/C# NEAT AI/SaveData/HistoricDataCache.txt");
-=======
-			StreamReader file = new StreamReader("C:/Users/aj200/Documents/GitHub/My-Projects/My-Projects/Active Projects/Crypto AI/Compiled NEAT/C#/SaveData/HistoricDataCache.txt");
->>>>>>> bf71fb01dd2582e9a7106c7c8807ec1de14ba95c
 			//StreamReader file = new StreamReader("C:/Users/aj200/Documents/GitHub/My-Projects/My-Projects/Active Projects/Crypto AI/Compiled NEAT/C#/SaveData/example.json");
             string line = file.ReadLine(); string jsonOutput = "";
             while (line != null) { jsonOutput += line; line = file.ReadLine(); }

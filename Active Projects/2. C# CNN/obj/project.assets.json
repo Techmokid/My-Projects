@@ -381,19 +381,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\My-Projects\\Active Projects\\2. C# CNN\\Crypto AI.csproj",
       "projectName": "Crypto AI",
       "projectPath": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\My-Projects\\Active Projects\\2. C# CNN\\Crypto AI.csproj",
       "packagesPath": "C:\\Users\\aj200\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\My-Projects\\Active Projects\\2. C# CNN\\obj\\",
-=======
-      "projectUniqueName": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\My-Projects\\Active Projects\\4. C# CNN\\Crypto AI.csproj",
-      "projectName": "Crypto AI",
-      "projectPath": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\My-Projects\\Active Projects\\4. C# CNN\\Crypto AI.csproj",
-      "packagesPath": "C:\\Users\\aj200\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\My-Projects\\Active Projects\\4. C# CNN\\obj\\",
->>>>>>> bf71fb01dd2582e9a7106c7c8807ec1de14ba95c
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\aj200\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -447,11 +439,7 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.111\\RuntimeIdentifierGraph.json"
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
->>>>>>> bf71fb01dd2582e9a7106c7c8807ec1de14ba95c
       }
     }
   }

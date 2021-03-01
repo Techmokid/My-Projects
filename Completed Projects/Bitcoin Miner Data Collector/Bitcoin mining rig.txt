@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 CPU			Intel i5-9500				$304		$304		https://www.ple.com.au/Products/635946/Intel-Core-i5-9500-30GHz-Coffee-Lake-R-6-Core-6-Thread-LGA1151-CL---Retail-Box
 Motherboard		Z390 6 GPU				$177		$177		https://www.ple.com.au/Products/633551/Gigabyte-Z390-UD-LGA1151-CL-ATX-Desktop-Motherboard
 
@@ -17,9 +16,3 @@ PSU			Corsair HX1200 1200w Platinum Modular	$429		$429		https://www.ple.com.au/P
 Cost without GPU's or PSU    = $684
 Cost without GPU's but w/PSU = $1,113
 Cost with Everything         = $5,487
-=======
-CPU			AMD Ryzen 9 3950X			$1149
-Graphics Card		8 x ASUS Radeon RX 5700 XT		$599
-PSU			Corsair RM650 650W			$189
-Motherboard		
->>>>>>> bf71fb01dd2582e9a7106c7c8807ec1de14ba95c

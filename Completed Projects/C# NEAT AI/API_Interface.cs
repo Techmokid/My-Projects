@@ -73,11 +73,7 @@ namespace Binance_API {
 		public static string getHistoricTrades(string symbol) { return getHistoricTrades(symbol,500,-1); }
 		public static string getHistoricTrades(string symbol, int limit) { return getHistoricTrades(symbol,limit,-1); }
 		public static string getHistoricTrades(string symbol, int limit, long fromId) {
-<<<<<<< HEAD
 			string filePath = "C:/Users/aj200/Documents/GitHub/My-Projects/My-Projects/Completed Projects/C# NEAT AI/SaveData/HistoricDataCache.txt";
-=======
-			string filePath = "C:/Users/aj200/Documents/GitHub/My-Projects/My-Projects/Active Projects/Crypto AI/Compiled NEAT/C#/SaveData/HistoricDataCache.txt";
->>>>>>> bf71fb01dd2582e9a7106c7c8807ec1de14ba95c
 			
 			if (!createdJSON) {
 				createdJSON = true;
