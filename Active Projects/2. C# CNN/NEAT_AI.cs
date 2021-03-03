@@ -394,13 +394,17 @@ namespace NEAT_AI
 				sw.WriteLine("num_outputs:" + num_outputs.ToString());
 			}
 			
+			Genome bestFitnessGen = genomes[0];
 			foreach (Genome g in genomes) {
 				Directory.CreateDirectory(saveLocation + "/Active Genomes/Genome " + g.ID.ToString());
 				g.saveGenome(saveLocation + "/Active Genomes/Genome " + g.ID.ToString());
+				if (g.fitness > bestFitnessGen.fitness) {
+					bestFitnessGen = g;
+				}
 			}
+			bestFitnessGen.saveGenome(saveLocation + "/Best Genome");
 			
-			
-			foreach (Genome g in genomes) {
+			foreach (Genome g in previousValidGenomes) {
 				Directory.CreateDirectory(saveLocation + "/Previous Genomes/Genome " + g.ID.ToString());
 				g.saveGenome(saveLocation + "/Previous Genomes/Genome " + g.ID.ToString());
 			}
@@ -419,13 +423,17 @@ namespace NEAT_AI
 				sw.WriteLine("num_outputs:" + num_outputs.ToString());
 			}
 			
+			bestFitnessGen = genomes[0];
 			foreach (Genome g in genomes) {
 				Directory.CreateDirectory(saveLocation + "/Active Genomes/Genome " + g.ID.ToString());
 				g.saveGenome(saveLocation + "/Active Genomes/Genome " + g.ID.ToString());
+				if (g.fitness > bestFitnessGen.fitness) {
+					bestFitnessGen = g;
+				}
 			}
+			bestFitnessGen.saveGenome(saveLocation + "/Best Genome");
 			
-			
-			foreach (Genome g in genomes) {
+			foreach (Genome g in previousValidGenomes) {
 				Directory.CreateDirectory(saveLocation + "/Previous Genomes/Genome " + g.ID.ToString());
 				g.saveGenome(saveLocation + "/Previous Genomes/Genome " + g.ID.ToString());
 			}
