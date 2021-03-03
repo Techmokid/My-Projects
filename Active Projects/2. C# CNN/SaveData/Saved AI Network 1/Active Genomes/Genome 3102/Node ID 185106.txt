@@ -1,0 +1,7 @@
+ID:185106
+node_type:input
+upperTriggerThreshold:100000000
+lowerTriggerThreshold:-100000000
+Connected Nodes:{
+	ID:185497|	Weight:-0.42109847
+}
