@@ -1,0 +1,7 @@
+ID:752812
+node_type:hidden
+upperTriggerThreshold:100000000
+lowerTriggerThreshold:-100000000
+Connected Nodes:{
+	ID:573541|	Weight:0.46057117
+}
