@@ -1,3 +1,0 @@
-ID:3122
-fitness:15942.171
-generationsSurvived:10
