@@ -1,7 +1,7 @@
 import requests,os,shutil,zipfile,time
 from pathlib import Path
 
-directory = "C:/Users/aj200/Desktop/Atomic Science/Atomic-Science-1.12.2-3.0.6b19.jar"
+directory = "C:/Users/aj200/Downloads/lowtechcrafting-1.16.3-0.2.0.jar"
 
 #This is for decompiling the jar file
 if(os.path.exists("C:/Temp/procyon/")):
@@ -308,7 +308,7 @@ def findFilenameFromDirectory(directory):
         nextLetter = directory[len(directory) - loops]
     return result
 
-downloadForgeVersion('1.16.5','Eclipse')
+downloadForgeVersion('1.12.2','Eclipse')
 print("Done!")
 
 
