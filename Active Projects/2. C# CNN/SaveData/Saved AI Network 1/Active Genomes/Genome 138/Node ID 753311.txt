@@ -1,6 +1,0 @@
-ID:753311
-node_type:hidden
-upperTriggerThreshold:0.44553947
-lowerTriggerThreshold:-0.39761466
-Connected Nodes:{
-}
