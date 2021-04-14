@@ -1,6 +1,0 @@
-ID:576932
-node_type:input
-upperTriggerThreshold:100000000
-lowerTriggerThreshold:-100000000
-Connected Nodes:{
-}
