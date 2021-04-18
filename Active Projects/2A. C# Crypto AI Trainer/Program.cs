@@ -15,7 +15,7 @@ using PointAnalysis;
 
 namespace WebAPIClient {
 	class Program {
-		static string filePath = "C:/Users/aj200/Documents/GitHub/My-Projects/My-Projects/Active Projects/2. C# CNN";
+		static string filePath = "C:/Users/aj200/Desktop/Backups";
 		static string API_Time_Enum = "1h";
 		static float tax_percentage = 0.1f;
 		static float startingWalletValue = 5000;
