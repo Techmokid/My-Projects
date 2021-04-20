@@ -169,6 +169,7 @@ namespace WebAPIClient {
 			
 			DebugFile.Create("debugging.txt");
 			while (true) {
+				DebugFile.WriteLine("-----------------------------------------------------------------------------------------------");
 				Genome activeAIGenome = nn.loadBestGenome();
 				
 				List<string> currencies = retrieveAllCurrencySymbols();
@@ -244,6 +245,8 @@ namespace WebAPIClient {
 				List<List<string>> sitList = new List<List<string>>();
 				List<List<string>> instabList = new List<List<string>>();
 				foreach(List<string> i in algorithmOutput) {
+					DebugFile.WriteLine("Crypto Code: " + i[0] + "\t\t\tBuy: " + i[1] + "\t\t\tSell: " + i[2]);
+					
 					if ((float.Parse(i[1]) > 0) && (float.Parse(i[2]) < 0))
 						//Console.WriteLine("BUY DATA: " + API.createNewBuySellOrder(tempSingleCurrencyData[0],"BUY",20));
 						buyList.Add(i);

@@ -381,11 +381,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aj200\\Desktop\\Max Crypto Volatility Calculator\\Crypto AI.csproj",
+      "projectUniqueName": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\Completed Projects\\Max Crypto Volatility Calculator\\Crypto AI.csproj",
       "projectName": "Crypto AI",
-      "projectPath": "C:\\Users\\aj200\\Desktop\\Max Crypto Volatility Calculator\\Crypto AI.csproj",
+      "projectPath": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\Completed Projects\\Max Crypto Volatility Calculator\\Crypto AI.csproj",
       "packagesPath": "C:\\Users\\aj200\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\aj200\\Desktop\\Max Crypto Volatility Calculator\\obj\\",
+      "outputPath": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\Completed Projects\\Max Crypto Volatility Calculator\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\aj200\\AppData\\Roaming\\NuGet\\NuGet.Config",

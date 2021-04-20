@@ -12,6 +12,7 @@ using NEAT_AI;
 using Display;
 using Binance_API;
 using PointAnalysis;
+using Debugging;
 
 namespace WebAPIClient {
 	class Program {
@@ -109,7 +110,8 @@ namespace WebAPIClient {
 			
 			dataScreen apiStatusText1 =  DisplayManager.addScreen(10,9,"Left","Top"," API Interface Status ");
 			dataScreen apiStatusText2 =  DisplayManager.addScreen(10,10,"Left","Top","       Starting       ");
-			DisplayManager.createGroup(new List<dataScreen> {apiStatusText1,apiStatusText2});
+			dataScreen apiStatusText3 =  DisplayManager.addScreen(10,11,"Left","Top","");
+			DisplayManager.createGroup(new List<dataScreen> {apiStatusText1,apiStatusText2,apiStatusText3});
 			
 			API.filePath = filePath + "/SaveData/HistoricDataCache.txt";
 			DisplayManager.updateDisplays();
@@ -139,6 +141,7 @@ namespace WebAPIClient {
 			AIStatusText3.color = ConsoleColor.Yellow;
 			apiStatusText1.color = ConsoleColor.Green;
 			apiStatusText2.color = ConsoleColor.Green;
+			apiStatusText3.color = ConsoleColor.Green;
 			saveStatusText1.color = ConsoleColor.Red;
 			saveStatusText2.color = ConsoleColor.Red;
 			curStatusText1.color = ConsoleColor.Green;
@@ -148,14 +151,15 @@ namespace WebAPIClient {
 			histStatusText3.color = ConsoleColor.Yellow;
 			DisplayManager.updateDisplays();
 			
-			AIStatusText2.data =   "    Initializing";
+			DebugFile.Create(filePath + "/debug.log");
+			AIStatusText2.data =   "";
 			DisplayManager.updateDisplays();
 			
 			Console.SetCursorPosition(0,25);
 			Console.WriteLine("NEAT AI Direct Serial Output:");
 			Console.WriteLine();
 			nn = new Network(filePath,false,false,true);
-			nn.loadNetwork();
+			nn.loadNetwork(AIStatusText2,AIStatusText3);
 			
 			AIStatusText1.color = ConsoleColor.Magenta;
 			AIStatusText2.color = ConsoleColor.Magenta;
@@ -183,20 +187,32 @@ namespace WebAPIClient {
 					PointAnalysis.currencyData parentData = new currencyData();
 					parentData.currencyName = currencies[currencyIndex];
 					
+					DebugFile.WriteLine("1");
+					
 					histStatusText3.data = "       " + (currencyIndex + 1).ToString() + "/" + currencies.Count.ToString();
 					DisplayManager.updateDisplays(false);
 					Console.SetCursorPosition(0,0);
 					
+					DebugFile.WriteLine("2");
+					
 					JsonElement obj2 = JsonSerializer.Deserialize<JsonElement>(API.getKlines(currencies[currencyIndex],API_Time_Enum));
+					DebugFile.WriteLine("3");
+					
 					for (int i = 0; i < obj2.GetArrayLength(); i++) {
 						DisplayManager.resizeCheck();
+						
+						DebugFile.WriteLine("4");
 						JsonElement obj3 = JsonSerializer.Deserialize<JsonElement>(obj2[i].ToString());
+						DebugFile.WriteLine("5");
 						
 						dataPoint temp = new dataPoint();
 						temp.price 	= obj3[1].ToString();
 						temp.time 	= obj3[0].ToString();
 						parentData.currencyPoints.Add(temp);
+						DebugFile.WriteLine("6");
 					}
+					
+					DebugFile.WriteLine("7");
 					
 					currencyReadouts.Add(parentData);
 				}
@@ -208,15 +224,12 @@ namespace WebAPIClient {
 				SortedDictionary <string,double> algorithmOutput = new SortedDictionary <string,double>();
 				int loops = 0;
 				foreach (currencyData algorithmCurrencyInputData in currencyReadouts) {
-					//algorithmCurrencyInputData
 					loops++;
 					AIStatusText3.data = " Currency:" + loops.ToString() + "/" + currencyReadouts.Count.ToString();
 					
 					double currentAlgorithmOutput = 0;
 					//Here we impliment the AI
 					for (int x = 0; x < nn.genomes.Count; x++) {
-						 //Console.Beep(523,300);
-						//Console.Beep(784,300);
 						AIStatusText4.data =   " Genome: " + (x + 1).ToString() + "/" + nn.genomes.Count.ToString();
 						DisplayManager.resizeCheck();
 						DisplayManager.updateDisplays(false);
@@ -225,9 +238,8 @@ namespace WebAPIClient {
 						float fakeWallet = startingWalletValue;
 						float numberOfCryptoCoins = 0;
 						float lastKnownPrice = 0;
+						
 						for(int i = nn.num_inputs; i < algorithmCurrencyInputData.currencyPoints.Count; i++) {
-							//AIStatusText2.data =   "      Learning";
-							
 							//Here we are iterating over every single section of the currency data
 							List<float> AI_Inputs = new List<float>();
 							for (int AI_Input_Index = i;  AI_Input_Index > i - nn.num_inputs; AI_Input_Index--) {
@@ -278,6 +290,7 @@ namespace WebAPIClient {
 					Console.ForegroundColor = ConsoleColor.Green;
 					apiStatusText1.color = ConsoleColor.Green;
 					apiStatusText2.color = ConsoleColor.Green;
+					apiStatusText3.color = ConsoleColor.Green;
 					curStatusText1.color = ConsoleColor.Green;
 					curStatusText2.color = ConsoleColor.Green;
 					saveStatusText1.color = ConsoleColor.Yellow;
@@ -289,12 +302,13 @@ namespace WebAPIClient {
 					saveStatusText2.data =   "  Saving AI Genomes";
 					DisplayManager.updateDisplays();
 					
-					nn.saveNetwork();
+					nn.saveNetwork(apiStatusText3);
 					
 					//https://www.binance.com/en/convert
 					saveStatusText1.color = ConsoleColor.Green;
 					saveStatusText2.color = ConsoleColor.Green;
 					saveStatusText2.data =  "        Saved";
+					apiStatusText3.data = "";
 					DisplayManager.updateDisplays();
 					
 					//Console.Beep(523,300);

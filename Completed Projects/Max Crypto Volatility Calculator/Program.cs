@@ -232,7 +232,9 @@ namespace WebAPIClient {
                 	"Crypto Currency Code: " + i[0] + 
                 	"\t\t\tMaximum Network Potential via Crypto Volatility: " + i[1]
                 );
-                totalEarnings += double.Parse(i[1]) - 1;
+				if (totalEarnings < double.Parse(i[1]) - 1) {
+					totalEarnings = double.Parse(i[1]) - 1;
+				}
             }
 
             Console.WriteLine("Total Earnings Possible Increase: " + (Math.Round(totalEarnings * 100)).ToString() + "%");

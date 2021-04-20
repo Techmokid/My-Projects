@@ -58,24 +58,30 @@ namespace NEAT_AI {
         }
 		
 		public void saveNode(string saveLocation) {
-			FileInfo fi = new FileInfo(saveLocation); 
-			using (StreamWriter sw = fi.CreateText()) {
-				sw.WriteLine("ID:" + ID.ToString());
-				sw.WriteLine("node_type:" + node_type.ToString());
-				//sw.WriteLine("algorithm_type:" + algorithm_type.ToString());
-				sw.WriteLine("upperTriggerThreshold:" + upperTriggerThreshold.ToString());
-				sw.WriteLine("lowerTriggerThreshold:" + lowerTriggerThreshold.ToString());
-				
-				sw.WriteLine("Connected Nodes:{");
-			
-				for(int i = 0; i < connected_nodes.Count; i++) {
-					string temp = "\tID:" + connected_nodes[i].ID.ToString() + "|";
-					temp += "\tWeight:" + connection_weights[i].ToString();
+			while (true) {
+				try {
+					FileInfo fi = new FileInfo(saveLocation); 
+					using (StreamWriter sw = fi.CreateText()) {
+						sw.WriteLine("ID:" + ID.ToString());
+						sw.WriteLine("node_type:" + node_type.ToString());
+						//sw.WriteLine("algorithm_type:" + algorithm_type.ToString());
+						sw.WriteLine("upperTriggerThreshold:" + upperTriggerThreshold.ToString());
+						sw.WriteLine("lowerTriggerThreshold:" + lowerTriggerThreshold.ToString());
+						
+						sw.WriteLine("Connected Nodes:{");
 					
-					if (i != connected_nodes.Count - 1) { sw.WriteLine(temp + ","); } else { sw.WriteLine(temp); }
+						for(int i = 0; i < connected_nodes.Count; i++) {
+							string temp = "\tID:" + connected_nodes[i].ID.ToString() + "|";
+							temp += "\tWeight:" + connection_weights[i].ToString();
+							
+							if (i != connected_nodes.Count - 1) { sw.WriteLine(temp + ","); } else { sw.WriteLine(temp); }
+						}
+						
+						sw.WriteLine("}");
+					}
+				} catch {
+					if (File.Exists(saveLocation)) { File.Delete(saveLocation); }
 				}
-				
-				sw.WriteLine("}");
 			}
 		}
 		
@@ -475,7 +481,8 @@ namespace NEAT_AI {
 			return tempGenome;	//Code-Marker
 		}
 		
-		public void saveNetwork() {
+		public void saveNetwork() { saveNetwork(null); }
+		public void saveNetwork(dataScreen genomeCount) {
 			using (FileStream fs = File.Create(trainingDataPath + "/SaveData/saveLock.loc")) {}
 			
 			if (!File.Exists(trainingDataPath + "/SaveData/saveStatus.txt")) {
@@ -498,14 +505,23 @@ namespace NEAT_AI {
 				sw.WriteLine("num_outputs:" + num_outputs.ToString());
 			}
 			
+			int genCount = 0;
 			Genome bestFitnessGen = genomes[0];
 			foreach (Genome g in genomes) {
+				genCount++;
+				if (genomeCount != null) {
+					genomeCount.data = "   1:" + genCount.ToString() + "/" + genomes.Count;
+					genomeCount.updateScreen();
+				}
+				
 				Directory.CreateDirectory(saveLocation + "/Active Genomes/Genome " + g.ID.ToString());
 				g.saveGenome(saveLocation + "/Active Genomes/Genome " + g.ID.ToString());
 				if (g.fitness > bestFitnessGen.fitness) {
 					bestFitnessGen = g;
 				}
 			}
+			
+			Directory.CreateDirectory(saveLocation + "/Best Genome");
 			bestFitnessGen.saveGenome(saveLocation + "/Best Genome");
 			while (true) {
 				try {
@@ -513,7 +529,15 @@ namespace NEAT_AI {
 					break;
 				} catch { Thread.Sleep(500); }
 			}
+			
+			genCount = 0;
 			foreach (Genome g in previousValidGenomes) {
+				genCount++;
+				if (genomeCount != null) {
+					genomeCount.data = "   2:" + genCount.ToString() + "/" + genomes.Count;
+					genomeCount.updateScreen();
+				}
+				
 				Directory.CreateDirectory(saveLocation + "/Previous Genomes/Genome " + g.ID.ToString());
 				g.saveGenome(saveLocation + "/Previous Genomes/Genome " + g.ID.ToString());
 			}
@@ -532,17 +556,30 @@ namespace NEAT_AI {
 				sw.WriteLine("num_outputs:" + num_outputs.ToString());
 			}
 			
+			genCount = 0;
 			bestFitnessGen = genomes[0];
 			foreach (Genome g in genomes) {
+				genCount++;
+				if (genomeCount != null) {
+					genomeCount.data = "   3:" + genCount.ToString() + "/" + genomes.Count;
+					genomeCount.updateScreen();
+				}
+				
 				Directory.CreateDirectory(saveLocation + "/Active Genomes/Genome " + g.ID.ToString());
 				g.saveGenome(saveLocation + "/Active Genomes/Genome " + g.ID.ToString());
-				if (g.fitness > bestFitnessGen.fitness) {
-					bestFitnessGen = g;
-				}
+				if (g.fitness > bestFitnessGen.fitness) { bestFitnessGen = g; }
 			}
+			
+			Directory.CreateDirectory(saveLocation + "/Best Genome");
 			bestFitnessGen.saveGenome(saveLocation + "/Best Genome");
 			
+			genCount = 0;
 			foreach (Genome g in previousValidGenomes) {
+				genCount++;
+				if (genomeCount != null) {
+					genomeCount.data = "   4:" + genCount.ToString() + "/" + genomes.Count;
+					genomeCount.updateScreen();
+				}
 				Directory.CreateDirectory(saveLocation + "/Previous Genomes/Genome " + g.ID.ToString());
 				g.saveGenome(saveLocation + "/Previous Genomes/Genome " + g.ID.ToString());
 			}
@@ -1138,6 +1175,19 @@ namespace NEAT_AI {
 			if (pop_size != genomes.Count) {
 				throw new Exception("Invalid input network. Population size does not match internal AI settings");
 			}
+			
+			//Here we want to setup the random class to prevent node clashes
+			ulong biggestRandomGenomeVal = 0;
+			ulong biggestRandomNodeVal = 0;
+			foreach(Genome g in genomes) {
+				if (biggestRandomGenomeVal < g.ID) { biggestRandomGenomeVal = g.ID; }
+				foreach (Node n in g.genome) {
+					if (biggestRandomNodeVal < n.ID) { biggestRandomNodeVal = n.ID; }
+				}
+			}
+			
+			Random.currentGeneIndex = biggestRandomGenomeVal;
+			Random.currentNodeIndex = biggestRandomNodeVal;
 			
 			return;
 		}
