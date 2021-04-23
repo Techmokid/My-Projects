@@ -57,27 +57,32 @@ namespace NEAT_AI {
 			//algorithm_type = node_algorithm_types[Random.rand.Next(node_algorithm_types.Count)];
         }
 		
-		public string saveNode() {
-			string result = "";
-			
-			result += ("ID:" + ID.ToString());
-			result += ("node_type:" + node_type.ToString());
-			//sw.WriteLine("algorithm_type:" + algorithm_type.ToString());
-			result += ("upperTriggerThreshold:" + upperTriggerThreshold.ToString());
-			result += ("lowerTriggerThreshold:" + lowerTriggerThreshold.ToString());
-			
-			result += ("Connected Nodes:{");
-		
-			for(int i = 0; i < connected_nodes.Count; i++) {
-				string temp = "\tID:" + connected_nodes[i].ID.ToString() + "|";
-				temp += "\tWeight:" + connection_weights[i].ToString();
-				
-				if (i != connected_nodes.Count - 1) { result += (temp + ","); } else { result += (temp); }
+		public void saveNode(string saveLocation) {
+			while (true) {
+				try {
+					FileInfo fi = new FileInfo(saveLocation); 
+					using (StreamWriter sw = fi.CreateText()) {
+						sw.WriteLine("ID:" + ID.ToString());
+						sw.WriteLine("node_type:" + node_type.ToString());
+						//sw.WriteLine("algorithm_type:" + algorithm_type.ToString());
+						sw.WriteLine("upperTriggerThreshold:" + upperTriggerThreshold.ToString());
+						sw.WriteLine("lowerTriggerThreshold:" + lowerTriggerThreshold.ToString());
+						
+						sw.WriteLine("Connected Nodes:{");
+					
+						for(int i = 0; i < connected_nodes.Count; i++) {
+							string temp = "\tID:" + connected_nodes[i].ID.ToString() + "|";
+							temp += "\tWeight:" + connection_weights[i].ToString();
+							
+							if (i != connected_nodes.Count - 1) { sw.WriteLine(temp + ","); } else { sw.WriteLine(temp); }
+						}
+						
+						sw.WriteLine("}");
+					}
+				} catch {
+					if (File.Exists(saveLocation)) { File.Delete(saveLocation); }
+				}
 			}
-			
-			result += ("}");
-			
-			return result;
 		}
 		
         public float GetNodeOutput() { return GetNodeOutput(new List<Node>()); }
@@ -133,21 +138,19 @@ namespace NEAT_AI {
 		}
 		
 		public void saveGenome(string saveLocation) {
-			string genomeReadout = "";
-			foreach(Node n in genome) {
-				//if (File.Exists(saveLocation + "/Node ID " + n.ID + ".txt")) {
-				//	throw new Exception("NODE ID CONFLICT");
-				//}
-				
-				genomeReadout += n.saveNode() + "+";
-			}
-			
 			FileInfo fi = new FileInfo(saveLocation + "/Genome Readout.txt"); 
 			using (StreamWriter sw = fi.CreateText()) {
-				sw.WriteLine(" - ID:" + ID.ToString());
-				sw.WriteLine(" - fitness:" + fitness.ToString());
-				sw.WriteLine(" - generationsSurvived:" + generationsSurvived.ToString());
-				sw.WriteLine("\n+\n" + genomeReadout);
+				sw.WriteLine("ID:" + ID.ToString());
+				sw.WriteLine("fitness:" + fitness.ToString());
+				sw.WriteLine("generationsSurvived:" + generationsSurvived.ToString());
+			}
+			
+			foreach(Node n in genome) {
+				if (File.Exists(saveLocation + "/Node ID " + n.ID + ".txt")) {
+					throw new Exception("NODE ID CONFLICT");
+				}
+				
+				n.saveNode(saveLocation + "/Node ID " + n.ID + ".txt");
 			}
 		}
 		
@@ -492,9 +495,7 @@ namespace NEAT_AI {
 			using (StreamWriter sw = saveStatusFile.CreateText()) { sw.WriteLine("1"); }
 			
 			string saveLocation = trainingDataPath + "/SaveData/Saved AI Network 1";
-			while(true) {try {
-				if (Directory.Exists(saveLocation)) { Directory.Delete(saveLocation,true); break; }
-			} catch { Thread.Sleep(500); }}
+			if (Directory.Exists(saveLocation)) { Directory.Delete(saveLocation,true); }
 			Directory.CreateDirectory(saveLocation);
 			
 			FileInfo fi = new FileInfo(saveLocation + "/Network Readout.txt"); 
@@ -540,9 +541,6 @@ namespace NEAT_AI {
 				Directory.CreateDirectory(saveLocation + "/Previous Genomes/Genome " + g.ID.ToString());
 				g.saveGenome(saveLocation + "/Previous Genomes/Genome " + g.ID.ToString());
 			}
-			
-			Console.WriteLine("COMPLETED-TASK");
-			return;
 			
 			//Second pass 
 			using (StreamWriter sw = saveStatusFile.CreateText()) { sw.WriteLine("2"); }
@@ -1190,35 +1188,6 @@ namespace NEAT_AI {
 			
 			Random.currentGeneIndex = biggestRandomGenomeVal;
 			Random.currentNodeIndex = biggestRandomNodeVal;
-			
-			Console.SetCursorPosition(0,40);
-			Console.WriteLine("Gene Index:" + biggestRandomGenomeVal.ToString());
-			Console.WriteLine("Node Index:" + biggestRandomNodeVal.ToString());
-			
-			foreach(Genome x in genomes) {
-				foreach (Genome y in genomes) {
-					if (x != y) {
-						if (x.ID == y.ID) {
-							throw new Exception("Genome ID Conflict upon network load");
-						}
-					}
-				}
-				
-				foreach(Node a in x.genome) {
-					foreach (Node b in x.genome) {
-						if (a != b) {
-							if (a.ID == b.ID) {
-								throw new Exception("Node ID Conflict upon network load");
-							}
-						}
-					}
-					
-					
-				}
-			}
-			
-			Console.Beep(400,400);
-			Console.ReadKey(true);
 			
 			return;
 		}
