@@ -1,0 +1,3775 @@
+Genome Path: C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005
+Nodes Paths: 
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286513.txt
+   - ID:286513
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286514.txt
+   - ID:286514
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286515.txt
+   - ID:286515
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286516.txt
+   - ID:286516
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286517.txt
+   - ID:286517
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286518.txt
+   - ID:286518
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286519.txt
+   - ID:286519
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286520.txt
+   - ID:286520
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286521.txt
+   - ID:286521
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286522.txt
+   - ID:286522
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286523.txt
+   - ID:286523
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286524.txt
+   - ID:286524
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286525.txt
+   - ID:286525
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286526.txt
+   - ID:286526
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286527.txt
+   - ID:286527
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286528.txt
+   - ID:286528
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286529.txt
+   - ID:286529
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286530.txt
+   - ID:286530
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286531.txt
+   - ID:286531
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286532.txt
+   - ID:286532
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286533.txt
+   - ID:286533
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286534.txt
+   - ID:286534
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286535.txt
+   - ID:286535
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286536.txt
+   - ID:286536
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286537.txt
+   - ID:286537
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286538.txt
+   - ID:286538
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286539.txt
+   - ID:286539
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286540.txt
+   - ID:286540
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286541.txt
+   - ID:286541
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286542.txt
+   - ID:286542
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286543.txt
+   - ID:286543
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286544.txt
+   - ID:286544
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286545.txt
+   - ID:286545
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286546.txt
+   - ID:286546
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286547.txt
+   - ID:286547
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286548.txt
+   - ID:286548
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286549.txt
+   - ID:286549
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286550.txt
+   - ID:286550
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286551.txt
+   - ID:286551
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286552.txt
+   - ID:286552
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286553.txt
+   - ID:286553
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286554.txt
+   - ID:286554
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286555.txt
+   - ID:286555
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286556.txt
+   - ID:286556
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286557.txt
+   - ID:286557
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286558.txt
+   - ID:286558
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286559.txt
+   - ID:286559
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286560.txt
+   - ID:286560
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286561.txt
+   - ID:286561
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286562.txt
+   - ID:286562
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286563.txt
+   - ID:286563
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286564.txt
+   - ID:286564
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286565.txt
+   - ID:286565
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286566.txt
+   - ID:286566
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286567.txt
+   - ID:286567
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286568.txt
+   - ID:286568
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286569.txt
+   - ID:286569
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286570.txt
+   - ID:286570
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286571.txt
+   - ID:286571
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286572.txt
+   - ID:286572
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286573.txt
+   - ID:286573
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286574.txt
+   - ID:286574
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286575.txt
+   - ID:286575
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286576.txt
+   - ID:286576
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286577.txt
+   - ID:286577
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286578.txt
+   - ID:286578
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286579.txt
+   - ID:286579
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286580.txt
+   - ID:286580
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286581.txt
+   - ID:286581
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286582.txt
+   - ID:286582
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286583.txt
+   - ID:286583
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286584.txt
+   - ID:286584
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286585.txt
+   - ID:286585
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286586.txt
+   - ID:286586
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286587.txt
+   - ID:286587
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286588.txt
+   - ID:286588
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286589.txt
+   - ID:286589
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286590.txt
+   - ID:286590
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286591.txt
+   - ID:286591
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286592.txt
+   - ID:286592
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286593.txt
+   - ID:286593
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286594.txt
+   - ID:286594
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286595.txt
+   - ID:286595
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286596.txt
+   - ID:286596
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286597.txt
+   - ID:286597
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286598.txt
+   - ID:286598
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286599.txt
+   - ID:286599
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286600.txt
+   - ID:286600
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286601.txt
+   - ID:286601
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286602.txt
+   - ID:286602
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286603.txt
+   - ID:286603
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286604.txt
+   - ID:286604
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286605.txt
+   - ID:286605
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286606.txt
+   - ID:286606
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286607.txt
+   - ID:286607
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286608.txt
+   - ID:286608
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286609.txt
+   - ID:286609
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286610.txt
+   - ID:286610
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286611.txt
+   - ID:286611
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286612.txt
+   - ID:286612
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286613.txt
+   - ID:286613
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286614.txt
+   - ID:286614
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286615.txt
+   - ID:286615
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286616.txt
+   - ID:286616
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286617.txt
+   - ID:286617
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286618.txt
+   - ID:286618
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286619.txt
+   - ID:286619
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286620.txt
+   - ID:286620
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286621.txt
+   - ID:286621
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286622.txt
+   - ID:286622
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286623.txt
+   - ID:286623
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286624.txt
+   - ID:286624
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286625.txt
+   - ID:286625
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286626.txt
+   - ID:286626
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286627.txt
+   - ID:286627
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286628.txt
+   - ID:286628
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286629.txt
+   - ID:286629
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286630.txt
+   - ID:286630
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286631.txt
+   - ID:286631
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286632.txt
+   - ID:286632
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286633.txt
+   - ID:286633
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286634.txt
+   - ID:286634
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286635.txt
+   - ID:286635
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286636.txt
+   - ID:286636
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286637.txt
+   - ID:286637
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286638.txt
+   - ID:286638
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286639.txt
+   - ID:286639
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286640.txt
+   - ID:286640
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286641.txt
+   - ID:286641
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286642.txt
+   - ID:286642
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286643.txt
+   - ID:286643
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286644.txt
+   - ID:286644
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286645.txt
+   - ID:286645
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286646.txt
+   - ID:286646
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286647.txt
+   - ID:286647
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286648.txt
+   - ID:286648
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286649.txt
+   - ID:286649
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286650.txt
+   - ID:286650
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286651.txt
+   - ID:286651
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286652.txt
+   - ID:286652
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286653.txt
+   - ID:286653
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286654.txt
+   - ID:286654
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286655.txt
+   - ID:286655
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286656.txt
+   - ID:286656
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286657.txt
+   - ID:286657
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286658.txt
+   - ID:286658
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286659.txt
+   - ID:286659
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286660.txt
+   - ID:286660
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286661.txt
+   - ID:286661
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286662.txt
+   - ID:286662
+   - node_type:input
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286663.txt
+   - ID:286663
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286664.txt
+   - ID:286664
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286665.txt
+   - ID:286665
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286666.txt
+   - ID:286666
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286667.txt
+   - ID:286667
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286668.txt
+   - ID:286668
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286669.txt
+   - ID:286669
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286670.txt
+   - ID:286670
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286671.txt
+   - ID:286671
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286672.txt
+   - ID:286672
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286673.txt
+   - ID:286673
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286674.txt
+   - ID:286674
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286675.txt
+   - ID:286675
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286676.txt
+   - ID:286676
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286677.txt
+   - ID:286677
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286678.txt
+   - ID:286678
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286679.txt
+   - ID:286679
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286680.txt
+   - ID:286680
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286681.txt
+   - ID:286681
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286682.txt
+   - ID:286682
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286683.txt
+   - ID:286683
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286684.txt
+   - ID:286684
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286685.txt
+   - ID:286685
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286686.txt
+   - ID:286686
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286687.txt
+   - ID:286687
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286688.txt
+   - ID:286688
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286689.txt
+   - ID:286689
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286690.txt
+   - ID:286690
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286691.txt
+   - ID:286691
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286692.txt
+   - ID:286692
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286693.txt
+   - ID:286693
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286694.txt
+   - ID:286694
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286695.txt
+   - ID:286695
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286696.txt
+   - ID:286696
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286697.txt
+   - ID:286697
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286698.txt
+   - ID:286698
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286699.txt
+   - ID:286699
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286700.txt
+   - ID:286700
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286701.txt
+   - ID:286701
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286702.txt
+   - ID:286702
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286703.txt
+   - ID:286703
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286704.txt
+   - ID:286704
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286705.txt
+   - ID:286705
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286706.txt
+   - ID:286706
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286707.txt
+   - ID:286707
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286708.txt
+   - ID:286708
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286709.txt
+   - ID:286709
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286710.txt
+   - ID:286710
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286711.txt
+   - ID:286711
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286712.txt
+   - ID:286712
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286713.txt
+   - ID:286713
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286714.txt
+   - ID:286714
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286715.txt
+   - ID:286715
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286716.txt
+   - ID:286716
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286717.txt
+   - ID:286717
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286718.txt
+   - ID:286718
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286719.txt
+   - ID:286719
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286720.txt
+   - ID:286720
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286721.txt
+   - ID:286721
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286722.txt
+   - ID:286722
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286723.txt
+   - ID:286723
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286724.txt
+   - ID:286724
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286725.txt
+   - ID:286725
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286726.txt
+   - ID:286726
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286727.txt
+   - ID:286727
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286728.txt
+   - ID:286728
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286729.txt
+   - ID:286729
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286730.txt
+   - ID:286730
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286731.txt
+   - ID:286731
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286732.txt
+   - ID:286732
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286733.txt
+   - ID:286733
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286734.txt
+   - ID:286734
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286735.txt
+   - ID:286735
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286736.txt
+   - ID:286736
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286737.txt
+   - ID:286737
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286738.txt
+   - ID:286738
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286739.txt
+   - ID:286739
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286740.txt
+   - ID:286740
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286741.txt
+   - ID:286741
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286742.txt
+   - ID:286742
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286743.txt
+   - ID:286743
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286744.txt
+   - ID:286744
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286745.txt
+   - ID:286745
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286746.txt
+   - ID:286746
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286747.txt
+   - ID:286747
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286748.txt
+   - ID:286748
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286749.txt
+   - ID:286749
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286750.txt
+   - ID:286750
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286751.txt
+   - ID:286751
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286752.txt
+   - ID:286752
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286753.txt
+   - ID:286753
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286754.txt
+   - ID:286754
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286755.txt
+   - ID:286755
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286756.txt
+   - ID:286756
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286757.txt
+   - ID:286757
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286758.txt
+   - ID:286758
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286759.txt
+   - ID:286759
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286760.txt
+   - ID:286760
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286761.txt
+   - ID:286761
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286762.txt
+   - ID:286762
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286763.txt
+   - ID:286763
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286764.txt
+   - ID:286764
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286765.txt
+   - ID:286765
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286766.txt
+   - ID:286766
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286767.txt
+   - ID:286767
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286768.txt
+   - ID:286768
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286769.txt
+   - ID:286769
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286770.txt
+   - ID:286770
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286771.txt
+   - ID:286771
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286772.txt
+   - ID:286772
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286773.txt
+   - ID:286773
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286774.txt
+   - ID:286774
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286775.txt
+   - ID:286775
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286776.txt
+   - ID:286776
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286777.txt
+   - ID:286777
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286778.txt
+   - ID:286778
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286779.txt
+   - ID:286779
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286780.txt
+   - ID:286780
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286781.txt
+   - ID:286781
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286782.txt
+   - ID:286782
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286783.txt
+   - ID:286783
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286784.txt
+   - ID:286784
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286786.txt
+   - ID:286786
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286787.txt
+   - ID:286787
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286789.txt
+   - ID:286789
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286790.txt
+   - ID:286790
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286791.txt
+   - ID:286791
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286792.txt
+   - ID:286792
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286793.txt
+   - ID:286793
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286794.txt
+   - ID:286794
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286795.txt
+   - ID:286795
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286796.txt
+   - ID:286796
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286797.txt
+   - ID:286797
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286798.txt
+   - ID:286798
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286799.txt
+   - ID:286799
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286800.txt
+   - ID:286800
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286801.txt
+   - ID:286801
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286802.txt
+   - ID:286802
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286803.txt
+   - ID:286803
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286804.txt
+   - ID:286804
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286805.txt
+   - ID:286805
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286806.txt
+   - ID:286806
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286807.txt
+   - ID:286807
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286808.txt
+   - ID:286808
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286809.txt
+   - ID:286809
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286810.txt
+   - ID:286810
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286811.txt
+   - ID:286811
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286812.txt
+   - ID:286812
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286813.txt
+   - ID:286813
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286814.txt
+   - ID:286814
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286815.txt
+   - ID:286815
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286816.txt
+   - ID:286816
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286817.txt
+   - ID:286817
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286818.txt
+   - ID:286818
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286819.txt
+   - ID:286819
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286820.txt
+   - ID:286820
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286821.txt
+   - ID:286821
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286822.txt
+   - ID:286822
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286823.txt
+   - ID:286823
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286824.txt
+   - ID:286824
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286825.txt
+   - ID:286825
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286826.txt
+   - ID:286826
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286827.txt
+   - ID:286827
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286828.txt
+   - ID:286828
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286829.txt
+   - ID:286829
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286830.txt
+   - ID:286830
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286831.txt
+   - ID:286831
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286832.txt
+   - ID:286832
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286833.txt
+   - ID:286833
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286834.txt
+   - ID:286834
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286835.txt
+   - ID:286835
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286836.txt
+   - ID:286836
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286837.txt
+   - ID:286837
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286838.txt
+   - ID:286838
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286839.txt
+   - ID:286839
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286840.txt
+   - ID:286840
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286841.txt
+   - ID:286841
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286842.txt
+   - ID:286842
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286843.txt
+   - ID:286843
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286844.txt
+   - ID:286844
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286845.txt
+   - ID:286845
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286846.txt
+   - ID:286846
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286847.txt
+   - ID:286847
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286848.txt
+   - ID:286848
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286849.txt
+   - ID:286849
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286850.txt
+   - ID:286850
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286851.txt
+   - ID:286851
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286852.txt
+   - ID:286852
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286853.txt
+   - ID:286853
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286854.txt
+   - ID:286854
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286855.txt
+   - ID:286855
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286856.txt
+   - ID:286856
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286857.txt
+   - ID:286857
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286858.txt
+   - ID:286858
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286859.txt
+   - ID:286859
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286860.txt
+   - ID:286860
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286861.txt
+   - ID:286861
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286862.txt
+   - ID:286862
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286863.txt
+   - ID:286863
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286864.txt
+   - ID:286864
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286865.txt
+   - ID:286865
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286866.txt
+   - ID:286866
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286867.txt
+   - ID:286867
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286868.txt
+   - ID:286868
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286869.txt
+   - ID:286869
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286870.txt
+   - ID:286870
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286871.txt
+   - ID:286871
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286872.txt
+   - ID:286872
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286873.txt
+   - ID:286873
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286874.txt
+   - ID:286874
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286875.txt
+   - ID:286875
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286876.txt
+   - ID:286876
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286877.txt
+   - ID:286877
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286878.txt
+   - ID:286878
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286879.txt
+   - ID:286879
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286880.txt
+   - ID:286880
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286881.txt
+   - ID:286881
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286882.txt
+   - ID:286882
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286883.txt
+   - ID:286883
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286884.txt
+   - ID:286884
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286885.txt
+   - ID:286885
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286886.txt
+   - ID:286886
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286887.txt
+   - ID:286887
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286888.txt
+   - ID:286888
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286889.txt
+   - ID:286889
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286890.txt
+   - ID:286890
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286891.txt
+   - ID:286891
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286892.txt
+   - ID:286892
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286893.txt
+   - ID:286893
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286894.txt
+   - ID:286894
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286895.txt
+   - ID:286895
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286896.txt
+   - ID:286896
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286897.txt
+   - ID:286897
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286898.txt
+   - ID:286898
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286899.txt
+   - ID:286899
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286900.txt
+   - ID:286900
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286901.txt
+   - ID:286901
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286902.txt
+   - ID:286902
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286903.txt
+   - ID:286903
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286904.txt
+   - ID:286904
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286905.txt
+   - ID:286905
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286906.txt
+   - ID:286906
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286907.txt
+   - ID:286907
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286908.txt
+   - ID:286908
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286909.txt
+   - ID:286909
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286910.txt
+   - ID:286910
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286911.txt
+   - ID:286911
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286912.txt
+   - ID:286912
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286913.txt
+   - ID:286913
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286914.txt
+   - ID:286914
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286915.txt
+   - ID:286915
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286916.txt
+   - ID:286916
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286917.txt
+   - ID:286917
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286918.txt
+   - ID:286918
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286919.txt
+   - ID:286919
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286920.txt
+   - ID:286920
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286921.txt
+   - ID:286921
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286922.txt
+   - ID:286922
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286923.txt
+   - ID:286923
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286924.txt
+   - ID:286924
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286925.txt
+   - ID:286925
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286926.txt
+   - ID:286926
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286927.txt
+   - ID:286927
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286928.txt
+   - ID:286928
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286929.txt
+   - ID:286929
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286930.txt
+   - ID:286930
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286931.txt
+   - ID:286931
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286932.txt
+   - ID:286932
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286933.txt
+   - ID:286933
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286934.txt
+   - ID:286934
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286935.txt
+   - ID:286935
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286936.txt
+   - ID:286936
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286937.txt
+   - ID:286937
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286938.txt
+   - ID:286938
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286939.txt
+   - ID:286939
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286940.txt
+   - ID:286940
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286941.txt
+   - ID:286941
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286942.txt
+   - ID:286942
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286943.txt
+   - ID:286943
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286944.txt
+   - ID:286944
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286945.txt
+   - ID:286945
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286946.txt
+   - ID:286946
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286947.txt
+   - ID:286947
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286948.txt
+   - ID:286948
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286949.txt
+   - ID:286949
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286950.txt
+   - ID:286950
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286951.txt
+   - ID:286951
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286952.txt
+   - ID:286952
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286953.txt
+   - ID:286953
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286954.txt
+   - ID:286954
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286955.txt
+   - ID:286955
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286956.txt
+   - ID:286956
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286957.txt
+   - ID:286957
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286958.txt
+   - ID:286958
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286959.txt
+   - ID:286959
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286960.txt
+   - ID:286960
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286961.txt
+   - ID:286961
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286962.txt
+   - ID:286962
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286963.txt
+   - ID:286963
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286964.txt
+   - ID:286964
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286965.txt
+   - ID:286965
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286966.txt
+   - ID:286966
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286967.txt
+   - ID:286967
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286968.txt
+   - ID:286968
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286969.txt
+   - ID:286969
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286970.txt
+   - ID:286970
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286971.txt
+   - ID:286971
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286972.txt
+   - ID:286972
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286973.txt
+   - ID:286973
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286974.txt
+   - ID:286974
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286975.txt
+   - ID:286975
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286976.txt
+   - ID:286976
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286977.txt
+   - ID:286977
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286978.txt
+   - ID:286978
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286979.txt
+   - ID:286979
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286980.txt
+   - ID:286980
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286981.txt
+   - ID:286981
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286982.txt
+   - ID:286982
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286983.txt
+   - ID:286983
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286984.txt
+   - ID:286984
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286985.txt
+   - ID:286985
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286986.txt
+   - ID:286986
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286987.txt
+   - ID:286987
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286988.txt
+   - ID:286988
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286989.txt
+   - ID:286989
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286991.txt
+   - ID:286991
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286992.txt
+   - ID:286992
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286993.txt
+   - ID:286993
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286994.txt
+   - ID:286994
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286995.txt
+   - ID:286995
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286996.txt
+   - ID:286996
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286997.txt
+   - ID:286997
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286998.txt
+   - ID:286998
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 286999.txt
+   - ID:286999
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287000.txt
+   - ID:287000
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287001.txt
+   - ID:287001
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287002.txt
+   - ID:287002
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287003.txt
+   - ID:287003
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287004.txt
+   - ID:287004
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287005.txt
+   - ID:287005
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287006.txt
+   - ID:287006
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287007.txt
+   - ID:287007
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287008.txt
+   - ID:287008
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287009.txt
+   - ID:287009
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287010.txt
+   - ID:287010
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287011.txt
+   - ID:287011
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287012.txt
+   - ID:287012
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287013.txt
+   - ID:287013
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287014.txt
+   - ID:287014
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287015.txt
+   - ID:287015
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287016.txt
+   - ID:287016
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287017.txt
+   - ID:287017
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287018.txt
+   - ID:287018
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287019.txt
+   - ID:287019
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287020.txt
+   - ID:287020
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287021.txt
+   - ID:287021
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287022.txt
+   - ID:287022
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287023.txt
+   - ID:287023
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287024.txt
+   - ID:287024
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287025.txt
+   - ID:287025
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287026.txt
+   - ID:287026
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287027.txt
+   - ID:287027
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287028.txt
+   - ID:287028
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287029.txt
+   - ID:287029
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287030.txt
+   - ID:287030
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287031.txt
+   - ID:287031
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287032.txt
+   - ID:287032
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287033.txt
+   - ID:287033
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287034.txt
+   - ID:287034
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287035.txt
+   - ID:287035
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287036.txt
+   - ID:287036
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287037.txt
+   - ID:287037
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287038.txt
+   - ID:287038
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287039.txt
+   - ID:287039
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287040.txt
+   - ID:287040
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287041.txt
+   - ID:287041
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287042.txt
+   - ID:287042
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287043.txt
+   - ID:287043
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287044.txt
+   - ID:287044
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287045.txt
+   - ID:287045
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287046.txt
+   - ID:287046
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287047.txt
+   - ID:287047
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287048.txt
+   - ID:287048
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287049.txt
+   - ID:287049
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287050.txt
+   - ID:287050
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287051.txt
+   - ID:287051
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287052.txt
+   - ID:287052
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287053.txt
+   - ID:287053
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287054.txt
+   - ID:287054
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287055.txt
+   - ID:287055
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287056.txt
+   - ID:287056
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287057.txt
+   - ID:287057
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287058.txt
+   - ID:287058
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287059.txt
+   - ID:287059
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287060.txt
+   - ID:287060
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287061.txt
+   - ID:287061
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287062.txt
+   - ID:287062
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287063.txt
+   - ID:287063
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287064.txt
+   - ID:287064
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287065.txt
+   - ID:287065
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287066.txt
+   - ID:287066
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287067.txt
+   - ID:287067
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287068.txt
+   - ID:287068
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287069.txt
+   - ID:287069
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287070.txt
+   - ID:287070
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287071.txt
+   - ID:287071
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287072.txt
+   - ID:287072
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287073.txt
+   - ID:287073
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287074.txt
+   - ID:287074
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287075.txt
+   - ID:287075
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287076.txt
+   - ID:287076
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287077.txt
+   - ID:287077
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287078.txt
+   - ID:287078
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287079.txt
+   - ID:287079
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287080.txt
+   - ID:287080
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287081.txt
+   - ID:287081
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287082.txt
+   - ID:287082
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287083.txt
+   - ID:287083
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287084.txt
+   - ID:287084
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287085.txt
+   - ID:287085
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287086.txt
+   - ID:287086
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287087.txt
+   - ID:287087
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287088.txt
+   - ID:287088
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287089.txt
+   - ID:287089
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287090.txt
+   - ID:287090
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287091.txt
+   - ID:287091
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287092.txt
+   - ID:287092
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287093.txt
+   - ID:287093
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287094.txt
+   - ID:287094
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287095.txt
+   - ID:287095
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287096.txt
+   - ID:287096
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287097.txt
+   - ID:287097
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287098.txt
+   - ID:287098
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287099.txt
+   - ID:287099
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287100.txt
+   - ID:287100
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287101.txt
+   - ID:287101
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287102.txt
+   - ID:287102
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287103.txt
+   - ID:287103
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287104.txt
+   - ID:287104
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287105.txt
+   - ID:287105
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287106.txt
+   - ID:287106
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287107.txt
+   - ID:287107
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287108.txt
+   - ID:287108
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287109.txt
+   - ID:287109
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287110.txt
+   - ID:287110
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287111.txt
+   - ID:287111
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287112.txt
+   - ID:287112
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287113.txt
+   - ID:287113
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287114.txt
+   - ID:287114
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287115.txt
+   - ID:287115
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287116.txt
+   - ID:287116
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287117.txt
+   - ID:287117
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287118.txt
+   - ID:287118
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287119.txt
+   - ID:287119
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287120.txt
+   - ID:287120
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287121.txt
+   - ID:287121
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287122.txt
+   - ID:287122
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287123.txt
+   - ID:287123
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287124.txt
+   - ID:287124
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287125.txt
+   - ID:287125
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287126.txt
+   - ID:287126
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287127.txt
+   - ID:287127
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287128.txt
+   - ID:287128
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287129.txt
+   - ID:287129
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287130.txt
+   - ID:287130
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287131.txt
+   - ID:287131
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287132.txt
+   - ID:287132
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287133.txt
+   - ID:287133
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287134.txt
+   - ID:287134
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287135.txt
+   - ID:287135
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287136.txt
+   - ID:287136
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287137.txt
+   - ID:287137
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287138.txt
+   - ID:287138
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287139.txt
+   - ID:287139
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287140.txt
+   - ID:287140
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287141.txt
+   - ID:287141
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287142.txt
+   - ID:287142
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287143.txt
+   - ID:287143
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287144.txt
+   - ID:287144
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287145.txt
+   - ID:287145
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287146.txt
+   - ID:287146
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287147.txt
+   - ID:287147
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287148.txt
+   - ID:287148
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287149.txt
+   - ID:287149
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287150.txt
+   - ID:287150
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287151.txt
+   - ID:287151
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287152.txt
+   - ID:287152
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287153.txt
+   - ID:287153
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287154.txt
+   - ID:287154
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287155.txt
+   - ID:287155
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287156.txt
+   - ID:287156
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287157.txt
+   - ID:287157
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287158.txt
+   - ID:287158
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287160.txt
+   - ID:287160
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287161.txt
+   - ID:287161
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287162.txt
+   - ID:287162
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287163.txt
+   - ID:287163
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287164.txt
+   - ID:287164
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287165.txt
+   - ID:287165
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287166.txt
+   - ID:287166
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287167.txt
+   - ID:287167
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287168.txt
+   - ID:287168
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287169.txt
+   - ID:287169
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287170.txt
+   - ID:287170
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287171.txt
+   - ID:287171
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287172.txt
+   - ID:287172
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287173.txt
+   - ID:287173
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287174.txt
+   - ID:287174
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287175.txt
+   - ID:287175
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287176.txt
+   - ID:287176
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287177.txt
+   - ID:287177
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287178.txt
+   - ID:287178
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287179.txt
+   - ID:287179
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287180.txt
+   - ID:287180
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287181.txt
+   - ID:287181
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287182.txt
+   - ID:287182
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287183.txt
+   - ID:287183
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287184.txt
+   - ID:287184
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287185.txt
+   - ID:287185
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287186.txt
+   - ID:287186
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287187.txt
+   - ID:287187
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287188.txt
+   - ID:287188
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287189.txt
+   - ID:287189
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287190.txt
+   - ID:287190
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287191.txt
+   - ID:287191
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287192.txt
+   - ID:287192
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287193.txt
+   - ID:287193
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287194.txt
+   - ID:287194
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287195.txt
+   - ID:287195
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287196.txt
+   - ID:287196
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287197.txt
+   - ID:287197
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287198.txt
+   - ID:287198
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287199.txt
+   - ID:287199
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287200.txt
+   - ID:287200
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287201.txt
+   - ID:287201
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287202.txt
+   - ID:287202
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287203.txt
+   - ID:287203
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287204.txt
+   - ID:287204
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287205.txt
+   - ID:287205
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287206.txt
+   - ID:287206
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287207.txt
+   - ID:287207
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287208.txt
+   - ID:287208
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287209.txt
+   - ID:287209
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287210.txt
+   - ID:287210
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287211.txt
+   - ID:287211
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287212.txt
+   - ID:287212
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287213.txt
+   - ID:287213
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287214.txt
+   - ID:287214
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287215.txt
+   - ID:287215
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287216.txt
+   - ID:287216
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287217.txt
+   - ID:287217
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287218.txt
+   - ID:287218
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287219.txt
+   - ID:287219
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287220.txt
+   - ID:287220
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287221.txt
+   - ID:287221
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287222.txt
+   - ID:287222
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287223.txt
+   - ID:287223
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287224.txt
+   - ID:287224
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287225.txt
+   - ID:287225
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287226.txt
+   - ID:287226
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287227.txt
+   - ID:287227
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287228.txt
+   - ID:287228
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287229.txt
+   - ID:287229
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287230.txt
+   - ID:287230
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287231.txt
+   - ID:287231
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287232.txt
+   - ID:287232
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287233.txt
+   - ID:287233
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287234.txt
+   - ID:287234
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287235.txt
+   - ID:287235
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287236.txt
+   - ID:287236
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287237.txt
+   - ID:287237
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287238.txt
+   - ID:287238
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287239.txt
+   - ID:287239
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287240.txt
+   - ID:287240
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287241.txt
+   - ID:287241
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287242.txt
+   - ID:287242
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287243.txt
+   - ID:287243
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287244.txt
+   - ID:287244
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287245.txt
+   - ID:287245
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287246.txt
+   - ID:287246
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287247.txt
+   - ID:287247
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287248.txt
+   - ID:287248
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287249.txt
+   - ID:287249
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287250.txt
+   - ID:287250
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287251.txt
+   - ID:287251
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287252.txt
+   - ID:287252
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287253.txt
+   - ID:287253
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287254.txt
+   - ID:287254
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287255.txt
+   - ID:287255
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287256.txt
+   - ID:287256
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287257.txt
+   - ID:287257
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287258.txt
+   - ID:287258
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287259.txt
+   - ID:287259
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287260.txt
+   - ID:287260
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287261.txt
+   - ID:287261
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287262.txt
+   - ID:287262
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287263.txt
+   - ID:287263
+   - node_type:output
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 287264.txt
+   - ID:287264
+   - node_type:output
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 752005.txt
+   - ID:752005
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 752435.txt
+   - ID:752435
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 752643.txt
+   - ID:752643
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 752996.txt
+   - ID:752996
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 753944.txt
+   - ID:753944
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+ - C:/Users/aj200/Desktop/Backups/SaveData/Saved AI Network 2/Active Genomes\Genome 1005\Node ID 753960.txt
+   - ID:753960
+   - node_type:hidden
+   - upper trig thres:100000000
+   - lower trig thres:-100000000
+
+
+Genome Output: 2

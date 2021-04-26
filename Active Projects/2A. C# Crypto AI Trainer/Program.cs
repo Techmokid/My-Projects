@@ -3,6 +3,7 @@ using System.IO;
 using System.Net;
 using System.Linq;
 using System.Threading;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
@@ -87,6 +88,31 @@ namespace WebAPIClient {
 			return result;
 		}
 		
+		static int getNumberOfProcessorThreads() {
+			Process cmd = new Process();
+			cmd.StartInfo.FileName = "cmd.exe";
+			cmd.StartInfo.RedirectStandardInput = true;
+			cmd.StartInfo.RedirectStandardOutput = true;
+			cmd.StartInfo.CreateNoWindow = true;
+			cmd.StartInfo.UseShellExecute = false;
+			cmd.Start();
+
+			cmd.StandardInput.WriteLine("echo %NUMBER_OF_PROCESSORS%");
+			cmd.StandardInput.Flush();
+			cmd.StandardInput.Close();
+			cmd.WaitForExit();
+			
+			string result = "";
+			bool triggerNextLine = false;
+			foreach(string i in cmd.StandardOutput.ReadToEnd().Split('\n')) {
+				//Console.WriteLine("Line: " + i);
+				if (triggerNextLine) { result = i; triggerNextLine = false; }
+				if (i.Contains("echo %NUMBER_OF_PROCESSORS%")) { triggerNextLine = true; }
+			}
+			
+			return int.Parse(result);
+		}
+		
         static void Main(string[] args) {
 			Console.Clear();
 			
@@ -159,7 +185,9 @@ namespace WebAPIClient {
 			Console.WriteLine("NEAT AI Direct Serial Output:");
 			Console.WriteLine();
 			nn = new Network(filePath,false,false,true);
+			
 			nn.loadNetwork(AIStatusText2,AIStatusText3);
+			NEAT_AI.Random.n = nn;
 			
 			AIStatusText1.color = ConsoleColor.Magenta;
 			AIStatusText2.color = ConsoleColor.Magenta;

@@ -1,0 +1,11 @@
+C:\Users\aj200\Desktop\CPU Test\obj\Debug\netcoreapp3.1\CPU Test.csprojAssemblyReference.cache
+C:\Users\aj200\Desktop\CPU Test\obj\Debug\netcoreapp3.1\CPU Test.AssemblyInfoInputs.cache
+C:\Users\aj200\Desktop\CPU Test\obj\Debug\netcoreapp3.1\CPU Test.AssemblyInfo.cs
+C:\Users\aj200\Desktop\CPU Test\bin\Debug\netcoreapp3.1\CPU Test.exe
+C:\Users\aj200\Desktop\CPU Test\bin\Debug\netcoreapp3.1\CPU Test.deps.json
+C:\Users\aj200\Desktop\CPU Test\bin\Debug\netcoreapp3.1\CPU Test.runtimeconfig.json
+C:\Users\aj200\Desktop\CPU Test\bin\Debug\netcoreapp3.1\CPU Test.runtimeconfig.dev.json
+C:\Users\aj200\Desktop\CPU Test\bin\Debug\netcoreapp3.1\CPU Test.dll
+C:\Users\aj200\Desktop\CPU Test\bin\Debug\netcoreapp3.1\CPU Test.pdb
+C:\Users\aj200\Desktop\CPU Test\obj\Debug\netcoreapp3.1\CPU Test.dll
+C:\Users\aj200\Desktop\CPU Test\obj\Debug\netcoreapp3.1\CPU Test.pdb

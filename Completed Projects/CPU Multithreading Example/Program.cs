@@ -1,0 +1,42 @@
+﻿using System;  
+using System.Threading;  
+using System.Collections.Generic;
+
+namespace CPU_Test {
+	class Program {
+		static void Main() {
+			List<ThreadDataContainer> TDC_List = new List<ThreadDataContainer>();
+			
+			ThreadClass p = new ThreadClass();
+			ThreadDataContainer mahesh = new ThreadDataContainer();  
+			TDC_List.Add(mahesh);
+			Thread workerThread2 = new Thread(p.ThreadFunction);  
+			workerThread2.Start(mahesh);
+			
+			while(true) {
+				bool threadStillRunning = false;
+				foreach(ThreadDataContainer i in TDC_List) {
+					if (!i.threadCompletionStatus) {
+						threadStillRunning = true;
+					}
+				}
+				if (!threadStillRunning) {break;}
+			}
+		}     
+	}
+	
+	public class ThreadClass {  
+		public void ThreadFunction(object data) {  
+			ThreadDataContainer TDC = (ThreadDataContainer)data;
+			Console.WriteLine("This is a thread! " + TDC.threadOutput.ToString());
+			Thread.Sleep(5000);
+			TDC.threadCompletionStatus = true;
+		} 
+	}
+	  
+	public class ThreadDataContainer {  
+		public bool threadCompletionStatus = false;
+		public double threadInput = 0;
+		public double threadOutput = 0;
+	}
+}

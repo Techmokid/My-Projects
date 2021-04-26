@@ -1,0 +1,11 @@
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\bin\Debug\netcoreapp3.1\2C. GPU test.exe
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\bin\Debug\netcoreapp3.1\2C. GPU test.deps.json
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\bin\Debug\netcoreapp3.1\2C. GPU test.runtimeconfig.json
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\bin\Debug\netcoreapp3.1\2C. GPU test.runtimeconfig.dev.json
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\bin\Debug\netcoreapp3.1\2C. GPU test.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\bin\Debug\netcoreapp3.1\2C. GPU test.pdb
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\obj\Debug\netcoreapp3.1\2C. GPU test.csprojAssemblyReference.cache
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\obj\Debug\netcoreapp3.1\2C. GPU test.AssemblyInfoInputs.cache
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\obj\Debug\netcoreapp3.1\2C. GPU test.AssemblyInfo.cs
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\obj\Debug\netcoreapp3.1\2C. GPU test.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\obj\Debug\netcoreapp3.1\2C. GPU test.pdb

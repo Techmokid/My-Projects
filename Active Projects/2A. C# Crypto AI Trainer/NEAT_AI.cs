@@ -1,7 +1,9 @@
 using System;
 using System.IO;
 using System.Threading;
+using System.Diagnostics;
 using System.Collections.Generic;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -10,9 +12,12 @@ using Display;
 namespace NEAT_AI {
     public static class Random
     {
+		public static bool once = true;
+		public static List<string> msg = new List<string>();
         public static System.Random rand;
 		public static ulong currentNodeIndex;
 		public static ulong currentGeneIndex;
+		public static Network n = null;
 		
         public static void SetupRandom()
         {
@@ -21,11 +26,27 @@ namespace NEAT_AI {
 		
 		public static ulong getNextNodeID() {
 			currentNodeIndex++;
+			//if (n != null) {
+			//	foreach (Genome g in n.genomes) {
+			//		foreach (Node n in g.genome) {
+			//			if (n.ID == currentGeneIndex) {
+			//				throw new Exception("DUPLICATE NODE ID DETECTED");
+			//			}
+			//		}
+			//	}
+			//}
 			return currentNodeIndex;
 		}
 		
 		public static ulong getNextGeneID() {
 			currentGeneIndex++;
+			//if (n != null) {
+			//	foreach (Genome g in n.genomes) {
+			//		if (g.ID == currentGeneIndex) {
+			//			throw new Exception("DUPLICATE GENOME ID DETECTED");
+			//		}
+			//	}
+			//}
 			return currentGeneIndex;
 		}
     }
@@ -974,6 +995,30 @@ namespace NEAT_AI {
 		
 		public void loadNetwork() { loadNetwork(null,null); }
 		public void loadNetwork(dataScreen disp0, dataScreen disp1) {
+			//First get the maximum number of threads that this computers CPU can handle
+			Process cmd = new Process();
+			cmd.StartInfo.FileName = "cmd.exe";
+			cmd.StartInfo.RedirectStandardInput = true;
+			cmd.StartInfo.RedirectStandardOutput = true;
+			cmd.StartInfo.CreateNoWindow = true;
+			cmd.StartInfo.UseShellExecute = false;
+			cmd.Start();
+
+			cmd.StandardInput.WriteLine("echo %NUMBER_OF_PROCESSORS%");
+			cmd.StandardInput.Flush();
+			cmd.StandardInput.Close();
+			cmd.WaitForExit();
+			
+			string result = "";
+			bool triggerNextLine = false;
+			foreach(string i in cmd.StandardOutput.ReadToEnd().Split('\n')) {
+				//Console.WriteLine("Line: " + i);
+				if (triggerNextLine) { result = i; triggerNextLine = false; }
+				if (i.Contains("echo %NUMBER_OF_PROCESSORS%")) { triggerNextLine = true; }
+			}
+			
+			int maxThreadCount = int.Parse(result);
+			
 			//if (genomes.Count != 0) { throw new Exception("Attempting to load network into pre-existing populated AI"); }
 			genomes = new List<Genome>();
 			
@@ -991,215 +1036,154 @@ namespace NEAT_AI {
 			num_inputs = (int)forcedStringToFloat(networkReadout.ReadLine());
 			num_outputs = (int)forcedStringToFloat(networkReadout.ReadLine());
 			
+			//This is where we add in multithreading ----------------------------------------------------------------------------------------------------------------
+			List<ThreadDataContainer> TDC_List = new List<ThreadDataContainer>();
+			
 			//Iterate through all genomes
-			int genomesLoop = 0;
+			disp0.data = "    Loading 1/2";
+			disp1.data = "      Start";
+			disp0.updateScreen(); disp1.updateScreen();
 			string[] genomesPath = Directory.GetDirectories(networkDataPath + "/Active Genomes");
-			foreach(string genomePath in genomesPath) {
-				genomesLoop++;
-				if ((disp0 != null) && (disp1 != null)) {
-					disp1.data = genomesLoop.ToString() + "/" + genomesPath.Length.ToString();
-					for (int i = 0; i < (23 - disp1.data.Length) / 2; i++) {
-						disp1.data = " " + disp1.data;
+			
+			bool run = true;
+			int genomeIndex = 0;
+			int currentThreadCount = 0;
+			while(run) {
+				while (currentThreadCount < maxThreadCount) {
+					if(genomeIndex == genomesPath.Length) {
+						run = false;
+						break;
 					}
 					
-					disp0.data = "    Loading 1/2";
-					disp0.updateScreen(); disp1.updateScreen();
+					//HERE WE WANT TO ACTUALLY START THE THREAD PROCESS
+					ThreadClass p = new ThreadClass();
+					ThreadDataContainer TDC = new ThreadDataContainer();
+					TDC.threadInputFilepath = genomesPath[genomeIndex];
+					TDC_List.Add(TDC);
+					Thread workerThread2 = new Thread(p.ThreadFunction);  
+					workerThread2.Start(TDC);
+						
+					currentThreadCount++;
+					genomeIndex++;
+					disp1.data = "      " + genomeIndex + "/" + genomesPath.Length;
+					disp1.updateScreen();
 				}
 				
-				//Console.WriteLine("Next genome path: " + genomePath.ToString() + "\t\tCurrent Genome: " + genomesLoop.ToString() + "/" + genomesPath.Length.ToString());
-				StreamReader genomeReadout = new StreamReader(genomePath + "/Genome Readout.txt");
-				
-				Genome tempGenome = new Genome();
-				tempGenome.ID = (ulong)forcedStringToFloat(genomeReadout.ReadLine());
-				tempGenome.fitness = forcedStringToFloat(genomeReadout.ReadLine());
-				tempGenome.generationsSurvived = (int)forcedStringToFloat(genomeReadout.ReadLine());
-				
-				//Iterate over all nodes
-				string[] nodesPath = Directory.GetFiles(genomePath);
-				foreach(string nodePath in nodesPath) {
-					if (nodePath.Replace("\\","/") != genomePath.Replace("\\","/") + "/Genome Readout.txt") {
-						StreamReader nodeData = new StreamReader(nodePath);
-						
-						//Find node with that matching ID. If it does not exist, create it
-						int ID = (int)forcedStringToFloat(nodeData.ReadLine());
-						Node tempNode = null;
-						for (int index = 0; index < tempGenome.genome.Count; index++) {
-							if (tempGenome.genome[index].ID == (ulong)ID) {
-								tempNode = tempGenome.genome[index];
-								index = tempGenome.genome.Count;
-							}
-						}
-						
-						if (tempNode == null) {
-							tempNode = new Node("hidden");
-							tempNode.ID = (ulong)ID;
-							tempGenome.genome.Add(tempNode);
-						}
-						
-						// Set the node type, and threshold values
-						string tempStr = nodeData.ReadLine();
-						tempNode.node_type = tempStr.Substring(tempStr.LastIndexOf(":") + 1,tempStr.Length - tempStr.LastIndexOf(":") - 1);
-						
-						tempNode.upperTriggerThreshold = (int)forcedStringToFloat(nodeData.ReadLine());
-						tempNode.lowerTriggerThreshold = (int)forcedStringToFloat(nodeData.ReadLine());
-							
-						if (tempNode.node_type != "input") {
-							nodeData.ReadLine();
-							
-							//Loop over all connected nodes in memory
-							while(true) {
-								tempStr = nodeData.ReadLine();
-								if (tempStr.LastIndexOf("|") < 1) { break; }
-								
-								int tempNodeID = (int)forcedStringToFloat(tempStr.Split("|")[0]);
-								float tempNodeWeight = forcedStringToFloat(tempStr.Split("|")[1]);
-								
-								//Does that node ID exist? If not, create it
-								Node connectedNode = null;
-								for (int index = 0; index < tempGenome.genome.Count; index++) {
-									if (tempGenome.genome[index].ID == (ulong)tempNodeID) {
-										connectedNode = tempGenome.genome[index];
-										index = tempGenome.genome.Count;
-									}
-								}
-								
-								if (connectedNode == null) {
-									Node tempNode2 = new Node("hidden");
-									tempNode2.ID = (ulong)tempNodeID;
-									tempGenome.genome.Add(tempNode2);
-									connectedNode = tempNode2;
-								}
-								
-								//Now that we have the node, simply apply the values
-								tempNode.connected_nodes.Add(connectedNode);
-								tempNode.connection_weights.Add(tempNodeWeight);
-							}
+				if (run) {
+					for (int x = 0; x < TDC_List.Count; x++) {
+						if (TDC_List[x].threadCompletionStatus) {
+							genomes.Add(TDC_List[x].threadOutput);
+							TDC_List.RemoveAt(x);
+							currentThreadCount--;
+							x--;
 						}
 					}
 				}
-				
-				genomes.Add(tempGenome);
+			}
+			
+			//Here we just wanna wait until there are no threads still running. Then we can continue
+			while(TDC_List.Count > 0) {
+				for (int x = 0; x < TDC_List.Count; x++) {
+					if (TDC_List[x].threadCompletionStatus) {
+						genomes.Add(TDC_List[x].threadOutput);
+						TDC_List.RemoveAt(x);
+						currentThreadCount--;
+						x--;
+					}
+				}
 			}
 			
 			disp1.data = "";
+			disp0.data = "    Loading 2/2";
 			DisplayManager.updateDisplays();
-			
-			genomesLoop = 0;
+			disp0.updateScreen(); disp1.updateScreen();
 			string[] directories = Directory.GetDirectories(networkDataPath + "/Previous Genomes");
-			foreach(string genomePath in genomesPath) {
-				genomesLoop++;
-				if ((disp0 != null) && (disp1 != null)) {
-					disp1.data = genomesLoop.ToString() + "/" + genomesPath.Length.ToString();
-					for (int i = 0; i < (23 - disp1.data.Length) / 2; i++) {
-						disp1.data = " " + disp1.data;
+			
+			run = true;
+			genomeIndex = 0;
+			currentThreadCount = 0;
+			while(run) {
+				while (currentThreadCount < maxThreadCount) {
+					if(genomeIndex == genomesPath.Length) {
+						run = false;
+						break;
 					}
 					
-					disp0.data = "    Loading 2/2";
-					disp0.updateScreen(); disp1.updateScreen();
+					//HERE WE WANT TO ACTUALLY START THE THREAD PROCESS
+					ThreadClass p = new ThreadClass();
+					ThreadDataContainer TDC = new ThreadDataContainer();
+					TDC.threadInputFilepath = genomesPath[genomeIndex];
+					TDC_List.Add(TDC);
+					Thread workerThread2 = new Thread(p.ThreadFunction);  
+					workerThread2.Start(TDC);
+						
+					currentThreadCount++;
+					genomeIndex++;
+					disp1.data = "      " + genomeIndex + "/" + genomesPath.Length;
+					disp1.updateScreen();
 				}
 				
-				//Console.WriteLine("Next genome path: " + genomePath.ToString() + "\t\tCurrent Genome: " + genomesLoop.ToString() + "/" + genomesPath.Length.ToString());
-				StreamReader genomeReadout = new StreamReader(genomePath + "/Genome Readout.txt");
-				
-				Genome tempGenome = new Genome();
-				tempGenome.ID = (ulong)forcedStringToFloat(genomeReadout.ReadLine());
-				tempGenome.fitness = forcedStringToFloat(genomeReadout.ReadLine());
-				tempGenome.generationsSurvived = (int)forcedStringToFloat(genomeReadout.ReadLine());
-				
-				//Iterate over all nodes
-				string[] nodesPath = Directory.GetFiles(genomePath);
-				foreach(string nodePath in nodesPath) {
-					if (nodePath.Replace("\\","/") != genomePath.Replace("\\","/") + "/Genome Readout.txt") {
-						StreamReader nodeData = new StreamReader(nodePath);
-						
-						//Find node with that matching ID. If it does not exist, create it
-						int ID = (int)forcedStringToFloat(nodeData.ReadLine());
-						Node tempNode = null;
-						for (int index = 0; index < tempGenome.genome.Count; index++) {
-							if (tempGenome.genome[index].ID == (ulong)ID) {
-								tempNode = tempGenome.genome[index];
-								index = tempGenome.genome.Count;
-							}
-						}
-						
-						if (tempNode == null) {
-							tempNode = new Node("hidden");
-							tempNode.ID = (ulong)ID;
-							tempGenome.genome.Add(tempNode);
-						}
-						
-						// Set the node type, and threshold values
-						string tempStr = nodeData.ReadLine();
-						tempNode.node_type = tempStr.Substring(tempStr.LastIndexOf(":") + 1,tempStr.Length - tempStr.LastIndexOf(":") - 1);
-						
-						tempNode.upperTriggerThreshold = (int)forcedStringToFloat(nodeData.ReadLine());
-						tempNode.lowerTriggerThreshold = (int)forcedStringToFloat(nodeData.ReadLine());
-						
-						if (tempNode.node_type != "input") {
-							nodeData.ReadLine();
-							
-							//Loop over all connected nodes in memory
-							while(true) {
-								tempStr = nodeData.ReadLine();
-								if (tempStr.LastIndexOf("|") < 1) { break; }
-								
-								int tempNodeID = (int)forcedStringToFloat(tempStr.Split("|")[0]);
-								float tempNodeWeight = forcedStringToFloat(tempStr.Split("|")[1]);
-								
-								//Does that node ID exist? If not, create it
-								Node connectedNode = null;
-								for (int index = 0; index < tempGenome.genome.Count; index++) {
-									if (tempGenome.genome[index].ID == (ulong)tempNodeID) {
-										connectedNode = tempGenome.genome[index];
-										index = tempGenome.genome.Count;
-									}
-								}
-								
-								if (connectedNode == null) {
-									Node tempNode2 = new Node("hidden");
-									tempNode2.ID = (ulong)tempNodeID;
-									tempGenome.genome.Add(tempNode2);
-									connectedNode = tempNode2;
-								}
-								
-								//Now that we have the node, simply apply the values
-								tempNode.connected_nodes.Add(connectedNode);
-								tempNode.connection_weights.Add(tempNodeWeight);
-							}
+				if (run) {
+					for (int x = 0; x < TDC_List.Count; x++) {
+						if (TDC_List[x].threadCompletionStatus) {
+							//Console.WriteLine(TDC_List[x].threadOutput.GetInputNodes().Count);
+							previousValidGenomes.Add(TDC_List[x].threadOutput);
+							TDC_List.RemoveAt(x);
+							currentThreadCount--;
+							x--;
 						}
 					}
 				}
-				
-				previousValidGenomes.Add(tempGenome);
 			}
 			
+			while(TDC_List.Count > 0) {
+				for (int x = 0; x < TDC_List.Count; x++) {
+					if (TDC_List[x].threadCompletionStatus) {
+						//Console.WriteLine(TDC_List[x].threadOutput.GetInputNodes().Count);
+						previousValidGenomes.Add(TDC_List[x].threadOutput);
+						TDC_List.RemoveAt(x);
+						currentThreadCount--;
+						x--;
+					}
+				}
+			}
+			
+			Console.SetCursorPosition(0,40);
+			Console.WriteLine("Population: " + genomes.Count.ToString() + "\t\t\tExpected: " + pop_size.ToString());
 			//Now that the network is fully loaded, just check that the population values add up
 			if (pop_size != genomes.Count) {
 				throw new Exception("Invalid input network. Population size does not match internal AI settings");
 			}
 			
+			List<Genome> tempGenomeList = new List<Genome>();
+			foreach(Genome g in genomes) { tempGenomeList.Add(g); }
+			foreach(Genome g in previousValidGenomes) { tempGenomeList.Add(g); }
+			
 			//Here we want to setup the random class to prevent node clashes
 			ulong biggestRandomGenomeVal = 0;
 			ulong biggestRandomNodeVal = 0;
-			foreach(Genome g in genomes) {
+			foreach(Genome g in tempGenomeList) {
 				if (biggestRandomGenomeVal < g.ID) { biggestRandomGenomeVal = g.ID; }
 				foreach (Node n in g.genome) {
 					if (biggestRandomNodeVal < n.ID) { biggestRandomNodeVal = n.ID; }
 				}
 			}
 			
-			Random.currentGeneIndex = biggestRandomGenomeVal;
-			Random.currentNodeIndex = biggestRandomNodeVal;
+			Random.currentGeneIndex = biggestRandomGenomeVal + 1;
+			Random.currentNodeIndex = biggestRandomNodeVal + 1;
 			
-			Console.SetCursorPosition(0,40);
 			Console.WriteLine("Gene Index:" + biggestRandomGenomeVal.ToString());
 			Console.WriteLine("Node Index:" + biggestRandomNodeVal.ToString());
 			
+			checkGenomeStability();
+		}
+		
+		void checkGenomeStability() {
 			foreach(Genome x in genomes) {
 				foreach (Genome y in genomes) {
 					if (x != y) {
 						if (x.ID == y.ID) {
-							throw new Exception("Genome ID Conflict upon network load");
+							throw new Exception("Genome ID Conflict!");
 						}
 					}
 				}
@@ -1208,7 +1192,7 @@ namespace NEAT_AI {
 					foreach (Node b in x.genome) {
 						if (a != b) {
 							if (a.ID == b.ID) {
-								throw new Exception("Node ID Conflict upon network load");
+								throw new Exception("Node ID Conflict!");
 							}
 						}
 					}
@@ -1216,11 +1200,6 @@ namespace NEAT_AI {
 					
 				}
 			}
-			
-			Console.Beep(400,400);
-			Console.ReadKey(true);
-			
-			return;
 		}
 		
 		static float forcedStringToFloat(string input) {
@@ -1249,6 +1228,116 @@ namespace NEAT_AI {
 			}
 			
 			return best;
+		}
+		
+		public class ThreadClass {  
+			public void ThreadFunction(object data) {  
+				ThreadDataContainer TDC = (ThreadDataContainer)data;
+				
+				string genomePath = TDC.threadInputFilepath;
+				StreamReader genomeReadout = new StreamReader(genomePath + "/Genome Readout.txt");
+				
+				Genome tempGenome = new Genome();
+				tempGenome.ID = (ulong)forcedStringToFloat(genomeReadout.ReadLine());
+				tempGenome.fitness = forcedStringToFloat(genomeReadout.ReadLine());
+				tempGenome.generationsSurvived = (int)forcedStringToFloat(genomeReadout.ReadLine());
+				
+				//Iterate over all nodes
+				string msg = "Genome Path: " + genomePath + "\n";
+				bool consoleMaster = false;
+				string[] nodesPath = Directory.GetFiles(genomePath);
+				if (Random.once) {
+					Random.once = false;
+					consoleMaster = true;
+				}
+				
+				msg += "Nodes Paths: \n";
+				foreach(string nodePath in nodesPath) {
+					if (nodePath.Replace("\\","/") != genomePath.Replace("\\","/") + "/Genome Readout.txt") {
+						msg += " - " + nodePath + "\n";
+						
+						StreamReader nodeData = new StreamReader(nodePath);
+						
+						//Find node with that matching ID. If it does not exist, create it
+						int ID = (int)forcedStringToFloat(nodeData.ReadLine());
+						msg += "   - ID:" + ID.ToString() + "\n";
+						Node tempNode = null;
+						for (int index = 0; index < tempGenome.genome.Count; index++) {
+							if (tempGenome.genome[index].ID == (ulong)ID) {
+								tempNode = tempGenome.genome[index];
+								index = tempGenome.genome.Count;
+							}
+						}
+						
+						if (tempNode == null) {
+							tempNode = new Node("hidden");
+							tempNode.ID = (ulong)ID;
+							tempGenome.genome.Add(tempNode);
+						}
+						
+						// Set the node type, and threshold values
+						string tempStr = nodeData.ReadLine();
+						tempNode.node_type = tempStr.Substring(tempStr.LastIndexOf(":") + 1,tempStr.Length - tempStr.LastIndexOf(":") - 1);
+						msg += "   - node_type:" + tempNode.node_type + "\n";
+						
+						tempNode.upperTriggerThreshold = (int)forcedStringToFloat(nodeData.ReadLine());
+						tempNode.lowerTriggerThreshold = (int)forcedStringToFloat(nodeData.ReadLine());
+						msg += "   - upper trig thres:" + tempNode.upperTriggerThreshold + "\n";
+						msg += "   - lower trig thres:" + tempNode.lowerTriggerThreshold + "\n";
+						
+						if (tempNode.node_type != "input") {
+							nodeData.ReadLine();
+							
+							//Loop over all connected nodes in memory
+							while(true) {
+								tempStr = nodeData.ReadLine();
+								if (tempStr.LastIndexOf("|") < 1) { break; }
+								
+								int tempNodeID = (int)forcedStringToFloat(tempStr.Split("|")[0]);
+								float tempNodeWeight = forcedStringToFloat(tempStr.Split("|")[1]);
+								
+								//Does that node ID exist? If not, create it
+								Node connectedNode = null;
+								for (int index = 0; index < tempGenome.genome.Count; index++) {
+									if (tempGenome.genome[index].ID == (ulong)tempNodeID) {
+										connectedNode = tempGenome.genome[index];
+										index = tempGenome.genome.Count;
+									}
+								}
+								
+								if (connectedNode == null) {
+									Node tempNode2 = new Node("hidden");
+									tempNode2.ID = (ulong)tempNodeID;
+									tempGenome.genome.Add(tempNode2);
+									connectedNode = tempNode2;
+								}
+								
+								//Now that we have the node, simply apply the values
+								tempNode.connected_nodes.Add(connectedNode);
+								tempNode.connection_weights.Add(tempNodeWeight);
+							}
+						}
+					}
+				}
+				
+				TDC.threadOutput = tempGenome;
+				TDC.threadCompletionStatus = true;
+				
+				if(consoleMaster) {
+					msg += "\n\nGenome Output: " + tempGenome.GetOutputNodes().Count;
+					string filePath = "C:/Users/aj200/Documents/GitHub/My-Projects/Active Projects/2A. C# Crypto AI Trainer/debug.txt";
+					if (File.Exists(filePath)) { File.Delete(filePath); }
+					
+					byte[] info = new UTF8Encoding(true).GetBytes(msg);
+					using (FileStream fs = File.Create(filePath)) { fs.Write(info, 0, info.Length); }
+				}
+			} 
+		}
+	  
+		public class ThreadDataContainer {  
+			public bool threadCompletionStatus = false;
+			public string threadInputFilepath = "";
+			public Genome threadOutput;
 		}
     }
 }
