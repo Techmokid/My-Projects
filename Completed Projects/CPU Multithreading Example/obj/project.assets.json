@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aj200\\Desktop\\CPU Test\\CPU Test.csproj",
+      "projectUniqueName": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\Completed Projects\\CPU Multithreading Example\\CPU Test.csproj",
       "projectName": "CPU Test",
-      "projectPath": "C:\\Users\\aj200\\Desktop\\CPU Test\\CPU Test.csproj",
+      "projectPath": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\Completed Projects\\CPU Multithreading Example\\CPU Test.csproj",
       "packagesPath": "C:\\Users\\aj200\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\aj200\\Desktop\\CPU Test\\obj\\",
+      "outputPath": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\Completed Projects\\CPU Multithreading Example\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\aj200\\AppData\\Roaming\\NuGet\\NuGet.Config",

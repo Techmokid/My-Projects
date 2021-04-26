@@ -9,3 +9,8 @@ C:\Users\aj200\Desktop\CPU Test\bin\Debug\netcoreapp3.1\CPU Test.dll
 C:\Users\aj200\Desktop\CPU Test\bin\Debug\netcoreapp3.1\CPU Test.pdb
 C:\Users\aj200\Desktop\CPU Test\obj\Debug\netcoreapp3.1\CPU Test.dll
 C:\Users\aj200\Desktop\CPU Test\obj\Debug\netcoreapp3.1\CPU Test.pdb
+C:\Users\aj200\Documents\GitHub\My-Projects\Completed Projects\CPU Multithreading Example\obj\Debug\netcoreapp3.1\CPU Test.csprojAssemblyReference.cache
+C:\Users\aj200\Documents\GitHub\My-Projects\Completed Projects\CPU Multithreading Example\obj\Debug\netcoreapp3.1\CPU Test.AssemblyInfoInputs.cache
+C:\Users\aj200\Documents\GitHub\My-Projects\Completed Projects\CPU Multithreading Example\obj\Debug\netcoreapp3.1\CPU Test.AssemblyInfo.cs
+C:\Users\aj200\Documents\GitHub\My-Projects\Completed Projects\CPU Multithreading Example\obj\Debug\netcoreapp3.1\CPU Test.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Completed Projects\CPU Multithreading Example\obj\Debug\netcoreapp3.1\CPU Test.pdb

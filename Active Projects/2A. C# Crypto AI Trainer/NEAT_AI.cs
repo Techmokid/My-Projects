@@ -348,6 +348,7 @@ namespace NEAT_AI {
         public bool printTrainingTimes  { get; set; }
         public List<Genome> genomes  { get; set; }
         List<Genome> previousValidGenomes  { get; set; }
+		int maxThreadCount = -1;
 		bool silenceOutput;
 
         //NEAT Variables
@@ -503,7 +504,32 @@ namespace NEAT_AI {
 		
 		public void saveNetwork() { saveNetwork(null); }
 		public void saveNetwork(dataScreen genomeCount) {
-			genomeCount.data = "   Reading SaveStatus"; genomeCount.updateScreen();
+			if (maxThreadCount == -1) {
+				//First get the maximum number of threads that this computers CPU can handle
+				Process cmd = new Process();
+				cmd.StartInfo.FileName = "cmd.exe";
+				cmd.StartInfo.RedirectStandardInput = true;
+				cmd.StartInfo.RedirectStandardOutput = true;
+				cmd.StartInfo.CreateNoWindow = true;
+				cmd.StartInfo.UseShellExecute = false;
+				cmd.Start();
+
+				cmd.StandardInput.WriteLine("echo %NUMBER_OF_PROCESSORS%");
+				cmd.StandardInput.Flush();
+				cmd.StandardInput.Close();
+				cmd.WaitForExit();
+				
+				string result = "";
+				bool triggerNextLine = false;
+				foreach(string i in cmd.StandardOutput.ReadToEnd().Split('\n')) {
+					//Console.WriteLine("Line: " + i);
+					if (triggerNextLine) { result = i; triggerNextLine = false; }
+					if (i.Contains("echo %NUMBER_OF_PROCESSORS%")) { triggerNextLine = true; }
+				}
+				
+				maxThreadCount = int.Parse(result);
+			}
+			
 			using (FileStream fs = File.Create(trainingDataPath + "/SaveData/saveLock.loc")) {}
 			
 			if (!File.Exists(trainingDataPath + "/SaveData/saveStatus.txt")) {
@@ -515,14 +541,15 @@ namespace NEAT_AI {
 			FileInfo saveStatusFile = new FileInfo(trainingDataPath + "/SaveData/saveStatus.txt"); 
 			using (StreamWriter sw = saveStatusFile.CreateText()) { sw.WriteLine("1"); }
 			
-			genomeCount.data = "   Deleting Old Files"; genomeCount.updateScreen();
+			if (genomeCount != null) { genomeCount.data = "   Deleting Old Files"; genomeCount.updateScreen(); }
 			string saveLocation = trainingDataPath + "/SaveData/Saved AI Network 1";
 			while(true) {try {
 				if (Directory.Exists(saveLocation)) { Directory.Delete(saveLocation,true); break; }
 			} catch { Thread.Sleep(500); }}
 			Directory.CreateDirectory(saveLocation);
+			Directory.CreateDirectory(saveLocation + "/Active Genomes");
 			
-			genomeCount.data = "   Writing Network Data"; genomeCount.updateScreen();
+			if (genomeCount != null) { genomeCount.data = "   Writing Network Data"; genomeCount.updateScreen(); }
 			FileInfo fi = new FileInfo(saveLocation + "/Network Readout.txt"); 
 			using (StreamWriter sw = fi.CreateText()) {
 				sw.WriteLine("pop_size:" + pop_size.ToString());
@@ -530,25 +557,71 @@ namespace NEAT_AI {
 				sw.WriteLine("num_outputs:" + num_outputs.ToString());
 			}
 			
-			genomeCount.data = "   "; genomeCount.updateScreen();
+			if (genomeCount != null) { genomeCount.data = "   "; genomeCount.updateScreen(); }
 			DisplayManager.updateDisplays();
-			int genCount = 0;
-			Genome bestFitnessGen = genomes[0];
-			foreach (Genome g in genomes) {
-				genCount++;
-				if (genomeCount != null) {
-					genomeCount.data = "   1:" + genCount.ToString() + "/" + genomes.Count;
-					genomeCount.updateScreen();
+			
+			List<ThreadDataContainer> TDC_List = new List<ThreadDataContainer>();
+			
+			List<string> tempStringList = new List<string>();
+			List<Genome> tempGenomeList = new List<Genome>();
+			foreach(Genome g in genomes) {
+				tempStringList.Add(saveLocation + "/Active Genomes/Genome " + g.ID.ToString());
+				tempGenomeList.Add(g);
+			}
+			
+			bool run = true;
+			int genomeIndex = 0;
+			int currentThreadCount = 0;
+			while(run) {
+				while (currentThreadCount < maxThreadCount) {
+					if(genomeIndex == tempStringList.Count) {
+						run = false;
+						break;
+					}
+					
+					//HERE WE WANT TO ACTUALLY START THE THREAD PROCESS
+					ThreadClass p = new ThreadClass();
+					ThreadDataContainer TDC = new ThreadDataContainer();
+					TDC.threadInputFilepath = tempStringList[genomeIndex];
+					TDC.threadInputGenome = tempGenomeList[genomeIndex];
+					TDC_List.Add(TDC);
+					Thread workerThread2 = new Thread(p.ThreadFunction2);  
+					workerThread2.Start(TDC);
+						
+					currentThreadCount++;
+					genomeIndex++;
+					if (genomeCount != null) { genomeCount.data = "       1:" + genomeIndex + "/" + tempStringList.Count; }
+					if (genomeCount != null) { genomeCount.updateScreen(); }
 				}
 				
-				Directory.CreateDirectory(saveLocation + "/Active Genomes/Genome " + g.ID.ToString());
-				g.saveGenome(saveLocation + "/Active Genomes/Genome " + g.ID.ToString());
-				if (g.fitness > bestFitnessGen.fitness) {
-					bestFitnessGen = g;
+				if (run) {
+					for (int x = 0; x < TDC_List.Count; x++) {
+						if (TDC_List[x].threadCompletionStatus) {
+							TDC_List.RemoveAt(x);
+							currentThreadCount--;
+							x--;
+						}
+					}
+				}
+			}
+			while(TDC_List.Count > 0) {
+				for (int x = 0; x < TDC_List.Count; x++) {
+					if (TDC_List[x].threadCompletionStatus) {
+						TDC_List.RemoveAt(x);
+						currentThreadCount--;
+						x--;
+					}
 				}
 			}
 			
-			genomeCount.data = "   Saving Best Genome"; genomeCount.updateScreen();
+			Genome bestFitnessGen = genomes[0];
+			foreach(Genome i in genomes) {
+				if (i.fitness > bestFitnessGen.fitness) {
+					bestFitnessGen = i;
+				}
+			}
+			
+			if (genomeCount != null) { genomeCount.data = "   Saving Best Genome"; genomeCount.updateScreen(); }
 			Directory.CreateDirectory(saveLocation + "/Best Genome");
 			bestFitnessGen.saveGenome(saveLocation + "/Best Genome");
 			while (true) {
@@ -558,8 +631,9 @@ namespace NEAT_AI {
 				} catch { Thread.Sleep(500); }
 			}
 			
-			genomeCount.data = "   Saving Previous Genomes"; genomeCount.updateScreen();
-			genCount = 0;
+			//Multitask here onwards
+			
+			int genCount = 0;
 			foreach (Genome g in previousValidGenomes) {
 				genCount++;
 				if (genomeCount != null) {
@@ -1026,7 +1100,7 @@ namespace NEAT_AI {
 				if (i.Contains("echo %NUMBER_OF_PROCESSORS%")) { triggerNextLine = true; }
 			}
 			
-			int maxThreadCount = int.Parse(result);
+			maxThreadCount = int.Parse(result);
 			
 			//if (genomes.Count != 0) { throw new Exception("Attempting to load network into pre-existing populated AI"); }
 			genomes = new List<Genome>();
@@ -1207,8 +1281,6 @@ namespace NEAT_AI {
 							}
 						}
 					}
-					
-					
 				}
 			}
 		}
@@ -1241,8 +1313,8 @@ namespace NEAT_AI {
 			return best;
 		}
 		
-		public class ThreadClass {  
-			public void ThreadFunction(object data) {  
+		public class ThreadClass {
+			public void ThreadFunction(object data) {
 				ThreadDataContainer TDC = (ThreadDataContainer)data;
 				
 				string genomePath = TDC.threadInputFilepath;
@@ -1343,11 +1415,19 @@ namespace NEAT_AI {
 					using (FileStream fs = File.Create(filePath)) { fs.Write(info, 0, info.Length); }
 				}
 			} 
+			
+			public void ThreadFunction2(object data) {  
+				ThreadDataContainer TDC = (ThreadDataContainer)data;
+				Directory.CreateDirectory(TDC.threadInputFilepath); 
+				TDC.threadInputGenome.saveGenome(TDC.threadInputFilepath);
+				TDC.threadCompletionStatus = true;
+			}
 		}
 	  
 		public class ThreadDataContainer {  
 			public bool threadCompletionStatus = false;
 			public string threadInputFilepath = "";
+			public Genome threadInputGenome = null;
 			public Genome threadOutput;
 		}
     }
