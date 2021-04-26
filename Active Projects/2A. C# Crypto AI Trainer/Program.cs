@@ -200,6 +200,9 @@ namespace WebAPIClient {
 			AIStatusText3.data =   " Currency:-/-";
 			DisplayManager.updateDisplays();
 			
+			nn.saveNetwork(apiStatusText3);
+			return; //Code-Marker
+			
 			//List of currencies
 			//Each currency has multiple data points
 			//Each data point has id, time, and price

@@ -410,14 +410,16 @@ namespace NEAT_AI {
 			//if (genomes.Count != 0) { throw new Exception("Attempting to load network into pre-existing populated AI"); }
 			genomes = new List<Genome>();
 			
+			int saveStatus = 0;
 			string networkDataPath = trainingDataPath + "/SaveData/Saved AI Network 1";
-			StreamReader file = new StreamReader(trainingDataPath + "/SaveData/saveStatus.txt");
-            int saveStatus = int.Parse(file.ReadLine());
-			if ((saveStatus == 0) || (saveStatus == 2)) {} else if (saveStatus == 1) {
-				networkDataPath = trainingDataPath + "/SaveData/Saved AI Network 2";
-			} else {
-				throw new Exception("Error reading from NEAT AI save status file!");
-			} //Code-Marker
+			using(StreamReader file = new StreamReader(trainingDataPath + "/SaveData/saveStatus.txt")) {
+				saveStatus = int.Parse(file.ReadLine());
+				if ((saveStatus == 0) || (saveStatus == 2)) {} else if (saveStatus == 1) {
+					networkDataPath = trainingDataPath + "/SaveData/Saved AI Network 2";
+				} else {
+					throw new Exception("Error reading from NEAT AI save status file!");
+				} //Code-Marker
+			}
 			
 			StreamReader networkReadout = new StreamReader(networkDataPath + "/Network Readout.txt");
 			pop_size = (int)forcedStringToFloat(networkReadout.ReadLine());
@@ -501,6 +503,7 @@ namespace NEAT_AI {
 		
 		public void saveNetwork() { saveNetwork(null); }
 		public void saveNetwork(dataScreen genomeCount) {
+			genomeCount.data = "   Reading SaveStatus"; genomeCount.updateScreen();
 			using (FileStream fs = File.Create(trainingDataPath + "/SaveData/saveLock.loc")) {}
 			
 			if (!File.Exists(trainingDataPath + "/SaveData/saveStatus.txt")) {
@@ -512,12 +515,14 @@ namespace NEAT_AI {
 			FileInfo saveStatusFile = new FileInfo(trainingDataPath + "/SaveData/saveStatus.txt"); 
 			using (StreamWriter sw = saveStatusFile.CreateText()) { sw.WriteLine("1"); }
 			
+			genomeCount.data = "   Deleting Old Files"; genomeCount.updateScreen();
 			string saveLocation = trainingDataPath + "/SaveData/Saved AI Network 1";
 			while(true) {try {
 				if (Directory.Exists(saveLocation)) { Directory.Delete(saveLocation,true); break; }
 			} catch { Thread.Sleep(500); }}
 			Directory.CreateDirectory(saveLocation);
 			
+			genomeCount.data = "   Writing Network Data"; genomeCount.updateScreen();
 			FileInfo fi = new FileInfo(saveLocation + "/Network Readout.txt"); 
 			using (StreamWriter sw = fi.CreateText()) {
 				sw.WriteLine("pop_size:" + pop_size.ToString());
@@ -525,6 +530,8 @@ namespace NEAT_AI {
 				sw.WriteLine("num_outputs:" + num_outputs.ToString());
 			}
 			
+			genomeCount.data = "   "; genomeCount.updateScreen();
+			DisplayManager.updateDisplays();
 			int genCount = 0;
 			Genome bestFitnessGen = genomes[0];
 			foreach (Genome g in genomes) {
@@ -541,6 +548,7 @@ namespace NEAT_AI {
 				}
 			}
 			
+			genomeCount.data = "   Saving Best Genome"; genomeCount.updateScreen();
 			Directory.CreateDirectory(saveLocation + "/Best Genome");
 			bestFitnessGen.saveGenome(saveLocation + "/Best Genome");
 			while (true) {
@@ -550,6 +558,7 @@ namespace NEAT_AI {
 				} catch { Thread.Sleep(500); }
 			}
 			
+			genomeCount.data = "   Saving Previous Genomes"; genomeCount.updateScreen();
 			genCount = 0;
 			foreach (Genome g in previousValidGenomes) {
 				genCount++;
@@ -1022,14 +1031,16 @@ namespace NEAT_AI {
 			//if (genomes.Count != 0) { throw new Exception("Attempting to load network into pre-existing populated AI"); }
 			genomes = new List<Genome>();
 			
+			int saveStatus = 0;
 			string networkDataPath = trainingDataPath + "/SaveData/Saved AI Network 1";
-			StreamReader file = new StreamReader(trainingDataPath + "/SaveData/saveStatus.txt");
-            int saveStatus = int.Parse(file.ReadLine());
-			if ((saveStatus == 0) || (saveStatus == 2)) {} else if (saveStatus == 1) {
-				networkDataPath = trainingDataPath + "/SaveData/Saved AI Network 2";
-			} else {
-				throw new Exception("Error reading from NEAT AI save status file!");
-			} //Code-Marker
+			using (StreamReader file = new StreamReader(trainingDataPath + "/SaveData/saveStatus.txt")) {
+				saveStatus = int.Parse(file.ReadLine());
+				if ((saveStatus == 0) || (saveStatus == 2)) {} else if (saveStatus == 1) {
+					networkDataPath = trainingDataPath + "/SaveData/Saved AI Network 2";
+				} else {
+					throw new Exception("Error reading from NEAT AI save status file!");
+				} //Code-Marker
+			}
 			
 			StreamReader networkReadout = new StreamReader(networkDataPath + "/Network Readout.txt");
 			pop_size = (int)forcedStringToFloat(networkReadout.ReadLine());
