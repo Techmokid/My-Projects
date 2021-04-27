@@ -504,8 +504,8 @@ namespace NEAT_AI {
 		
 		public void saveNetwork() { saveNetwork(null); }
 		public void saveNetwork(dataScreen genomeCount) {
+			//First get the maximum number of threads that this computers CPU can handle if we haven't already
 			if (maxThreadCount == -1) {
-				//First get the maximum number of threads that this computers CPU can handle
 				Process cmd = new Process();
 				cmd.StartInfo.FileName = "cmd.exe";
 				cmd.StartInfo.RedirectStandardInput = true;
@@ -530,6 +530,7 @@ namespace NEAT_AI {
 				maxThreadCount = int.Parse(result);
 			}
 			
+			//Create the save lock file so that the other program doesn't try to read while we are saving
 			using (FileStream fs = File.Create(trainingDataPath + "/SaveData/saveLock.loc")) {}
 			
 			if (!File.Exists(trainingDataPath + "/SaveData/saveStatus.txt")) {
@@ -537,11 +538,13 @@ namespace NEAT_AI {
 				using (StreamWriter sw = saveStatusFileTemp.CreateText()) { sw.WriteLine("0"); }
 			}
 			
-			//First Pass for corruption detection
+			//Set the save status to 1 because we are now writing to the first network file
 			FileInfo saveStatusFile = new FileInfo(trainingDataPath + "/SaveData/saveStatus.txt"); 
 			using (StreamWriter sw = saveStatusFile.CreateText()) { sw.WriteLine("1"); }
 			
 			if (genomeCount != null) { genomeCount.data = "   Deleting Old Files"; genomeCount.updateScreen(); }
+			
+			//Clear and recreate the first network file
 			string saveLocation = trainingDataPath + "/SaveData/Saved AI Network 1";
 			while(true) {try {
 				if (Directory.Exists(saveLocation)) { Directory.Delete(saveLocation,true); break; }
@@ -550,6 +553,8 @@ namespace NEAT_AI {
 			Directory.CreateDirectory(saveLocation + "/Active Genomes");
 			
 			if (genomeCount != null) { genomeCount.data = "   Writing Network Data"; genomeCount.updateScreen(); }
+			
+			//Create the network readout
 			FileInfo fi = new FileInfo(saveLocation + "/Network Readout.txt"); 
 			using (StreamWriter sw = fi.CreateText()) {
 				sw.WriteLine("pop_size:" + pop_size.ToString());
@@ -557,9 +562,9 @@ namespace NEAT_AI {
 				sw.WriteLine("num_outputs:" + num_outputs.ToString());
 			}
 			
-			if (genomeCount != null) { genomeCount.data = "   "; genomeCount.updateScreen(); }
-			DisplayManager.updateDisplays();
+			if (genomeCount != null) { genomeCount.data = "   "; DisplayManager.updateDisplays(); }
 			
+			//Setup the first Thread Data Container list
 			List<ThreadDataContainer> TDC_List = new List<ThreadDataContainer>();
 			
 			List<string> tempStringList = new List<string>();
@@ -569,6 +574,7 @@ namespace NEAT_AI {
 				tempGenomeList.Add(g);
 			}
 			
+			//Multithread the save process for the active genomes in network 1
 			bool run = true;
 			int genomeIndex = 0;
 			int currentThreadCount = 0;
@@ -614,6 +620,7 @@ namespace NEAT_AI {
 				}
 			}
 			
+			//Get the best genome out of all genomes
 			Genome bestFitnessGen = genomes[0];
 			foreach(Genome i in genomes) {
 				if (i.fitness > bestFitnessGen.fitness) {
@@ -621,6 +628,7 @@ namespace NEAT_AI {
 				}
 			}
 			
+			//Save the best performing genome in a seperate file
 			if (genomeCount != null) { genomeCount.data = "   Saving Best Genome"; genomeCount.updateScreen(); }
 			Directory.CreateDirectory(saveLocation + "/Best Genome");
 			bestFitnessGen.saveGenome(saveLocation + "/Best Genome");
@@ -631,30 +639,74 @@ namespace NEAT_AI {
 				} catch { Thread.Sleep(500); }
 			}
 			
-			//Multitask here onwards
+			//Reset the Thread Data Container list
+			TDC_List = new List<ThreadDataContainer>();
 			
-			int genCount = 0;
-			foreach (Genome g in previousValidGenomes) {
-				genCount++;
-				if (genomeCount != null) {
-					genomeCount.data = "   2:" + genCount.ToString() + "/" + genomes.Count;
-					genomeCount.updateScreen();
-				}
-				
-				Directory.CreateDirectory(saveLocation + "/Previous Genomes/Genome " + g.ID.ToString());
-				g.saveGenome(saveLocation + "/Previous Genomes/Genome " + g.ID.ToString());
+			Directory.CreateDirectory(saveLocation + "/Previous Genomes");
+			tempStringList = new List<string>();
+			tempGenomeList = new List<Genome>();
+			foreach(Genome g in previousValidGenomes) {
+				tempStringList.Add(saveLocation + "/Previous Genomes/Genome " + g.ID.ToString());
+				tempGenomeList.Add(g);
 			}
 			
-			Console.WriteLine("COMPLETED-TASK");
-			return;
+			if (genomeCount != null) { genomeCount.data = "   "; DisplayManager.updateDisplays(); }
 			
-			//Second pass 
+			//Multithread the save process for the previous genomes in network 1
+			run = true;
+			genomeIndex = 0;
+			currentThreadCount = 0;
+			while(run) {
+				while (currentThreadCount < maxThreadCount) {
+					if(genomeIndex == tempStringList.Count) {
+						run = false;
+						break;
+					}
+					
+					//HERE WE WANT TO ACTUALLY START THE THREAD PROCESS
+					ThreadClass p = new ThreadClass();
+					ThreadDataContainer TDC = new ThreadDataContainer();
+					TDC.threadInputFilepath = tempStringList[genomeIndex];
+					TDC.threadInputGenome = tempGenomeList[genomeIndex];
+					TDC_List.Add(TDC);
+					Thread workerThread2 = new Thread(p.ThreadFunction2);  
+					workerThread2.Start(TDC);
+						
+					currentThreadCount++;
+					genomeIndex++;
+					if (genomeCount != null) { genomeCount.data = "       2:" + genomeIndex + "/" + tempStringList.Count; }
+					if (genomeCount != null) { genomeCount.updateScreen(); }
+				}
+				
+				if (run) {
+					for (int x = 0; x < TDC_List.Count; x++) {
+						if (TDC_List[x].threadCompletionStatus) {
+							TDC_List.RemoveAt(x);
+							currentThreadCount--;
+							x--;
+						}
+					}
+				}
+			}
+			while(TDC_List.Count > 0) {
+				for (int x = 0; x < TDC_List.Count; x++) {
+					if (TDC_List[x].threadCompletionStatus) {
+						TDC_List.RemoveAt(x);
+						currentThreadCount--;
+						x--;
+					}
+				}
+			}
+			
+			//Set the save status to 2 ready for saving to the backup network file
 			using (StreamWriter sw = saveStatusFile.CreateText()) { sw.WriteLine("2"); }
 			
+			//Set the network file to "Save AI Network 2"
 			saveLocation = trainingDataPath + "/SaveData/Saved AI Network 2";
 			if (Directory.Exists(saveLocation)) { Directory.Delete(saveLocation,true); }
 			Directory.CreateDirectory(saveLocation);
 			
+			//Setup the network readout file
 			fi = new FileInfo(saveLocation + "/Network Readout.txt"); 
 			using (StreamWriter sw = fi.CreateText()) {
 				sw.WriteLine("pop_size:" + pop_size.ToString());
@@ -662,35 +714,126 @@ namespace NEAT_AI {
 				sw.WriteLine("num_outputs:" + num_outputs.ToString());
 			}
 			
-			genCount = 0;
-			bestFitnessGen = genomes[0];
-			foreach (Genome g in genomes) {
-				genCount++;
-				if (genomeCount != null) {
-					genomeCount.data = "   3:" + genCount.ToString() + "/" + genomes.Count;
-					genomeCount.updateScreen();
+			Directory.CreateDirectory(saveLocation + "/Active Genomes");
+			
+			//Reset the Thread Container List
+			TDC_List = new List<ThreadDataContainer>();
+			
+			tempStringList = new List<string>();
+			tempGenomeList = new List<Genome>();
+			foreach(Genome g in genomes) {
+				tempStringList.Add(saveLocation + "/Active Genomes/Genome " + g.ID.ToString());
+				tempGenomeList.Add(g);
+			}
+			
+			if (genomeCount != null) { genomeCount.data = "   "; DisplayManager.updateDisplays(); }
+			
+			//Multithread the save process for the active genomes in network 2
+			run = true;
+			genomeIndex = 0;
+			currentThreadCount = 0;
+			while(run) {
+				while (currentThreadCount < maxThreadCount) {
+					if(genomeIndex == tempStringList.Count) {
+						run = false;
+						break;
+					}
+					
+					//HERE WE WANT TO ACTUALLY START THE THREAD PROCESS
+					ThreadClass p = new ThreadClass();
+					ThreadDataContainer TDC = new ThreadDataContainer();
+					TDC.threadInputFilepath = tempStringList[genomeIndex];
+					TDC.threadInputGenome = tempGenomeList[genomeIndex];
+					TDC_List.Add(TDC);
+					Thread workerThread2 = new Thread(p.ThreadFunction2);  
+					workerThread2.Start(TDC);
+						
+					currentThreadCount++;
+					genomeIndex++;
+					if (genomeCount != null) { genomeCount.data = "       3:" + genomeIndex + "/" + tempStringList.Count; }
+					if (genomeCount != null) { genomeCount.updateScreen(); }
 				}
 				
-				Directory.CreateDirectory(saveLocation + "/Active Genomes/Genome " + g.ID.ToString());
-				g.saveGenome(saveLocation + "/Active Genomes/Genome " + g.ID.ToString());
-				if (g.fitness > bestFitnessGen.fitness) { bestFitnessGen = g; }
-			}
-			
-			Directory.CreateDirectory(saveLocation + "/Best Genome");
-			bestFitnessGen.saveGenome(saveLocation + "/Best Genome");
-			
-			genCount = 0;
-			foreach (Genome g in previousValidGenomes) {
-				genCount++;
-				if (genomeCount != null) {
-					genomeCount.data = "   4:" + genCount.ToString() + "/" + genomes.Count;
-					genomeCount.updateScreen();
+				if (run) {
+					for (int x = 0; x < TDC_List.Count; x++) {
+						if (TDC_List[x].threadCompletionStatus) {
+							TDC_List.RemoveAt(x);
+							currentThreadCount--;
+							x--;
+						}
+					}
 				}
-				Directory.CreateDirectory(saveLocation + "/Previous Genomes/Genome " + g.ID.ToString());
-				g.saveGenome(saveLocation + "/Previous Genomes/Genome " + g.ID.ToString());
+			}
+			while(TDC_List.Count > 0) {
+				for (int x = 0; x < TDC_List.Count; x++) {
+					if (TDC_List[x].threadCompletionStatus) {
+						TDC_List.RemoveAt(x);
+						currentThreadCount--;
+						x--;
+					}
+				}
 			}
 			
-			//Finish up
+			//Reset the Thread Data Container
+			TDC_List = new List<ThreadDataContainer>();
+			
+			Directory.CreateDirectory(saveLocation + "/Previous Genomes");
+			tempStringList = new List<string>();
+			tempGenomeList = new List<Genome>();
+			foreach(Genome g in previousValidGenomes) {
+				tempStringList.Add(saveLocation + "/Previous Genomes/Genome " + g.ID.ToString());
+				tempGenomeList.Add(g);
+			}
+			
+			if (genomeCount != null) { genomeCount.data = "   "; DisplayManager.updateDisplays(); }
+			
+			//Multithread the save process for the previous genomes in network 2
+			run = true;
+			genomeIndex = 0;
+			currentThreadCount = 0;
+			while(run) {
+				while (currentThreadCount < maxThreadCount) {
+					if(genomeIndex == tempStringList.Count) {
+						run = false;
+						break;
+					}
+					
+					//HERE WE WANT TO ACTUALLY START THE THREAD PROCESS
+					ThreadClass p = new ThreadClass();
+					ThreadDataContainer TDC = new ThreadDataContainer();
+					TDC.threadInputFilepath = tempStringList[genomeIndex];
+					TDC.threadInputGenome = tempGenomeList[genomeIndex];
+					TDC_List.Add(TDC);
+					Thread workerThread2 = new Thread(p.ThreadFunction2);  
+					workerThread2.Start(TDC);
+						
+					currentThreadCount++;
+					genomeIndex++;
+					if (genomeCount != null) { genomeCount.data = "       4:" + genomeIndex + "/" + tempStringList.Count; }
+					if (genomeCount != null) { genomeCount.updateScreen(); }
+				}
+				
+				if (run) {
+					for (int x = 0; x < TDC_List.Count; x++) {
+						if (TDC_List[x].threadCompletionStatus) {
+							TDC_List.RemoveAt(x);
+							currentThreadCount--;
+							x--;
+						}
+					}
+				}
+			}
+			while(TDC_List.Count > 0) {
+				for (int x = 0; x < TDC_List.Count; x++) {
+					if (TDC_List[x].threadCompletionStatus) {
+						TDC_List.RemoveAt(x);
+						currentThreadCount--;
+						x--;
+					}
+				}
+			}
+			
+			//Finish up by resetting the save status to "0"
 			using (StreamWriter sw = saveStatusFile.CreateText()) { sw.WriteLine("0"); }
 		}
 		

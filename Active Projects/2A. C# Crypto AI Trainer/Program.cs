@@ -184,9 +184,9 @@ namespace WebAPIClient {
 			Console.SetCursorPosition(0,25);
 			Console.WriteLine("NEAT AI Direct Serial Output:");
 			Console.WriteLine();
-			nn = new Network(filePath,false,false,true);
+			nn = new Network(filePath,false,true,true);
 			
-			nn.loadNetwork(AIStatusText2,AIStatusText3);
+			//nn.loadNetwork(AIStatusText2,AIStatusText3);
 			NEAT_AI.Random.n = nn;
 			
 			AIStatusText1.color = ConsoleColor.Magenta;
