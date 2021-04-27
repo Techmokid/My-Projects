@@ -15,8 +15,8 @@ namespace NEAT_AI {
 		public static bool once = true;
 		public static List<string> msg = new List<string>();
         public static System.Random rand;
-		public static ulong currentNodeIndex;
-		public static ulong currentGeneIndex;
+		public static ulong currentNodeIndex = 0;
+		public static ulong currentGeneIndex = 0;
 		public static Network n = null;
 		
         public static void SetupRandom()
@@ -210,9 +210,9 @@ namespace NEAT_AI {
 			
 			FileInfo fi = new FileInfo(saveLocation + "/Genome Readout.txt"); 
 			using (StreamWriter sw = fi.CreateText()) {
-				sw.WriteLine(" - ID:" + ID.ToString());
-				sw.WriteLine(" - fitness:" + fitness.ToString());
-				sw.WriteLine(" - generationsSurvived:" + generationsSurvived.ToString());
+				sw.WriteLine("ID:" + ID.ToString());
+				sw.WriteLine("fitness:" + fitness.ToString());
+				sw.WriteLine("generationsSurvived:" + generationsSurvived.ToString());
 			}
 		}
 		
@@ -744,6 +744,7 @@ namespace NEAT_AI {
 			using (StreamWriter sw = saveStatusFile.CreateText()) { sw.WriteLine("2"); }
 			
 			//Set the network file to "Save AI Network 2"
+			if (genomeCount != null) { genomeCount.data = " Deleting Old Files 2"; genomeCount.updateScreen(); }
 			saveLocation = trainingDataPath + "/SaveData/Saved AI Network 2";
 			if (Directory.Exists(saveLocation)) { Directory.Delete(saveLocation,true); }
 			Directory.CreateDirectory(saveLocation);
@@ -1418,8 +1419,8 @@ namespace NEAT_AI {
 				}
 			}
 			
-			Console.SetCursorPosition(0,40);
-			Console.WriteLine("Population: " + genomes.Count.ToString() + "\t\t\tExpected: " + pop_size.ToString());
+			//Console.SetCursorPosition(0,40);
+			//Console.WriteLine("Population: " + genomes.Count.ToString() + "\t\t\tExpected: " + pop_size.ToString());
 			//Now that the network is fully loaded, just check that the population values add up
 			if (pop_size != genomes.Count) {
 				throw new Exception("Invalid input network. Population size does not match internal AI settings");
@@ -1442,8 +1443,8 @@ namespace NEAT_AI {
 			Random.currentGeneIndex = biggestRandomGenomeVal + 1;
 			Random.currentNodeIndex = biggestRandomNodeVal + 1;
 			
-			Console.WriteLine("Gene Index:" + biggestRandomGenomeVal.ToString());
-			Console.WriteLine("Node Index:" + biggestRandomNodeVal.ToString());
+			//Console.WriteLine("Gene Index:" + biggestRandomGenomeVal.ToString());
+			//Console.WriteLine("Node Index:" + biggestRandomNodeVal.ToString());
 			
 			checkGenomeStability();
 		}
