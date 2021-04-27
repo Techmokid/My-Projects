@@ -78,27 +78,73 @@ namespace NEAT_AI {
 			//algorithm_type = node_algorithm_types[Random.rand.Next(node_algorithm_types.Count)];
         }
 		
-		public string saveNode() {
-			string result = "";
-			
-			result += ("ID:" + ID.ToString());
-			result += ("node_type:" + node_type.ToString());
-			//sw.WriteLine("algorithm_type:" + algorithm_type.ToString());
-			result += ("upperTriggerThreshold:" + upperTriggerThreshold.ToString());
-			result += ("lowerTriggerThreshold:" + lowerTriggerThreshold.ToString());
-			
-			result += ("Connected Nodes:{");
+		//public string saveNode() {
+		//	string result = "";
+		//	
+		//	result += ("ID:" + ID.ToString());
+		//	result += ("node_type:" + node_type.ToString());
+		//	//sw.WriteLine("algorithm_type:" + algorithm_type.ToString());
+		//	result += ("upperTriggerThreshold:" + upperTriggerThreshold.ToString());
+		//	result += ("lowerTriggerThreshold:" + lowerTriggerThreshold.ToString());
+		//	
+		//	result += ("Connected Nodes:{");
+		//
+		//	for(int i = 0; i < connected_nodes.Count; i++) {
+		////		string temp = "\tID:" + connected_nodes[i].ID.ToString() + "|";
+		//		temp += "\tWeight:" + connection_weights[i].ToString();
+		//		
+		//		if (i != connected_nodes.Count - 1) { result += (temp + ","); } else { result += (temp); }
+		//	}
+		//	
+		//	result += ("}");
+		//	
+		//	return result;
+		//}
 		
-			for(int i = 0; i < connected_nodes.Count; i++) {
-				string temp = "\tID:" + connected_nodes[i].ID.ToString() + "|";
-				temp += "\tWeight:" + connection_weights[i].ToString();
-				
-				if (i != connected_nodes.Count - 1) { result += (temp + ","); } else { result += (temp); }
+		public void saveNode(string saveLocation) {
+			//FileInfo fi = new FileInfo(saveLocation); 
+			//using (StreamWriter sw = fi.CreateText()) {
+			//	sw.WriteLine("ID:" + ID.ToString());
+			//	sw.WriteLine("node_type:" + node_type.ToString());
+			//	//sw.WriteLine("algorithm_type:" + algorithm_type.ToString());
+			//	sw.WriteLine("upperTriggerThreshold:" + upperTriggerThreshold.ToString());
+			//	sw.WriteLine("lowerTriggerThreshold:" + lowerTriggerThreshold.ToString());
+			//	
+			//	sw.WriteLine("Connected Nodes:{");
+			//
+			//	for(int i = 0; i < connected_nodes.Count; i++) {
+			//		string temp = "\tID:" + connected_nodes[i].ID.ToString() + "|";
+			//		temp += "\tWeight:" + connection_weights[i].ToString();
+			//	}
+			//}
+			
+			while (true) {
+				try {
+					FileInfo fi = new FileInfo(saveLocation); 
+					using (StreamWriter sw = fi.CreateText()) {
+						sw.WriteLine("ID:" + ID.ToString());
+						sw.WriteLine("node_type:" + node_type.ToString());
+						//sw.WriteLine("algorithm_type:" + algorithm_type.ToString());
+						sw.WriteLine("upperTriggerThreshold:" + upperTriggerThreshold.ToString());
+						sw.WriteLine("lowerTriggerThreshold:" + lowerTriggerThreshold.ToString());
+						
+						sw.WriteLine("Connected Nodes:{");
+						
+						for(int i = 0; i < connected_nodes.Count; i++) {
+							string temp = "\tID:" + connected_nodes[i].ID.ToString() + "|";
+							temp += "\tWeight:" + connection_weights[i].ToString();
+							if (i != connected_nodes.Count - 1) { sw.WriteLine(temp + ","); } else { sw.WriteLine(temp); }
+							
+						}
+						
+						sw.WriteLine("}");
+					}
+					
+					break;
+				} catch {
+					if (File.Exists(saveLocation)) { File.Delete(saveLocation); }
+				}
 			}
-			
-			result += ("}");
-			
-			return result;
 		}
 		
         public float GetNodeOutput() { return GetNodeOutput(new List<Node>()); }
@@ -154,13 +200,12 @@ namespace NEAT_AI {
 		}
 		
 		public void saveGenome(string saveLocation) {
-			string genomeReadout = "";
 			foreach(Node n in genome) {
 				//if (File.Exists(saveLocation + "/Node ID " + n.ID + ".txt")) {
 				//	throw new Exception("NODE ID CONFLICT");
 				//}
 				
-				genomeReadout += n.saveNode() + "+";
+				n.saveNode(saveLocation + "/Node ID " + n.ID + ".txt");
 			}
 			
 			FileInfo fi = new FileInfo(saveLocation + "/Genome Readout.txt"); 
@@ -168,7 +213,6 @@ namespace NEAT_AI {
 				sw.WriteLine(" - ID:" + ID.ToString());
 				sw.WriteLine(" - fitness:" + fitness.ToString());
 				sw.WriteLine(" - generationsSurvived:" + generationsSurvived.ToString());
-				sw.WriteLine("\n+\n" + genomeReadout);
 			}
 		}
 		
