@@ -590,9 +590,7 @@ namespace NEAT_AI {
 			
 			//Clear and recreate the first network file
 			string saveLocation = trainingDataPath + "/SaveData/Saved AI Network 1";
-			while(true) {try {
-				if (Directory.Exists(saveLocation)) { Directory.Delete(saveLocation,true); break; }
-			} catch { Thread.Sleep(500); }}
+			if (Directory.Exists(trainingDataPath)) { Directory.Delete(saveLocation,true); }
 			Directory.CreateDirectory(saveLocation);
 			Directory.CreateDirectory(saveLocation + "/Active Genomes");
 			

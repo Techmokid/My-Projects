@@ -184,9 +184,15 @@ namespace WebAPIClient {
 			Console.SetCursorPosition(0,25);
 			Console.WriteLine("NEAT AI Direct Serial Output:");
 			Console.WriteLine();
-			nn = new Network(filePath,false,true,true);
 			
-			//nn.loadNetwork(AIStatusText2,AIStatusText3);
+			Stopwatch sw = new Stopwatch(); sw.Start();
+			nn = new Network(filePath,false,false,true);
+			sw.Stop(); double NetworkPopulationTime = (double)sw.Elapsed.Milliseconds;
+			
+			sw = new Stopwatch(); sw.Start();
+			nn.loadNetwork(AIStatusText2,AIStatusText3);
+			sw.Stop(); double NetworkLoadTime = (double)sw.Elapsed.Milliseconds;
+			
 			NEAT_AI.Random.n = nn;
 			
 			AIStatusText1.color = ConsoleColor.Magenta;
@@ -200,7 +206,14 @@ namespace WebAPIClient {
 			AIStatusText3.data =   " Currency:-/-";
 			DisplayManager.updateDisplays();
 			
+			sw = new Stopwatch(); sw.Start();
 			nn.saveNetwork(apiStatusText3);
+			sw.Stop(); double NetworkSaveTime = (double)sw.Elapsed.Milliseconds;
+			
+			Console.SetCursorPosition(0,30);
+			Console.WriteLine("Population Timer: " + (NetworkPopulationTime / 1000).ToString());
+			Console.WriteLine("Load Timer:       " + (NetworkLoadTime / 1000).ToString());
+			Console.WriteLine("Save Timer:       " + (NetworkSaveTime / 1000).ToString());
 			return; //Code-Marker
 			
 			//List of currencies
