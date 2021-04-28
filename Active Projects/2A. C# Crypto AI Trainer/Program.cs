@@ -13,11 +13,10 @@ using NEAT_AI;
 using Display;
 using Binance_API;
 using PointAnalysis;
-using Debugging;
 
 namespace WebAPIClient {
 	class Program {
-		static string filePath = "C:/Users/aj200/Desktop/Backups";
+		static string filePath = "F:";
 		static string API_Time_Enum = "1h";
 		static float tax_percentage = 0.1f;
 		static float startingWalletValue = 5000;
@@ -177,7 +176,6 @@ namespace WebAPIClient {
 			histStatusText3.color = ConsoleColor.Yellow;
 			DisplayManager.updateDisplays();
 			
-			DebugFile.Create(filePath + "/debug.log");
 			AIStatusText2.data =   "";
 			DisplayManager.updateDisplays();
 			
@@ -185,13 +183,8 @@ namespace WebAPIClient {
 			Console.WriteLine("NEAT AI Direct Serial Output:");
 			Console.WriteLine();
 			
-			Stopwatch sw1 = new Stopwatch(); sw1.Start();
 			nn = new Network(filePath,false,true,true);
-			sw1.Stop(); TimeSpan NetworkPopulationTime = sw1.Elapsed;
-			
-			Stopwatch sw2 = new Stopwatch(); sw2.Start();
-			nn.loadNetwork(AIStatusText2,AIStatusText3);
-			sw2.Stop(); TimeSpan NetworkLoadTime = sw2.Elapsed;
+			//nn.loadNetwork(AIStatusText2,AIStatusText3);
 			
 			NEAT_AI.Random.n = nn;
 			
@@ -205,16 +198,6 @@ namespace WebAPIClient {
 			AIMinFitnessText2.color = ConsoleColor.Magenta;
 			AIStatusText3.data =   " Currency:-/-";
 			DisplayManager.updateDisplays();
-			
-			Stopwatch sw3 = new Stopwatch(); sw3.Start();
-			nn.saveNetwork(apiStatusText3);
-			sw3.Stop(); TimeSpan NetworkSaveTime = sw3.Elapsed;
-			
-			Console.SetCursorPosition(0,30);
-			Console.WriteLine("Population Timer: " + NetworkPopulationTime.ToString());
-			Console.WriteLine("Load Timer:       " + NetworkLoadTime.ToString());
-			Console.WriteLine("Save Timer:       " + NetworkSaveTime.ToString());
-			return; //Code-Marker
 			
 			//List of currencies
 			//Each currency has multiple data points
@@ -231,32 +214,22 @@ namespace WebAPIClient {
 					PointAnalysis.currencyData parentData = new currencyData();
 					parentData.currencyName = currencies[currencyIndex];
 					
-					DebugFile.WriteLine("1");
-					
 					histStatusText3.data = "       " + (currencyIndex + 1).ToString() + "/" + currencies.Count.ToString();
 					DisplayManager.updateDisplays(false);
 					Console.SetCursorPosition(0,0);
 					
-					DebugFile.WriteLine("2");
-					
 					JsonElement obj2 = JsonSerializer.Deserialize<JsonElement>(API.getKlines(currencies[currencyIndex],API_Time_Enum));
-					DebugFile.WriteLine("3");
 					
 					for (int i = 0; i < obj2.GetArrayLength(); i++) {
 						DisplayManager.resizeCheck();
 						
-						DebugFile.WriteLine("4");
 						JsonElement obj3 = JsonSerializer.Deserialize<JsonElement>(obj2[i].ToString());
-						DebugFile.WriteLine("5");
 						
 						dataPoint temp = new dataPoint();
 						temp.price 	= obj3[1].ToString();
 						temp.time 	= obj3[0].ToString();
 						parentData.currencyPoints.Add(temp);
-						DebugFile.WriteLine("6");
 					}
-					
-					DebugFile.WriteLine("7");
 					
 					currencyReadouts.Add(parentData);
 				}

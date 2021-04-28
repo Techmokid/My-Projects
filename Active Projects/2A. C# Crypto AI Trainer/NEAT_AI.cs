@@ -574,6 +574,8 @@ namespace NEAT_AI {
 				maxThreadCount = int.Parse(result);
 			}
 			
+			while(File.Exists(trainingDataPath + "/SaveData/loadLock.loc")) { Thread.Sleep(200); }
+			
 			//Create the save lock file so that the other program doesn't try to read while we are saving
 			using (FileStream fs = File.Create(trainingDataPath + "/SaveData/saveLock.loc")) {}
 			
@@ -1512,24 +1514,13 @@ namespace NEAT_AI {
 				tempGenome.generationsSurvived = (int)forcedStringToFloat(genomeReadout.ReadLine());
 				
 				//Iterate over all nodes
-				string msg = "Genome Path: " + genomePath + "\n";
-				bool consoleMaster = false;
 				string[] nodesPath = Directory.GetFiles(genomePath);
-				if (Random.once) {
-					Random.once = false;
-					consoleMaster = true;
-				}
-				
-				msg += "Nodes Paths: \n";
 				foreach(string nodePath in nodesPath) {
 					if (nodePath.Replace("\\","/") != genomePath.Replace("\\","/") + "/Genome Readout.txt") {
-						msg += " - " + nodePath + "\n";
-						
 						StreamReader nodeData = new StreamReader(nodePath);
 						
 						//Find node with that matching ID. If it does not exist, create it
 						int ID = (int)forcedStringToFloat(nodeData.ReadLine());
-						msg += "   - ID:" + ID.ToString() + "\n";
 						Node tempNode = null;
 						for (int index = 0; index < tempGenome.genome.Count; index++) {
 							if (tempGenome.genome[index].ID == (ulong)ID) {
@@ -1547,12 +1538,9 @@ namespace NEAT_AI {
 						// Set the node type, and threshold values
 						string tempStr = nodeData.ReadLine();
 						tempNode.node_type = tempStr.Substring(tempStr.LastIndexOf(":") + 1,tempStr.Length - tempStr.LastIndexOf(":") - 1);
-						msg += "   - node_type:" + tempNode.node_type + "\n";
 						
 						tempNode.upperTriggerThreshold = (int)forcedStringToFloat(nodeData.ReadLine());
 						tempNode.lowerTriggerThreshold = (int)forcedStringToFloat(nodeData.ReadLine());
-						msg += "   - upper trig thres:" + tempNode.upperTriggerThreshold + "\n";
-						msg += "   - lower trig thres:" + tempNode.lowerTriggerThreshold + "\n";
 						
 						if (tempNode.node_type != "input") {
 							nodeData.ReadLine();
@@ -1591,15 +1579,6 @@ namespace NEAT_AI {
 				
 				TDC.threadOutput = tempGenome;
 				TDC.threadCompletionStatus = true;
-				
-				if(consoleMaster) {
-					msg += "\n\nGenome Output: " + tempGenome.GetOutputNodes().Count;
-					string filePath = "C:/Users/aj200/Documents/GitHub/My-Projects/Active Projects/2A. C# Crypto AI Trainer/debug.txt";
-					if (File.Exists(filePath)) { File.Delete(filePath); }
-					
-					byte[] info = new UTF8Encoding(true).GetBytes(msg);
-					using (FileStream fs = File.Create(filePath)) { fs.Write(info, 0, info.Length); }
-				}
 			} 
 			
 			public void ThreadFunction2(object data) {  

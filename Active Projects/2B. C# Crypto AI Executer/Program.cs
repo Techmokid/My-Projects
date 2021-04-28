@@ -156,7 +156,7 @@ namespace WebAPIClient {
 			DisplayManager.updateDisplays();
 			
 			Console.SetCursorPosition(0,25);
-			nn = new Network("C:/Users/aj200/Desktop/Backups",false,false,true);
+			nn = new Network("F:",false,false,true);
 			
 			AIStatusText1.color = ConsoleColor.Green;
 			AIStatusText2.color = ConsoleColor.Green;
@@ -169,7 +169,6 @@ namespace WebAPIClient {
 			
 			DebugFile.Create("debugging.txt");
 			while (true) {
-				DebugFile.WriteLine("-----------------------------------------------------------------------------------------------");
 				Genome activeAIGenome = nn.loadBestGenome();
 				
 				List<string> currencies = retrieveAllCurrencySymbols();
@@ -194,11 +193,10 @@ namespace WebAPIClient {
 						parentData.currencyPoints.Add(temp);
 					}
 					
-					//DebugFile.WriteLine("Currency: " + currencies[currencyIndex].ToString() + "\t\t\tCurrency Data Count: " + parentData.currencyPoints.Count.ToString());
 					currencyReadouts.Add(parentData);
 				}
 				
-				histStatusText3.data = "";
+				histStatusText3.data = "------";
 				DisplayManager.updateDisplays();
 				
 				List<List<string>> algorithmOutput = new List<List<string>>();
@@ -291,11 +289,10 @@ namespace WebAPIClient {
 						float sellWalletValue = API.getWalletContents(i[0]);
 						
 						if (sellWalletValue != -1) {
-							//Console.WriteLine("TEST: 2");
 							if (sellWalletValue > 20) {
-								//Console.WriteLine("Selling: " + i[0]);
+								Console.WriteLine("Selling: " + i[0]);
 								Thread.Sleep(450);
-								API.createNewBuySellOrder(i[0], "SELL", sellWalletValue - 20);
+								//API.createNewBuySellOrder(i[0], "SELL", sellWalletValue - 20);
 							}
 						} else {
 							//Console.WriteLine("Error while selling: " + i[0]);
@@ -315,9 +312,9 @@ namespace WebAPIClient {
 					
 					if (counter < 10) {
 						if (buyWalletValue > 20) {
-							//Console.WriteLine("Buying: " + i[0]);
+							Console.WriteLine("Buying: " + i[0]);
 							Thread.Sleep(450);
-							API.createNewBuySellOrder(i[0], "BUY", buyWalletValue / buyList.Count);
+							//API.createNewBuySellOrder(i[0], "BUY", buyWalletValue / buyList.Count);
 						}
 					}
 				}
