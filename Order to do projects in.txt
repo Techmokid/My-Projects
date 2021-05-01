@@ -20,9 +20,10 @@ Projects that require time:
 
 Projects that require money (Tax return will help IMMENSELY:
 1  (T).	Pay off Zipmoney (Use Zipmoney for "2.")
-2  (T).	Get parts for Tyler's PC
-3  (N).	Save up money ($2K in each account at least, $5K preferred)
-4  (T).	Crypto mining rig
+2  (N).	Buy 4Kg Bismuth
+3  (T).	Get parts for Tyler's PC (Ryzen 9 5900X, 64GB RAM, Gigabyte X570 Aorus Elite Wifi AM4)
+4  (N).	Save up money ($2K in each account at least, $5K preferred)
+5  (T).	Crypto mining rig
 
 
 
