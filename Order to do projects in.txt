@@ -1,0 +1,38 @@
+U - Urgent
+T - Time limited, but not urgent
+N - Not urgent (Personal project)
+
+
+
+Projects that require time:
+1  (T).	Work laser project
+2  (U).	Crypto AI - Get operating on GPU
+3  (T).	Twiggy project
+4  (N).	Get Minecraft mods running
+5  (N).	Unity3D Waterworks game
+6  (N).	Minecraft weather and climate change mod
+7  (N).	Unity3D weather chase game
+8  (N).	Unity3D VR game "movie moments you've always wanted to do"
+9  (N).	ASDOS (Arduino SD Operating System)
+10 (N).	Create custom crypto-mining card 	    NOTE: THIS WILL TAKE A LONG TIME. DO LAST
+
+
+
+Projects that require money (Tax return will help IMMENSELY:
+1  (T).	Pay off Zipmoney (Use Zipmoney for "2.")
+2  (T).	Get parts for Tyler's PC
+3  (N).	Save up money ($2K in each account at least, $5K preferred)
+4  (T).	Crypto mining rig
+
+
+
+Projects that require time AND money:
+1  (N).	VR suit
+2  (N).	Project Firefly
+3  (N).	Project Dropship
+
+
+
+Projects that require pickup:
+1.	Germicide device
+2.	Old lady multiple USB duplicate image finder code

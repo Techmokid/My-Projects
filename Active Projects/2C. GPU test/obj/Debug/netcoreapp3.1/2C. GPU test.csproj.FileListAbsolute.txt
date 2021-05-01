@@ -9,3 +9,8 @@ C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\obj\Deb
 C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\obj\Debug\netcoreapp3.1\2C. GPU test.AssemblyInfo.cs
 C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\obj\Debug\netcoreapp3.1\2C. GPU test.dll
 C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\obj\Debug\netcoreapp3.1\2C. GPU test.pdb
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\bin\Debug\netcoreapp3.1\System.Resources.Extensions.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\obj\Debug\netcoreapp3.1\2C. GPU test.csproj.CopyComplete
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\bin\Debug\netcoreapp3.1\Cudafy.NET.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\bin\Debug\netcoreapp3.1\ILGPU.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll

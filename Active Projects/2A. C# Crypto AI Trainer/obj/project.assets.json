@@ -376,7 +376,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\aj200\\.nuget\\packages\\": {}
+    "C:\\Users\\aj200\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
@@ -387,6 +388,9 @@
       "packagesPath": "C:\\Users\\aj200\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\Active Projects\\2A. C# Crypto AI Trainer\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
         "C:\\Users\\aj200\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"

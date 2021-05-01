@@ -112,6 +112,22 @@ namespace WebAPIClient {
 			return int.Parse(result);
 		}
 		
+		static double roundToClosest(double x, int digits) {
+			double mult = Math.Pow(10,digits);
+			double precursor_result = Math.Ceiling(x * mult - 0.5f);
+			return precursor_result / mult;
+		}
+		
+		static string StripChars(string x) {
+			string result = "";
+			foreach(char y in x) {
+				if (char.IsDigit(y) || (y == '-') || (y == '.')) {
+					result += y;
+				}
+			}
+			return result;
+		}
+		
         static void Main(string[] args) {
 			Console.Clear();
 			
@@ -183,8 +199,8 @@ namespace WebAPIClient {
 			Console.WriteLine("NEAT AI Direct Serial Output:");
 			Console.WriteLine();
 			
-			nn = new Network(filePath,false,true,true);
-			//nn.loadNetwork(AIStatusText2,AIStatusText3);
+			nn = new Network(filePath,false,false,true);
+			nn.loadNetwork(AIStatusText2,AIStatusText3);
 			
 			NEAT_AI.Random.n = nn;
 			
@@ -235,7 +251,7 @@ namespace WebAPIClient {
 				}
 				
 				AIMaxFitnessText2.data = "        0";
-				AIMinFitnessText2.data = "       5000";
+				AIMinFitnessText2.data = "       0";
 				DisplayManager.updateDisplays();
 				
 				SortedDictionary <string,double> algorithmOutput = new SortedDictionary <string,double>();
@@ -291,8 +307,8 @@ namespace WebAPIClient {
 						if (nn.genomes[x].fitness == 5000) {
 							nn.genomes.RemoveAt(x);
 						} else {
-							if (nn.genomes[x].fitness > Convert.ToDouble(AIMaxFitnessText2.data)) { AIMaxFitnessText2.data = nn.genomes[x].fitness.ToString(); }
-							if (nn.genomes[x].fitness < Convert.ToDouble(AIMinFitnessText2.data)) { AIMinFitnessText2.data = nn.genomes[x].fitness.ToString(); }
+							if (roundToClosest(nn.genomes[x].fitness / 50 - 100,2) > Convert.ToDouble(StripChars(AIMaxFitnessText2.data))) { AIMaxFitnessText2.data = roundToClosest(nn.genomes[x].fitness / 50 - 100,2).ToString() + "%"; }
+							if (roundToClosest(nn.genomes[x].fitness / 50 - 100,2) < Convert.ToDouble(StripChars(AIMinFitnessText2.data))) { AIMinFitnessText2.data = roundToClosest(nn.genomes[x].fitness / 50 - 100,2).ToString() + "%"; }
 						}
 						
 						DisplayManager.updateDisplays();

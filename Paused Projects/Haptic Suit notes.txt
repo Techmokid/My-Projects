@@ -1,0 +1,33 @@
+Two Point Discrimination results:
+SITE		THRESHOLD DISTANCE
+ - Fingers	2-3 mm
+ - Upper Lip	5 mm
+ - Cheek	6 mm
+ - Nose		7 mm
+ - Palm		10 mm
+ - Forehead	15 mm
+ - Foot		20 mm
+ - Belly	30 mm
+ - Forearm	35 mm
+ - Upper arm	39 mm
+ - Back		39 mm
+ - Shoulder	41 mm
+ - Thigh	42 mm
+ - Calf		45 mm
+
+
+
+Types of receptors within the somatosensory system:
+ - Thermoreceptors:	Temperature												Useful
+ - Pain receptors:	Detect an overload of any other sensor. 								Can be ignored completely
+ - Propreoceptors:	Rough position of the hand. Used when sight isn't an option. 						Can be ignored completely
+ - Mechanoreceptor:
+	- Merkel cell nerve endings:	React to low vibration (5-15Hz), hair follacles, and deep static touch.			Might be ignored, unsure
+	- Tactile corpuscles:		React to moderate vibration (10-50Hz) and light touch.					Useful
+	- Pacinian corpuscles:		React to high vibrations (50-250Hz) and gross touch and texture (rough vs smooth)	Useful
+	- Bulbous corpuscles:		React to skin stretch and propreoception. 						Can be ignored completely
+
+
+
+Potential solution:
+ - Array of custom peltier modules/rods attached to the end of small hydraulic rams.

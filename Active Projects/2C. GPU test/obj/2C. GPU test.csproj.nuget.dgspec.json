@@ -13,6 +13,9 @@
         "packagesPath": "C:\\Users\\aj200\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\Active Projects\\2C. GPU test\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
           "C:\\Users\\aj200\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -37,6 +40,20 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "CUDAfy.NET": {
+              "target": "Package",
+              "version": "[1.29.5576.13786, )"
+            },
+            "ILGPU": {
+              "target": "Package",
+              "version": "[0.10.1, )"
+            },
+            "System.Resources.Extensions": {
+              "target": "Package",
+              "version": "[6.0.0-preview.3.21201.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

@@ -6,4 +6,10 @@
     <RootNamespace>_2C._GPU_test</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="CUDAfy.NET" Version="1.29.5576.13786" />
+    <PackageReference Include="ILGPU" Version="0.10.1" />
+    <PackageReference Include="System.Resources.Extensions" Version="6.0.0-preview.3.21201.4" />
+  </ItemGroup>
+
 </Project>
