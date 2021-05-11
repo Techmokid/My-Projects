@@ -200,7 +200,11 @@ namespace WebAPIClient {
 			Console.WriteLine();
 			
 			nn = new Network(filePath,false,false,true);
-			nn.loadNetwork(AIStatusText2,AIStatusText3);
+			try {
+				nn.loadNetwork(AIStatusText2,AIStatusText3);
+			} catch {
+				nn = new Network(filePath, false, true, true);
+			}
 			
 			NEAT_AI.Random.n = nn;
 			
@@ -219,37 +223,38 @@ namespace WebAPIClient {
 			//Each currency has multiple data points
 			//Each data point has id, time, and price
 			List<currencyData> currencyReadouts = new List<currencyData>();
+			
+				
+			//for (int currencyIndex = 0; currencyIndex < 5; currencyIndex++) {
+			for (int currencyIndex = 0; currencyIndex < currencies.Count; currencyIndex++) {
+				//List<List<string>> currencyData = new List<List<string>> { currencies[currencyIndex] };
+				PointAnalysis.currencyData parentData = new currencyData();
+				parentData.currencyName = currencies[currencyIndex];
+				
+				histStatusText3.data = "       " + (currencyIndex + 1).ToString() + "/" + currencies.Count.ToString();
+				DisplayManager.updateDisplays(false);
+				Console.SetCursorPosition(0,0);
+				
+				JsonElement obj2 = JsonSerializer.Deserialize<JsonElement>(API.getKlines(currencies[currencyIndex],API_Time_Enum));
+				
+				for (int i = 0; i < obj2.GetArrayLength(); i++) {
+					DisplayManager.resizeCheck();
+					
+					JsonElement obj3 = JsonSerializer.Deserialize<JsonElement>(obj2[i].ToString());
+					
+					dataPoint temp = new dataPoint();
+					temp.price 	= obj3[1].ToString();
+					temp.time 	= obj3[0].ToString();
+					parentData.currencyPoints.Add(temp);
+				}
+				
+				currencyReadouts.Add(parentData);
+			}
+				
 			int iterations = 0;
 			while (true) {
 				iterations++;
 				AIStatusText2.data =   "    Iteration: " + iterations.ToString();
-				
-				//for (int currencyIndex = 0; currencyIndex < 5; currencyIndex++) {
-				for (int currencyIndex = 0; currencyIndex < currencies.Count; currencyIndex++) {
-					//List<List<string>> currencyData = new List<List<string>> { currencies[currencyIndex] };
-					PointAnalysis.currencyData parentData = new currencyData();
-					parentData.currencyName = currencies[currencyIndex];
-					
-					histStatusText3.data = "       " + (currencyIndex + 1).ToString() + "/" + currencies.Count.ToString();
-					DisplayManager.updateDisplays(false);
-					Console.SetCursorPosition(0,0);
-					
-					JsonElement obj2 = JsonSerializer.Deserialize<JsonElement>(API.getKlines(currencies[currencyIndex],API_Time_Enum));
-					
-					for (int i = 0; i < obj2.GetArrayLength(); i++) {
-						DisplayManager.resizeCheck();
-						
-						JsonElement obj3 = JsonSerializer.Deserialize<JsonElement>(obj2[i].ToString());
-						
-						dataPoint temp = new dataPoint();
-						temp.price 	= obj3[1].ToString();
-						temp.time 	= obj3[0].ToString();
-						parentData.currencyPoints.Add(temp);
-					}
-					
-					currencyReadouts.Add(parentData);
-				}
-				
 				AIMaxFitnessText2.data = "        0";
 				AIMinFitnessText2.data = "       0";
 				DisplayManager.updateDisplays();

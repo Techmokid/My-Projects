@@ -8,11 +8,26 @@
     ".NETCoreApp,Version=v3.1": {
       "Crypto AI/1.0.0": {
         "dependencies": {
+          "ILGPU": "0.10.1",
           "Json.Net": "1.0.23",
           "Unirest-API": "1.0.7.6"
         },
         "runtime": {
           "Crypto AI.dll": {}
+        }
+      },
+      "ILGPU/0.10.1": {
+        "dependencies": {
+          "System.Collections.Immutable": "1.7.0",
+          "System.Memory": "4.5.4",
+          "System.Reflection.Metadata": "1.8.0",
+          "System.Runtime.CompilerServices.Unsafe": "4.7.1"
+        },
+        "runtime": {
+          "lib/netstandard2.1/ILGPU.dll": {
+            "assemblyVersion": "0.10.1.0",
+            "fileVersion": "0.10.1.0"
+          }
         }
       },
       "Json.Net/1.0.23": {
@@ -72,6 +87,17 @@
           }
         }
       },
+      "System.Collections.Immutable/1.7.0": {},
+      "System.Memory/4.5.4": {},
+      "System.Reflection.Metadata/1.8.0": {},
+      "System.Runtime.CompilerServices.Unsafe/4.7.1": {
+        "runtime": {
+          "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll": {
+            "assemblyVersion": "4.0.6.0",
+            "fileVersion": "4.700.20.12001"
+          }
+        }
+      },
       "Unirest-API/1.0.7.6": {
         "dependencies": {
           "Microsoft.Bcl": "1.1.10",
@@ -94,6 +120,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "ILGPU/0.10.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Xlf5hHHEekw6M47rqfVOTS/cciH0Tz6zeUXFOnA9yaAn3LyL506N9qxEGflW1Zk8RnYZ7SHreB52+ip60pZs0A==",
+      "path": "ilgpu/0.10.1",
+      "hashPath": "ilgpu.0.10.1.nupkg.sha512"
     },
     "Json.Net/1.0.23": {
       "type": "package",
@@ -136,6 +169,34 @@
       "sha512": "sha512-q3V4KLetMLnt1gpAVWgtXnHjKs0UG/RalBc29u2ZKxd5t5Ze4JBL5WiiYIklJyK/5CRiIiNwigVQUo0FgbsuWA==",
       "path": "newtonsoft.json/7.0.1",
       "hashPath": "newtonsoft.json.7.0.1.nupkg.sha512"
+    },
+    "System.Collections.Immutable/1.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RVSM6wZUo6L2y6P3vN6gjUtyJ2IF2RVtrepF3J7nrDKfFQd5u/SnSUFclchYQis8/k5scHy9E+fVeKVQLnnkzw==",
+      "path": "system.collections.immutable/1.7.0",
+      "hashPath": "system.collections.immutable.1.7.0.nupkg.sha512"
+    },
+    "System.Memory/4.5.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
+      "path": "system.memory/4.5.4",
+      "hashPath": "system.memory.4.5.4.nupkg.sha512"
+    },
+    "System.Reflection.Metadata/1.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RRnWHNjNmb14+S+INsYe1A0b+q05uzLNzENcKe1GCkXT2gaKCjPxVc5TsLVgFZdAAPREnLHFohVbo6bGzEWFlA==",
+      "path": "system.reflection.metadata/1.8.0",
+      "hashPath": "system.reflection.metadata.1.8.0.nupkg.sha512"
+    },
+    "System.Runtime.CompilerServices.Unsafe/4.7.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zOHkQmzPCn5zm/BH+cxC1XbUS3P4Yoi3xzW7eRgVpDR2tPGSzyMZ17Ig1iRkfJuY0nhxkQQde8pgePNiA7z7TQ==",
+      "path": "system.runtime.compilerservices.unsafe/4.7.1",
+      "hashPath": "system.runtime.compilerservices.unsafe.4.7.1.nupkg.sha512"
     },
     "Unirest-API/1.0.7.6": {
       "type": "package",

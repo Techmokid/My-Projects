@@ -1,0 +1,99 @@
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\obj\Debug\net6.0\1. Basic GPU Start.csproj.AssemblyReference.cache
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\obj\Debug\net6.0\1. Basic GPU Start.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\obj\Debug\net6.0\1. Basic GPU Start.AssemblyInfoInputs.cache
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\obj\Debug\net6.0\1. Basic GPU Start.AssemblyInfo.cs
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\obj\Debug\net6.0\1. Basic GPU Start.csproj.CoreCompileInputs.cache
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\bin\Debug\net6.0\1. Basic GPU Start.exe
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\bin\Debug\net6.0\1. Basic GPU Start.deps.json
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\bin\Debug\net6.0\1. Basic GPU Start.runtimeconfig.json
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\bin\Debug\net6.0\1. Basic GPU Start.runtimeconfig.dev.json
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\bin\Debug\net6.0\1. Basic GPU Start.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\bin\Debug\net6.0\ref\1. Basic GPU Start.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\bin\Debug\net6.0\1. Basic GPU Start.pdb
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\bin\Debug\net6.0\ILGPU.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\bin\Debug\net6.0\System.ComponentModel.Composition.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\bin\Debug\net6.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\bin\Debug\net6.0\System.Drawing.Common.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\bin\Debug\net6.0\System.Resources.Extensions.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\bin\Debug\net6.0\System.Security.Permissions.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\bin\Debug\net6.0\System.Windows.Extensions.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\obj\Debug\net6.0\1. Basic GPU Start.csproj.CopyComplete
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\obj\Debug\net6.0\1. Basic GPU Start.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\obj\Debug\net6.0\ref\1. Basic GPU Start.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\obj\Debug\net6.0\1. Basic GPU Start.pdb
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2. Basic Memory Allocation\obj\Debug\net6.0\1. Basic GPU Start.genruntimeconfig.cache
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\obj\Debug\net6.0\1. Basic GPU Start.csproj.AssemblyReference.cache
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\obj\Debug\net6.0\1. Basic GPU Start.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\obj\Debug\net6.0\1. Basic GPU Start.AssemblyInfoInputs.cache
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\obj\Debug\net6.0\1. Basic GPU Start.AssemblyInfo.cs
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\obj\Debug\net6.0\1. Basic GPU Start.csproj.CoreCompileInputs.cache
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\obj\Debug\net6.0\1. Basic GPU Start.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\obj\Debug\net6.0\ref\1. Basic GPU Start.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\obj\Debug\net6.0\1. Basic GPU Start.pdb
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\bin\Debug\net6.0\1. Basic GPU Start.exe
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\bin\Debug\net6.0\1. Basic GPU Start.deps.json
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\bin\Debug\net6.0\1. Basic GPU Start.runtimeconfig.json
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\bin\Debug\net6.0\1. Basic GPU Start.runtimeconfig.dev.json
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\bin\Debug\net6.0\1. Basic GPU Start.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\bin\Debug\net6.0\ref\1. Basic GPU Start.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\bin\Debug\net6.0\1. Basic GPU Start.pdb
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\bin\Debug\net6.0\ILGPU.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\bin\Debug\net6.0\System.ComponentModel.Composition.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\bin\Debug\net6.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\bin\Debug\net6.0\System.Drawing.Common.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\bin\Debug\net6.0\System.Resources.Extensions.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\bin\Debug\net6.0\System.Security.Permissions.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\bin\Debug\net6.0\System.Windows.Extensions.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\obj\Debug\net6.0\1. Basic GPU Start.csproj.CopyComplete
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\3. Basic Memory Allocation 2D\obj\Debug\net6.0\1. Basic GPU Start.genruntimeconfig.cache
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\bin\Debug\net6.0\1. Basic GPU Start.exe
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\bin\Debug\net6.0\1. Basic GPU Start.deps.json
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\bin\Debug\net6.0\1. Basic GPU Start.runtimeconfig.json
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\bin\Debug\net6.0\1. Basic GPU Start.runtimeconfig.dev.json
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\bin\Debug\net6.0\1. Basic GPU Start.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\bin\Debug\net6.0\ref\1. Basic GPU Start.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\bin\Debug\net6.0\1. Basic GPU Start.pdb
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\bin\Debug\net6.0\ILGPU.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\bin\Debug\net6.0\System.ComponentModel.Composition.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\bin\Debug\net6.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\bin\Debug\net6.0\System.Drawing.Common.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\bin\Debug\net6.0\System.Resources.Extensions.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\bin\Debug\net6.0\System.Security.Permissions.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\bin\Debug\net6.0\System.Windows.Extensions.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\obj\Debug\net6.0\1. Basic GPU Start.csproj.AssemblyReference.cache
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\obj\Debug\net6.0\1. Basic GPU Start.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\obj\Debug\net6.0\1. Basic GPU Start.AssemblyInfoInputs.cache
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\obj\Debug\net6.0\1. Basic GPU Start.AssemblyInfo.cs
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\obj\Debug\net6.0\1. Basic GPU Start.csproj.CoreCompileInputs.cache
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\obj\Debug\net6.0\1. Basic GPU Start.csproj.CopyComplete
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\obj\Debug\net6.0\1. Basic GPU Start.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\obj\Debug\net6.0\ref\1. Basic GPU Start.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\obj\Debug\net6.0\1. Basic GPU Start.pdb
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU Examples\2C. Basic Memory Allocation 3D\obj\Debug\net6.0\1. Basic GPU Start.genruntimeconfig.cache

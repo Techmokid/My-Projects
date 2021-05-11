@@ -1,0 +1,22 @@
+(NS)	- Not Started
+(BR)	- Beginning Research Phase
+(AR)	- Advanced Research Phase
+(SR)	- Solution Research
+(BP)	- Basic Prototype
+(FP)	- Functional Prototype
+(MP)	- Manufacturing Phase
+(SU)	- Solution is Underway
+
+
+
+
+
+(NS)	- CO2 Global Warming
+
+(NS)	- Food Waste
+
+(NS)	- Ozone Repletion
+
+(NS)	- Plastic in Ocean
+
+(NS)	- Recycling Overflow and Ignorance
