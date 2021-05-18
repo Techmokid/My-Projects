@@ -32,5 +32,10 @@ C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\obj\Deb
 C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\obj\Debug\net6.0\ref\2C. GPU test.dll
 C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\obj\Debug\net6.0\2C. GPU test.pdb
 C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\obj\Debug\net6.0\2C. GPU test.genruntimeconfig.cache
-C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\bin\Debug\net6.0\System.Xaml.dll
 C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\bin\Debug\net6.0\OpenCL.Net.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\bin\Debug\net6.0\ComputeSharp.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\bin\Debug\net6.0\Microsoft.Toolkit.Diagnostics.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\bin\Debug\net6.0\TerraFX.Interop.D3D12MemoryAllocator.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\bin\Debug\net6.0\TerraFX.Interop.Windows.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\bin\Debug\net6.0\runtimes\win-x64\native\dxcompiler.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\2C. GPU test\bin\Debug\net6.0\runtimes\win-x64\native\dxil.dll

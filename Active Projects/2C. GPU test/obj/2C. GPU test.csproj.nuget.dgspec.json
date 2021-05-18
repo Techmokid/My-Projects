@@ -47,6 +47,10 @@
               "target": "Package",
               "version": "[1.29.5576.13786, )"
             },
+            "ComputeSharp": {
+              "target": "Package",
+              "version": "[2.0.0-alpha.3, )"
+            },
             "ILGPU": {
               "target": "Package",
               "version": "[0.10.1, )"

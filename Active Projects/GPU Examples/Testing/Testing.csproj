@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CUDAfy.NET" Version="1.29.5576.13786" />
+    <PackageReference Include="GLGraphics" Version="1.0.6" />
+    <PackageReference Include="ILGPU" Version="0.10.1" />
+    <PackageReference Include="ManagedCuda.NETStandard" Version="9.1.300" />
+    <PackageReference Include="OpenGL.Net" Version="0.8.4" />
+    <PackageReference Include="OpenOOP" Version="1.0.2" />
+    <PackageReference Include="OpenTK" Version="5.0.0-pre.3" />
+    <PackageReference Include="Silk.NET.Direct3D12" Version="2.4.0" />
+    <PackageReference Include="System.ComponentModel.Composition" Version="6.0.0-preview.3.21201.4" />
+    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="6.0.0-preview.3.21201.4" />
+    <PackageReference Include="System.Resources.Extensions" Version="6.0.0-preview.3.21201.4" />
+  </ItemGroup>
+
+</Project>

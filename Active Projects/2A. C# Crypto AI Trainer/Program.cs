@@ -224,7 +224,7 @@ namespace WebAPIClient {
 			//Each data point has id, time, and price
 			List<currencyData> currencyReadouts = new List<currencyData>();
 			
-				
+			
 			//for (int currencyIndex = 0; currencyIndex < 5; currencyIndex++) {
 			for (int currencyIndex = 0; currencyIndex < currencies.Count; currencyIndex++) {
 				//List<List<string>> currencyData = new List<List<string>> { currencies[currencyIndex] };
@@ -250,9 +250,10 @@ namespace WebAPIClient {
 				
 				currencyReadouts.Add(parentData);
 			}
-				
+			
 			int iterations = 0;
 			while (true) {
+				var watch1 = System.Diagnostics.Stopwatch.StartNew();
 				iterations++;
 				AIStatusText2.data =   "    Iteration: " + iterations.ToString();
 				AIMaxFitnessText2.data = "        0";
@@ -261,12 +262,17 @@ namespace WebAPIClient {
 				
 				SortedDictionary <string,double> algorithmOutput = new SortedDictionary <string,double>();
 				int loops = 0;
+				
 				foreach (currencyData algorithmCurrencyInputData in currencyReadouts) {
 					loops++;
 					AIStatusText3.data = " Currency:" + loops.ToString() + "/" + currencyReadouts.Count.ToString();
 					
 					double currentAlgorithmOutput = 0;
+					
+					watch1.Stop();
+				
 					//Here we impliment the AI
+					var watch2 = System.Diagnostics.Stopwatch.StartNew();
 					for (int x = 0; x < nn.genomes.Count; x++) {
 						AIStatusText4.data =   " Genome: " + (x + 1).ToString() + "/" + nn.genomes.Count.ToString();
 						DisplayManager.resizeCheck();
@@ -318,12 +324,17 @@ namespace WebAPIClient {
 						
 						DisplayManager.updateDisplays();
 					}
+					watch2.Stop();
 					
+					var watch3 = System.Diagnostics.Stopwatch.StartNew();
 					//AIMaxFitnessText2.data = "       " + bestGenome.fitness;
 					//AIMinFitnessText2.data = "       " + worstGenome.fitness;
 					
 					//algorithmOutput.Add(algorithmCurrencyInputData.currencyName,currentAlgorithmOutput);
 					nn.UpdateGenomeList();
+					watch3.Stop();
+					
+					var watch4 = System.Diagnostics.Stopwatch.StartNew();
 					
 					Console.ForegroundColor = ConsoleColor.Green;
 					apiStatusText1.color = ConsoleColor.Green;
@@ -339,9 +350,13 @@ namespace WebAPIClient {
 					curStatusText2.data =  "        Done";
 					saveStatusText2.data =   "  Saving AI Genomes";
 					DisplayManager.updateDisplays();
+					watch4.Stop();
 					
+					var watch5 = System.Diagnostics.Stopwatch.StartNew();
 					nn.saveNetwork(apiStatusText3);
+					watch5.Stop();
 					
+					var watch6 = System.Diagnostics.Stopwatch.StartNew();
 					//https://www.binance.com/en/convert
 					saveStatusText1.color = ConsoleColor.Green;
 					saveStatusText2.color = ConsoleColor.Green;
@@ -353,6 +368,16 @@ namespace WebAPIClient {
 					//Console.Beep(659,300);
 					//Console.Beep(784,300);
 					//Console.Beep(1046,600);
+					watch6.Stop();
+					
+					Console.SetCursorPosition(0,45);
+					Console.WriteLine("Watch 1 (Pre-Genome Setup):			" + (watch1.ElapsedMilliseconds / 1000).ToString());
+					Console.WriteLine("Watch 2 (Genome Training):			" + (watch2.ElapsedMilliseconds / 1000).ToString());
+					Console.WriteLine("Watch 3 (Genome Update Function):	" + (watch3.ElapsedMilliseconds / 1000).ToString());
+					Console.WriteLine("Watch 4 (Display Updates):			" + (watch4.ElapsedMilliseconds / 1000).ToString());
+					Console.WriteLine("Watch 5 (Genome Save Function):		" + (watch5.ElapsedMilliseconds / 1000).ToString());
+					Console.WriteLine("Watch 6 (Display Updates):			" + (watch6.ElapsedMilliseconds / 1000).ToString());
+					while(true){}
 				}
 				
 				//var result = algorithmOutput.OrderBy(key => key.Value).Reverse();

@@ -1,0 +1,591 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Testing/1.0.0": {
+        "dependencies": {
+          "CUDAfy.NET": "1.29.5576.13786",
+          "ILGPU": "0.10.1",
+          "ManagedCuda.NETStandard": "9.1.300",
+          "OpenGL.Net": "0.8.4",
+          "OpenTK": "5.0.0-pre.3",
+          "System.ComponentModel.Composition": "6.0.0-preview.3.21201.4",
+          "System.Diagnostics.PerformanceCounter": "6.0.0-preview.3.21201.4",
+          "System.Resources.Extensions": "6.0.0-preview.3.21201.4"
+        },
+        "runtime": {
+          "Testing.dll": {}
+        }
+      },
+      "CUDAfy.NET/1.29.5576.13786": {
+        "runtime": {
+          "lib/net40/Cudafy.NET.dll": {
+            "assemblyVersion": "1.29.5576.13786",
+            "fileVersion": "1.29.5576.13786"
+          }
+        }
+      },
+      "ILGPU/0.10.1": {
+        "dependencies": {
+          "System.Collections.Immutable": "1.7.0",
+          "System.Memory": "4.5.4",
+          "System.Reflection.Metadata": "1.8.0",
+          "System.Runtime.CompilerServices.Unsafe": "4.7.1"
+        },
+        "runtime": {
+          "lib/netstandard2.1/ILGPU.dll": {
+            "assemblyVersion": "0.10.1.0",
+            "fileVersion": "0.10.1.0"
+          }
+        }
+      },
+      "ManagedCuda.NETStandard/9.1.300": {
+        "runtime": {
+          "lib/netstandard2.0/ManagedCuda.dll": {
+            "assemblyVersion": "9.1.300.0",
+            "fileVersion": "9.1.300.0"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libnvcuda.so": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Microsoft.NETCore.Platforms/6.0.0-preview.3.21201.4": {},
+      "Microsoft.Win32.Registry/6.0.0-preview.3.21201.4": {
+        "dependencies": {
+          "System.Security.AccessControl": "6.0.0-preview.3.21201.4",
+          "System.Security.Principal.Windows": "6.0.0-preview.3.21201.4"
+        }
+      },
+      "Microsoft.Win32.SystemEvents/6.0.0-preview.3.21201.4": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "6.0.0-preview.3.21201.4"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.20104"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.20104"
+          }
+        }
+      },
+      "OpenGL.Net/0.8.4": {
+        "runtime": {
+          "lib/net461/OpenGL.Net.dll": {
+            "assemblyVersion": "0.8.4.0",
+            "fileVersion": "0.8.4.0"
+          }
+        }
+      },
+      "OpenTK/5.0.0-pre.3": {
+        "dependencies": {
+          "OpenTK.Compute": "5.0.0-pre.3",
+          "OpenTK.Core": "5.0.0-pre.3",
+          "OpenTK.Graphics": "5.0.0-pre.3",
+          "OpenTK.Input": "5.0.0-pre.3",
+          "OpenTK.Mathematics": "5.0.0-pre.3",
+          "OpenTK.OpenAL": "5.0.0-pre.3",
+          "OpenTK.Windowing.Common": "5.0.0-pre.3",
+          "OpenTK.Windowing.Desktop": "5.0.0-pre.3",
+          "OpenTK.Windowing.GraphicsLibraryFramework": "5.0.0-pre.3"
+        }
+      },
+      "OpenTK.Compute/5.0.0-pre.3": {
+        "runtime": {
+          "lib/net5.0/OpenTK.Compute.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "OpenTK.Core/5.0.0-pre.3": {
+        "runtime": {
+          "lib/net5.0/OpenTK.Core.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "OpenTK.Graphics/5.0.0-pre.3": {
+        "dependencies": {
+          "OpenTK.Core": "5.0.0-pre.3",
+          "OpenTK.Mathematics": "5.0.0-pre.3"
+        },
+        "runtime": {
+          "lib/net5.0/OpenTK.Graphics.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "OpenTK.Input/5.0.0-pre.3": {
+        "runtime": {
+          "lib/net5.0/OpenTK.Input.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "OpenTK.Mathematics/5.0.0-pre.3": {
+        "runtime": {
+          "lib/net5.0/OpenTK.Mathematics.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "OpenTK.OpenAL/5.0.0-pre.3": {
+        "dependencies": {
+          "OpenTK.Core": "5.0.0-pre.3",
+          "OpenTK.Mathematics": "5.0.0-pre.3"
+        },
+        "runtime": {
+          "lib/net5.0/OpenTK.OpenAL.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "OpenTK.redist.glfw/3.3.0-pre20200830200122": {
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libglfw.so.3.3": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-x64/native/libglfw.3.dylib": {
+            "rid": "osx-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/glfw3.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x86/native/glfw3.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "OpenTK.Windowing.Common/5.0.0-pre.3": {
+        "dependencies": {
+          "OpenTK.Core": "5.0.0-pre.3",
+          "OpenTK.Mathematics": "5.0.0-pre.3"
+        },
+        "runtime": {
+          "lib/net5.0/OpenTK.Windowing.Common.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "OpenTK.Windowing.Desktop/5.0.0-pre.3": {
+        "dependencies": {
+          "OpenTK.Core": "5.0.0-pre.3",
+          "OpenTK.Mathematics": "5.0.0-pre.3",
+          "OpenTK.Windowing.Common": "5.0.0-pre.3",
+          "OpenTK.Windowing.GraphicsLibraryFramework": "5.0.0-pre.3"
+        },
+        "runtime": {
+          "lib/net5.0/OpenTK.Windowing.Desktop.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "OpenTK.Windowing.GraphicsLibraryFramework/5.0.0-pre.3": {
+        "dependencies": {
+          "OpenTK.Core": "5.0.0-pre.3",
+          "OpenTK.redist.glfw": "3.3.0-pre20200830200122"
+        },
+        "runtime": {
+          "lib/net5.0/OpenTK.Windowing.GraphicsLibraryFramework.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "System.Collections.Immutable/1.7.0": {},
+      "System.ComponentModel.Composition/6.0.0-preview.3.21201.4": {
+        "runtime": {
+          "lib/netcoreapp2.0/System.ComponentModel.Composition.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "6.0.21.20104"
+          }
+        }
+      },
+      "System.Configuration.ConfigurationManager/6.0.0-preview.3.21201.4": {
+        "dependencies": {
+          "System.Security.Cryptography.ProtectedData": "6.0.0-preview.3.21201.4",
+          "System.Security.Permissions": "6.0.0-preview.3.21201.4"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.20104"
+          }
+        }
+      },
+      "System.Diagnostics.PerformanceCounter/6.0.0-preview.3.21201.4": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "6.0.0-preview.3.21201.4",
+          "Microsoft.Win32.Registry": "6.0.0-preview.3.21201.4",
+          "System.Configuration.ConfigurationManager": "6.0.0-preview.3.21201.4",
+          "System.Security.Principal.Windows": "6.0.0-preview.3.21201.4"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Diagnostics.PerformanceCounter.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.20104"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp2.0/System.Diagnostics.PerformanceCounter.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.20104"
+          }
+        }
+      },
+      "System.Drawing.Common/6.0.0-preview.3.21201.4": {
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "6.0.0-preview.3.21201.4"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.20104"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "rid": "unix",
+            "assetType": "runtime",
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.20104"
+          },
+          "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.20104"
+          }
+        }
+      },
+      "System.Memory/4.5.4": {},
+      "System.Reflection.Metadata/1.8.0": {},
+      "System.Resources.Extensions/6.0.0-preview.3.21201.4": {
+        "runtime": {
+          "lib/netstandard2.0/System.Resources.Extensions.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.20104"
+          }
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/4.7.1": {},
+      "System.Security.AccessControl/6.0.0-preview.3.21201.4": {
+        "dependencies": {
+          "System.Security.Principal.Windows": "6.0.0-preview.3.21201.4"
+        }
+      },
+      "System.Security.Cryptography.ProtectedData/6.0.0-preview.3.21201.4": {
+        "runtime": {
+          "lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.20104"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.20104"
+          }
+        }
+      },
+      "System.Security.Permissions/6.0.0-preview.3.21201.4": {
+        "dependencies": {
+          "System.Security.AccessControl": "6.0.0-preview.3.21201.4",
+          "System.Windows.Extensions": "6.0.0-preview.3.21201.4"
+        },
+        "runtime": {
+          "lib/net5.0/System.Security.Permissions.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.20104"
+          }
+        }
+      },
+      "System.Security.Principal.Windows/6.0.0-preview.3.21201.4": {},
+      "System.Windows.Extensions/6.0.0-preview.3.21201.4": {
+        "dependencies": {
+          "System.Drawing.Common": "6.0.0-preview.3.21201.4"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/System.Windows.Extensions.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.20104"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp3.0/System.Windows.Extensions.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.20104"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Testing/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CUDAfy.NET/1.29.5576.13786": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jrEKZd3qfSqGHWBcLh/+erXKUTrtJwHcRPHGKILFCNIbmSSUypwrGyG88fr1pSqfbB7pUlzqkOBcvK26KWCz2w==",
+      "path": "cudafy.net/1.29.5576.13786",
+      "hashPath": "cudafy.net.1.29.5576.13786.nupkg.sha512"
+    },
+    "ILGPU/0.10.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Xlf5hHHEekw6M47rqfVOTS/cciH0Tz6zeUXFOnA9yaAn3LyL506N9qxEGflW1Zk8RnYZ7SHreB52+ip60pZs0A==",
+      "path": "ilgpu/0.10.1",
+      "hashPath": "ilgpu.0.10.1.nupkg.sha512"
+    },
+    "ManagedCuda.NETStandard/9.1.300": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Qv8KYzDfnHUdXrgjBsd8jShnP68FCLiUhCkfpFVhZub7FArLN+SpfhUZZt/5emoKfj9CIKAcQjeD6OJR7cdjvw==",
+      "path": "managedcuda.netstandard/9.1.300",
+      "hashPath": "managedcuda.netstandard.9.1.300.nupkg.sha512"
+    },
+    "Microsoft.NETCore.Platforms/6.0.0-preview.3.21201.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5hurJj7AjVBhDMETeT2NUuU85cyfi7Ej6cNOAxmbQfS8j0oMqsu45YCcCGJYjaRX5egaUJSf2GxuB7BRvY8OTg==",
+      "path": "microsoft.netcore.platforms/6.0.0-preview.3.21201.4",
+      "hashPath": "microsoft.netcore.platforms.6.0.0-preview.3.21201.4.nupkg.sha512"
+    },
+    "Microsoft.Win32.Registry/6.0.0-preview.3.21201.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7NCbQmeDPn4q7E2dpjRBARx1lXeRBng9In6HmcgvS08mZj0TzllgJPW5IdBtAD3GFHLzO/rXdLsLFh6qt8VUPg==",
+      "path": "microsoft.win32.registry/6.0.0-preview.3.21201.4",
+      "hashPath": "microsoft.win32.registry.6.0.0-preview.3.21201.4.nupkg.sha512"
+    },
+    "Microsoft.Win32.SystemEvents/6.0.0-preview.3.21201.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ryZRJ4rNc+3vgG+LHGwymy/y7EqIScywk575mtq5+chfXfqWZ/oPWGLCGbqqKBNqM8s0u9JdpyQVK9Ba/MJC/A==",
+      "path": "microsoft.win32.systemevents/6.0.0-preview.3.21201.4",
+      "hashPath": "microsoft.win32.systemevents.6.0.0-preview.3.21201.4.nupkg.sha512"
+    },
+    "OpenGL.Net/0.8.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-F7o2KkIrz9rrtBY7+VRgPKnf2mV8pt3h4/o/CWPt86oIocjzKTQFNo2qH4zVYSWyy/T9rS0xBpu9t75MS6wM8Q==",
+      "path": "opengl.net/0.8.4",
+      "hashPath": "opengl.net.0.8.4.nupkg.sha512"
+    },
+    "OpenTK/5.0.0-pre.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zeaiOs22pZRdZhdm5zZyQduHNjhCN1ZjzoYvZ8AqsyWWShnZrUOqKC2x7bLYmQEzn1IE40BFVxo4/rTdTXJWbA==",
+      "path": "opentk/5.0.0-pre.3",
+      "hashPath": "opentk.5.0.0-pre.3.nupkg.sha512"
+    },
+    "OpenTK.Compute/5.0.0-pre.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-x3IC9dVb3f72VroGBCCWyFJf3X+GlKjLqJbFwwg7XvuQv7Ac1i8YINPv6nLaA2MFybjOu3hBAS9cmy8x8HqC5Q==",
+      "path": "opentk.compute/5.0.0-pre.3",
+      "hashPath": "opentk.compute.5.0.0-pre.3.nupkg.sha512"
+    },
+    "OpenTK.Core/5.0.0-pre.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tN9rmMLCNtGFoCojLj6VMEFM37VNZhcH8dC17x+1aXTQ84EUFDovjQQSYSOPWJ5c5hK2iFgwu4tjjfELPQYXdQ==",
+      "path": "opentk.core/5.0.0-pre.3",
+      "hashPath": "opentk.core.5.0.0-pre.3.nupkg.sha512"
+    },
+    "OpenTK.Graphics/5.0.0-pre.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1Gjx6jjcNIRyFw5LJXOHifJgarUAD85iijDb/eWz4UFxWFQZTRQJQIf3LIppzA/gSs9GikO/otOutC37V4JDbw==",
+      "path": "opentk.graphics/5.0.0-pre.3",
+      "hashPath": "opentk.graphics.5.0.0-pre.3.nupkg.sha512"
+    },
+    "OpenTK.Input/5.0.0-pre.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+BC2RbSkcE4cUlXohEwWCA7C28i1JJOIiJJHUJCvEp3VURTEyHBT9ck/8kRWq1Qv62sJ5FXCXJil3xPiQvuyFw==",
+      "path": "opentk.input/5.0.0-pre.3",
+      "hashPath": "opentk.input.5.0.0-pre.3.nupkg.sha512"
+    },
+    "OpenTK.Mathematics/5.0.0-pre.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2NrfbaVpCTxkq5u9HxYd1Ohvoi5PWZg4EHFxbmNLHRcIogdXGELDM5OsvChDc8ysnLP/qZf4bHziTdIAMqtqwQ==",
+      "path": "opentk.mathematics/5.0.0-pre.3",
+      "hashPath": "opentk.mathematics.5.0.0-pre.3.nupkg.sha512"
+    },
+    "OpenTK.OpenAL/5.0.0-pre.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RgqvHw3zSovQJqXBiySy/amz5TbvT5byMJJBb8fdgvkidGQA1S4+5P/4u3C2W8uT39UeYGrLljgneeV34ZrIpg==",
+      "path": "opentk.openal/5.0.0-pre.3",
+      "hashPath": "opentk.openal.5.0.0-pre.3.nupkg.sha512"
+    },
+    "OpenTK.redist.glfw/3.3.0-pre20200830200122": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EKE9pJCFHScbqOv/t0zG1h5Eh24nWr44SXYnpYtAWDhJhzAoUoI8TwDRXGvTGhDeCBp8ONEaVsq9xRC+OQIxQA==",
+      "path": "opentk.redist.glfw/3.3.0-pre20200830200122",
+      "hashPath": "opentk.redist.glfw.3.3.0-pre20200830200122.nupkg.sha512"
+    },
+    "OpenTK.Windowing.Common/5.0.0-pre.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ga5QroEw64WxFrw4pGGGpKThGZkXSapPLtwBcvTPR9bACm1EZY11vPtFaBurT31WFUd4lfNrgIQU9kNOoQTE2Q==",
+      "path": "opentk.windowing.common/5.0.0-pre.3",
+      "hashPath": "opentk.windowing.common.5.0.0-pre.3.nupkg.sha512"
+    },
+    "OpenTK.Windowing.Desktop/5.0.0-pre.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aZp2xLEpX6jjoWrwWlB2K+NKxfBfr1vifS5NUnUb1eFW2+3QE58VkFBPpR/Gd7Fk/4KXqFKsjDKo8vW8Rk++hA==",
+      "path": "opentk.windowing.desktop/5.0.0-pre.3",
+      "hashPath": "opentk.windowing.desktop.5.0.0-pre.3.nupkg.sha512"
+    },
+    "OpenTK.Windowing.GraphicsLibraryFramework/5.0.0-pre.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gkwNJgLCUY7+3z4lG87EB20dX0AA9gdD967PemoywWZdOPhjS9ufx+Dr28kM0kJ0jgT3+Fe+OYROMf4jNMA7sA==",
+      "path": "opentk.windowing.graphicslibraryframework/5.0.0-pre.3",
+      "hashPath": "opentk.windowing.graphicslibraryframework.5.0.0-pre.3.nupkg.sha512"
+    },
+    "System.Collections.Immutable/1.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RVSM6wZUo6L2y6P3vN6gjUtyJ2IF2RVtrepF3J7nrDKfFQd5u/SnSUFclchYQis8/k5scHy9E+fVeKVQLnnkzw==",
+      "path": "system.collections.immutable/1.7.0",
+      "hashPath": "system.collections.immutable.1.7.0.nupkg.sha512"
+    },
+    "System.ComponentModel.Composition/6.0.0-preview.3.21201.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pfX8Hl9O2vgod5VNIpd8e2SMejRzcXcH5KaRbjcnBfHVIVG3nw9x4DVMjQ6ayZCoPm8Ji/eubzKN4ByJRptrQQ==",
+      "path": "system.componentmodel.composition/6.0.0-preview.3.21201.4",
+      "hashPath": "system.componentmodel.composition.6.0.0-preview.3.21201.4.nupkg.sha512"
+    },
+    "System.Configuration.ConfigurationManager/6.0.0-preview.3.21201.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-f7AlKJeJ/UsPvBJD5vS4aYiLzFOweh7HMc8f7gPAfImV5JaUJTeqfhw/O/UXB1otOT3BmabqmfHA+rNRMfgFvw==",
+      "path": "system.configuration.configurationmanager/6.0.0-preview.3.21201.4",
+      "hashPath": "system.configuration.configurationmanager.6.0.0-preview.3.21201.4.nupkg.sha512"
+    },
+    "System.Diagnostics.PerformanceCounter/6.0.0-preview.3.21201.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vr2BCSCo6Ov9tz8Y6SyiT683bV+A0YB5fioZyMleJ2qaf9w9HO1ZD3YvILa+paRpKQ0ZqIROnHjH7zyh6M4XNA==",
+      "path": "system.diagnostics.performancecounter/6.0.0-preview.3.21201.4",
+      "hashPath": "system.diagnostics.performancecounter.6.0.0-preview.3.21201.4.nupkg.sha512"
+    },
+    "System.Drawing.Common/6.0.0-preview.3.21201.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1AnRbkmCDlAh5LQirSlWinp3PbeHXdGhGnchENFVcurVBWwqcz6ST1R+AQy79UWPNPgvC+RCy6q+eXnPxlY9Ow==",
+      "path": "system.drawing.common/6.0.0-preview.3.21201.4",
+      "hashPath": "system.drawing.common.6.0.0-preview.3.21201.4.nupkg.sha512"
+    },
+    "System.Memory/4.5.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
+      "path": "system.memory/4.5.4",
+      "hashPath": "system.memory.4.5.4.nupkg.sha512"
+    },
+    "System.Reflection.Metadata/1.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RRnWHNjNmb14+S+INsYe1A0b+q05uzLNzENcKe1GCkXT2gaKCjPxVc5TsLVgFZdAAPREnLHFohVbo6bGzEWFlA==",
+      "path": "system.reflection.metadata/1.8.0",
+      "hashPath": "system.reflection.metadata.1.8.0.nupkg.sha512"
+    },
+    "System.Resources.Extensions/6.0.0-preview.3.21201.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-A8ApRnWAiVmmzD9GrEC88abnnmkhH8gnSwjkxjaQnTurcr/IMg1+u6k0KbP0RSnfrdvav0wmSR9e0lIKNOO4vw==",
+      "path": "system.resources.extensions/6.0.0-preview.3.21201.4",
+      "hashPath": "system.resources.extensions.6.0.0-preview.3.21201.4.nupkg.sha512"
+    },
+    "System.Runtime.CompilerServices.Unsafe/4.7.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zOHkQmzPCn5zm/BH+cxC1XbUS3P4Yoi3xzW7eRgVpDR2tPGSzyMZ17Ig1iRkfJuY0nhxkQQde8pgePNiA7z7TQ==",
+      "path": "system.runtime.compilerservices.unsafe/4.7.1",
+      "hashPath": "system.runtime.compilerservices.unsafe.4.7.1.nupkg.sha512"
+    },
+    "System.Security.AccessControl/6.0.0-preview.3.21201.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-S8Ze/z6KsGH5jqNkv9bu4n9/4DEpvR3xiqlc4ReLvydtjqv3jehrRubhgBZ4tZF5JiEzB3OamS2P6KhLej+N/g==",
+      "path": "system.security.accesscontrol/6.0.0-preview.3.21201.4",
+      "hashPath": "system.security.accesscontrol.6.0.0-preview.3.21201.4.nupkg.sha512"
+    },
+    "System.Security.Cryptography.ProtectedData/6.0.0-preview.3.21201.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CXAnlLXWNWlM2oeRf9b6TlvNYZgpIA/OXNOTmJaCYVFnCW9PjxwwdBhkE4thFCpgomAUFaVkaO7dgPoYyN0Mjw==",
+      "path": "system.security.cryptography.protecteddata/6.0.0-preview.3.21201.4",
+      "hashPath": "system.security.cryptography.protecteddata.6.0.0-preview.3.21201.4.nupkg.sha512"
+    },
+    "System.Security.Permissions/6.0.0-preview.3.21201.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9IXw85ilW3fpa0RnhawzlcB1j6hlV66eKo92M67wK409uLv8hqqRhOfA4nCTgUsLJNEWnfLqZLwSupfCRfjGeA==",
+      "path": "system.security.permissions/6.0.0-preview.3.21201.4",
+      "hashPath": "system.security.permissions.6.0.0-preview.3.21201.4.nupkg.sha512"
+    },
+    "System.Security.Principal.Windows/6.0.0-preview.3.21201.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5AS4X2959qqXjizwPySQcEL8KutU6CIFyjH2kvotto44aeF57Or3sIHkEK7U5yC4KuMWALSLTo3NWA/e+KLbSA==",
+      "path": "system.security.principal.windows/6.0.0-preview.3.21201.4",
+      "hashPath": "system.security.principal.windows.6.0.0-preview.3.21201.4.nupkg.sha512"
+    },
+    "System.Windows.Extensions/6.0.0-preview.3.21201.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Jy4ZdLbHBHCaMkmB7ModWESHvIReiUlnPt7U4INgwkGPAvoXo2OPyOypvXhhaxx7kTSM6tAHq6UxH9IgELyeIw==",
+      "path": "system.windows.extensions/6.0.0-preview.3.21201.4",
+      "hashPath": "system.windows.extensions.6.0.0-preview.3.21201.4.nupkg.sha512"
+    }
+  }
+}

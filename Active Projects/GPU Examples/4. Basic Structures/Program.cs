@@ -1,6 +1,7 @@
 ﻿using ILGPU;
 using ILGPU.Runtime;
 using System;
+using System.Collections.Generic;
 
 namespace Basic_GPU_Start {
     class Program {
@@ -13,8 +14,8 @@ namespace Basic_GPU_Start {
 						// This would be a CUDA GPU
 						using (var accelerator = Accelerator.Create(context, acceleratorId)) {
 							Console.WriteLine($"Performing operations on {accelerator}");
-							var kernel = accelerator.LoadAutoGroupedStreamKernel<Index1, ArrayView<CustomDataType>>(MyKernel);
-							using (var buffer = accelerator.Allocate<CustomDataType>(1024)) {
+							var kernel = accelerator.LoadAutoGroupedStreamKernel<Index1, myClass, ArrayView<myClass>>(MyKernel);
+							using (var buffer = accelerator.Allocate<myClass>(1024)) {
 								// Launch buffer.Length many threads and pass a view to buffer
 								kernel(buffer.Length, buffer.View);
 
@@ -27,18 +28,19 @@ namespace Basic_GPU_Start {
 			}
         }
 		
-		static void MyKernel(Index1 index, ArrayView<CustomDataType> dataView) {
-            dataView[index] = new CustomDataType(index);
+		static void MyKernel(Index1 index, ArrayView<myClass> dataView) {
+            dataView[index] = new myClass(index);
         }
 		
-		internal readonly struct CustomDataType {
-            public CustomDataType(int value) {
-                First = value;
-                Second = value * value;
+		public struct myClass {
+			myClass2 myRef;
+            public myClass(Index1 value) {
+                myRef = new myClass2();
             }
-
-            public int First { get; }
-            public int Second { get; }
-        }
+		}
+		
+		public class myClass2 {
+			string x;
+		}
     }
 }

@@ -12,7 +12,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 driver = webdriver.Chrome ()
-driver.get("https://www.nicehash.com/profitability-calculator/baikal-bk-g28")
+driver.get("https://www.nicehash.com/profitability-calculator/-bitmain-antminer-s17e-(64th)")
 data = []
 
 def getWebsiteAddressFromMinerName(name):
@@ -46,19 +46,20 @@ def setDeviceName(deviceName):
     element.send_keys(Keys.ENTER)
 
 def incrementDeviceID():
-    #xpath = "html/body/div[1]/div[6]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/i[2]"
-    xpath = "html/body/div[1]/div[6]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/i[2]"
+    xpath = "html/body/div[1]/div[6]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/i[2]"
+    #xpath = "html/body/div[1]/div[6]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/i[2]"
     button = driver.find_element_by_xpath(xpath)
     a = ActionChains(driver)
     a.move_to_element(button).perform()
     button.click()
 
-    element = driver.find_element_by_xpath("html/body/div[1]/div[6]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/input[1]")
+    time.sleep(1)
+    element = driver.find_element_by_xpath("/html/body/div/div[6]/div/div[2]/div[1]/div/div[1]/div[1]/div[1]/div[2]/div[1]/div/div[2]/div[2]/div[1]/input")
     element.send_keys(Keys.ARROW_DOWN)
     element.send_keys(Keys.ENTER)
 
 def calculateResult():
-    xpath = "//button[@class='btn primary medium fluid']"
+    xpath = "/html/body/div/div[6]/div/div[2]/div[1]/div/div[1]/div[1]/div[1]/div[4]/button"
     button = driver.find_element_by_xpath(xpath)
     a = ActionChains(driver)
     a.move_to_element(button).perform()
@@ -69,10 +70,19 @@ print("[Data Collection]: Loading \"NiceHash\"...")
 w = WebDriverWait(driver, 8)
 time.sleep(8)
 
-button = driver.find_element_by_xpath("//button[@class='btn primary success normal']")
+button = None
+while(True):
+        try:
+            button = driver.find_element_by_xpath("//button[@class='btn primary medium fluid']")
+            break
+        except:
+            print("Error finding element. Retrying...")
+            time.sleep(2)
+a = ActionChains(driver)
+a.move_to_element(button).perform()
 button.click()
 
-setPowerCost("0.53")
+setPowerCost("0.26")
 setCurrency("aud")
 time.sleep(8)
 calculateResult()
@@ -81,12 +91,13 @@ time.sleep(5)
 def waitUntilReady():
     while(True):
         try:
-            driver.find_element_by_xpath("//button[@class='btn primary medium loading fluid disabled']")
-        except:
+            driver.find_element_by_xpath("//button[@class='btn primary medium fluid']")
             break
-    time.sleep(1)
+        except:
+            print("Error 1")
+            time.sleep(1)
 
-dataContainerXPath = "html/body/div[1]/div[6]/div[2]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/table[1]/tbody[1]"
+dataContainerXPath = "/html/body/div/div[6]/div/div[2]/div[1]/div/div[1]/div[2]/div/div[2]/table/tbody"
 wb = Workbook()
 ws1 = wb.active
 previousAddress = ""
