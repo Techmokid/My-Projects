@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "8CYBdL+LHjqLAoRBGRVVWCwRSdNWINoI8nATuxc08BALw83OpvRA0KNb/18GDeWJoQW7NOL9HaOraHimZYS8Dw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\Active Projects\\2D. C# Crypto Algorithm\\Crypto AI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\aj200\\.nuget\\packages\\json.net\\1.0.23\\json.net.1.0.23.nupkg.sha512",
+    "C:\\Users\\aj200\\.nuget\\packages\\microsoft.bcl\\1.1.10\\microsoft.bcl.1.1.10.nupkg.sha512",
+    "C:\\Users\\aj200\\.nuget\\packages\\microsoft.bcl.async\\1.0.168\\microsoft.bcl.async.1.0.168.nupkg.sha512",
+    "C:\\Users\\aj200\\.nuget\\packages\\microsoft.bcl.build\\1.0.21\\microsoft.bcl.build.1.0.21.nupkg.sha512",
+    "C:\\Users\\aj200\\.nuget\\packages\\microsoft.net.http\\2.2.29\\microsoft.net.http.2.2.29.nupkg.sha512",
+    "C:\\Users\\aj200\\.nuget\\packages\\newtonsoft.json\\7.0.1\\newtonsoft.json.7.0.1.nupkg.sha512",
+    "C:\\Users\\aj200\\.nuget\\packages\\unirest-api\\1.0.7.6\\unirest-api.1.0.7.6.nupkg.sha512",
+    "C:\\Users\\aj200\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.12\\microsoft.netcore.app.host.win-x64.3.1.12.nupkg.sha512"
+  ],
+  "logs": []
+}

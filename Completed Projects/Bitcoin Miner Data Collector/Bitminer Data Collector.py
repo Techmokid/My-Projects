@@ -159,51 +159,11 @@ while(True):
 
     if (str(driver.find_element_by_xpath("//h2[@class='mb16 text-muted']").text) == "NVIDIA TITAN XP"):
         break
+
+print("DONE!")
 wb.save('incomeValues.xlsx')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-time.sleep(10)
 driver.close()
+
+print("Waiting for user input")
+while(True):
+    continue

@@ -1,0 +1,84 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\Active Projects\\2D. C# Crypto Algorithm\\Crypto AI.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\Active Projects\\2D. C# Crypto Algorithm\\Crypto AI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\Active Projects\\2D. C# Crypto Algorithm\\Crypto AI.csproj",
+        "projectName": "Crypto AI",
+        "projectPath": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\Active Projects\\2D. C# Crypto Algorithm\\Crypto AI.csproj",
+        "packagesPath": "C:\\Users\\aj200\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\Active Projects\\2D. C# Crypto Algorithm\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\aj200\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "noWarn": [
+            "NU1701"
+          ],
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Json.NET": {
+              "target": "Package",
+              "version": "[1.0.23, )"
+            },
+            "Unirest-API": {
+              "target": "Package",
+              "version": "[1.0.7.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.12, 3.1.12]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.3.21202.5\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

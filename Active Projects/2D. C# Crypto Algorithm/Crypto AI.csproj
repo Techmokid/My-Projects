@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <NoWarn>NU1701</NoWarn>
+	
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Crypto_AI</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Json.NET" Version="1.0.23" />
+    <PackageReference Include="Unirest-API" Version="1.0.7.6" />
+  </ItemGroup>
+
+</Project>
