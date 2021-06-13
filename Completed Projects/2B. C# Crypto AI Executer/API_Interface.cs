@@ -50,13 +50,30 @@ namespace Binance_API {
 		
 		public static double getServerTime() {
 			if (!getServerConnectivity()) { throw new Exception("No Server Connection"); }
-			HttpResponse<string> response = Unirest.get("https://api.binance.com/api/v3/time").asJson<string>();
+			
+			HttpResponse<string> response;
+			while(true) {
+				try {
+					response = Unirest.get("https://api.binance.com/api/v3/time").asJson<string>();
+					break;
+				} catch {}
+			}
+			
 			return JsonSerializer.Deserialize<deserializedJSON1>(response.Body.ToString()).time;
 		}
 		
 		public static string getExchangeInfo() {
 			if (!getServerConnectivity()) { throw new Exception("No Server Connection"); }
-			return Unirest.get("https://api.binance.com/api/v3/exchangeInfo").asJson<string>().Body.ToString();
+			
+			string result;
+			while(true) {
+				try {
+					result = Unirest.get("https://api.binance.com/api/v3/exchangeInfo").asJson<string>().Body.ToString();
+					break;
+				} catch {}
+			}
+			
+			return result;
 		}
 		
 		public static string getOrderBook(string symbol) { return getOrderBook(symbol,-1); }
@@ -66,7 +83,15 @@ namespace Binance_API {
 			string resultingString = "https://api.binance.com/api/v3/depth?symbol=" + symbol;
 			if (limit > 0) { resultingString += "&limit=" + limit.ToString(); }
 			
-			return Unirest.get(resultingString).asJson<string>().Body.ToString();
+			string result;
+			while(true) {
+				try {
+					result = Unirest.get(resultingString).asJson<string>().Body.ToString();
+					break;
+				} catch {}
+			}
+			
+			return result;
 		}
 		
 		public static string getRecentTrades(string symbol) { return getRecentTrades(symbol,-1); }
@@ -99,7 +124,14 @@ namespace Binance_API {
 				if (limit > 0) { resultingString += "&limit=" + limit.ToString(); }
 				if (fromId > 0) { resultingString += "&fromId=" + fromId.ToString(); }
 				
-				string fileDataResult2 = Unirest.get(resultingString).header("X-MBX-APIKEY",key).asJson<string>().Body.ToString();
+				string fileDataResult2;
+				while(true) {
+					try {
+						fileDataResult2 = Unirest.get(resultingString).header("X-MBX-APIKEY",key).asJson<string>().Body.ToString();
+						break;
+					} catch {}
+				}
+				
 				File.WriteAllText(filePath, fileDataResult2);
 			}
 			
@@ -130,7 +162,15 @@ namespace Binance_API {
 			if (endTime > 0)   { resultingString += "&endTime="   + endTime.ToString();   }
 			if (limit > 0)     { resultingString += "&limit="     + limit.ToString();     }
 			
-			return Unirest.get(resultingString).asJson<string>().Body.ToString();
+			string result;
+			while(true) {
+				try {
+					result = Unirest.get(resultingString).asJson<string>().Body.ToString();
+					break;
+				} catch {}
+			}
+			
+			return result;
 		}
 		
 		public static string getCurrentAveragePrice(string symbol) {
@@ -138,7 +178,15 @@ namespace Binance_API {
 			
 			string resultingString = "https://api.binance.com/api/v3/avgPrice?symbol=" + symbol;
 			
-			return Unirest.get(resultingString).asJson<string>().Body.ToString();
+			string result;
+			while(true) {
+				try {
+					result = Unirest.get(resultingString).asJson<string>().Body.ToString();
+					break;
+				} catch {}
+			}
+			
+			return result;
 		}
 		
 		//With this function, we can get all supported symbols/currencies (Extended data)
@@ -148,7 +196,15 @@ namespace Binance_API {
 			string resultingString = "https://api.binance.com/api/v3/ticker/24hr";
 			if (symbol != "") { resultingString += "?symbol=" + symbol; }
 			
-			return Unirest.get(resultingString).asJson<string>().Body.ToString();
+			string result;
+			while(true) {
+				try {
+					result = Unirest.get(resultingString).asJson<string>().Body.ToString();
+					break;
+				} catch {}
+			}
+			
+			return result;
 		}
 		
 		//With this function, we can get all supported symbols/currencies (Compact data)
@@ -158,7 +214,15 @@ namespace Binance_API {
 			string resultingString = "https://api.binance.com/api/v3/ticker/price";
 			if (symbol != "") { resultingString += "?symbol=" + symbol; }
 			
-			return Unirest.get(resultingString).asJson<string>().Body.ToString();
+			string result;
+			while(true) {
+				try {
+					result = Unirest.get(resultingString).asJson<string>().Body.ToString();
+					break;
+				} catch {}
+			}
+			
+			return result;
 		}
 		
 		public static string getSymbolOrderBook(string symbol) {
@@ -167,7 +231,15 @@ namespace Binance_API {
 			string resultingString = "https://api.binance.com/api/v3/ticker/bookTicker";
 			if (symbol != "") { resultingString += "?symbol=" + symbol; }
 			
-			return Unirest.get(resultingString).asJson<string>().Body.ToString();
+			string result;
+			while(true) {
+				try {
+					result = Unirest.get(resultingString).asJson<string>().Body.ToString();
+					break;
+				} catch {}
+			}
+			
+			return result;
 		}
 		
 		public static string makeSecureCall(string URL) { return makeSecureCall(URL,"","GET"); }
@@ -193,10 +265,26 @@ namespace Binance_API {
 						resultingURL = URL + "?signature=" + signature;
 					}
 					
-					//Console.WriteLine("TRYING ENDPOINT: " + resultingURL);
-					if (side == "GET")
-						return Unirest.get(resultingURL).header("X-MBX-APIKEY",key).asJson<string>().Body.ToString();
-					return Unirest.post(resultingURL).header("X-MBX-APIKEY",key).asJson<string>().Body.ToString();
+					string result;
+					if (side == "GET") {
+						while(true) {
+							try {
+								result = Unirest.get(resultingURL).header("X-MBX-APIKEY",key).asJson<string>().Body.ToString();
+								break;
+							} catch {}
+						}
+						
+						return result;
+					}
+					
+					while(true) {
+						try {
+							result = Unirest.post(resultingURL).header("X-MBX-APIKEY",key).asJson<string>().Body.ToString();
+							break;
+						} catch {}
+					}
+					
+					return result;
 				} catch {
 					DebugFile.WriteLine("Error making secure call to endpoint: " + resultingURL);
 					Thread.Sleep(2000);
@@ -211,7 +299,15 @@ namespace Binance_API {
 			string resultingString = "https://api.binance.com/api/v3/klines?symbol=" + symbol + "&interval=" + interval;
 			if (limit != 0) { resultingString += "&limit=" + limit.ToString(); }
 			
-			return Unirest.get(resultingString).asJson<string>().Body.ToString();
+			string result;
+			while(true) {
+				try {
+					result = Unirest.get(resultingString).asJson<string>().Body.ToString();
+					break;
+				} catch {}
+			}
+			
+			return result;
 		}
 		
 		//public enum Sides {
@@ -240,7 +336,7 @@ namespace Binance_API {
 		}
 		
 		public static float getWalletContents(string symbol) {
-			string API_result = API.makeSecureCall( "https://api.binance.com/api/v3/allOrders", "symbol=" + symbol);
+			string API_result = API.makeSecureCall("https://api.binance.com/api/v3/allOrders", "symbol=" + symbol);
 			//Console.WriteLine(API_result);
 			//saveDebugFile(API_result,"C:\\Users\\aj200\\Desktop\\Backups\\2. C# CNN\\walletInfo.debug");
 			

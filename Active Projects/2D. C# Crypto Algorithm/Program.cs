@@ -11,6 +11,7 @@ using System.Text.Json.Serialization;
 using Display;
 using Binance_API;
 using PointAnalysis;
+using Debugging;
 
 namespace WebAPIClient {
 	class Program {
@@ -20,7 +21,6 @@ namespace WebAPIClient {
 		static float startingWalletValue = 5000;
 		static int maxNumberOfCryptos = 10;
 		static bool liveTrading = false;
-		
 		static List<deserializedSymbolJSON2> limits = new List<deserializedSymbolJSON2>();
 		
 		class deserializedJSON2 {
@@ -142,6 +142,14 @@ namespace WebAPIClient {
 			
 			//API.filePath = filePath + "/SaveData/HistoricDataCache.txt";
 			API.filePath = "SaveData/HistoricDataCache.txt";
+			//Console.Clear();
+			//foreach (string i in retrieveAllCurrencySymbols().OrderBy(q => q).ToList()) {
+			//	Console.WriteLine("Currency Code: " + i);
+			//}
+			//float wallVal = API.getWalletContents("USDTBNB");
+			//Console.WriteLine(wallVal);
+			//while(true) {}
+			
 			DisplayManager.updateDisplays();
 			
 			dataScreen histStatusText1 = DisplayManager.addScreen(40,9,"Left","Top","  Currency Pricings  ");
@@ -195,9 +203,11 @@ namespace WebAPIClient {
 			AIStatusText4.data = "";
 			DisplayManager.updateDisplays();
 			
+			Console.Clear();
 			while (true) {
 				List<string> currencies = retrieveAllCurrencySymbols();
 				
+				//DebugFile.Create("debugging.txt");
 				List<currencyData> currencyReadouts = new List<currencyData>();
 				for (int currencyIndex = 0; currencyIndex < currencies.Count; currencyIndex++) {
 					PointAnalysis.currencyData parentData = new currencyData();
@@ -219,7 +229,13 @@ namespace WebAPIClient {
 					}
 					
 					currencyReadouts.Add(parentData);
+					
+					//string msg = "Currency Code: " + parentData.currencyName + "\t\tWallet Value: " + API.getWalletContents(parentData.currencyName);
+					//Console.WriteLine(currencyIndex.ToString() + "/" + currencies.Count.ToString());
+                    //DebugFile.WriteLine(msg);
 				}
+				
+				//while (true) {}
 				
 				histStatusText3.data = "------";
 				DisplayManager.updateDisplays();
@@ -234,8 +250,8 @@ namespace WebAPIClient {
 					DisplayManager.resizeCheck();
 					DisplayManager.updateDisplays(false);
 					
-					CompleteAnalysis networkOutput = PointAnalysis.PointAnalysis.analyseData(algorithmCurrencyInputData);
-					networkOutput = PointAnalysis.PointAnalysis.GetClosestNoticableCurve(networkOutput);
+					//CompleteAnalysis networkOutput = PointAnalysis.PointAnalysis.analyseData(algorithmCurrencyInputData);
+					CompleteAnalysis networkOutput = PointAnalysis.PointAnalysis.analyseData(PointAnalysis.PointAnalysis.GetLargestNoticableCurve(algorithmCurrencyInputData, 80));
 					
 					// W.I.P CODE-MARKER
 					if (networkOutput.CurveLineOfBestFitR < Math.Sqrt(networkOutput.StandardLineOfBestFitR)) {
@@ -328,14 +344,12 @@ namespace WebAPIClient {
 				apiStatusText2.data =  "  Selling Old Crypto  ";
 				DisplayManager.updateDisplays();
 				Console.SetCursorPosition(0,25);
-				Console.WriteLine(sellList.Count);
 				
 				int count = 0;
 				foreach(List<string> i in sellList) {
 					DisplayManager.resizeCheck();
 					count++;
 					
-					Console.WriteLine(count.ToString() + "/" + sellList.Count);
 					if ((i[0] != "USDTBTC") && (i[0] != "BTCUSDT")) {
 						float sellWalletValue = API.getWalletContents(i[0]);
 						
@@ -357,7 +371,7 @@ namespace WebAPIClient {
 				apiStatusText2.updateScreen();
 				
 				buyList = orderList(buyList);
-				while(buyList.Count > ) {
+				while(buyList.Count > maxNumberOfCryptos) {
 					buyList.RemoveAt(buyList.Count - 1);
 				}
 				
@@ -366,21 +380,32 @@ namespace WebAPIClient {
 					EbuyVal += Convert.ToDouble(i[1]);
 				}
 				
-				float buyWalletValue = API.getWalletContents("USDTBTC");
+				Console.SetCursorPosition(0,35);
+				
+				float buyWalletValue = API.getWalletContents("BTCUSDT");
 				foreach(List<string> i in buyList) {
 					DisplayManager.resizeCheck();
 					
 					double buyPercentage = Convert.ToDouble(i[1]) / EbuyVal;
-				
+					Console.WriteLine("Crypto Code: " + i[0]);
+					Console.WriteLine("i[1]: " + i[1]);
+					Console.WriteLine("EbuyVal: " + EbuyVal.ToString());
+					Console.WriteLine("Buy percentage: " + (buyPercentage * 100).ToString() + "%");
+					Console.WriteLine("Wallet Contents for that crypto: " + buyWalletValue.ToString());
+					Console.WriteLine("Resulting amount to buy: " + (buyPercentage*buyWalletValue).ToString());
+					Console.WriteLine("");
+					
 					if (buyPercentage * buyWalletValue > 50) {				
 						Console.WriteLine("Buying: " + i[0] + "\t\tPrice: " + (buyPercentage*buyWalletValue).ToString());
 						Thread.Sleep(50);
 						
 						if (liveTrading) {
-							API.createNewBuySellOrder(i[0], "BUY", buyPercentage*buyWalletValue);
+							API.createNewBuySellOrder(i[0], "BUY", (float)buyPercentage*buyWalletValue);
 						}
 					}
 				}
+				
+				while(true) {}
 				
 				AIStatusText4.data =   "  Paused For 10 minutes  ";
 				apiStatusText2.data =  "        Done!        ";

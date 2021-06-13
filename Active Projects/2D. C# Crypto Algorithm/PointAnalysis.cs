@@ -181,13 +181,51 @@ namespace PointAnalysis {
 			inputAnalysis.CurveInflectionPointOccursWithinDatasetParameters = COBF_Inflection_Within_Data_1 && COBF_Inflection_Within_Data_2;
 		}
 		
-		public static CompleteAnalysis GetClosestNoticableCurve(CompleteAnalysis inputAnalysis) {
-			CompleteAnalysis outputAnalysis = inputAnalysis;
+		public static currencyData GetLargestNoticableCurve(currencyData inputData, int minimumDatapointCount) {
+			CompleteAnalysis outputCurveAnalysis = new CompleteAnalysis();
+			CompleteAnalysis outputLineAnalysis = new CompleteAnalysis();
+			currencyData outputCurveResult = new currencyData();
+			currencyData outputLineResult = new currencyData();
 			
 			//Complete this function before executing!!!
+			for (int i = minimumDatapointCount; i < inputData.currencyPoints.Count - 1; i++) {
+				currencyData lastDataPointCalc = GetLastDatapointsSection(inputData,i);
+				
+				CompleteAnalysis tempAnalysis = analyseData(lastDataPointCalc);
+				if (tempAnalysis.CurveOfBestFitR < outputCurveAnalysis.CurveOfBestFitR) {
+					outputCurveAnalysis = tempAnalysis;
+					outputCurveResult = lastDataPointCalc;
+				}
+				
+				//if (tempAnalysis.StandardLineOfBestFitR < outputCurveAnalysis.StandardLineOfBestFitR) {
+				//	outputLineAnalysis = tempAnalysis;
+				//	outputLineResult = lastDataPointCalc;
+				//}
+			}
+			
+			if (outputCurveResult.currencyPoints.Count != 0) {
+				return outputCurveResult;
+				//return outputLineResult;
+			}
 			
 			
-			return outputAnalysis;
+			//Console.WriteLine("CAUGHT ERROR! GOING TO CRASH NOW!");
+			//return outputCurveResult;
+			return inputData;
+		}
+		
+		public static currencyData GetLastDatapointsSection(currencyData inputData, int values) {
+			currencyData result = new currencyData();
+			
+			// W.I.P
+			for (int i = 0; i < values; i++) {
+				int index = inputData.currencyPoints.Count - 1 - i;
+				if (index >= 0) {
+					result.currencyPoints.Add(inputData.currencyPoints[index]);
+				}
+			}
+			
+			return result;
 		}
 	}
 }
