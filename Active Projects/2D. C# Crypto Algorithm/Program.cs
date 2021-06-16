@@ -207,7 +207,8 @@ namespace WebAPIClient {
 			while (true) {
 				List<string> currencies = retrieveAllCurrencySymbols();
 				
-				//DebugFile.Create("debugging.txt");
+				DebugFile.Create("debugging_refined.txt");
+				
 				List<currencyData> currencyReadouts = new List<currencyData>();
 				for (int currencyIndex = 0; currencyIndex < currencies.Count; currencyIndex++) {
 					PointAnalysis.currencyData parentData = new currencyData();
@@ -230,9 +231,13 @@ namespace WebAPIClient {
 					
 					currencyReadouts.Add(parentData);
 					
-					//string msg = "Currency Code: " + parentData.currencyName + "\t\tWallet Value: " + API.getWalletContents(parentData.currencyName);
-					//Console.WriteLine(currencyIndex.ToString() + "/" + currencies.Count.ToString());
-                    //DebugFile.WriteLine(msg);
+					float temp2 = API.getWalletContents(parentData.currencyName);
+					string msg = "Currency Code: " + parentData.currencyName + "\t\tWallet Value: " + temp2.ToString();
+					Console.WriteLine(currencyIndex.ToString() + "/" + currencies.Count.ToString());
+					
+					//if (temp2 != 0) {
+					//	DebugFile.WriteLine(msg);
+					//}
 				}
 				
 				//while (true) {}
@@ -382,7 +387,9 @@ namespace WebAPIClient {
 				
 				Console.SetCursorPosition(0,35);
 				
-				float buyWalletValue = API.getWalletContents("BTCUSDT");
+				//Price_Of_Bitcoin / BTCUSDT = USDTBTC_Wallet_Contents
+				float Price_Of_Bitcoin = 39_000;
+				float buyWalletValue = Price_Of_Bitcoin / API.getWalletContents("BTCUSDT");
 				foreach(List<string> i in buyList) {
 					DisplayManager.resizeCheck();
 					
