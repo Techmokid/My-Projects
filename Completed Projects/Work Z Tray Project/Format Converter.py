@@ -1,7 +1,7 @@
 import xlrd
 
 input_excel_file = "Work Z-tray Readout.xls"
-output_text_file = "ITEMID.TXT"
+output_text_file = "ITEMID~1.TXT"
 
 def getFormattedSentence(ID, X, Y):
     try:
@@ -23,7 +23,7 @@ sheet = wb.sheet_by_index(0)
 fileContents = []
 for y in range(1,sheet.ncols):
     for x in range(1,sheet.nrows):
-        formattedString = getFormattedSentence(sheet.cell_value(x,y),x,y)
+        formattedString = getFormattedSentence(sheet.cell_value(x,y),y,x)
         
         if (isValidPartCode(sheet.cell_value(x,y))):
             fileContents.append(formattedString)
