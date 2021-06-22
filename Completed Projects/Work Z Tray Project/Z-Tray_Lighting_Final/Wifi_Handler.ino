@@ -13,19 +13,23 @@ struct station_info *stat_info;
 struct ipv4_addr *IPaddress;
 const char *ssid = "ESP8266 v1.7";
 
+bool dev_lock_override = false;
+
 void setupWifi() {
- WiFi.mode(WIFI_AP);
- WiFi.softAP(ssid);
- WiFi.softAPConfig(IP, IP, mask);
- server.begin();
- 
- pinMode(LED_BUILTIN, OUTPUT);
- digitalWrite(LED_BUILTIN, LOW);
- 
- Serial.println();
- Serial.println(F("ESP8266 Test Interface Server Has Booted"));
- Serial.print(F("IP: ")); Serial.println(WiFi.softAPIP());
- Serial.print(F("MAC:")); Serial.println(WiFi.softAPmacAddress());
+  dev_lock_override = digitalRead(laserPin);
+  
+  WiFi.mode(WIFI_AP);
+  WiFi.softAP(ssid);
+  WiFi.softAPConfig(IP, IP, mask);
+  server.begin();
+  
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, LOW);
+  
+  Serial.println();
+  Serial.println(F("ESP8266 Test Interface Server Has Booted"));
+  Serial.print(F("IP: ")); Serial.println(WiFi.softAPIP());
+  Serial.print(F("MAC:")); Serial.println(WiFi.softAPmacAddress());
 }
 
 void updateClientList() {
@@ -73,6 +77,7 @@ bool prevListContains(String val) {
 }
 
 bool isDevConnected() {
+  if (dev_lock_override) { return true; }
   for (int i = 0; i < connectedClients.size(); i++) {
     if (connectedClients.get(i) == "8c:79:67:8c:a:7d") { return true; }
   }

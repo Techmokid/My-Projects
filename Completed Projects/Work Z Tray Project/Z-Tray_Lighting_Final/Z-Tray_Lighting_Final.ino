@@ -9,9 +9,9 @@
 #include "SdFat.h"
 #include "sdios.h"
 
-#define laserPin    2
-#define servo_X_Pin 4
-#define servo_Y_Pin 3
+#define laserPin              2
+#define servo_X_Pin           4
+#define servo_Y_Pin           3
 
 WiFiServer server(80);
 WiFiClient client;
@@ -78,18 +78,29 @@ void loop() {
     client.println(" - EDITCD:Part Code:New X:New Y");
     client.println(" - READAT:");
     client.println(" - MNTMOD:");
+    client.println(" - CONFRDOUT:");
     client.println("\"Config Help\" for config values");
   } else if (request.substring(0,12) == "CONFIG HELP:") {
     Serial.println("Listing config help to client");
     client.println("Config Values: ");
     client.println(" - Address 0: Distance to wall");
     client.println(" - Address 1: Height offset from trays");
-    client.println(" - Address 2: Width of tray");
-    client.println(" - Address 3: Height of tray");
+    client.println(" - Address 2: Width of tray area");
+    client.println(" - Address 3: Height of tray area");
     client.println(" - Address 4: Distance of device from left of trays");
     client.println(" - Address 5: Activate Dev Lock (0 or 1)");
     client.println(" - Address 6: Speed of circle");
     client.println(" - Address 7: Radius of circle");
+    client.println(" - Address 8: Number of trays in width");
+    client.println(" - Address 9: Number of trays in height");
+    client.println(" - Address 10: Circle activation (0 or 1)");
+  } else if (request.substring(0,10) == "CONFRDOUT:") {
+    Serial.println("Writing out EEPROM data to client");
+    client.println("\n---------------------- EEPROM Readout ----------------------");
+    for (int i = 0; i < 6; i++) {
+      client.println("Value \"" + String(readValueFromEEPROM(i)) + "\" at position \"" + String(i) + "\"");
+    }
+    client.println("------------------ End Of EEPROM Readout ------------------\n");
   } else if (request.substring(0,7) == "CONFIG:") {
     EEPROM_Writer(request);
   } else if (request.substring(0,7) == "ADCODE:") {
