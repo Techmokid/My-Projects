@@ -78,6 +78,7 @@ void loop() {
     client.println(" - EDITCD:Part Code:New X:New Y");
     client.println(" - READAT:");
     client.println(" - MNTMOD:");
+    client.println(" - TSTMTR:");
     client.println(" - CONFRDOUT:");
     client.println("\"Config Help\" for config values");
   } else if (request.substring(0,12) == "CONFIG HELP:") {
@@ -111,6 +112,12 @@ void loop() {
     EditPartCode(request);
   } else if (request.substring(0,7) == "READAT:") {
     EEPROM_Reader();
+  } else if (request.substring(0,7) == "TSTMTR:") {
+    client.println("Servo Test Mode Active");
+    client.println("ERROR, W.I.P INCOMPLETE FUNCTION. CANCELLING REQUEST");
+    delay(50);
+    updateClientList();
+    //test_servo();
   } else if (request.substring(0,7) == "MNTMOD:") {
     mountMode = !mountMode;
     running = mountMode;
@@ -129,10 +136,14 @@ void loop() {
     Serial.println("Scanning for part: " + request);
     
     getItem(request);
-    startLaser();
-    
-    client.println("Part found at position (" + String(Item_Position_X) + "," + String(Item_Position_Y) + ")");
-    Serial.println("Part found at position (" + String(Item_Position_X) + "," + String(Item_Position_Y) + ")");
+    if (Item_Position_X != -1) {
+      startLaser();
+      
+      client.println("Part found at position (" + String(Item_Position_X) + "," + String(Item_Position_Y) + ")");
+      Serial.println("Part found at position (" + String(Item_Position_X) + "," + String(Item_Position_Y) + ")");
+    } else {
+      client.println("Part code not found");
+    }
   } else {
     client.println(request + " is not a valid part code!!!");
     Serial.println(request + " is not a valid part code!!!");

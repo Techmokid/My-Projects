@@ -60,7 +60,7 @@ void updateLaser() {
   float laser_pos_Y = readValueFromEEPROM(1) + float(Item_Position_Y)*height_of_tray - height_of_tray/2;
   if (readValueFromEEPROM(10) > 0) { laser_pos_Y += Y_Offset; }
   
-  float result_Y = servo_Y.radToDeg(atan(float(laser_pos_Y) / sqrt(pow(float(laser_pos_X),2) + pow(readValueFromEEPROM(0),2))));
+  float result_Y = servo_Y.radToDeg(atan(laser_pos_Y / sqrt(pow(laser_pos_X,2) + pow(readValueFromEEPROM(0),2))));
   servo_Y.write(result_Y);
   
   return;
