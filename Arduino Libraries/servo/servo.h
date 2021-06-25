@@ -8,7 +8,7 @@ class servo {
 		void writeMilliseconds(int val);
 		float radToDeg(float rad);
 		bool oneTime();
-		int pos = 820;
+		float pos = 820;
 		int pin = 0;
 		bool offset90 = false;
 		bool oneTimeActive = false;
