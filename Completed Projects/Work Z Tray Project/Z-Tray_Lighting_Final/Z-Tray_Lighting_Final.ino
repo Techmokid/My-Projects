@@ -119,10 +119,23 @@ void loop() {
     EEPROM_Reader();
   } else if (request.substring(0,7) == "TSTMTR:") {
     client.println("Servo Test Mode Active");
-    client.println("ERROR, W.I.P INCOMPLETE FUNCTION. CANCELLING REQUEST");
     delay(50);
     updateClientList();
-    //test_servo();
+    
+    int test_servo_timer = 3000;
+    servo_X.write(90); servo_Y.write(0);  unsigned long temp = millis(); while(millis() - temp < test_servo_timer) { }
+    servo_X.write(90); servo_Y.write(45); temp = millis(); while(millis() - temp < test_servo_timer) { }
+    servo_X.write(90); servo_Y.write(90); temp = millis(); while(millis() - temp < test_servo_timer) { }
+    servo_X.write(90); servo_Y.write(45); temp = millis(); while(millis() - temp < test_servo_timer) { }
+    servo_X.write(90); servo_Y.write(0);  temp = millis(); while(millis() - temp < test_servo_timer) { }
+    servo_X.write(45); servo_Y.write(0);  temp = millis(); while(millis() - temp < test_servo_timer) { }
+    servo_X.write(0); servo_Y.write(0);   temp = millis(); while(millis() - temp < test_servo_timer) { }
+    servo_X.write(45); servo_Y.write(0);  temp = millis(); while(millis() - temp < test_servo_timer) { }
+    servo_X.write(90); servo_Y.write(0);  temp = millis(); while(millis() - temp < test_servo_timer) { }
+    servo_X.write(135); servo_Y.write(0); temp = millis(); while(millis() - temp < test_servo_timer) { }
+    servo_X.write(180); servo_Y.write(0); temp = millis(); while(millis() - temp < test_servo_timer) { }
+    servo_X.write(135); servo_Y.write(0); temp = millis(); while(millis() - temp < test_servo_timer) { }
+    servo_X.write(90); servo_Y.write(0);  temp = millis(); while(millis() - temp < test_servo_timer) { }
   } else if (request.substring(0,7) == "MNTMOD:") {
     mountMode = !mountMode;
     running = mountMode;

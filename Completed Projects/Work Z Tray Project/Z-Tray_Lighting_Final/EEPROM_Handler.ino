@@ -11,7 +11,7 @@ void EEPROM_Writer(String in) {
   in = in.substring(in.indexOf(':') + 1,in.length());
   if (in[in.length()-1] == '\n') { in.remove(in.length()-1); }
   
-  int key      = getValue(in,':',0).toInt(); if (key > 7) { return; } //Invalid key
+  int key      = getValue(in,':',0).toInt(); //if (key > 10) { return; } //Invalid key
   float val    = getValue(in,':',1).toFloat();
   String units = getValue(in,':',2);
   
@@ -27,7 +27,7 @@ void EEPROM_Writer(String in) {
 
 void EEPROM_Reader() {
   Serial.println("Reading EEPROM off to client");
-  for (int i = 0; i < 8; i++) {
+  for (int i = 0; i < 11; i++) {
     client.println("Value: " + String(readValueFromEEPROM(i),4) + " found at address " + String(i));
   }
   
