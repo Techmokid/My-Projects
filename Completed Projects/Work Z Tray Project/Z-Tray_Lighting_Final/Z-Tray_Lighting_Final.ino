@@ -35,6 +35,11 @@ SdFat sd; SdFile root; SdFile f;
 servo servo_X,servo_Y;
 PinToGPIO p;
 
+float width_of_tray;
+float laser_pos_X;
+float height_of_tray;
+float laser_pos_Y;
+
 void setup() {
   pinMode(p.pinToGPIO(laserPin),OUTPUT);
   
@@ -141,6 +146,16 @@ void loop() {
       
       client.println("Part found at position (" + String(Item_Position_X) + "," + String(Item_Position_Y) + ")");
       Serial.println("Part found at position (" + String(Item_Position_X) + "," + String(Item_Position_Y) + ")");
+      client.println("DEBUG - width_of_tray:" + String(width_of_tray));
+      client.println("DEBUG - height_of_tray:" + String(height_of_tray));
+      client.println("DEBUG - laser_pos_X:" + String(laser_pos_X));
+      client.println("DEBUG - laser_pos_Y:" + String(laser_pos_Y));
+      client.println("DEBUG - Z pos:" + String(readValueFromEEPROM(0)));
+
+      //float width_of_tray;
+      //float laser_pos_X;
+      //float height_of_tray;
+      //float laser_pos_Y;
     } else {
       client.println("Part code not found");
     }

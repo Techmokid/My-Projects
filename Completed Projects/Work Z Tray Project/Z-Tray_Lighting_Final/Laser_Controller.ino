@@ -20,7 +20,15 @@ void startLaser() {
     digitalWrite(p.pinToGPIO(laserPin),HIGH);
     lastTimer = millis();
     running = true;
+    
+    width_of_tray = readValueFromEEPROM(2)/readValueFromEEPROM(8);
+    laser_pos_X = -readValueFromEEPROM(4) + float(Item_Position_X)*width_of_tray - width_of_tray/2;
+
+    height_of_tray = readValueFromEEPROM(3)/readValueFromEEPROM(9);
+    laser_pos_Y = readValueFromEEPROM(1) + float(Item_Position_Y)*height_of_tray - height_of_tray/2;
   }
+
+  
 }
 
 void updateLaser() {
@@ -45,21 +53,14 @@ void updateLaser() {
   
   //For X we just multiply the number of trays across by the width of a tray
   //Then we subtract half of the trays to make it centralised
-  float X_Offset = sin(millis()*readValueFromEEPROM(6))*readValueFromEEPROM(7);
-  float width_of_tray = readValueFromEEPROM(2)/readValueFromEEPROM(8);
-  float laser_pos_X = -readValueFromEEPROM(4) + float(Item_Position_X)*width_of_tray - width_of_tray/2;
-  if (readValueFromEEPROM(10) > 0) { laser_pos_X += X_Offset; }
   
+  if (readValueFromEEPROM(10) > 0) { laser_pos_X += sin(millis()*readValueFromEEPROM(6))*readValueFromEEPROM(7); }
   float result_X = servo_X.radToDeg(atan(laser_pos_X / readValueFromEEPROM(0)));
   servo_X.write(result_X + 90);
   
   //For Y we multiply the number of trays across by the width of a tray
   //Then we add the height above the trays the mechanism sits
-  float Y_Offset = cos(millis()*readValueFromEEPROM(6))*readValueFromEEPROM(7);
-  float height_of_tray = readValueFromEEPROM(3)/readValueFromEEPROM(9);
-  float laser_pos_Y = readValueFromEEPROM(1) + float(Item_Position_Y)*height_of_tray - height_of_tray/2;
-  if (readValueFromEEPROM(10) > 0) { laser_pos_Y += Y_Offset; }
-  
+  if (readValueFromEEPROM(10) > 0) { laser_pos_Y += cos(millis()*readValueFromEEPROM(6))*readValueFromEEPROM(7); }
   float result_Y = servo_Y.radToDeg(atan(laser_pos_Y / sqrt(pow(laser_pos_X,2) + pow(readValueFromEEPROM(0),2))));
   servo_Y.write(result_Y);
   
