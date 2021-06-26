@@ -110,6 +110,10 @@ void loop() {
     client.println(" - Address 8: Number of trays in width");
     client.println(" - Address 9: Number of trays in height");
     client.println(" - Address 10: Circle activation (0 or 1)");
+    client.println(" - Address 11: Servo X start calibration");
+    client.println(" - Address 12: Servo X end calibration");
+    client.println(" - Address 13: Servo Y start calibration");
+    client.println(" - Address 14: Servo Y end calibration");
   } else if (request.substring(0,10) == "CONFRDOUT:") {
     Serial.println("Writing out EEPROM data to client");
     client.println("\n---------------------- EEPROM Readout ----------------------");
