@@ -27,7 +27,7 @@ void EEPROM_Writer(String in) {
 
 void EEPROM_Reader() {
   Serial.println("Reading EEPROM off to client");
-  for (int i = 0; i < 11; i++) {
+  for (int i = 0; i < 15; i++) {
     client.println("Value: " + String(readValueFromEEPROM(i),4) + " found at address " + String(i));
   }
   

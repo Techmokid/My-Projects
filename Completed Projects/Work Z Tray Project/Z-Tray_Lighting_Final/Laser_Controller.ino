@@ -9,6 +9,10 @@
 //EEPROM.read(8) =            - This is the number of trays wide
 //EEPROM.read(9) =            - This is the number of trays high
 //EEPROM.read(10) =           - This is the tray circling enable
+//EEPROM.read(11) =           - This is the servo X start value calibration variable
+//EEPROM.read(11) =           - This is the servo X end   value calibration variable
+//EEPROM.read(11) =           - This is the servo Y start value calibration variable
+//EEPROM.read(11) =           - This is the servo Y end   value calibration variable
 
 //Trays (28 across and 40 high) are 7.6cm wide and 4.625 high
 float lastTimer = 0;

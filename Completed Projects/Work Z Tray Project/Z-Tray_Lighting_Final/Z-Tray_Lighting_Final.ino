@@ -46,10 +46,10 @@ float height_of_tray;
 float laser_pos_Y;
 
 void setup() {
-  servo_X.startValOffset = servo_x_start_offset;
-  servo_X.endValOffset = servo_x_end_offset;
-  servo_Y.startValOffset = servo_y_start_offset;
-  servo_Y.endValOffset = servo_y_end_offset;
+  servo_X.startValOffset = readValueFromEEPROM(11);
+  servo_X.endValOffset   = readValueFromEEPROM(12);
+  servo_Y.startValOffset = readValueFromEEPROM(13);
+  servo_Y.endValOffset   = readValueFromEEPROM(14);
   
   pinMode(p.pinToGPIO(laserPin),OUTPUT);
   
