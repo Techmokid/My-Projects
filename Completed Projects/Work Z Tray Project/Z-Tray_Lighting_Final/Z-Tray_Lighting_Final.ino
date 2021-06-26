@@ -13,11 +13,6 @@
 #define servo_X_Pin           4
 #define servo_Y_Pin           3
 
-#define servo_x_start_offset  0
-#define servo_x_end_offset    0
-#define servo_y_start_offset  0
-#define servo_y_end_offset    0
-
 WiFiServer server(80);
 WiFiClient client;
 IPAddress IP(192,168,4,15);
