@@ -12,8 +12,8 @@ class servo {
 		int pin = 0;
 		bool offset90 = false;
 		bool oneTimeActive = false;
-		int startValOffset = 0;
-		int endValOffset = 0;
+		float startValOffset = 0;
+		float endValOffset = 0;
 	private:
 		unsigned long prevTimer = 0;
 };

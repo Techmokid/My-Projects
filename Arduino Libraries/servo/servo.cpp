@@ -17,7 +17,7 @@ void servo::write(float angle) {
 	if (offset90) { angle = (90 - angle); }
 	
 	// 1ms is full left. 2ms is full right
-	pos = 1000 + ((1000 + startValOffset + endValOffset)*angle) / 180 - endValOffset;
+	pos = int(1000 + ((1000 + startValOffset + endValOffset)*angle) / 180 - endValOffset);
 }
 
 bool servo::oneTime() {
