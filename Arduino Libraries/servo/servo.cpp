@@ -3,7 +3,9 @@
 servo::servo() {}
 
 void servo::updateServo() {
+	Serial.println("D");
 	if (millis() - prevTimer >= 20) {
+		Serial.println("E");
 		prevTimer = millis();
 		pinMode(pin,OUTPUT);
 		digitalWrite(pin, HIGH);
@@ -17,7 +19,7 @@ void servo::write(float angle) {
 	if (offset90) { angle = (90 - angle); }
 	
 	// 1ms is full left. 2ms is full right
-	pos = int(1000 + ((1000 + startValOffset + endValOffset)*angle) / 180 - endValOffset);
+	pos = 1000 + map(1000 * angle / 180,0,1000,startValOffset,endValOffset);
 }
 
 bool servo::oneTime() {
