@@ -137,6 +137,10 @@ for i in peopleData:
     
     detailedRentData.append([person,startDate,personValidRentOwing,i])
 
+totalRentPaid = 0
+for i in rentValues:
+    totalRentPaid += i[1]
+
 #------------------------------------------------------------------------------------------------------------------------------
 
 for detailedRentDataSingleUser in detailedRentData:
@@ -145,26 +149,35 @@ for detailedRentDataSingleUser in detailedRentData:
     rentOwing = detailedRentDataSingleUser[2]
     rentPaid = detailedRentDataSingleUser[3]
     
+    
     totalOwing = 0
     for i in rentOwing:
         totalOwing += i[1] / i[3]
+    
+    temp1 = totalOwing
+    temp2 = 0
     for i in rentPaid:
         totalOwing -= i[1]
+        temp2 += i[1]
     
     if (totalOwing > 0):
-        print("Person: " + person + "\t\tOwes: $" + str(totalOwing))
+        print("Person: " + person + "\t\tOwes: $" + str(totalOwing) + "\t\t\tPercentage: " + str(round(100*temp2/temp1)) + "%")
     elif (totalOwing < 0):
-        print("Person: " + person + "\t\tIn credit of: $" + str(-totalOwing))
+        print("Person: " + person + "\t\tIn credit of: $" + str(-totalOwing) + "\t\tPercentage: " + str(round(100*temp2/temp1)) + "%")
     else:
-        print("Person: " + person + "\t\tEmpty balance")
+        print("Person: " + person + "\t\tEmpty balance  \t\Percentage of total rent paid: " + str(round(100*temp2/temp1)) + "%")
 
 print()    
 print("Rent Paid By Andrey:")
+
+totalRentPaidByAndrey = 0
 for i in andreyPaidRent:
     print(" - Date: " + str(i[0]) + "\t\tAmount: " + str(i[1]))
+    totalRentPaidByAndrey += i[1]
     
-
-
+print("Andrey total paid:                 $" + str(totalRentPaidByAndrey))
+print("Household total rent paid:         $" + str(totalRentPaid))
+print("Percentage of rent paid by andrey: " + str(round(100*totalRentPaidByAndrey / totalRentPaid,2)) + "%")
 
 
 
