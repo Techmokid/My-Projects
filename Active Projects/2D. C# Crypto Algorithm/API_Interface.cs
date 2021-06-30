@@ -362,5 +362,5 @@ namespace Binance_API {
 				}
 			}
 		}
-    }
+	}
 }

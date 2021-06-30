@@ -62,6 +62,22 @@ namespace PointAnalysis {
 	}
 	
 	public static class PointAnalysis {
+		public static currencyData copy(currencyData input) { return copy(input,true);}
+		public static currencyData copy(currencyData input, bool keepCurrencyPoints) {
+			currencyData result = new currencyData();
+			result.currencyName = input.currencyName;
+			if (!keepCurrencyPoints) { return result; }
+			
+			foreach (dataPoint i in input.currencyPoints) {
+				dataPoint temp = new dataPoint();
+				temp.id = i.id;
+				temp.price = i.price;
+				temp.time = i.time;
+				result.dataPoint.Add(temp);
+			}
+			return result;
+		}
+		
 		public static CompleteAnalysis analyseData(currencyData inputData) {
 			double errorMultiplier = 2.5f;
 			

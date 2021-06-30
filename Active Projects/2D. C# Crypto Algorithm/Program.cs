@@ -256,12 +256,33 @@ namespace WebAPIClient {
 					DisplayManager.updateDisplays(false);
 					
 					//CompleteAnalysis networkOutput = PointAnalysis.PointAnalysis.analyseData(algorithmCurrencyInputData);
-					CompleteAnalysis networkOutput = PointAnalysis.PointAnalysis.analyseData(PointAnalysis.PointAnalysis.GetLargestNoticableCurve(algorithmCurrencyInputData, 80));
+					currencyData largestCurve = PointAnalysis.PointAnalysis.GetLargestNoticableCurve(algorithmCurrencyInputData, 80);
+					CompleteAnalysis networkOutput_Final_Pass = PointAnalysis.PointAnalysis.analyseData(largestCurve);
+					
+					double nOIP_A = networkOutput_Final_Pass.CurveOfBestFitA;
+					double nOIP_B = networkOutput_Final_Pass.CurveOfBestFitB;
+					double nOIP_C = networkOutput_Final_Pass.CurveOfBestFitC;
+					
+					//Here we get the analyzed output from the upper bounds of the main curve
+					currencyData upper_Curve = PointAnalysis.PointAnalysis.copy(largestCurve,false);
+					currencyData lower_Curve = PointAnalysis.PointAnalysis.copy(largestCurve,false);
+					for (int i = 0; i < largestCurve.currencyPoints.Count; i++) {
+						// Y = ax2 + bx + c | Where Y is the price and X is the date
+						dataPoint dP = largestCurve.currencyPoints[i];
+						double predictedPriceAtPoint = nOIP_A*mathf.pow(dP.time,2) + nOIP_B*dP.time + nOIP_C;
+						if (dP.price >= predictedPriceAtPoint) { upper_Curve.currencyPoints.Add(dP); }
+						if (dP.price <= predictedPriceAtPoint) { lower_Curve.currencyPoints.Add(dP); }
+					}
+					
+					CompleteAnalysis networkOutput_Final_Pass_Upper_Bound = PointAnalysis.PointAnalysis.analyseData(upper_Curve);
+					CompleteAnalysis networkOutput_Final_Pass_Lower_Bound = PointAnalysis.PointAnalysis.analyseData(lower_Curve);
 					
 					// W.I.P CODE-MARKER
-					if (networkOutput.CurveLineOfBestFitR < Math.Sqrt(networkOutput.StandardLineOfBestFitR)) {
+					// Must add in the upper and lower bound analysise into the buy/sell calculation
+					
+					if (networkOutput_Final_Pass.CurveLineOfBestFitR < Math.Sqrt(networkOutput_Final_Pass.StandardLineOfBestFitR)) {
 						//This is just a straight line
-						double M = networkOutput.StandardLineOfBestFit_M;
+						double M = networkOutput_Final_Pass.StandardLineOfBestFit_M;
 						if (M > 0) {
 							buyList.Add(
 								new List<string> {
@@ -279,11 +300,11 @@ namespace WebAPIClient {
 						}
 					} else {
 						//We legit think it's a curve
-						double M = networkOutput.CurveOfBestFitA;
+						double M = networkOutput_Final_Pass.CurveOfBestFitA;
 						if (M > 0) {
 							// The curve is convex (Valley)
 							dataPoint latestVal = algorithmCurrencyInputData.currencyPoints[algorithmCurrencyInputData.currencyPoints.Count - 1];
-							if (networkOutput.CurveOfBestFitTurnoverPointX < Convert.ToDouble(latestVal.time)) {
+							if (networkOutput_Final_Pass.CurveOfBestFitTurnoverPointX < Convert.ToDouble(latestVal.time)) {
 								buyList.Add(
 									new List<string> {
 										algorithmCurrencyInputData.currencyName,
@@ -301,7 +322,7 @@ namespace WebAPIClient {
 						} else {
 							// The curve is concave (Hill)
 							dataPoint latestVal = algorithmCurrencyInputData.currencyPoints[algorithmCurrencyInputData.currencyPoints.Count - 1];
-							if (networkOutput.CurveOfBestFitTurnoverPointX > Convert.ToDouble(latestVal.time)) {
+							if (networkOutput_Final_Pass.CurveOfBestFitTurnoverPointX > Convert.ToDouble(latestVal.time)) {
 								buyList.Add(
 									new List<string> {
 										algorithmCurrencyInputData.currencyName,
