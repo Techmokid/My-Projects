@@ -40,6 +40,45 @@ namespace Binance_API {
 			public string price { get; set; }
 		}
 		
+		class deserializedJSON3 {
+			[JsonPropertyName("price")]
+			public string price {get; set; }
+		}
+		
+		public class walletDataPacket {
+			[JsonPropertyName("coin")]
+			public string ID { get; set; }
+			
+			[JsonPropertyName("name")]
+			public string name { get; set; }
+			
+			[JsonPropertyName("free")]
+			public string free { get; set; }
+			
+			[JsonPropertyName("locked")]
+			public string locked { get; set; }
+			
+			[JsonPropertyName("freeze")]
+			public string freeze { get; set; }
+			
+			[JsonPropertyName("withdrawing")]
+			public string withdrawing { get; set; }
+			
+			[JsonPropertyName("storage")]
+			public string storage { get; set; }
+			
+			[JsonPropertyName("networkList")]
+			public List<walletDataSubnetworksPacket> networkList { get; set; }
+		}
+		
+		public class walletDataSubnetworksPacket {
+			[JsonPropertyName("coin")]
+			public string coin { get; set; }
+			
+			[JsonPropertyName("network")]
+			public string network { get; set; }
+		}
+		
 		public static bool getServerConnectivity() {
 			try {
 				//HttpResponse<string> response = Unirest.get("https://api.binance.com/api/v3/time").asJson<string>();
@@ -186,7 +225,11 @@ namespace Binance_API {
 				} catch {}
 			}
 			
-			return result;
+			try {
+				return JsonSerializer.Deserialize<deserializedJSON3>(result).price;
+			} catch {
+				return "-1";
+			}
 		}
 		
 		//With this function, we can get all supported symbols/currencies (Extended data)
@@ -335,25 +378,6 @@ namespace Binance_API {
 			);
 		}
 		
-		public static float getWalletContents(string symbol) {
-			string API_result = API.makeSecureCall("https://api.binance.com/api/v3/allOrders", "symbol=" + symbol);
-			//Console.WriteLine(API_result);
-			//saveDebugFile(API_result,"C:\\Users\\aj200\\Desktop\\Backups\\2. C# CNN\\walletInfo.debug");
-			
-			if (API_result.Length < 10)
-				return 0;
-			
-			try {
-				List<JsonElement> outputResult = JsonSerializer.Deserialize<List<JsonElement>>(API_result);
-				float currentWalletValue = 0;
-				foreach(JsonElement i in outputResult) {
-					string temp = JsonSerializer.Deserialize<deserializedJSON2>(i.ToString()).price;
-					currentWalletValue += float.Parse(temp);
-				}
-				return currentWalletValue;
-			} catch { return -1; }
-		}
-		
 		public static void saveDebugFile(string data, string filePath) {
 			File.WriteAllText(filePath, "");
 			using (StreamWriter sw = File.AppendText(filePath)) {
@@ -361,6 +385,47 @@ namespace Binance_API {
 					sw.WriteLine("\t" + x + ",");
 				}
 			}
+		}
+		
+		public static List<walletDataPacket> getAllWalletContents() {
+			string API_result = API.makeSecureCall("https://api.binance.com/sapi/v1/capital/config/getall"); //"symbol=" + symbol);
+			List<walletDataPacket> outputResult = JsonSerializer.Deserialize<List<walletDataPacket>>(API_result);
+			return outputResult;
+		}
+		
+		//public static walletDataPacket getWalletContents(string symbol) {
+		//	List<walletDataPacket> data = getAllWalletContents();
+		//	foreach (walletDataPacket i in data) {
+		//		if (i.ID == symbol) {
+		//			return i;
+		//		}
+		//	}
+		//	
+		//	return null;
+		//}
+		
+		public static float getWalletContents(string symbol) {
+			List<walletDataPacket> data = getAllWalletContents();
+			foreach (walletDataPacket i in data) {
+				if (i.ID == symbol) {
+					return float.Parse(i.free);
+				}
+			}
+			
+			return -1;
+		}
+		
+		public static List<walletDataPacket> getWalletsContents(List<string> symbols) {
+			List<walletDataPacket> data = getAllWalletContents();
+			
+			List<walletDataPacket> result = new List<walletDataPacket>();
+			foreach (walletDataPacket i in data) {
+				foreach (string symbol in symbols) {
+					if (i.ID == symbol) { result.Add(i); }
+				}
+			}
+			
+			return result;
 		}
 	}
 }

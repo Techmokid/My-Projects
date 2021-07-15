@@ -140,15 +140,22 @@ namespace WebAPIClient {
 			dataScreen apiStatusText2 =  DisplayManager.addScreen(10,10,"Left","Top","       Starting       ");
 			DisplayManager.createGroup(new List<dataScreen> {apiStatusText1,apiStatusText2});
 			
-			//API.filePath = filePath + "/SaveData/HistoricDataCache.txt";
-			API.filePath = "SaveData/HistoricDataCache.txt";
-			//Console.Clear();
-			//foreach (string i in retrieveAllCurrencySymbols().OrderBy(q => q).ToList()) {
-			//	Console.WriteLine("Currency Code: " + i);
-			//}
-			//float wallVal = API.getWalletContents("USDTBNB");
-			//Console.WriteLine(wallVal);
+			//------------------------------------
+			API.filePath = filePath + "/SaveData/HistoricDataCache.txt";
+			//API.filePath = "SaveData/HistoricDataCache.txt";
+			Console.Clear();
+			foreach(API.walletDataPacket i in API.getAllWalletContents()) {
+				if (Convert.ToDouble(i.free) > 0) {
+					Console.WriteLine("Code:" + i.ID + "\t\tAmount:" + i.free);
+				}
+			}
+			
+			//Console.WriteLine(API.getWalletContents("USDT"));
+			//Console.WriteLine(getConvertedCode("BTCBNB"));
+			//Console.SetCursorPosition(0,40);
+			//Console.WriteLine("COMPLETE!");
 			//while(true) {}
+			//------------------------------------
 			
 			DisplayManager.updateDisplays();
 			
@@ -259,28 +266,8 @@ namespace WebAPIClient {
 					currencyData largestCurve = PointAnalysis.PointAnalysis.GetLargestNoticableCurve(algorithmCurrencyInputData, 80);
 					CompleteAnalysis networkOutput_Final_Pass = PointAnalysis.PointAnalysis.analyseData(largestCurve);
 					
-					double nOIP_A = networkOutput_Final_Pass.CurveOfBestFitA;
-					double nOIP_B = networkOutput_Final_Pass.CurveOfBestFitB;
-					double nOIP_C = networkOutput_Final_Pass.CurveOfBestFitC;
-					
-					//Here we get the analyzed output from the upper bounds of the main curve
-					currencyData upper_Curve = PointAnalysis.PointAnalysis.copy(largestCurve,false);
-					currencyData lower_Curve = PointAnalysis.PointAnalysis.copy(largestCurve,false);
-					for (int i = 0; i < largestCurve.currencyPoints.Count; i++) {
-						// Y = ax2 + bx + c | Where Y is the price and X is the date
-						dataPoint dP = largestCurve.currencyPoints[i];
-						double predictedPriceAtPoint = nOIP_A*mathf.pow(dP.time,2) + nOIP_B*dP.time + nOIP_C;
-						if (dP.price >= predictedPriceAtPoint) { upper_Curve.currencyPoints.Add(dP); }
-						if (dP.price <= predictedPriceAtPoint) { lower_Curve.currencyPoints.Add(dP); }
-					}
-					
-					CompleteAnalysis networkOutput_Final_Pass_Upper_Bound = PointAnalysis.PointAnalysis.analyseData(upper_Curve);
-					CompleteAnalysis networkOutput_Final_Pass_Lower_Bound = PointAnalysis.PointAnalysis.analyseData(lower_Curve);
-					
-					// W.I.P CODE-MARKER
-					// Must add in the upper and lower bound analysise into the buy/sell calculation
-					
-					if (networkOutput_Final_Pass.CurveLineOfBestFitR < Math.Sqrt(networkOutput_Final_Pass.StandardLineOfBestFitR)) {
+					//if (networkOutput_Final_Pass.CurveLineOfBestFitR < Math.Sqrt(networkOutput_Final_Pass.StandardLineOfBestFitR)) {
+					if (false) {
 						//This is just a straight line
 						double M = networkOutput_Final_Pass.StandardLineOfBestFit_M;
 						if (M > 0) {
@@ -300,43 +287,49 @@ namespace WebAPIClient {
 						}
 					} else {
 						//We legit think it's a curve
-						double M = networkOutput_Final_Pass.CurveOfBestFitA;
-						if (M > 0) {
-							// The curve is convex (Valley)
-							dataPoint latestVal = algorithmCurrencyInputData.currencyPoints[algorithmCurrencyInputData.currencyPoints.Count - 1];
-							if (networkOutput_Final_Pass.CurveOfBestFitTurnoverPointX < Convert.ToDouble(latestVal.time)) {
-								buyList.Add(
-									new List<string> {
-										algorithmCurrencyInputData.currencyName,
-										M.ToString()
-									}
-								);
-							} else {
-								sellList.Add(
-									new List<string> {
-										algorithmCurrencyInputData.currencyName,
-										M.ToString()
-									}
-								);
-							}
-						} else {
-							// The curve is concave (Hill)
-							dataPoint latestVal = algorithmCurrencyInputData.currencyPoints[algorithmCurrencyInputData.currencyPoints.Count - 1];
-							if (networkOutput_Final_Pass.CurveOfBestFitTurnoverPointX > Convert.ToDouble(latestVal.time)) {
-								buyList.Add(
-									new List<string> {
-										algorithmCurrencyInputData.currencyName,
-										M.ToString()
-									}
-								);
-							} else {
-								sellList.Add(
-									new List<string> {
-										algorithmCurrencyInputData.currencyName,
-										M.ToString()
-									}
-								);
-							}
+						
+						double nOIP_A = networkOutput_Final_Pass.CurveOfBestFitA;
+						double nOIP_B = networkOutput_Final_Pass.CurveOfBestFitB;
+						double nOIP_C = networkOutput_Final_Pass.CurveOfBestFitC;
+						
+						//Here we get the analyzed output from the upper bounds of the main curve
+						currencyData upper_Curve = PointAnalysis.PointAnalysis.copy(largestCurve,false);
+						currencyData lower_Curve = PointAnalysis.PointAnalysis.copy(largestCurve,false);
+						for (int i = 0; i < largestCurve.currencyPoints.Count; i++) {
+							// Y = ax2 + bx + c | Where Y is the price and X is the date
+							dataPoint dP = largestCurve.currencyPoints[i];
+							double predictedPriceAtPoint = nOIP_A*Math.Pow(Convert.ToDouble(dP.time),2) + nOIP_B*Convert.ToDouble(dP.time) + nOIP_C;
+							if (Convert.ToDouble(dP.price) >= predictedPriceAtPoint) { upper_Curve.currencyPoints.Add(dP); }
+							if (Convert.ToDouble(dP.price) <= predictedPriceAtPoint) { lower_Curve.currencyPoints.Add(dP); }
+						}
+						
+						CompleteAnalysis networkOutput_Final_Pass_Upper_Bound = PointAnalysis.PointAnalysis.analyseData(upper_Curve);
+						CompleteAnalysis networkOutput_Final_Pass_Lower_Bound = PointAnalysis.PointAnalysis.analyseData(lower_Curve);
+						
+						
+						// W.I.P CODE-MARKER
+						// Must add in the upper and lower bound analysis into the buy/sell calculation
+						// We want to analyze the upper bound curve and ask if we are above the upper bound average (Sell)
+						// We want to analyze the lower bound curve and ask if we are below the lower bound average (Buy)
+						dataPoint latestVal = algorithmCurrencyInputData.currencyPoints[algorithmCurrencyInputData.currencyPoints.Count - 1];
+						
+						bool isAboveUpperBoundAverage = Convert.ToDouble(latestVal.price) > networkOutput_Final_Pass_Upper_Bound.getYAtX(Convert.ToDouble(latestVal.time));
+						bool isBelowLowerBoundAverage = Convert.ToDouble(latestVal.price) < networkOutput_Final_Pass_Lower_Bound.getYAtX(Convert.ToDouble(latestVal.time));
+						if (isAboveUpperBoundAverage) {
+							sellList.Add(
+								new List<string> {
+									algorithmCurrencyInputData.currencyName,
+									networkOutput_Final_Pass_Upper_Bound.CurveOfBestFitA.ToString()
+								}
+							);
+						}
+						if (isBelowLowerBoundAverage) {
+							buyList.Add(
+								new List<string> {
+									algorithmCurrencyInputData.currencyName,
+									networkOutput_Final_Pass_Lower_Bound.CurveOfBestFitA.ToString()
+								}
+							);
 						}
 					}
 				}
@@ -348,15 +341,35 @@ namespace WebAPIClient {
 					buyList.RemoveAt(buyList.Count - 1);
 				}
 				
+				Console.SetCursorPosition(0,45);
+				
+				// Convert the crypto codes into wallet codes
+				List<List<string>> temp9 = new List<List<string>>();
+				foreach (List<string> i in sellList) {
+					string tempX = getConvertedCode(i[0]);
+					if (tempX != "ERROR") {
+						i[0] = tempX;
+						temp9.Add(i);
+					}  else {
+						Console.WriteLine("ERROR: " + i[0]);
+					}
+				}
+				sellList = temp9;
+				Console.WriteLine("========================");
+				Console.WriteLine("    Waiting for User    ");
+				Console.WriteLine("========================");
+				while(true) {}
+				
 				//                     "       Starting       ";
 				AIStatusText1.color = ConsoleColor.Cyan;
 				AIStatusText2.color = ConsoleColor.Cyan;
 				AIStatusText3.color = ConsoleColor.Cyan;
 				apiStatusText1.color = ConsoleColor.Cyan;
 				apiStatusText2.color = ConsoleColor.Cyan;
-				AIStatusText2.data =   "    Awaiting User...  ";
+				AIStatusText2.data =   "";
 				AIStatusText3.data =   "";
-				apiStatusText2.data =  "    Awaiting User...  ";
+				apiStatusText2.data =  "";
+				
 				//DisplayManager.updateDisplays();
 				//Console.ReadKey(true);
 				
@@ -463,6 +476,19 @@ namespace WebAPIClient {
 			}
 			
 			return results;
-		}			
+		}
+
+		public static string getConvertedCode(string input) {
+			foreach(API.walletDataPacket i in API.getAllWalletContents()) {
+				foreach(API.walletDataSubnetworksPacket x in i.networkList) {
+					//Here we wanna scan to see if the input exists in "getAllWalletContents"
+					//Console.WriteLine(x.coin + x.network);
+					if (x.coin + x.network == input) {
+						return x.coin;
+					}
+				}
+			}
+			return "ERROR";
+		}	
 	}
 }

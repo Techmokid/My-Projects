@@ -48,6 +48,10 @@ namespace PointAnalysis {
 			StandardLineOfBestFit_M = (CURVEESTIMATION_Y_Last - CURVEESTIMATION_Y_First)/(X_Last - X_First); 
 			StandardLineOfBestFit_C = CURVEESTIMATION_Y_First - X_First * StandardLineOfBestFit_M;
 		}
+		
+		public double getYAtX(double X) {
+			return CurveOfBestFitA*Math.Pow(X,2) + CurveOfBestFitB*X + CurveOfBestFitC;
+		}
 	}
 	
 	public class currencyData {
@@ -73,7 +77,7 @@ namespace PointAnalysis {
 				temp.id = i.id;
 				temp.price = i.price;
 				temp.time = i.time;
-				result.dataPoint.Add(temp);
+				result.currencyPoints.Add(temp);
 			}
 			return result;
 		}
