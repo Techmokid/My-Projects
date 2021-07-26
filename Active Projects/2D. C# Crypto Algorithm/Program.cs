@@ -381,16 +381,7 @@ namespace WebAPIClient {
 					}
 				}
 				sellList = temp9;
-				Console.WriteLine("========================");
-				Console.WriteLine("    Waiting for User    ");
-				Console.WriteLine("========================");
-				//while(true) {}
 				
-				Console.Clear();
-				foreach (List<string> i in sellList) {
-					Console.WriteLine("Code: " + i[0]);
-				}
-				while(true) {}
 				//                     "       Starting       ";
 				AIStatusText1.color = ConsoleColor.Cyan;
 				AIStatusText2.color = ConsoleColor.Cyan;
@@ -414,6 +405,17 @@ namespace WebAPIClient {
 				apiStatusText2.data =  "  Selling Old Crypto  ";
 				DisplayManager.updateDisplays();
 				Console.SetCursorPosition(0,25);
+				
+				Console.WriteLine("========================");
+				Console.WriteLine("    Waiting for User    ");
+				Console.WriteLine("========================");
+				//while(true) {}
+				
+				Console.Clear();
+				foreach (List<string> i in sellList) {
+					Console.WriteLine("Code: " + i[0] + "\t\t\tAmount: " + API.getWalletContents(i[0]));
+				}
+				while(true) {}
 				
 				int count = 0;
 				foreach(List<string> i in sellList) {
