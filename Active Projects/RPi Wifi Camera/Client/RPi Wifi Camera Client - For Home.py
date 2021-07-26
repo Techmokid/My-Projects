@@ -57,8 +57,14 @@ while(True):
     
     for i in directoryList:
         if (i not in prevDirectoryList):
-            if ((i + ".IP-Access-list") in directoryList):
-                print("Downloading New Directory: " + i)
+            if ((i[:-5] + ".IP-Access-list") in directoryList):
+                print("Downloading Video File: " + i)
+                ftp.connect('192.168.1.11',1026)
+                ftp.login()
+                downloadFile("Z:/New Recordings/" + i,i)
+                destroyFile(i)
+            if (".volt" in i):
+                print("Downloading Voltage Data: " + i)
                 ftp.connect('192.168.1.11',1026)
                 ftp.login()
                 downloadFile("Z:/New Recordings/" + i,i)

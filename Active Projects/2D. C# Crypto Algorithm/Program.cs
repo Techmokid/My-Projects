@@ -143,13 +143,29 @@ namespace WebAPIClient {
 			//------------------------------------
 			API.filePath = filePath + "/SaveData/HistoricDataCache.txt";
 			//API.filePath = "SaveData/HistoricDataCache.txt";
-			Console.Clear();
-			foreach(API.walletDataPacket i in API.getAllWalletContents()) {
-				if (Convert.ToDouble(i.free) > 0) {
-					Console.WriteLine("Code:" + i.ID + "\t\tAmount:" + i.free);
-				}
-			}
+			//Console.Clear();
+			//foreach(API.walletDataPacket i in API.getAllWalletContents()) {
+			//	if (Convert.ToDouble(i.free) > 0) {
+			//		Console.WriteLine("Code:" + i.ID + "\t\tAmount:" + i.free);
+			//	}
+			//}
+			//
+			//Console.Clear();
+			//List<string> tempCurrencies = retrieveAllCurrencySymbols();
+			//foreach(string i in tempCurrencies) {
+			//	string id = getConvertedCode(i);
+			//	Console.Write(i + ":");
+			//	for (int x = 0; x < 20 - i.Length; x++) {
+			//		Console.Write(" ");
+			//	}
+			//	Console.WriteLine(id);
+			//	//Console.SetCursorPosition(15,Console.GetCursorPosition()[1]);
+			//}
+			//Console.WriteLine("Done!");
+			//while(true) {}
 			
+			//Console.WriteLine(getConvertedCode("BNBBTC"));
+			//while(true) {}
 			//Console.WriteLine(API.getWalletContents("USDT"));
 			//Console.WriteLine(getConvertedCode("BTCBNB"));
 			//Console.SetCursorPosition(0,40);
@@ -337,8 +353,18 @@ namespace WebAPIClient {
 				AIStatusText3.data = "";
 				DisplayManager.updateDisplays();
 				
-				while (buyList.Count > maxNumberOfCryptos) {
-					buyList.RemoveAt(buyList.Count - 1);
+				for (int index = 0; index < buyList.Count; index++) {
+					if (getConvertedCode(buyList[index][0]) == "UNTRUSTED BASE COIN") {
+						buyList.RemoveAt(index);
+						index--;
+					}
+				}
+				
+				for (int index = 0; index < sellList.Count; index++) {
+					if (getConvertedCode(sellList[index][0]) == "UNTRUSTED BASE COIN") {
+						sellList.RemoveAt(index);
+						index--;
+					}
 				}
 				
 				Console.SetCursorPosition(0,45);
@@ -358,8 +384,13 @@ namespace WebAPIClient {
 				Console.WriteLine("========================");
 				Console.WriteLine("    Waiting for User    ");
 				Console.WriteLine("========================");
-				while(true) {}
+				//while(true) {}
 				
+				Console.Clear();
+				foreach (List<string> i in sellList) {
+					Console.WriteLine("Code: " + i[0]);
+				}
+				while(true) {}
 				//                     "       Starting       ";
 				AIStatusText1.color = ConsoleColor.Cyan;
 				AIStatusText2.color = ConsoleColor.Cyan;
@@ -446,6 +477,7 @@ namespace WebAPIClient {
 					}
 				}
 				
+				Console.WriteLine("Done");
 				while(true) {}
 				
 				AIStatusText4.data =   "  Paused For 10 minutes  ";
@@ -479,6 +511,17 @@ namespace WebAPIClient {
 		}
 
 		public static string getConvertedCode(string input) {
+			if (input.Substring(len(input) - 4) == "USDT") { return input.Substring(0,len(input) - 4); }
+			if (input.Substring(len(input) - 3) == "BTC")  { return input.Substring(0,len(input) - 3); }
+			if (input.Substring(len(input) - 3) == "BNB")  { return input.Substring(0,len(input) - 3); }
+			if (input.Substring(len(input) - 3) == "ETH")  { return input.Substring(0,len(input) - 3); }
+			//if (input.Substring(len(input) - 3) == "USD")  { return input.Substring(0,len(input) - 3); }
+			//if (input.Substring(len(input) - 3) == "PAX")  { return input.Substring(0,len(input) - 3); }
+			//if (input.Substring(len(input) - 3) == "XRP")  { return input.Substring(0,len(input) - 3); }
+			//if (input.Substring(len(input) - 3) == "RUB")  { return input.Substring(0,len(input) - 3); }
+			//if (input.Substring(len(input) - 4, 3) == "USD")  { return input.Substring(0,len(input) - 4); }
+			return "UNTRUSTED BASE COIN";
+			
 			foreach(API.walletDataPacket i in API.getAllWalletContents()) {
 				foreach(API.walletDataSubnetworksPacket x in i.networkList) {
 					//Here we wanna scan to see if the input exists in "getAllWalletContents"
@@ -489,6 +532,8 @@ namespace WebAPIClient {
 				}
 			}
 			return "ERROR";
-		}	
+		}
+
+		public static int len(string x) { return x.Length; }			
 	}
 }

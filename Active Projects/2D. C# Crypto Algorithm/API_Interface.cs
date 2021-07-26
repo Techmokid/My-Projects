@@ -389,7 +389,18 @@ namespace Binance_API {
 		
 		public static List<walletDataPacket> getAllWalletContents() {
 			string API_result = API.makeSecureCall("https://api.binance.com/sapi/v1/capital/config/getall"); //"symbol=" + symbol);
-			List<walletDataPacket> outputResult = JsonSerializer.Deserialize<List<walletDataPacket>>(API_result);
+			List<walletDataPacket> outputResult;
+			
+			while(true) {
+				try {
+					outputResult = JsonSerializer.Deserialize<List<walletDataPacket>>(API_result);
+					break;
+				} catch {
+					Console.WriteLine("Error");
+					Thread.Sleep(2000);
+				}
+			}
+			
 			return outputResult;
 		}
 		
