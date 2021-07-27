@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Arduino Comms/Arduino Debug/Complete Arduino Comms Debug.unity
+  isLoaded: 1
+  isActive: 1

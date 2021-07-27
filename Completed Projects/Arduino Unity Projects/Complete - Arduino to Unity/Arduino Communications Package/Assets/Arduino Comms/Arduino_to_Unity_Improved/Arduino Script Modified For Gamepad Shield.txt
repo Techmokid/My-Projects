@@ -1,0 +1,25 @@
+//Made by Andrey Rumming on 24/01/2018
+//This is for use with the Arduino Gamepad Shield and Unity3d Game-making Engine 5.6.0f and higher
+//Pin 2 is A, Pin 3 is B, Pin 4 is C, Pin 5 is D, Pin 6 is E, Pin 7 is F, Pin 8 is the Joystick Button, and pins A0-A1 are the pins for the joysticks position (x and y respectively)
+//Unity wouldn't let me upload the .ino file, so you have to copy this code into your editor manually
+
+void setup() {
+  digitalWrite(2,HIGH);
+  digitalWrite(3,HIGH);
+  digitalWrite(4,HIGH);
+  digitalWrite(5,HIGH);
+  digitalWrite(6,HIGH);
+  digitalWrite(7,HIGH);
+  digitalWrite(8,HIGH);
+  digitalWrite(9,HIGH);
+  digitalWrite(10,HIGH);
+  Serial.begin(9600);
+}
+
+void loop() {
+  //Write to Unity
+  String digital = String(digitalRead(2)) + "_" + String(digitalRead(3)) + "_" + String(digitalRead(4)) + "_" + String(digitalRead(5)) + "_" + String(digitalRead(6)) + "_" + String(digitalRead(7)) + "_" + String(digitalRead(8)) + "_" + String(digitalRead(9)) + "_" + String(digitalRead(10)) + "_" + String(digitalRead(11)) + "_" + String(digitalRead(12)) + "_" + String(digitalRead(13));
+  String analog = String(analogRead(A0)) + "_" + String(analogRead(A1)) + "_" + String(analogRead(A2)) + "_" + String(analogRead(A3)) + "_" + String(analogRead(A4)) + "_" + String(analogRead(A5));
+  String sentenceToSend = digital + "_" + analog;
+  Serial.println(sentenceToSend);
+}

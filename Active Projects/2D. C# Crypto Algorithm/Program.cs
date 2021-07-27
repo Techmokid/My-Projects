@@ -406,17 +406,6 @@ namespace WebAPIClient {
 				DisplayManager.updateDisplays();
 				Console.SetCursorPosition(0,25);
 				
-				Console.WriteLine("========================");
-				Console.WriteLine("    Waiting for User    ");
-				Console.WriteLine("========================");
-				//while(true) {}
-				
-				Console.Clear();
-				foreach (List<string> i in sellList) {
-					Console.WriteLine("Code: " + i[0] + "\t\t\tAmount: " + API.getWalletContents(i[0]));
-				}
-				while(true) {}
-				
 				int count = 0;
 				foreach(List<string> i in sellList) {
 					DisplayManager.resizeCheck();
@@ -426,18 +415,29 @@ namespace WebAPIClient {
 						float sellWalletValue = API.getWalletContents(i[0]);
 						
 						if (sellWalletValue != -1) {
-							if (sellWalletValue > 20) {
+							if (sellWalletValue > 0) {
 								Console.WriteLine("Selling: " + i[0]);
 								Thread.Sleep(50);
 								if (liveTrading) {
 									API.createNewBuySellOrder(i[0], "SELL", sellWalletValue - 20);
 								}
+							} else {
+								Console.WriteLine("Empty Wallet Found On Token: " + i[0]);
 							}
-						} else {
-							Console.WriteLine("Error while selling: " + i[0]);
-						}
+						} else { Console.WriteLine("Invalid Token: " + i[0]); }
 					}
 				}
+				
+				Console.WriteLine("========================");
+				Console.WriteLine("    Waiting for User    ");
+				Console.WriteLine("========================");
+				while(true) {}
+				
+				//Console.Clear();
+				//foreach (List<string> i in sellList) {
+				//	Console.WriteLine("Code: " + i[0] + "\t\t\tAmount: " + API.getWalletContents(i[0]));
+				//}
+				//while(true) {}
 				
 				apiStatusText2.data =  "  Buying New Crypto  ";
 				apiStatusText2.updateScreen();

@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Scene 3/MassDataWrite/WriteToArduinoTotal.unity
+  isLoaded: 1
+  isActive: 1
