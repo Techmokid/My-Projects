@@ -23,54 +23,46 @@ def storeNewDirectories(x):
 #downloadFile("C:/Users/aj200/Desktop/Er2.png","Er.png")
 
 destructionList = []
-def destroyFile(filename):
-    ftp.connect('192.168.1.11',1026)
+def destroyFile(IP,filename):
+    ftp.connect('192.168.1.' + IP,1026)
     ftp.login()
     destruct_name = "SYSTEM_FILES_SET_TO_DESTRUCTION.txt"
-    downloadFile("Z:/" + destruct_name,destruct_name)
+    downloadFile("Z:/" + IP + destruct_name,destruct_name)
     
     f = open("Z:/" + destruct_name,"a")
     f.write(filename+"\n")
     f.close()
 
-    ftp.connect('192.168.1.11',1026)
+    ftp.connect('192.168.1.' + IP,1026)
     ftp.login()
     uploadFile("Z:/" + destruct_name,destruct_name)
 
-prevDirectoryList = []
+index = 0
+IP_Addresses = ["11","21"]
 while(True):
-    ftp.connect('192.168.1.11',1026)
+    IP = IP_Addresses[index]
+    index += 1
+    if (index == len(IP_Addresses)):
+        index = 0
+    
+    ftp.connect('192.168.1.' + IP,1026)
     ftp.login()
     ftp.retrlines('NLST',storeNewDirectories)
     ftp.quit()
     
-    #We want to filter out results we have already seen
-    #for i in directoryList:
-    #    if (i in prevDirectoryList):
-    #        directoryList.remove(i)
-    
-    #Now we want to remove from the previous list if it wasn't detected this time
-    #for i in prevDirectoryList:
-    #    if (i not in directoryList):
-    #        #print("Removing: " + i)
-    #        prevDirectoryList.remove(i)
-    
     for i in directoryList:
-        if (i not in prevDirectoryList):
-            if ((i[:-5] + ".IP-Access-list") in directoryList):
-                print("Downloading Video File: " + i)
-                ftp.connect('192.168.1.11',1026)
-                ftp.login()
-                downloadFile("Z:/New Recordings/" + i,i)
-                destroyFile(i)
-            if (".volt" in i):
-                print("Downloading Voltage Data: " + i)
-                ftp.connect('192.168.1.11',1026)
-                ftp.login()
-                downloadFile("Z:/New Recordings/" + i,i)
-                destroyFile(i)
+        if ((i[:-5] + ".IP-Access-list") in directoryList):
+            print("IP:" + IP + "\t\tDownloading Video File: " + i)
+            ftp.connect('192.168.1.' + IP,1026)
+            ftp.login()
+            downloadFile("Z:/New Recordings/" + i,i)
+            destroyFile(IP,i)
+        if (".volt" in i):
+            print("IP:" + IP + "\t\tDownloading Voltage Data: " + i)
+            ftp.connect('192.168.1.' + IP,1026)
+            ftp.login()
+            downloadFile("Z:/New Recordings/" + i,i)
+            destroyFile(IP,i)
     
-    #for i in directoryList:
-    #    prevDirectoryList.append(i)
     directoryList = []
-    time.sleep(30)
+    time.sleep(5)

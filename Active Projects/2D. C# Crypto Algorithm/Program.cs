@@ -20,7 +20,7 @@ namespace WebAPIClient {
 		static float tax_percentage = 0.1f;
 		static float startingWalletValue = 5000;
 		static int maxNumberOfCryptos = 10;
-		static bool liveTrading = false;
+		static bool liveTrading = true;
 		static List<deserializedSymbolJSON2> limits = new List<deserializedSymbolJSON2>();
 		
 		class deserializedJSON2 {
@@ -226,7 +226,6 @@ namespace WebAPIClient {
 			AIStatusText4.data = "";
 			DisplayManager.updateDisplays();
 			
-			Console.Clear();
 			while (true) {
 				List<string> currencies = retrieveAllCurrencySymbols();
 				
@@ -254,9 +253,9 @@ namespace WebAPIClient {
 					
 					currencyReadouts.Add(parentData);
 					
-					float temp2 = API.getWalletContents(parentData.currencyName);
+					float temp2 = API.getWalletContents(getConvertedCode(parentData.currencyName));
 					string msg = "Currency Code: " + parentData.currencyName + "\t\tWallet Value: " + temp2.ToString();
-					Console.WriteLine(currencyIndex.ToString() + "/" + currencies.Count.ToString());
+					//Console.WriteLine(currencyIndex.ToString() + "/" + currencies.Count.ToString());
 					
 					//if (temp2 != 0) {
 					//	DebugFile.WriteLine(msg);
@@ -370,17 +369,17 @@ namespace WebAPIClient {
 				Console.SetCursorPosition(0,45);
 				
 				// Convert the crypto codes into wallet codes
-				List<List<string>> temp9 = new List<List<string>>();
-				foreach (List<string> i in sellList) {
-					string tempX = getConvertedCode(i[0]);
-					if (tempX != "ERROR") {
-						i[0] = tempX;
-						temp9.Add(i);
-					}  else {
-						Console.WriteLine("ERROR: " + i[0]);
-					}
-				}
-				sellList = temp9;
+				//List<List<string>> temp9 = new List<List<string>>();
+				//foreach (List<string> i in sellList) {
+				//	string tempX = getConvertedCode(i[0]);
+				//	if (tempX != "ERROR") {
+				//		i[0] = tempX;
+				//		temp9.Add(i);
+				//	}  else {
+				//		Console.WriteLine("ERROR: " + i[0]);
+				//	}
+				//}
+				//sellList = temp9;
 				
 				//                     "       Starting       ";
 				AIStatusText1.color = ConsoleColor.Cyan;
@@ -412,7 +411,7 @@ namespace WebAPIClient {
 					count++;
 					
 					if ((i[0] != "USDTBTC") && (i[0] != "BTCUSDT")) {
-						float sellWalletValue = API.getWalletContents(i[0]);
+						float sellWalletValue = API.getWalletContents(getConvertedCode(i[0]));
 						
 						if (sellWalletValue != -1) {
 							if (sellWalletValue > 0) {
@@ -422,20 +421,15 @@ namespace WebAPIClient {
 									API.createNewBuySellOrder(i[0], "SELL", sellWalletValue - 20);
 								}
 							} else {
-								Console.WriteLine("Empty Wallet Found On Token: " + i[0]);
+								//Console.WriteLine("Empty Wallet Found On Token: " + i[0]);
 							}
-						} else { Console.WriteLine("Invalid Token: " + i[0]); }
+						}// else { Console.WriteLine("Invalid Token: " + i[0]); }
 					}
 				}
 				
-				Console.WriteLine("========================");
-				Console.WriteLine("    Waiting for User    ");
-				Console.WriteLine("========================");
-				while(true) {}
-				
 				//Console.Clear();
 				//foreach (List<string> i in sellList) {
-				//	Console.WriteLine("Code: " + i[0] + "\t\t\tAmount: " + API.getWalletContents(i[0]));
+				//	Console.WriteLine("Code: " + i[0] + "\t\t\tAmount: " + API.getWalletContents(getConvertedCode(i[0])));
 				//}
 				//while(true) {}
 				
@@ -456,14 +450,14 @@ namespace WebAPIClient {
 				
 				//Price_Of_Bitcoin / BTCUSDT = USDTBTC_Wallet_Contents
 				float Price_Of_Bitcoin = 39_000;
-				float buyWalletValue = Price_Of_Bitcoin / API.getWalletContents("BTCUSDT");
+				float buyWalletValue = Price_Of_Bitcoin / API.getWalletContents(getConvertedCode("BTCUSDT"));
 				foreach(List<string> i in buyList) {
 					DisplayManager.resizeCheck();
 					
 					double buyPercentage = Convert.ToDouble(i[1]) / EbuyVal;
 					Console.WriteLine("Crypto Code: " + i[0]);
 					Console.WriteLine("i[1]: " + i[1]);
-					Console.WriteLine("EbuyVal: " + EbuyVal.ToString());
+					//Console.WriteLine("EbuyVal: " + EbuyVal.ToString());
 					Console.WriteLine("Buy percentage: " + (buyPercentage * 100).ToString() + "%");
 					Console.WriteLine("Wallet Contents for that crypto: " + buyWalletValue.ToString());
 					Console.WriteLine("Resulting amount to buy: " + (buyPercentage*buyWalletValue).ToString());
@@ -479,15 +473,14 @@ namespace WebAPIClient {
 					}
 				}
 				
-				Console.WriteLine("Done");
-				while(true) {}
-				
 				AIStatusText4.data =   "  Paused For 10 minutes  ";
 				apiStatusText2.data =  "        Done!        ";
 				apiStatusText2.color = ConsoleColor.Green;
 				DisplayManager.updateDisplays();
 				
 				Thread.Sleep(1000 * 60 * 10);
+				Console.WriteLine("Done");
+				//while(true) {}
 				
 				AIStatusText4.data =   "  ";
 				DisplayManager.updateDisplays();
