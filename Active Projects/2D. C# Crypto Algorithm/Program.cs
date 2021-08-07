@@ -226,6 +226,8 @@ namespace WebAPIClient {
 			AIStatusText4.data = "";
 			DisplayManager.updateDisplays();
 			
+			//Console.WriteLine(API.createNewBuySellOrder("BTCUSDT", "SELL", 95.0f));
+			
 			while (true) {
 				List<string> currencies = retrieveAllCurrencySymbols();
 				
@@ -405,9 +407,10 @@ namespace WebAPIClient {
 				DisplayManager.updateDisplays();
 				Console.SetCursorPosition(0,25);
 				
+				Console.Clear();
 				int count = 0;
 				foreach(List<string> i in sellList) {
-					DisplayManager.resizeCheck();
+					//DisplayManager.resizeCheck();
 					count++;
 					
 					if ((i[0] != "USDTBTC") && (i[0] != "BTCUSDT")) {
@@ -415,10 +418,11 @@ namespace WebAPIClient {
 						
 						if (sellWalletValue != -1) {
 							if (sellWalletValue > 0) {
-								Console.WriteLine("Selling: " + i[0]);
+								sellWalletValue -= 1;
+								Console.WriteLine("Selling: " + i[0] + "\t\tAmount: " + sellWalletValue.ToString());
 								Thread.Sleep(50);
 								if (liveTrading) {
-									API.createNewBuySellOrder(i[0], "SELL", sellWalletValue - 20);
+									Console.WriteLine(API.createNewBuySellOrder(i[0], "SELL", sellWalletValue));
 								}
 							} else {
 								//Console.WriteLine("Empty Wallet Found On Token: " + i[0]);
@@ -446,29 +450,36 @@ namespace WebAPIClient {
 					EbuyVal += Convert.ToDouble(i[1]);
 				}
 				
-				Console.SetCursorPosition(0,35);
+				//Console.SetCursorPosition(0,35);
 				
 				//Price_Of_Bitcoin / BTCUSDT = USDTBTC_Wallet_Contents
 				float Price_Of_Bitcoin = 39_000;
 				float buyWalletValue = Price_Of_Bitcoin / API.getWalletContents(getConvertedCode("BTCUSDT"));
 				foreach(List<string> i in buyList) {
-					DisplayManager.resizeCheck();
+					//DisplayManager.resizeCheck();
 					
 					double buyPercentage = Convert.ToDouble(i[1]) / EbuyVal;
-					Console.WriteLine("Crypto Code: " + i[0]);
-					Console.WriteLine("i[1]: " + i[1]);
+					//Console.WriteLine("Crypto Code: " + i[0]);
+					//Console.WriteLine("i[1]: " + i[1]);
 					//Console.WriteLine("EbuyVal: " + EbuyVal.ToString());
-					Console.WriteLine("Buy percentage: " + (buyPercentage * 100).ToString() + "%");
-					Console.WriteLine("Wallet Contents for that crypto: " + buyWalletValue.ToString());
-					Console.WriteLine("Resulting amount to buy: " + (buyPercentage*buyWalletValue).ToString());
-					Console.WriteLine("");
+					//Console.WriteLine("Buy percentage: " + (buyPercentage * 100).ToString() + "%");
+					//Console.WriteLine("Wallet Contents for that crypto: " + buyWalletValue.ToString());
+					//Console.WriteLine("Resulting amount to buy: " + (buyPercentage*buyWalletValue).ToString());
+					//Console.WriteLine("");
+					
+					string msg = "Code:" + i[0];
+					msg += "\t\ti[1]:" + i[1];
+					msg += "\t\tEBV:" + EbuyVal.ToString();
+					msg += "\t\tBP:" + (buyPercentage * 100).ToString() + "%";
+					msg += "\t\tRes:" + (buyPercentage*buyWalletValue).ToString();
+					Console.WriteLine(msg);
 					
 					if (buyPercentage * buyWalletValue > 50) {				
 						Console.WriteLine("Buying: " + i[0] + "\t\tPrice: " + (buyPercentage*buyWalletValue).ToString());
 						Thread.Sleep(50);
 						
 						if (liveTrading) {
-							API.createNewBuySellOrder(i[0], "BUY", (float)buyPercentage*buyWalletValue);
+							Console.WriteLine(API.createNewBuySellOrder(i[0], "BUY", (float)buyPercentage*buyWalletValue));
 						}
 					}
 				}
@@ -476,11 +487,11 @@ namespace WebAPIClient {
 				AIStatusText4.data =   "  Paused For 10 minutes  ";
 				apiStatusText2.data =  "        Done!        ";
 				apiStatusText2.color = ConsoleColor.Green;
-				DisplayManager.updateDisplays();
+				//DisplayManager.updateDisplays();
 				
-				Thread.Sleep(1000 * 60 * 10);
+				//Thread.Sleep(1000 * 60 * 10);
 				Console.WriteLine("Done");
-				//while(true) {}
+				while(true) {}
 				
 				AIStatusText4.data =   "  ";
 				DisplayManager.updateDisplays();
