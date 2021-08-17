@@ -1,5 +1,6 @@
 allRentValues = []
 allRentValues.append(["10/06/2021",130,"Ami"])
+allRentValues.append(["01/08/2021",0,"Ami"])
 
 allRentValues.append(["9/02/2021",440 - 260,"Kieran"])     #Original $440. $260 pet bond
 allRentValues.append(["17/02/2021",180,"Kieran"])
@@ -10,6 +11,7 @@ allRentValues.append(["08/04/2021",180,"Kieran"])
 allRentValues.append(["21/04/2021",180,"Kieran"])
 allRentValues.append(["05/05/2021",300,"Kieran"])         #Paid in cash, bank messed up
 allRentValues.append(["19/05/2021",300,"Kieran"])         #Paid in cash, bank messed up
+allRentValues.append(["01/08/2021",0,"Kieran"])
 
 allRentValues.append(["08/12/2020",240,"Tyler"])
 allRentValues.append(["29/12/2020",115 + 65,"Tyler"])           #Paid for some of my things that week
@@ -52,6 +54,7 @@ allRentValues.append(["14/06/2021",720,"Rent",5])
 allRentValues.append(["28/06/2021",720,"Rent",5])
 allRentValues.append(["11/07/2021",720,"Rent",5])
 allRentValues.append(["26/07/2021",720,"Rent",5])
+allRentValues.append(["09/08/2021",720,"Rent",4])
 
 #------------------------------------------------------------------------------------------------------------------------------
 
@@ -78,7 +81,6 @@ while(len(temp) > 1):
         currentIndex += 1
     rentSortedByDate.append(temp[indexOfEarliest])
     temp.pop(indexOfEarliest)
-
 
 
 rentSortedByDate.append(temp[0])
@@ -132,9 +134,14 @@ for i in peopleData:
         if (rentDataPoint[0] < startDate):
             startDate = rentDataPoint[0]
     
+    endingDate = datetime.datetime.strptime("01/01/9999", "%d/%m/%Y")
+    for rentDataPoint in i:
+        if (rentDataPoint[1] == 0):
+            endingDate = rentDataPoint[0]
+    
     personValidRentOwing = []
     for x in rentValues:
-        if (x[0] > startDate):
+        if ((x[0] > startDate) and (x[0] < endingDate)):
             personValidRentOwing.append(x)
     
     detailedRentData.append([person,startDate,personValidRentOwing,i])
