@@ -143,26 +143,7 @@ namespace WebAPIClient {
 			//------------------------------------
 			API.filePath = filePath + "/SaveData/HistoricDataCache.txt";
 			//API.filePath = "SaveData/HistoricDataCache.txt";
-			//Console.Clear();
-			//foreach(API.walletDataPacket i in API.getAllWalletContents()) {
-			//	if (Convert.ToDouble(i.free) > 0) {
-			//		Console.WriteLine("Code:" + i.ID + "\t\tAmount:" + i.free);
-			//	}
-			//}
-			//
-			//Console.Clear();
-			//List<string> tempCurrencies = retrieveAllCurrencySymbols();
-			//foreach(string i in tempCurrencies) {
-			//	string id = getConvertedCode(i);
-			//	Console.Write(i + ":");
-			//	for (int x = 0; x < 20 - i.Length; x++) {
-			//		Console.Write(" ");
-			//	}
-			//	Console.WriteLine(id);
-			//	//Console.SetCursorPosition(15,Console.GetCursorPosition()[1]);
-			//}
-			//Console.WriteLine("Done!");
-			//while(true) {}
+			API.getNetworkMinimums();
 			
 			//Console.WriteLine(getConvertedCode("BNBBTC"));
 			//while(true) {}
@@ -441,46 +422,103 @@ namespace WebAPIClient {
 				apiStatusText2.updateScreen();
 				
 				buyList = orderList(buyList);
-				while(buyList.Count > maxNumberOfCryptos) {
-					buyList.RemoveAt(buyList.Count - 1);
-				}
 				
 				double EbuyVal = 0.00f;
 				foreach(List<string> i in buyList) {
 					EbuyVal += Convert.ToDouble(i[1]);
 				}
 				
-				//Console.SetCursorPosition(0,35);
-				
+				Console.WriteLine("\n\nGetting network minimum value differences");
+				//Read difference between network minimum values and the percentage of requested buy coins
+				List<List<string>> networkDistances = new List<List<string>>();
 				//Price_Of_Bitcoin / BTCUSDT = USDTBTC_Wallet_Contents
 				float Price_Of_Bitcoin = 39_000;
 				float buyWalletValue = Price_Of_Bitcoin / API.getWalletContents(getConvertedCode("BTCUSDT"));
-				foreach(List<string> i in buyList) {
-					//DisplayManager.resizeCheck();
+				for (int x = 0; x < buyList.Count; x++) {
+					List<string> i = buyList[x];
+					
+					DisplayManager.resizeCheck();
 					
 					double buyPercentage = Convert.ToDouble(i[1]) / EbuyVal;
-					//Console.WriteLine("Crypto Code: " + i[0]);
-					//Console.WriteLine("i[1]: " + i[1]);
-					//Console.WriteLine("EbuyVal: " + EbuyVal.ToString());
-					//Console.WriteLine("Buy percentage: " + (buyPercentage * 100).ToString() + "%");
-					//Console.WriteLine("Wallet Contents for that crypto: " + buyWalletValue.ToString());
-					//Console.WriteLine("Resulting amount to buy: " + (buyPercentage*buyWalletValue).ToString());
-					//Console.WriteLine("");
 					
-					string msg = "Code:" + i[0];
-					msg += "\t\ti[1]:" + i[1];
-					msg += "\t\tEBV:" + EbuyVal.ToString();
-					msg += "\t\tBP:" + (buyPercentage * 100).ToString() + "%";
-					msg += "\t\tRes:" + (buyPercentage*buyWalletValue).ToString();
-					Console.WriteLine(msg);
-					
-					if (buyPercentage * buyWalletValue > 50) {				
-						Console.WriteLine("Buying: " + i[0] + "\t\tPrice: " + (buyPercentage*buyWalletValue).ToString());
-						Thread.Sleep(50);
-						
-						if (liveTrading) {
-							Console.WriteLine(API.createNewBuySellOrder(i[0], "BUY", (float)buyPercentage*buyWalletValue));
+					networkDistances.Add(
+						new List<string> {
+							i[0],
+							(buyPercentage / API.getBuyMinimum(i[0])).ToString()
 						}
+					);
+					Console.WriteLine(" - Code:" + i[0] + "\t\tDiff:" + (buyPercentage / API.getBuyMinimum(i[0])).ToString());
+				}
+				
+				//Order the list by minimum value difference
+				Console.WriteLine("\n\nOrdering by minimum value difference");
+				List<List<string>> orderedNetworkList = new List<List<string>>();
+				while(buyList.Count > 0) {
+					int currentMaxIndex = 0;
+					for(int i = 0; i < buyList.Count; i++) {
+						if (Convert.ToDouble(buyList[i][1]) > Convert.ToDouble(buyList[currentMaxIndex][1])) {
+							currentMaxIndex = i;
+						}
+					}
+					orderedNetworkList.Add(buyList[currentMaxIndex]);
+					buyList.RemoveAt(currentMaxIndex);
+				}
+				buyList = orderedNetworkList;
+				
+				Console.WriteLine("\n\nFinal iteration. Amount that survived: " + buyList.Count.ToString());
+				//Iterate through the coins, removing the poorest performing ones until all coins are above the network minimums
+				List<List<string>> finalNetworkOutput = new List<List<string>>();
+				while (true) {
+					bool isValid = true;
+					finalNetworkOutput = new List<List<string>>();
+					
+					EbuyVal = 0.00f;
+					foreach(List<string> i in buyList) {
+						EbuyVal += Convert.ToDouble(i[1]);
+					}
+					
+					//Price_Of_Bitcoin / BTCUSDT = USDTBTC_Wallet_Contents
+					float TEMP_buyWalletValue = Price_Of_Bitcoin / API.getWalletContents(getConvertedCode("BTCUSDT"));
+					for (int x = 0; x < buyList.Count; x++) {
+						DisplayManager.resizeCheck();
+						double buyPercentage = Convert.ToDouble(buyList[x][1]) / EbuyVal;
+						
+						finalNetworkOutput.Add(new List<string> { buyList[x][0],buyPercentage.ToString() });
+					}
+					
+					if (isValid) {
+						break;
+					} else {
+						buyList.RemoveAt(buyList.Count - 1);
+					}
+				}
+				
+				//A final check to only buy a certain number of coins
+				while(buyList.Count > maxNumberOfCryptos) {
+					buyList.RemoveAt(buyList.Count - 1);
+				}
+				
+				//Finally buy the coins
+				EbuyVal = 0.00f;
+				foreach(List<string> i in buyList) { EbuyVal += Convert.ToDouble(i[1]); }
+				for (int x = 0; x < buyList.Count; x++) {
+					List<string> i = buyList[x];
+					
+					DisplayManager.resizeCheck();
+					
+					double buyPercentage = Convert.ToDouble(i[1]) / EbuyVal;
+					//string msg = "Code:" + i[0];
+					//msg += "\t\ti[1]:" + i[1];
+					//msg += "\t\tEBV:" + EbuyVal.ToString();
+					//msg += "\t\tBP:" + (buyPercentage * 100).ToString() + "%";
+					//msg += "\t\tRes:" + (buyPercentage*buyWalletValue).ToString();
+					//Console.WriteLine(msg);
+					
+					Console.WriteLine("Buying: " + i[0] + "\t\tPrice: " + (buyPercentage*buyWalletValue).ToString());
+					Thread.Sleep(50);
+					
+					if (liveTrading) {
+						Console.WriteLine(API.createNewBuySellOrder(i[0], "BUY", (float)buyPercentage*buyWalletValue));
 					}
 				}
 				

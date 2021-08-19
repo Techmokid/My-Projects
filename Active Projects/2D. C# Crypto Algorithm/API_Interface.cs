@@ -77,6 +77,12 @@ namespace Binance_API {
 			
 			[JsonPropertyName("network")]
 			public string network { get; set; }
+			
+			[JsonPropertyName("withdrawMin")]
+			public string withdrawMin { get; set; }
+			
+			[JsonPropertyName("withdrawFee")]
+			public string withdrawFee { get; set; }
 		}
 		
 		public static bool getServerConnectivity() {
@@ -437,6 +443,29 @@ namespace Binance_API {
 			}
 			
 			return result;
+		}
+		
+		static List<List<string>> networkMinimums = new List<List<string>>();
+		public static void getNetworkMinimums() {
+			List<walletDataPacket> mins = getAllWalletContents();
+			foreach(walletDataPacket i in mins) {
+				foreach (walletDataSubnetworksPacket x in i.networkList) {
+					networkMinimums.Add(
+						new List<string> {
+							x.network + x.coin,
+							(Convert.ToDouble(x.withdrawMin) + Convert.ToDouble(x.withdrawFee)).ToString()
+						}
+					);
+				}
+			}
+		}
+		
+		public static double getBuyMinimum(string x) {
+			foreach(List<string> i in networkMinimums) {
+				 if (i[0] == x) { return Convert.ToDouble(i[1]); }
+			}
+			
+			return -1;
 		}
 	}
 }
