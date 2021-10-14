@@ -11,21 +11,23 @@ void setup() {
   setupMotor();
   
   Serial.println("Fully Operational!");
+  
+  setSpeed(0.5);  carefulDelay(500); setSpeed(0);carefulDelay(500);
+  setSpeed(0.5);  carefulDelay(500); setSpeed(0);carefulDelay(500);
+  setSpeed(0.5);  carefulDelay(500); setSpeed(0);carefulDelay(500);
+  
+  setSpeed(1);    carefulDelay(5000);
+  setSpeed(0);    carefulDelay(5000);
+
+  setSpeed(0.5);  carefulDelay(500); setSpeed(0);carefulDelay(500);
+  setSpeed(0.5);  carefulDelay(500); setSpeed(0);carefulDelay(500);
+  setSpeed(0.5);  carefulDelay(500); setSpeed(0);carefulDelay(500);
+
+  setSpeed(-1);   carefulDelay(5000);
+  setSpeed(0);    carefulDelay(5000);
 }
 
-void loop() {
-  setSpeed(0);    blink(1); carefulDelay(3000);
-  setSpeed(0.5);  blink(2); carefulDelay(3000);
-  setSpeed(1);    blink(3); carefulDelay(3000);
-  setSpeed(0.5);  blink(2); carefulDelay(3000);
-  setSpeed(0);    blink(1); carefulDelay(3000);
-  setSpeed(-0.5); blink(2); carefulDelay(3000);
-  setSpeed(-1);   blink(3); carefulDelay(3000);
-  setSpeed(-0.5); blink(2); carefulDelay(3000);
-  setSpeed(0);    blink(1); carefulDelay(3000);
-  restartArduino();
-  while(true) {}
-}
+void loop() { }
 
 void blink(int count) {
   while (count > 0) {

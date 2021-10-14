@@ -18,6 +18,13 @@ allRentValues.append(["29/12/2020",115 + 65,"Tyler"])           #Paid for some o
 allRentValues.append(["18/01/2021",363,"Tyler"])
 allRentValues.append(["19/01/2021",180,"Tyler"])
 allRentValues.append(["19/02/2021",180,"Tyler"])
+allRentValues.append(["08/09/2021",360,"Tyler"])
+allRentValues.append(["15/09/2021",360,"Tyler"])
+allRentValues.append(["22/09/2021",360,"Tyler"])
+allRentValues.append(["29/09/2021",360,"Tyler"])
+allRentValues.append(["06/10/2021",120,"Tyler"])
+allRentValues.append(["13/10/2021",360,"Tyler"])
+allRentValues.append(["13/10/2021",60,"Tyler"])
 
 allRentValues.append(["14/12/2020",240,"Daimon"])
 allRentValues.append(["21/12/2020",150,"Daimon"])
@@ -34,6 +41,9 @@ allRentValues.append(["09/04/2021",180,"Daimon"])
 allRentValues.append(["20/04/2021",20,"Daimon"])           #Paid for some of my things that week
 allRentValues.append(["03/05/2021",180,"Daimon"])
 allRentValues.append(["17/05/2021",180,"Daimon"])
+allRentValues.append(["20/08/2021",160,"Daimon"])
+allRentValues.append(["06/09/2021",180,"Daimon"])
+allRentValues.append(["14/10/2021",180,"Daimon"])
 
 allRentValues.append(["16/11/2020",720,"Rent",1])
 allRentValues.append(["30/11/2020",720,"Rent",1])
@@ -54,7 +64,11 @@ allRentValues.append(["14/06/2021",720,"Rent",5])
 allRentValues.append(["28/06/2021",720,"Rent",5])
 allRentValues.append(["11/07/2021",720,"Rent",5])
 allRentValues.append(["26/07/2021",720,"Rent",5])
-allRentValues.append(["09/08/2021",720,"Rent",4])
+allRentValues.append(["09/08/2021",720,"Rent",3])
+allRentValues.append(["23/08/2021",720,"Rent",3])
+allRentValues.append(["05/09/2021",720,"Rent",3])
+allRentValues.append(["20/09/2021",720,"Rent",3])
+allRentValues.append(["04/10/2021",720,"Rent",3])
 
 #------------------------------------------------------------------------------------------------------------------------------
 

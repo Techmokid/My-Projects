@@ -372,6 +372,9 @@ namespace Binance_API {
 		//	TAKE_PROFIT_LIMIT,
 		//	LIMITMAKER
 		//};
+		public static string createNewBuySellOrder(string symbol, string side, double quantity) {
+			return createNewBuySellOrder(symbol, side, (float)quantity);
+		}
 		public static string createNewBuySellOrder(string symbol, string side, float quantity) {
 			return API.makeSecureCall(
 				"https://api.binance.com/api/v3/order"
@@ -403,7 +406,7 @@ namespace Binance_API {
 					break;
 				} catch {
 					Console.WriteLine("Error");
-					Thread.Sleep(2000);
+					Thread.Sleep(61*10*1000);
 				}
 			}
 			

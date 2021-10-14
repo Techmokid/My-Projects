@@ -421,104 +421,83 @@ namespace WebAPIClient {
 				apiStatusText2.data =  "  Buying New Crypto  ";
 				apiStatusText2.updateScreen();
 				
-				buyList = orderList(buyList);
-				
-				double EbuyVal = 0.00f;
-				foreach(List<string> i in buyList) {
-					EbuyVal += Convert.ToDouble(i[1]);
-				}
-				
-				Console.WriteLine("\n\nGetting network minimum value differences");
+				//---------------------------------------------------------------------------------------------------------------------------------------------------
 				//Read difference between network minimum values and the percentage of requested buy coins
+				Console.WriteLine("\n\nGetting network minimum value differences");
 				List<List<string>> networkDistances = new List<List<string>>();
-				//Price_Of_Bitcoin / BTCUSDT = USDTBTC_Wallet_Contents
-				float Price_Of_Bitcoin = 39_000;
-				float buyWalletValue = Price_Of_Bitcoin / API.getWalletContents(getConvertedCode("BTCUSDT"));
 				for (int x = 0; x < buyList.Count; x++) {
-					List<string> i = buyList[x];
-					
-					DisplayManager.resizeCheck();
-					
-					double buyPercentage = Convert.ToDouble(i[1]) / EbuyVal;
+					double buyMinimum = API.getBuyMinimum(getConvertedCode(buyList[x][0]));		//TODO: ERROR STATE! Returns "-1" only!!
 					
 					networkDistances.Add(
 						new List<string> {
-							i[0],
-							(buyPercentage / API.getBuyMinimum(i[0])).ToString()
+							buyList[x][0],
+							buyList[x][1],
+							buyMinimum.ToString()
 						}
 					);
-					Console.WriteLine(" - Code:" + i[0] + "\t\tDiff:" + (buyPercentage / API.getBuyMinimum(i[0])).ToString());
+					
+					Console.WriteLine(
+						" - Coin: " + networkDistances[networkDistances.Count - 1][0] +
+						"\t\t- Amount: " + networkDistances[networkDistances.Count - 1][1] +
+						"\t\t- Buy Minimum: " + networkDistances[networkDistances.Count - 1][2]
+					);
 				}
 				
-				//Order the list by minimum value difference
-				Console.WriteLine("\n\nOrdering by minimum value difference");
-				List<List<string>> orderedNetworkList = new List<List<string>>();
-				while(buyList.Count > 0) {
-					int currentMaxIndex = 0;
-					for(int i = 0; i < buyList.Count; i++) {
-						if (Convert.ToDouble(buyList[i][1]) > Convert.ToDouble(buyList[currentMaxIndex][1])) {
-							currentMaxIndex = i;
-						}
-					}
-					orderedNetworkList.Add(buyList[currentMaxIndex]);
-					buyList.RemoveAt(currentMaxIndex);
-				}
-				buyList = orderedNetworkList;
+				List<List<string>> sortedList = new List<List<string>>();
+				// sortedList[i][0]: Coin ID
+				// sortedList[i][1]: Amount To Buy
+				// sortedList[i][2]: Minimum Buy Value
+				sortedList = orderList(networkDistances);
 				
-				Console.WriteLine("\n\nFinal iteration. Amount that survived: " + buyList.Count.ToString());
-				//Iterate through the coins, removing the poorest performing ones until all coins are above the network minimums
-				List<List<string>> finalNetworkOutput = new List<List<string>>();
-				while (true) {
-					bool isValid = true;
-					finalNetworkOutput = new List<List<string>>();
+				//Create the coin percentage mapping
+				List<float> coinPercentageMapping = new List<float>();
+				float current = 0.5f;
+				foreach(List<string> i in sortedList) {
+					coinPercentageMapping.Add(current);
+					current /= 2;
+				}
+				coinPercentageMapping[coinPercentageMapping.Count - 1] = coinPercentageMapping[coinPercentageMapping.Count - 2];
+				
+				//Delete coins that cannot afford the percentage mapping
+				for (int i = 0; i < sortedList.Count; i++) {
+					// TODO: Remove this
+					float temp_wallet_contents = 600.00f;
 					
-					EbuyVal = 0.00f;
-					foreach(List<string> i in buyList) {
-						EbuyVal += Convert.ToDouble(i[1]);
-					}
-					
-					//Price_Of_Bitcoin / BTCUSDT = USDTBTC_Wallet_Contents
-					float TEMP_buyWalletValue = Price_Of_Bitcoin / API.getWalletContents(getConvertedCode("BTCUSDT"));
-					for (int x = 0; x < buyList.Count; x++) {
-						DisplayManager.resizeCheck();
-						double buyPercentage = Convert.ToDouble(buyList[x][1]) / EbuyVal;
+					if (
+						Convert.ToDouble(sortedList[i][2]) + Convert.ToDouble(sortedList[i][2]) * 0.05f
+						>
+						// TODO: Here we just swap "temp_wallet_contents" for whatever the function for figuring out how much money we have to work from was
+						//		-I do not for the life of me recall which of the API functions that was. This is literally all that's left before I test it
+						coinPercentageMapping[i] * temp_wallet_contents
+					) {
+						sortedList.RemoveAt(i);
 						
-						finalNetworkOutput.Add(new List<string> { buyList[x][0],buyPercentage.ToString() });
+						coinPercentageMapping.RemoveAt(i);
+						coinPercentageMapping[coinPercentageMapping.Count - 1] = coinPercentageMapping[coinPercentageMapping.Count - 2];
+						
+						i--;
 					}
-					
-					if (isValid) {
-						break;
-					} else {
-						buyList.RemoveAt(buyList.Count - 1);
-					}
-				}
-				
-				//A final check to only buy a certain number of coins
-				while(buyList.Count > maxNumberOfCryptos) {
-					buyList.RemoveAt(buyList.Count - 1);
 				}
 				
 				//Finally buy the coins
-				EbuyVal = 0.00f;
-				foreach(List<string> i in buyList) { EbuyVal += Convert.ToDouble(i[1]); }
-				for (int x = 0; x < buyList.Count; x++) {
-					List<string> i = buyList[x];
-					
+				for (int i = 0; i < sortedList.Count; i++) {
 					DisplayManager.resizeCheck();
 					
-					double buyPercentage = Convert.ToDouble(i[1]) / EbuyVal;
-					//string msg = "Code:" + i[0];
-					//msg += "\t\ti[1]:" + i[1];
-					//msg += "\t\tEBV:" + EbuyVal.ToString();
-					//msg += "\t\tBP:" + (buyPercentage * 100).ToString() + "%";
-					//msg += "\t\tRes:" + (buyPercentage*buyWalletValue).ToString();
-					//Console.WriteLine(msg);
+					Console.WriteLine(
+						"Buying: " + sortedList[i][0] +
+						"\t\tPrice: " + sortedList[i][1]
+					);
 					
-					Console.WriteLine("Buying: " + i[0] + "\t\tPrice: " + (buyPercentage*buyWalletValue).ToString());
-					Thread.Sleep(50);
+					Thread.Sleep(61);
 					
 					if (liveTrading) {
-						Console.WriteLine(API.createNewBuySellOrder(i[0], "BUY", (float)buyPercentage*buyWalletValue));
+						Console.WriteLine(
+							API.createNewBuySellOrder(
+								buyList[i][0],
+								"BUY",
+								Convert.ToDouble(buyList[i][1])
+							)
+						);
 					}
 				}
 				
