@@ -142,15 +142,31 @@ namespace WebAPIClient {
 			
 			//------------------------------------
 			API.filePath = filePath + "/SaveData/HistoricDataCache.txt";
-			//API.filePath = "SaveData/HistoricDataCache.txt";
+			API.filePath = "SaveData/HistoricDataCache.txt";
 			API.getNetworkMinimums();
 			
-			//Console.WriteLine(getConvertedCode("BNBBTC"));
-			//while(true) {}
-			//Console.WriteLine(API.getWalletContents("USDT"));
-			//Console.WriteLine(getConvertedCode("BTCBNB"));
-			//Console.SetCursorPosition(0,40);
-			//Console.WriteLine("COMPLETE!");
+			Console.SetCursorPosition(0,30);
+			Console.WriteLine("Converted Code:  " + getConvertedCode("BNBBTC"));
+			Console.WriteLine("Wallet contents: " + API.getWalletContents("USDT"));
+			Console.WriteLine("Wallet contents of converted code: " + API.getWalletContents(getConvertedCode("BNBBTC")));
+			Console.WriteLine("Converted code:  " + getConvertedCode("BTCBNB"));
+			
+			Console.WriteLine("Network minimums: ");
+			foreach (List<string> i in API.networkMinimums) {
+				string spaces = "";
+				if (i[0] == "ETHBTC") {
+					Console.WriteLine("Fouund it!");
+					Console.WriteLine(i[1]);
+				}
+				//for (int x = 0; x < 35 - i[0].Length; x++) { spaces += " "; }
+				//Console.WriteLine(" - Code: " + i[0] + spaces + i[1]);
+			}
+			Console.WriteLine("Buy minimum of ETHBTC: " + API.getBuyMinimum("ETHBTC"));
+			
+			for(int x = 0; x < 5; x++) { Console.WriteLine(""); }
+			Console.WriteLine("COMPLETE!");
+			
+			
 			//while(true) {}
 			//------------------------------------
 			
@@ -426,22 +442,32 @@ namespace WebAPIClient {
 				Console.WriteLine("\n\nGetting network minimum value differences");
 				List<List<string>> networkDistances = new List<List<string>>();
 				for (int x = 0; x < buyList.Count; x++) {
-					double buyMinimum = API.getBuyMinimum(getConvertedCode(buyList[x][0]));		//TODO: ERROR STATE! Returns "-1" only!!
-					
-					networkDistances.Add(
-						new List<string> {
-							buyList[x][0],
-							buyList[x][1],
-							buyMinimum.ToString()
-						}
-					);
-					
-					Console.WriteLine(
-						" - Coin: " + networkDistances[networkDistances.Count - 1][0] +
-						"\t\t- Amount: " + networkDistances[networkDistances.Count - 1][1] +
-						"\t\t- Buy Minimum: " + networkDistances[networkDistances.Count - 1][2]
-					);
+					double buyMinimum = API.getBuyMinimum(buyList[x][0]);		//TODO: ERROR STATE! Returns "-1" only!!
+					if (buyMinimum != -1) {
+						Console.WriteLine(" - " + buyList[x][0] + "|" +
+												  getConvertedCode(buyList[x][0]) + "|" +
+												  buyMinimum.ToString()
+										  );
+						
+						networkDistances.Add(
+							new List<string> {
+								buyList[x][0],
+								buyList[x][1],
+								buyMinimum.ToString()
+							}
+						);
+						
+						Console.WriteLine(
+							" - Coin: " + networkDistances[networkDistances.Count - 1][0] +
+							"\t\t- Amount: " + networkDistances[networkDistances.Count - 1][1] +
+							"\t\t- Buy Minimum: " + networkDistances[networkDistances.Count - 1][2] + 
+							"\n"
+						);
+					}
 				}
+				
+				Console.WriteLine(" DONE DONE DONE DONE DONE DONE DONE DONE DONE ");
+				while(true){}
 				
 				List<List<string>> sortedList = new List<List<string>>();
 				// sortedList[i][0]: Coin ID

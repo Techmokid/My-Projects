@@ -448,7 +448,7 @@ namespace Binance_API {
 			return result;
 		}
 		
-		static List<List<string>> networkMinimums = new List<List<string>>();
+		public static List<List<string>> networkMinimums = new List<List<string>>();
 		public static void getNetworkMinimums() {
 			List<walletDataPacket> mins = getAllWalletContents();
 			foreach(walletDataPacket i in mins) {
@@ -465,7 +465,10 @@ namespace Binance_API {
 		
 		public static double getBuyMinimum(string x) {
 			foreach(List<string> i in networkMinimums) {
-				 if (i[0] == x) { return Convert.ToDouble(i[1]); }
+				 if (i[0] == x) {
+					 //Console.WriteLine("INTERNAL: " + i[1]);
+					 return Convert.ToDouble(i[1]);
+				}
 			}
 			
 			return -1;

@@ -1,0 +1,1412 @@
+Selling: BNBETH         Amount: -0.8983021
+{"code":-1100,"msg":"Illegal characters found in parameter 'quoteOrderQty'; legal range is '^([0-9]{1,20})(\\.[0-9]{1,20})?$'."}
+Selling: XRPETH         Amount: 2.87
+{"code":-2010,"msg":"Account has insufficient balance for requested action."}
+Selling: ADAETH         Amount: 8.055473
+{"code":-2010,"msg":"Account has insufficient balance for requested action."}
+Selling: ADABNB         Amount: 8.055473
+{"code":-2010,"msg":"Account has insufficient balance for requested action."}
+Selling: XRPUSDT                Amount: 2.87
+{"code":-1013,"msg":"Filter failure: MIN_NOTIONAL"}
+Selling: X  Buying New Crypto   2.87
+{"code":-2010,"msg":"Account has insufficient balance for requested action."}
+Getting network minimum value differences
+ - ETHBTC|ETH|0.00163
+ - Coin: ETHBTC         - Amount: 1.0833935160296103E-20                - Buy Minimum: 0.00163
+
+ - BNBBTC|BNB|1.17E-05
+ - Coin: BNBBTC         - Amount: 6.097662787038533E-22         - Buy Minimum: 1.17E-05
+
+ - QTUMETH|QTUM|-1
+ - Coin: QTUMETH                - Amount: 2.678195159452976E-22         - Buy Minimum: -1
+
+ - EOSETH|EOS|-1
+ - Coin: EOSETH         - Amount: 3.1334970955862774E-22                - Buy Minimum: -1
+
+ - GASBTC|GAS|-1
+ - Coin: GASBTC         - Amount: 5.40912684775586E-23          - Buy Minimum: -1
+
+ - ETHUSDT|ETH|74
+ - Coin: ETHUSDT                - Amount: 3.14544236218453E-16          - Buy Minimum: 74
+
+ - HSRBTC|HSR|-1
+ - Coin: HSRBTC         - Amount: 1.1420438218363856E-23                - Buy Minimum: -1
+
+ - DNTETH|DNT|-1
+ - Coin: DNTETH         - Amount: 5.024663388073556E-24         - Buy Minimum: -1
+
+ - MCOETH|MCO|-1
+ - Coin: MCOETH         - Amount: 1.8771270594186742E-21                - Buy Minimum: -1
+
+ - MCOBTC|MCO|-1
+ - Coin: MCOBTC         - Amount: -6.053560335439733E-23                - Buy Minimum: -1
+
+ - WTCETH|WTC|-1
+ - Coin: WTCETH         - Amount: -6.687824246771636E-25                - Buy Minimum: -1
+
+ - LRCBTC|LRC|-1
+ - Coin: LRCBTC         - Amount: 1.111309427926834E-24         - Buy Minimum: -1
+
+ - LRCETH|LRC|-1
+ - Coin: LRCETH         - Amount: 1.653973966190942E-23         - Buy Minimum: -1
+
+ - QTUMBTC|QTUM|-1
+ - Coin: QTUMBTC                - Amount: 1.3574870216107899E-22                - Buy Minimum: -1
+
+ - OMGBTC|OMG|-1
+ - Coin: OMGBTC         - Amount: 4.870907470422717E-23         - Buy Minimum: -1
+
+ - OMGETH|OMG|-1
+ - Coin: OMGETH         - Amount: 2.233513024810299E-22         - Buy Minimum: -1
+
+ - ZRXBTC|ZRX|-1
+ - Coin: ZRXBTC         - Amount: 2.2593041162291607E-24                - Buy Minimum: -1
+
+ - STRATBTC|STRAT|-1
+ - Coin: STRATBTC               - Amount: 8.968490050403423E-24         - Buy Minimum: -1
+
+ - STRATETH|STRAT|-1
+ - Coin: STRATETH               - Amount: 1.5854240053904782E-22                - Buy Minimum: -1
+
+ - SNGLSBTC|SNGLS|-1
+ - Coin: SNGLSBTC               - Amount: 6.80119162867226E-26          - Buy Minimum: -1
+
+ - BQXBTC|BQX|-1
+ - Coin: BQXBTC         - Amount: -6.939492642818671E-24                - Buy Minimum: -1
+
+ - BQXETH|BQX|-1
+ - Coin: BQXETH         - Amount: -4.239476214460621E-23                - Buy Minimum: -1
+
+ - KNCBTC|KNC|-1
+ - Coin: KNCBTC         - Amount: 4.016199809580404E-24         - Buy Minimum: -1
+
+ - LINKBTC|LINK|-1
+ - Coin: LINKBTC                - Amount: 1.6140558616424752E-22                - Buy Minimum: -1
+
+ - LINKETH|LINK|-1
+ - Coin: LINKETH                - Amount: 1.8054355271443888E-21                - Buy Minimum: -1
+
+ - EOSBTC|EOS|-1
+ - Coin: EOSBTC         - Amount: 1.55067272000138E-23          - Buy Minimum: -1
+
+ - SNTBTC|SNT|-1
+ - Coin: SNTBTC         - Amount: 3.4615747348725704E-25                - Buy Minimum: -1
+
+ - ETCBTC|ETC|-1
+ - Coin: ETCBTC         - Amount: 3.156409120769099E-22         - Buy Minimum: -1
+
+ - MTHETH|MTH|-1
+ - Coin: MTHETH         - Amount: 1.2695559408340139E-23                - Buy Minimum: -1
+
+ - ENGBTC|ENG|-1
+ - Coin: ENGBTC         - Amount: 1.0397146699740144E-22                - Buy Minimum: -1
+
+ - DNTBTC|DNT|-1
+ - Coin: DNTBTC         - Amount: 1.158409914283785E-24         - Buy Minimum: -1
+
+ - ZECBTC|ZEC|-1
+ - Coin: ZECBTC         - Amount: 8.621179281914512E-22         - Buy Minimum: -1
+
+ - ZECETH|ZEC|-1
+ - Coin: ZECETH         - Amount: 8.607847383561107E-21         - Buy Minimum: -1
+
+ - ASTBTC|AST|-1
+ - Coin: ASTBTC         - Amount: 6.793856523549268E-25         - Buy Minimum: -1
+
+ - ASTETH|AST|-1
+ - Coin: ASTETH         - Amount: 3.2036791559951927E-24                - Buy Minimum: -1
+
+ - OAXBTC|OAX|-1
+ - Coin: OAXBTC         - Amount: 5.68518447610374E-25          - Buy Minimum: -1
+
+ - BTGETH|BTG|-1
+ - Coin: BTGETH         - Amount: 3.531795963469863E-20         - Buy Minimum: -1
+
+ - EVXBTC|EVX|-1
+ - Coin: EVXBTC         - Amount: 2.8830924769082902E-24                - Buy Minimum: -1
+
+ - REQBTC|REQ|-1
+ - Coin: REQBTC         - Amount: 5.778523225821266E-25         - Buy Minimum: -1
+
+ - HSRETH|HSR|-1
+ - Coin: HSRETH         - Amount: 9.304657189226235E-24         - Buy Minimum: -1
+
+ - ENJBTC|ENJ|-1
+ - Coin: ENJBTC         - Amount: 8.648045654111715E-24         - Buy Minimum: -1
+
+ - ENJETH|ENJ|-1
+ - Coin: ENJETH         - Amount: 5.722181808772879E-23         - Buy Minimum: -1
+
+ - BNBUSDT|BNB|11
+ - Coin: BNBUSDT                - Amount: 1.1430381981128353E-17                - Buy Minimum: 11
+
+ - YOYOBNB|YOYO|-1
+ - Coin: YOYOBNB                - Amount: 4.126882294092568E-23         - Buy Minimum: -1
+
+ - POWRBNB|POWR|-1
+ - Coin: POWRBNB                - Amount: 1.9319822655896028E-22                - Buy Minimum: -1
+
+ - KMDBTC|KMD|-1
+ - Coin: KMDBTC         - Amount: 1.9059522400201783E-24                - Buy Minimum: -1
+
+ - KMDETH|KMD|-1
+ - Coin: KMDETH         - Amount: 1.4010135685023887E-23                - Buy Minimum: -1
+
+ - NULSETH|NULS|-1
+ - Coin: NULSETH                - Amount: 8.145473502680729E-23         - Buy Minimum: -1
+
+ - DLTBTC|DLT|-1
+ - Coin: DLTBTC         - Amount: 7.776579652848588E-26         - Buy Minimum: -1
+
+ - AMBBTC|AMB|-1
+ - Coin: AMBBTC         - Amount: 3.343981573118172E-25         - Buy Minimum: -1
+
+ - BATBTC|BAT|-1
+ - Coin: BATBTC         - Amount: 3.2175017399976947E-24                - Buy Minimum: -1
+
+ - BCPTBNB|BCPT|-1
+ - Coin: BCPTBNB                - Amount: 2.8879536747878225E-22                - Buy Minimum: -1
+
+ - GVTBTC|GVT|-1
+ - Coin: GVTBTC         - Amount: 1.1250706499888627E-23                - Buy Minimum: -1
+
+ - POEETH|POE|-1
+ - Coin: POEETH         - Amount: 1.1220274374436939E-24                - Buy Minimum: -1
+
+ - QSPBNB|QSP|-1
+ - Coin: QSPBNB         - Amount: -3.253721263206555E-23                - Buy Minimum: -1
+
+ - BTSBTC|BTS|-1
+ - Coin: BTSBTC         - Amount: 6.66336801737273E-26          - Buy Minimum: -1
+
+ - BTSBNB|BTS|-1
+ - Coin: BTSBNB         - Amount: 3.3498265518519837E-23                - Buy Minimum: -1
+
+ - XZCBTC|XZC|-1
+ - Coin: XZCBTC         - Amount: -1.538218918626385E-25                - Buy Minimum: -1
+
+ - XZCETH|XZC|-1
+ - Coin: XZCETH         - Amount: -4.676014679977171E-22                - Buy Minimum: -1
+
+ - XZCBNB|XZC|-1
+ - Coin: XZCBNB         - Amount: -1.669179241001446E-20                - Buy Minimum: -1
+
+ - LSKBNB|LSK|-1
+ - Coin: LSKBNB         - Amount: 4.253346477290911E-21         - Buy Minimum: -1
+
+ - TNTBTC|TNT|-1
+ - Coin: TNTBTC         - Amount: -4.918687442197007E-25                - Buy Minimum: -1
+
+ - FUELETH|FUEL|-1
+ - Coin: FUELETH                - Amount: 3.187880351330587E-24         - Buy Minimum: -1
+
+ - MANAETH|MANA|-1
+ - Coin: MANAETH                - Amount: 1.2730014155814849E-23                - Buy Minimum: -1
+
+ - DGDBTC|DGD|-1
+ - Coin: DGDBTC         - Amount: 7.777341166988172E-22         - Buy Minimum: -1
+
+ - DGDETH|DGD|-1
+ - Coin: DGDETH         - Amount: 3.810681589016458E-21         - Buy Minimum: -1
+
+ - ADXBTC|ADX|-1
+ - Coin: ADXBTC         - Amount: 5.564502641651061E-25         - Buy Minimum: -1
+
+ - ADXBNB|ADX|-1
+ - Coin: ADXBNB         - Amount: 1.9434657027049624E-22                - Buy Minimum: -1
+
+ - CMTBTC|CMT|-1
+ - Coin: CMTBTC         - Amount: -4.285872958530687E-26                - Buy Minimum: -1
+
+ - CMTBNB|CMT|-1
+ - Coin: CMTBNB         - Amount: 4.82949502918727E-23          - Buy Minimum: -1
+
+ - XLMBTC|XLM|-1
+ - Coin: XLMBTC         - Amount: 2.69595082684144E-25          - Buy Minimum: -1
+
+ - LTCUSDT|LTC|-1
+ - Coin: LTCUSDT                - Amount: 4.104351222125751E-18         - Buy Minimum: -1
+
+ - TNBETH|TNB|-1
+ - Coin: TNBETH         - Amount: -3.3503012257324723E-25               - Buy Minimum: -1
+
+ - GTOBTC|GTO|-1
+ - Coin: GTOBTC         - Amount: 1.7048185002244418E-25                - Buy Minimum: -1
+
+ - ICXBTC|ICX|-1
+ - Coin: ICXBTC         - Amount: 3.2814371102445995E-23                - Buy Minimum: -1
+
+ - ICXBNB|ICX|-1
+ - Coin: ICXBNB         - Amount: 4.433043026059442E-22         - Buy Minimum: -1
+
+ - AIONBNB|AION|-1
+ - Coin: AIONBNB                - Amount: -3.3974364521657716E-22               - Buy Minimum: -1
+
+ - NEBLBTC|NEBL|-1
+ - Coin: NEBLBTC                - Amount: 1.461453942805075E-24         - Buy Minimum: -1
+
+ - NEBLETH|NEBL|-1
+ - Coin: NEBLETH                - Amount: -1.9512102883484344E-23               - Buy Minimum: -1
+
+ - MCOBNB|MCO|-1
+ - Coin: MCOBNB         - Amount: 1.592189838240001E-20         - Buy Minimum: -1
+
+ - EDOBTC|EDO|-1
+ - Coin: EDOBTC         - Amount: -1.6525830315384066E-23               - Buy Minimum: -1
+
+ - EDOETH|EDO|-1
+ - Coin: EDOETH         - Amount: -3.5231358866215506E-22               - Buy Minimum: -1
+
+ - NAVETH|NAV|-1
+ - Coin: NAVETH         - Amount: 5.2415806328850296E-24                - Buy Minimum: -1
+
+ - LUNETH|LUN|-1
+ - Coin: LUNETH         - Amount: 5.071081036582435E-23         - Buy Minimum: -1
+
+ - APPCBNB|APPC|-1
+ - Coin: APPCBNB                - Amount: 3.1853481416522455E-22                - Buy Minimum: -1
+
+ - VIBEETH|VIBE|-1
+ - Coin: VIBEETH                - Amount: 4.37960076087076E-24          - Buy Minimum: -1
+
+ - RLCBTC|RLC|-1
+ - Coin: RLCBTC         - Amount: 5.8542998367833006E-24                - Buy Minimum: -1
+
+ - RLCETH|RLC|-1
+ - Coin: RLCETH         - Amount: 5.511922667448071E-21         - Buy Minimum: -1
+
+ - PIVXETH|PIVX|-1
+ - Coin: PIVXETH                - Amount: 8.62707531788936E-22          - Buy Minimum: -1
+
+ - IOSTETH|IOST|-1
+ - Coin: IOSTETH                - Amount: 1.3231834442565165E-24                - Buy Minimum: -1
+
+ - STEEMBNB|STEEM|-1
+ - Coin: STEEMBNB               - Amount: 1.2058303614000555E-21                - Buy Minimum: -1
+
+ - BLZBTC|BLZ|-1
+ - Coin: BLZBTC         - Amount: 7.69064475352242E-25          - Buy Minimum: -1
+
+ - BLZBNB|BLZ|-1
+ - Coin: BLZBNB         - Amount: 6.524170158637538E-23         - Buy Minimum: -1
+
+ - RPXBNB|RPX|-1
+ - Coin: RPXBNB         - Amount: 1.1078255471488197E-22                - Buy Minimum: -1
+
+ - NCASHBTC|NCASH|-1
+ - Coin: NCASHBTC               - Amount: -2.7775494852748707E-27               - Buy Minimum: -1
+
+ - NCASHETH|NCASH|-1
+ - Coin: NCASHETH               - Amount: 1.112062435583428E-25         - Buy Minimum: -1
+
+ - POABTC|POA|-1
+ - Coin: POABTC         - Amount: 2.90617070437311E-27          - Buy Minimum: -1
+
+ - POABNB|POA|-1
+ - Coin: POABNB         - Amount: -5.0279336141582364E-24               - Buy Minimum: -1
+
+ - ZILBNB|ZIL|-1
+ - Coin: ZILBNB         - Amount: 5.329830640669534E-23         - Buy Minimum: -1
+
+ - STORMBTC|STORM|-1
+ - Coin: STORMBTC               - Amount: 5.310195239923904E-26         - Buy Minimum: -1
+
+ - STORMETH|STORM|-1
+ - Coin: STORMETH               - Amount: 3.16548969723037E-24          - Buy Minimum: -1
+
+ - WPRETH|WPR|-1
+ - Coin: WPRETH         - Amount: 9.000719365768535E-24         - Buy Minimum: -1
+
+ - QLCBTC|QLC|-1
+ - Coin: QLCBTC         - Amount: 2.466767158150394E-25         - Buy Minimum: -1
+
+ - SYSBTC|SYS|-1
+ - Coin: SYSBTC         - Amount: 4.371337868445997E-24         - Buy Minimum: -1
+
+ - GRSETH|GRS|-1
+ - Coin: GRSETH         - Amount: 9.178008379220949E-23         - Buy Minimum: -1
+
+ - ADAUSDT|ADA|-1
+ - Coin: ADAUSDT                - Amount: 5.2983741749836435E-20                - Buy Minimum: -1
+
+ - GNTBNB|GNT|-1
+ - Coin: GNTBNB         - Amount: 1.1669854732861906E-23                - Buy Minimum: -1
+
+ - LOOMBNB|LOOM|-1
+ - Coin: LOOMBNB                - Amount: 5.864007232543137E-23         - Buy Minimum: -1
+
+ - REPBTC|REP|-1
+ - Coin: REPBTC         - Amount: 6.789187596655751E-23         - Buy Minimum: -1
+
+ - ZENBTC|ZEN|-1
+ - Coin: ZENBTC         - Amount: 3.4440665561888863E-22                - Buy Minimum: -1
+
+ - ZENETH|ZEN|-1
+ - Coin: ZENETH         - Amount: 1.1243241453843802E-20                - Buy Minimum: -1
+
+ - ZENBNB|ZEN|-1
+ - Coin: ZENBNB         - Amount: 4.4698952739758415E-20                - Buy Minimum: -1
+
+ - SKYBTC|SKY|-1
+ - Coin: SKYBTC         - Amount: 6.365300671230567E-24         - Buy Minimum: -1
+
+ - SKYBNB|SKY|-1
+ - Coin: SKYBNB         - Amount: -1.1918476490229647E-21               - Buy Minimum: -1
+
+ - CVCBTC|CVC|-1
+ - Coin: CVCBTC         - Amount: 2.216132293558843E-24         - Buy Minimum: -1
+
+ - TUSDUSDT|TUSD|-1
+ - Coin: TUSDUSDT               - Amount: -2.007672461199505E-22                - Buy Minimum: -1
+
+ - QKCETH|QKC|-1
+ - Coin: QKCETH         - Amount: 1.0751018691143041E-22                - Buy Minimum: -1
+
+ - AGIETH|AGI|-1
+ - Coin: AGIETH         - Amount: 8.560051853257121E-24         - Buy Minimum: -1
+
+ - NXSBNB|NXS|-1
+ - Coin: NXSBNB         - Amount: -8.45508886554815E-23         - Buy Minimum: -1
+
+ - ENJBNB|ENJ|-1
+ - Coin: ENJBNB         - Amount: 9.74922259932433E-22          - Buy Minimum: -1
+
+ - ETCUSDT|ETC|-1
+ - Coin: ETCUSDT                - Amount: 2.852860805748988E-18         - Buy Minimum: -1
+
+ - KEYBTC|KEY|-1
+ - Coin: KEYBTC         - Amount: -4.1405496324727034E-27               - Buy Minimum: -1
+
+ - KEYETH|KEY|-1
+ - Coin: KEYETH         - Amount: 4.698957640429309E-25         - Buy Minimum: -1
+
+ - NASBNB|NAS|-1
+ - Coin: NASBNB         - Amount: 1.251338601938622E-21         - Buy Minimum: -1
+
+ - MFTBTC|MFT|-1
+ - Coin: MFTBTC         - Amount: -7.564694897167337E-27                - Buy Minimum: -1
+
+ - DENTBTC|DENT|-1
+ - Coin: DENTBTC                - Amount: -8.196617648946849E-28                - Buy Minimum: -1
+
+ - DENTETH|DENT|-1
+ - Coin: DENTETH                - Amount: 1.6287111405286897E-25                - Buy Minimum: -1
+
+ - ARDRBNB|ARDR|-1
+ - Coin: ARDRBNB                - Amount: 6.615558986282619E-23         - Buy Minimum: -1
+
+ - NULSUSDT|NULS|-1
+ - Coin: NULSUSDT               - Amount: -3.522252308287377E-20                - Buy Minimum: -1
+
+ - POLYBTC|POLY|-1
+ - Coin: POLYBTC                - Amount: 6.5198669360505725E-24                - Buy Minimum: -1
+
+ - HCETH|HC|-1
+ - Coin: HCETH          - Amount: -2.0742029123343834E-23               - Buy Minimum: -1
+
+ - GOBTC|GO|-1
+ - Coin: GOBTC          - Amount: 2.0073167299067082E-25                - Buy Minimum: -1
+
+ - GOBNB|GO|-1
+ - Coin: GOBNB          - Amount: -2.9685841780113105E-24               - Buy Minimum: -1
+
+ - PAXUSDT|PAX|-1
+ - Coin: PAXUSDT                - Amount: 2.996897249396614E-22         - Buy Minimum: -1
+
+ - RVNBTC|RVN|-1
+ - Coin: RVNBTC         - Amount: 6.2418976287852425E-25                - Buy Minimum: -1
+
+ - USDCBNB|USDC|-1
+ - Coin: USDCBNB                - Amount: 4.154219248999259E-20         - Buy Minimum: -1
+
+ - MITHBTC|MITH|-1
+ - Coin: MITHBTC                - Amount: 6.14862929245435E-26          - Buy Minimum: -1
+
+ - MITHBNB|MITH|-1
+ - Coin: MITHBNB                - Amount: 1.1041078644453963E-24                - Buy Minimum: -1
+
+ - RENBTC|REN|-1
+ - Coin: RENBTC         - Amount: 6.437352326091401E-24         - Buy Minimum: -1
+
+ - RENBNB|REN|-1
+ - Coin: RENBNB         - Amount: 1.4648293256490265E-22                - Buy Minimum: -1
+
+ - WAVESUSDT|WAVES|-1
+ - Coin: WAVESUSDT              - Amount: -9.046405805213626E-19                - Buy Minimum: -1
+
+ - USDSUSDT|USDS|-1
+ - Coin: USDSUSDT               - Amount: 4.7349189973391195E-22                - Buy Minimum: -1
+
+ - ONGBNB|ONG|-1
+ - Coin: ONGBNB         - Amount: 3.040783645839356E-22         - Buy Minimum: -1
+
+ - ZRXBNB|ZRX|-1
+ - Coin: ZRXBNB         - Amount: 3.2989149716276896E-21                - Buy Minimum: -1
+
+ - BATUSDT|BAT|-1
+ - Coin: BATUSDT                - Amount: 2.958384674913538E-20         - Buy Minimum: -1
+
+ - ZECBNB|ZEC|-1
+ - Coin: ZECBNB         - Amount: 1.2685543783275273E-19                - Buy Minimum: -1
+
+ - ZECUSDT|ZEC|-1
+ - Coin: ZECUSDT                - Amount: 3.957607324646027E-17         - Buy Minimum: -1
+
+ - NANOUSDT|NANO|-1
+ - Coin: NANOUSDT               - Amount: 3.133273959182772E-19         - Buy Minimum: -1
+
+ - OMGBNB|OMG|-1
+ - Coin: OMGBNB         - Amount: -2.7462090873450344E-21               - Buy Minimum: -1
+
+ - OMGUSDT|OMG|-1
+ - Coin: OMGUSDT                - Amount: 9.631304893833072E-19         - Buy Minimum: -1
+
+ - MITHUSDT|MITH|-1
+ - Coin: MITHUSDT               - Amount: -5.516217964250635E-22                - Buy Minimum: -1
+
+ - MATICBNB|MATIC|-1
+ - Coin: MATICBNB               - Amount: 8.925029986834476E-22         - Buy Minimum: -1
+
+ - MATICBTC|MATIC|-1
+ - Coin: MATICBTC               - Amount: 8.320096277704985E-24         - Buy Minimum: -1
+
+ - MATICUSDT|MATIC|-1
+ - Coin: MATICUSDT              - Amount: 2.6497422042156617E-19                - Buy Minimum: -1
+
+ - ATOMBNB|ATOM|-1
+ - Coin: ATOMBNB                - Amount: 1.1330000369428117E-20                - Buy Minimum: -1
+
+ - ATOMBTC|ATOM|-1
+ - Coin: ATOMBTC                - Amount: 1.2003444418314602E-22                - Buy Minimum: -1
+
+ - ATOMUSDT|ATOM|-1
+ - Coin: ATOMUSDT               - Amount: 5.924519468943995E-18         - Buy Minimum: -1
+
+ - BTCBBTC|BTCB|-1
+ - Coin: BTCBBTC                - Amount: 1.6794285798015737E-25                - Buy Minimum: -1
+
+ - GTOUSDT|GTO|-1
+ - Coin: GTOUSDT                - Amount: 2.8911585884411603E-21                - Buy Minimum: -1
+
+ - ERDBNB|ERD|-1
+ - Coin: ERDBNB         - Amount: 2.0132682193974418E-22                - Buy Minimum: -1
+
+ - ERDBTC|ERD|-1
+ - Coin: ERDBTC         - Amount: 4.054231844324796E-25         - Buy Minimum: -1
+
+ - DOGEBNB|DOGE|-1
+ - Coin: DOGEBNB                - Amount: -7.702549903614118E-24                - Buy Minimum: -1
+
+ - DOGEBTC|DOGE|-1
+ - Coin: DOGEBTC                - Amount: 1.1755029605514384E-24                - Buy Minimum: -1
+
+ - DUSKBTC|DUSK|-1
+ - Coin: DUSKBTC                - Amount: 5.3278352109056185E-25                - Buy Minimum: -1
+
+ - DUSKUSDT|DUSK|-1
+ - Coin: DUSKUSDT               - Amount: 7.381084195169946E-21         - Buy Minimum: -1
+
+ - ANKRBNB|ANKR|-1
+ - Coin: ANKRBNB                - Amount: 1.6387447528666614E-23                - Buy Minimum: -1
+
+ - ANKRBTC|ANKR|-1
+ - Coin: ANKRBTC                - Amount: 1.8703598067785666E-25                - Buy Minimum: -1
+
+ - ANKRUSDT|ANKR|-1
+ - Coin: ANKRUSDT               - Amount: 1.0907350240886841E-21                - Buy Minimum: -1
+
+ - TOMOBTC|TOMO|-1
+ - Coin: TOMOBTC                - Amount: 8.657923872225434E-24         - Buy Minimum: -1
+
+ - TOMOUSDT|TOMO|-1
+ - Coin: TOMOUSDT               - Amount: 5.4497878810997E-19           - Buy Minimum: -1
+
+ - PERLBNB|PERL|-1
+ - Coin: PERLBNB                - Amount: 1.5300744991207665E-23                - Buy Minimum: -1
+
+ - PERLBTC|PERL|-1
+ - Coin: PERLBTC                - Amount: 1.2392299199751677E-25                - Buy Minimum: -1
+
+ - PERLUSDT|PERL|-1
+ - Coin: PERLUSDT               - Amount: 1.0857541050958712E-21                - Buy Minimum: -1
+
+ - DENTUSDT|DENT|-1
+ - Coin: DENTUSDT               - Amount: 5.947128804579939E-22         - Buy Minimum: -1
+
+ - KEYUSDT|KEY|-1
+ - Coin: KEYUSDT                - Amount: 1.3807311913094611E-21                - Buy Minimum: -1
+
+ - STORMUSDT|STORM|-1
+ - Coin: STORMUSDT              - Amount: 6.043493228415379E-22         - Buy Minimum: -1
+
+ - BANDBNB|BAND|-1
+ - Coin: BANDBNB                - Amount: 7.662474619324491E-23         - Buy Minimum: -1
+
+ - BANDBTC|BAND|-1
+ - Coin: BANDBTC                - Amount: 2.8619616927278124E-23                - Buy Minimum: -1
+
+ - BANDUSDT|BAND|-1
+ - Coin: BANDUSDT               - Amount: 1.0168513339390394E-18                - Buy Minimum: -1
+
+ - BEAMBNB|BEAM|-1
+ - Coin: BEAMBNB                - Amount: 9.97760123920205E-22          - Buy Minimum: -1
+
+ - XTZBTC|XTZ|-1
+ - Coin: XTZBTC         - Amount: 3.76569585925647E-23          - Buy Minimum: -1
+
+ - XTZUSDT|XTZ|-1
+ - Coin: XTZUSDT                - Amount: 8.933089376877977E-19         - Buy Minimum: -1
+
+ - RENUSDT|REN|-1
+ - Coin: RENUSDT                - Amount: 2.3732160238284224E-19                - Buy Minimum: -1
+
+ - HBARBTC|HBAR|-1
+ - Coin: HBARBTC                - Amount: 1.3923411686035513E-24                - Buy Minimum: -1
+
+ - HBARUSDT|HBAR|-1
+ - Coin: HBARUSDT               - Amount: 9.424985922449075E-20         - Buy Minimum: -1
+
+ - NKNBTC|NKN|-1
+ - Coin: NKNBTC         - Amount: 8.385317910215628E-25         - Buy Minimum: -1
+
+ - STXBTC|STX|-1
+ - Coin: STXBTC         - Amount: -3.483826258477855E-24                - Buy Minimum: -1
+
+ - KAVABTC|KAVA|-1
+ - Coin: KAVABTC                - Amount: 3.647880928257271E-23         - Buy Minimum: -1
+
+ - KAVAUSDT|KAVA|-1
+ - Coin: KAVAUSDT               - Amount: 7.119415127015532E-19         - Buy Minimum: -1
+
+ - ARPABTC|ARPA|-1
+ - Coin: ARPABTC                - Amount: -4.012233271589333E-25                - Buy Minimum: -1
+
+ - ARPAUSDT|ARPA|-1
+ - Coin: ARPAUSDT               - Amount: -2.6843463080626273E-20               - Buy Minimum: -1
+
+ - CTXCBTC|CTXC|-1
+ - Coin: CTXCBTC                - Amount: 2.9994121804172627E-25                - Buy Minimum: -1
+
+ - CTXCUSDT|CTXC|-1
+ - Coin: CTXCUSDT               - Amount: -2.3710231941291044E-21               - Buy Minimum: -1
+
+ - BCHBTC|BCH|-1
+ - Coin: BCHBTC         - Amount: 8.988536442531591E-22         - Buy Minimum: -1
+
+ - BCHUSDT|BCH|-1
+ - Coin: BCHUSDT                - Amount: -9.608715561156424E-18                - Buy Minimum: -1
+
+ - VITEBNB|VITE|-1
+ - Coin: VITEBNB                - Amount: -3.480544286360688E-23                - Buy Minimum: -1
+
+ - EURUSDT|EUR|-1
+ - Coin: EURUSDT                - Amount: 1.1045812198429476E-20                - Buy Minimum: -1
+
+ - OGNBNB|OGN|-1
+ - Coin: OGNBNB         - Amount: 4.733148228568557E-22         - Buy Minimum: -1
+
+ - OGNBTC|OGN|-1
+ - Coin: OGNBTC         - Amount: 2.4048951856373E-24           - Buy Minimum: -1
+
+ - OGNUSDT|OGN|-1
+ - Coin: OGNUSDT                - Amount: 1.0053215784842993E-19                - Buy Minimum: -1
+
+ - BULLUSDT|BULL|-1
+ - Coin: BULLUSDT               - Amount: 4.089501380852026E-15         - Buy Minimum: -1
+
+ - ETHBULLUSDT|ETHBULL|-1
+ - Coin: ETHBULLUSDT            - Amount: 5.184704828891194E-16         - Buy Minimum: -1
+
+ - TCTBTC|TCT|-1
+ - Coin: TCTBTC         - Amount: 1.1484803162511368E-25                - Buy Minimum: -1
+
+ - TCTUSDT|TCT|-1
+ - Coin: TCTUSDT                - Amount: 2.647770149280677E-21         - Buy Minimum: -1
+
+ - WRXBTC|WRX|-1
+ - Coin: WRXBTC         - Amount: 4.7485299334639556E-24                - Buy Minimum: -1
+
+ - WRXUSDT|WRX|-1
+ - Coin: WRXUSDT                - Amount: 1.4078421253175225E-20                - Buy Minimum: -1
+
+ - BTSUSDT|BTS|-1
+ - Coin: BTSUSDT                - Amount: 8.7460542234893E-22           - Buy Minimum: -1
+
+ - LSKUSDT|LSK|-1
+ - Coin: LSKUSDT                - Amount: 4.698278257125464E-19         - Buy Minimum: -1
+
+ - BNTUSDT|BNT|-1
+ - Coin: BNTUSDT                - Amount: 1.471818339473831E-19         - Buy Minimum: -1
+
+ - LTOBNB|LTO|-1
+ - Coin: LTOBNB         - Amount: 4.157247347551292E-22         - Buy Minimum: -1
+
+ - LTOUSDT|LTO|-1
+ - Coin: LTOUSDT                - Amount: -1.3025522179082461E-20               - Buy Minimum: -1
+
+ - EOSBULLUSDT|EOSBULL|-1
+ - Coin: EOSBULLUSDT            - Amount: 1.0216947296577159E-17                - Buy Minimum: -1
+
+ - XRPBULLUSDT|XRPBULL|-1
+ - Coin: XRPBULLUSDT            - Amount: 1.173798415486753E-17         - Buy Minimum: -1
+
+ - STRATBNB|STRAT|-1
+ - Coin: STRATBNB               - Amount: 2.6491609201906006E-21                - Buy Minimum: -1
+
+ - STRATUSDT|STRAT|-1
+ - Coin: STRATUSDT              - Amount: 1.7819327378809187E-19                - Buy Minimum: -1
+
+ - COTIBTC|COTI|-1
+ - Coin: COTIBTC                - Amount: 1.4621256035544448E-24                - Buy Minimum: -1
+
+ - BNBBULLUSDT|BNBBULL|-1
+ - Coin: BNBBULLUSDT            - Amount: 2.7371786154550925E-16                - Buy Minimum: -1
+
+ - STPTBNB|STPT|-1
+ - Coin: STPTBNB                - Amount: 8.5470505704582E-23           - Buy Minimum: -1
+
+ - HIVEBNB|HIVE|-1
+ - Coin: HIVEBNB                - Amount: 9.79590962037222E-22          - Buy Minimum: -1
+
+ - CHRBNB|CHR|-1
+ - Coin: CHRBNB         - Amount: 8.329541380027013E-23         - Buy Minimum: -1
+
+ - CHRBTC|CHR|-1
+ - Coin: CHRBTC         - Amount: 1.1922891767523112E-24                - Buy Minimum: -1
+
+ - CHRUSDT|CHR|-1
+ - Coin: CHRUSDT                - Amount: 2.1770252252616566E-20                - Buy Minimum: -1
+
+ - BTCDOWNUSDT|BTCDOWN|-1
+ - Coin: BTCDOWNUSDT            - Amount: 4.850485822569076E-21         - Buy Minimum: -1
+
+ - MDTBTC|MDT|-1
+ - Coin: MDTBTC         - Amount: 7.31681948992653E-26          - Buy Minimum: -1
+
+ - LRCUSDT|LRC|-1
+ - Coin: LRCUSDT                - Amount: 4.1147522404017656E-20                - Buy Minimum: -1
+
+ - DGBBTC|DGB|-1
+ - Coin: DGBBTC         - Amount: 1.3208418262477403E-25                - Buy Minimum: -1
+
+ - SXPBTC|SXP|-1
+ - Coin: SXPBTC         - Amount: 4.545590357170522E-24         - Buy Minimum: -1
+
+ - SNXBTC|SNX|-1
+ - Coin: SNXBTC         - Amount: 2.733841800675964E-23         - Buy Minimum: -1
+
+ - SNXBNB|SNX|-1
+ - Coin: SNXBNB         - Amount: 6.071124697699645E-21         - Buy Minimum: -1
+
+ - SNXUSDT|SNX|-1
+ - Coin: SNXUSDT                - Amount: 8.493241854112606E-19         - Buy Minimum: -1
+
+ - ETHUPUSDT|ETHUP|-1
+ - Coin: ETHUPUSDT              - Amount: 1.598501476008696E-17         - Buy Minimum: -1
+
+ - LINKDOWNUSDT|LINKDOWN|-1
+ - Coin: LINKDOWNUSDT           - Amount: -6.111809624557652E-21                - Buy Minimum: -1
+
+ - VTHOUSDT|VTHO|-1
+ - Coin: VTHOUSDT               - Amount: 1.118991046677767E-21         - Buy Minimum: -1
+
+ - DGBUSDT|DGB|-1
+ - Coin: DGBUSDT                - Amount: 1.517824986169886E-21         - Buy Minimum: -1
+
+ - GBPUSDT|GBP|-1
+ - Coin: GBPUSDT                - Amount: 4.755424928310076E-21         - Buy Minimum: -1
+
+ - IRISBNB|IRIS|-1
+ - Coin: IRISBNB                - Amount: -1.067230532073249E-22                - Buy Minimum: -1
+
+ - IRISBTC|IRIS|-1
+ - Coin: IRISBTC                - Amount: 1.963244117399829E-25         - Buy Minimum: -1
+
+ - MKRBTC|MKR|-1
+ - Coin: MKRBTC         - Amount: 2.742463847102761E-21         - Buy Minimum: -1
+
+ - MKRUSDT|MKR|-1
+ - Coin: MKRUSDT                - Amount: -8.357883978134037E-18                - Buy Minimum: -1
+
+ - DAIUSDT|DAI|-1
+ - Coin: DAIUSDT                - Amount: 3.1222926575962287E-20                - Buy Minimum: -1
+
+ - FIOBNB|FIO|-1
+ - Coin: FIOBNB         - Amount: 1.1124392438491206E-23                - Buy Minimum: -1
+
+ - FIOBTC|FIO|-1
+ - Coin: FIOBTC         - Amount: 3.241549798027175E-25         - Buy Minimum: -1
+
+ - BNBUPUSDT|BNBUP|-1
+ - Coin: BNBUPUSDT              - Amount: 1.4574909687946578E-17                - Buy Minimum: -1
+
+ - XTZUPUSDT|XTZUP|-1
+ - Coin: XTZUPUSDT              - Amount: 3.063422919379295E-20         - Buy Minimum: -1
+
+ - AVABNB|AVA|-1
+ - Coin: AVABNB         - Amount: 6.200510908327226E-22         - Buy Minimum: -1
+
+ - AVABTC|AVA|-1
+ - Coin: AVABTC         - Amount: 1.0913909937032473E-23                - Buy Minimum: -1
+
+ - BALBTC|BAL|-1
+ - Coin: BALBTC         - Amount: 3.7212055258844706E-23                - Buy Minimum: -1
+
+ - BALUSDT|BAL|-1
+ - Coin: BALUSDT                - Amount: 7.46869514159079E-19          - Buy Minimum: -1
+
+ - BLZUSDT|BLZ|-1
+ - Coin: BLZUSDT                - Amount: 1.4271429914388597E-20                - Buy Minimum: -1
+
+ - IRISUSDT|IRIS|-1
+ - Coin: IRISUSDT               - Amount: 5.706992716441242E-21         - Buy Minimum: -1
+
+ - KMDUSDT|KMD|-1
+ - Coin: KMDUSDT                - Amount: 7.399982239156952E-20         - Buy Minimum: -1
+
+ - JSTBNB|JST|-1
+ - Coin: JSTBNB         - Amount: -5.38840466033198E-24         - Buy Minimum: -1
+
+ - JSTBTC|JST|-1
+ - Coin: JSTBTC         - Amount: 1.8474909155678245E-25                - Buy Minimum: -1
+
+ - ANTBNB|ANT|-1
+ - Coin: ANTBNB         - Amount: 7.876137891600707E-22         - Buy Minimum: -1
+
+ - ANTBTC|ANT|-1
+ - Coin: ANTBTC         - Amount: 7.647006036599362E-24         - Buy Minimum: -1
+
+ - ANTUSDT|ANT|-1
+ - Coin: ANTUSDT                - Amount: 2.323754415967658E-19         - Buy Minimum: -1
+
+ - CRVBNB|CRV|-1
+ - Coin: CRVBNB         - Amount: 1.1454579354662109E-21                - Buy Minimum: -1
+
+ - OCEANBTC|OCEAN|-1
+ - Coin: OCEANBTC               - Amount: 2.913103813867574E-24         - Buy Minimum: -1
+
+ - NMRBTC|NMR|-1
+ - Coin: NMRBTC         - Amount: 1.0128804390435332E-22                - Buy Minimum: -1
+
+ - NMRUSDT|NMR|-1
+ - Coin: NMRUSDT                - Amount: 1.3929503757310535E-18                - Buy Minimum: -1
+
+ - DOTBTC|DOT|-1
+ - Coin: DOTBTC         - Amount: 1.683698358891785E-23         - Buy Minimum: -1
+
+ - DOTUSDT|DOT|-1
+ - Coin: DOTUSDT                - Amount: -1.2033092098542229E-18               - Buy Minimum: -1
+
+ - LUNABNB|LUNA|-1
+ - Coin: LUNABNB                - Amount: 2.6812694453310363E-20                - Buy Minimum: -1
+
+ - LUNABTC|LUNA|-1
+ - Coin: LUNABTC                - Amount: 2.9093802486393145E-22                - Buy Minimum: -1
+
+ - LUNAUSDT|LUNA|-1
+ - Coin: LUNAUSDT               - Amount: 1.1645005935631028E-17                - Buy Minimum: -1
+
+ - IDEXBTC|IDEX|-1
+ - Coin: IDEXBTC                - Amount: 8.936455598125378E-25         - Buy Minimum: -1
+
+ - RSRBTC|RSR|-1
+ - Coin: RSRBTC         - Amount: 3.3139179479825914E-25                - Buy Minimum: -1
+
+ - PAXGBTC|PAXG|-1
+ - Coin: PAXGBTC                - Amount: 4.887513564644239E-21         - Buy Minimum: -1
+
+ - WNXMBTC|WNXM|-1
+ - Coin: WNXMBTC                - Amount: 3.0137901334109928E-22                - Buy Minimum: -1
+
+ - WNXMUSDT|WNXM|-1
+ - Coin: WNXMUSDT               - Amount: 1.2499186486813671E-17                - Buy Minimum: -1
+
+ - TRBBNB|TRB|-1
+ - Coin: TRBBNB         - Amount: 7.712269282449505E-20         - Buy Minimum: -1
+
+ - TRBBTC|TRB|-1
+ - Coin: TRBBTC         - Amount: 1.6708272322139325E-22                - Buy Minimum: -1
+
+ - TRBUSDT|TRB|-1
+ - Coin: TRBUSDT                - Amount: 6.902115622757595E-18         - Buy Minimum: -1
+
+ - BZRXBNB|BZRX|-1
+ - Coin: BZRXBNB                - Amount: 1.0068969640315239E-21                - Buy Minimum: -1
+
+ - SUSHIBNB|SUSHI|-1
+ - Coin: SUSHIBNB               - Amount: 1.8153247555914716E-21                - Buy Minimum: -1
+
+ - SUSHIBTC|SUSHI|-1
+ - Coin: SUSHIBTC               - Amount: 2.8129089573319234E-23                - Buy Minimum: -1
+
+ - SUSHIUSDT|SUSHI|-1
+ - Coin: SUSHIUSDT              - Amount: 2.902347212283617E-19         - Buy Minimum: -1
+
+ - YFIIBNB|YFII|-1
+ - Coin: YFIIBNB                - Amount: 3.4315568828596222E-18                - Buy Minimum: -1
+
+ - KSMBNB|KSM|-1
+ - Coin: KSMBNB         - Amount: 1.5636768676843081E-19                - Buy Minimum: -1
+
+ - KSMBTC|KSM|-1
+ - Coin: KSMBTC         - Amount: 1.1908846811777219E-21                - Buy Minimum: -1
+
+ - KSMUSDT|KSM|-1
+ - Coin: KSMUSDT                - Amount: 8.129842734253315E-17         - Buy Minimum: -1
+
+ - DIABTC|DIA|-1
+ - Coin: DIABTC         - Amount: 9.637047676905703E-24         - Buy Minimum: -1
+
+ - FIOUSDT|FIO|-1
+ - Coin: FIOUSDT                - Amount: 4.384996448647065E-21         - Buy Minimum: -1
+
+ - UMABTC|UMA|-1
+ - Coin: UMABTC         - Amount: 4.0157290309345677E-23                - Buy Minimum: -1
+
+ - UMAUSDT|UMA|-1
+ - Coin: UMAUSDT                - Amount: 1.5298428586381805E-18                - Buy Minimum: -1
+
+ - XRPDOWNUSDT|XRPDOWN|-1
+ - Coin: XRPDOWNUSDT            - Amount: 6.458640381769059E-22         - Buy Minimum: -1
+
+ - DOTUPUSDT|DOTUP|-1
+ - Coin: DOTUPUSDT              - Amount: -7.914522188495554E-19                - Buy Minimum: -1
+
+ - BELBNB|BEL|-1
+ - Coin: BELBNB         - Amount: -3.66932356506318E-23         - Buy Minimum: -1
+
+ - BELBTC|BEL|-1
+ - Coin: BELBTC         - Amount: 9.583793804099254E-24         - Buy Minimum: -1
+
+ - BELUSDT|BEL|-1
+ - Coin: BELUSDT                - Amount: -3.1305460872478755E-20               - Buy Minimum: -1
+
+ - WINGBNB|WING|-1
+ - Coin: WINGBNB                - Amount: -4.73566805207698E-21         - Buy Minimum: -1
+
+ - WINGBTC|WING|-1
+ - Coin: WINGBTC                - Amount: 5.71843005983749E-24          - Buy Minimum: -1
+
+ - SWRVBNB|SWRV|-1
+ - Coin: SWRVBNB                - Amount: -2.2819816000436156E-22               - Buy Minimum: -1
+
+ - WINGUSDT|WING|-1
+ - Coin: WINGUSDT               - Amount: -7.493894753408903E-19                - Buy Minimum: -1
+
+ - LTCUPUSDT|LTCUP|-1
+ - Coin: LTCUPUSDT              - Amount: 1.9916199824504664E-19                - Buy Minimum: -1
+
+ - CREAMBNB|CREAM|-1
+ - Coin: CREAMBNB               - Amount: 6.25840359117622E-19          - Buy Minimum: -1
+
+ - UNIBNB|UNI|-1
+ - Coin: UNIBNB         - Amount: 3.598178358075054E-21         - Buy Minimum: -1
+
+ - UNIBTC|UNI|-1
+ - Coin: UNIBTC         - Amount: 7.925768369751489E-23         - Buy Minimum: -1
+
+ - UNIUSDT|UNI|-1
+ - Coin: UNIUSDT                - Amount: 1.891182012952645E-18         - Buy Minimum: -1
+
+ - NBSUSDT|NBS|-1
+ - Coin: NBSUSDT                - Amount: 6.996197462583848E-21         - Buy Minimum: -1
+
+ - OXTBTC|OXT|-1
+ - Coin: OXTBTC         - Amount: 2.040795582216E-24            - Buy Minimum: -1
+
+ - SUNUSDT|SUN|-1
+ - Coin: SUNUSDT                - Amount: 5.625040620781436E-21         - Buy Minimum: -1
+
+ - AVAXBNB|AVAX|-1
+ - Coin: AVAXBNB                - Amount: 7.274408624564123E-20         - Buy Minimum: -1
+
+ - AVAXBTC|AVAX|-1
+ - Coin: AVAXBTC                - Amount: 3.0356782499787577E-22                - Buy Minimum: -1
+
+ - AVAXUSDT|AVAX|-1
+ - Coin: AVAXUSDT               - Amount: 1.9666977836916567E-17                - Buy Minimum: -1
+
+ - HNTBTC|HNT|-1
+ - Coin: HNTBTC         - Amount: 1.3384364656312502E-22                - Buy Minimum: -1
+
+ - HNTUSDT|HNT|-1
+ - Coin: HNTUSDT                - Amount: 6.833448387102119E-18         - Buy Minimum: -1
+
+ - FLMBNB|FLM|-1
+ - Coin: FLMBNB         - Amount: 2.6453660765380706E-21                - Buy Minimum: -1
+
+ - FLMBTC|FLM|-1
+ - Coin: FLMBTC         - Amount: 3.092978584646649E-24         - Buy Minimum: -1
+
+ - FLMUSDT|FLM|-1
+ - Coin: FLMUSDT                - Amount: 9.605227751633268E-20         - Buy Minimum: -1
+
+ - SPARTABNB|SPARTA|-1
+ - Coin: SPARTABNB              - Amount: 3.72304856207643E-22          - Buy Minimum: -1
+
+ - UNIUPUSDT|UNIUP|-1
+ - Coin: UNIUPUSDT              - Amount: 5.795917656455442E-19         - Buy Minimum: -1
+
+ - UNIDOWNUSDT|UNIDOWN|-1
+ - Coin: UNIDOWNUSDT            - Amount: 4.197576424952918E-19         - Buy Minimum: -1
+
+ - ORNBTC|ORN|-1
+ - Coin: ORNBTC         - Amount: 6.070917357934503E-23         - Buy Minimum: -1
+
+ - ORNUSDT|ORN|-1
+ - Coin: ORNUSDT                - Amount: 2.030523085498812E-18         - Buy Minimum: -1
+
+ - UTKBTC|UTK|-1
+ - Coin: UTKBTC         - Amount: 2.7508042712094435E-25                - Buy Minimum: -1
+
+ - UTKUSDT|UTK|-1
+ - Coin: UTKUSDT                - Amount: -8.532046725882034E-21                - Buy Minimum: -1
+
+ - ALPHABNB|ALPHA|-1
+ - Coin: ALPHABNB               - Amount: 2.2862478248586064E-22                - Buy Minimum: -1
+
+ - ALPHABTC|ALPHA|-1
+ - Coin: ALPHABTC               - Amount: 2.572842720511689E-24         - Buy Minimum: -1
+
+ - ALPHAUSDT|ALPHA|-1
+ - Coin: ALPHAUSDT              - Amount: 4.6457230590965865E-20                - Buy Minimum: -1
+
+ - VIDTBTC|VIDT|-1
+ - Coin: VIDTBTC                - Amount: 1.2709887142798102E-23                - Buy Minimum: -1
+
+ - AAVEBNB|AAVE|-1
+ - Coin: AAVEBNB                - Amount: 6.25027919527728E-20          - Buy Minimum: -1
+
+ - AAVEBTC|AAVE|-1
+ - Coin: AAVEBTC                - Amount: 9.980411759586153E-22         - Buy Minimum: -1
+
+ - AAVEETH|AAVE|-1
+ - Coin: AAVEETH                - Amount: 4.667326888163536E-21         - Buy Minimum: -1
+
+ - AAVEUSDT|AAVE|-1
+ - Coin: AAVEUSDT               - Amount: 2.4302900233802712E-17                - Buy Minimum: -1
+
+ - NEARBTC|NEAR|-1
+ - Coin: NEARBTC                - Amount: 5.672986562434719E-23         - Buy Minimum: -1
+
+ - SXPDOWNUSDT|SXPDOWN|-1
+ - Coin: SXPDOWNUSDT            - Amount: 1.7067884441742564E-20                - Buy Minimum: -1
+
+ - YFIDOWNUSDT|YFIDOWN|-1
+ - Coin: YFIDOWNUSDT            - Amount: 3.096929162557792E-18         - Buy Minimum: -1
+
+ - INJBNB|INJ|-1
+ - Coin: INJBNB         - Amount: -7.60226466289976E-22         - Buy Minimum: -1
+
+ - INJBTC|INJ|-1
+ - Coin: INJBTC         - Amount: 1.0652452645599092E-23                - Buy Minimum: -1
+
+ - INJUSDT|INJ|-1
+ - Coin: INJUSDT                - Amount: -2.5468749116816567E-19               - Buy Minimum: -1
+
+ - AUDIOBTC|AUDIO|-1
+ - Coin: AUDIOBTC               - Amount: 1.3872800745337386E-23                - Buy Minimum: -1
+
+ - CTKBNB|CTK|-1
+ - Coin: CTKBNB         - Amount: 8.80447874040737E-22          - Buy Minimum: -1
+
+ - CTKBTC|CTK|-1
+ - Coin: CTKBTC         - Amount: 1.434285181972951E-23         - Buy Minimum: -1
+
+ - CTKUSDT|CTK|-1
+ - Coin: CTKUSDT                - Amount: 2.179330313807249E-19         - Buy Minimum: -1
+
+ - BCHUPUSDT|BCHUP|-1
+ - Coin: BCHUPUSDT              - Amount: -1.6632580886621488E-20               - Buy Minimum: -1
+
+ - AKROBTC|AKRO|-1
+ - Coin: AKROBTC                - Amount: 2.150486048163762E-25         - Buy Minimum: -1
+
+ - AKROUSDT|AKRO|-1
+ - Coin: AKROUSDT               - Amount: 8.402950963982237E-21         - Buy Minimum: -1
+
+ - AXSBTC|AXS|-1
+ - Coin: AXSBTC         - Amount: 9.131061960751656E-22         - Buy Minimum: -1
+
+ - HARDBNB|HARD|-1
+ - Coin: HARDBNB                - Amount: 1.029913879802097E-22         - Buy Minimum: -1
+
+ - HARDBTC|HARD|-1
+ - Coin: HARDBTC                - Amount: 1.5252348995949742E-24                - Buy Minimum: -1
+
+ - RENBTCETH|RENBTC|-1
+ - Coin: RENBTCETH              - Amount: 2.707758602586223E-18         - Buy Minimum: -1
+
+ - DNTUSDT|DNT|-1
+ - Coin: DNTUSDT                - Amount: 1.9883539972260838E-20                - Buy Minimum: -1
+
+ - FORBTC|FOR|-1
+ - Coin: FORBTC         - Amount: 6.355567233256602E-25         - Buy Minimum: -1
+
+ - UNFIBTC|UNFI|-1
+ - Coin: UNFIBTC                - Amount: 7.48782619014148E-23          - Buy Minimum: -1
+
+ - FRONTETH|FRONT|-1
+ - Coin: FRONTETH               - Amount: 6.906558957667724E-23         - Buy Minimum: -1
+
+ - AVAUSDT|AVA|-1
+ - Coin: AVAUSDT                - Amount: 2.2654790545802075E-19                - Buy Minimum: -1
+
+ - AAVEUPUSDT|AAVEUP|-1
+ - Coin: AAVEUPUSDT             - Amount: 1.4283191464406412E-19                - Buy Minimum: -1
+
+ - SKLBTC|SKL|-1
+ - Coin: SKLBTC         - Amount: 1.030119666004147E-24         - Buy Minimum: -1
+
+ - SUSDBTC|SUSD|-1
+ - Coin: SUSDBTC                - Amount: 1.2207744956997759E-24                - Buy Minimum: -1
+
+ - COVERETH|COVER|-1
+ - Coin: COVERETH               - Amount: 1.51051057900584E-20          - Buy Minimum: -1
+
+ - GLMBTC|GLM|-1
+ - Coin: GLMBTC         - Amount: 3.0694533188746174E-24                - Buy Minimum: -1
+
+ - SUSHIUPUSDT|SUSHIUP|-1
+ - Coin: SUSHIUPUSDT            - Amount: 1.3067490996474791E-21                - Buy Minimum: -1
+
+ - 1INCHBTC|1INCH|-1
+ - Coin: 1INCHBTC               - Amount: 1.4268503054099885E-23                - Buy Minimum: -1
+
+ - 1INCHUSDT|1INCH|-1
+ - Coin: 1INCHUSDT              - Amount: 5.80004085202072E-19          - Buy Minimum: -1
+
+ - REEFUSDT|REEF|-1
+ - Coin: REEFUSDT               - Amount: 3.931431566403971E-20         - Buy Minimum: -1
+
+ - OGBTC|OG|-1
+ - Coin: OGBTC          - Amount: 2.0742431186497667E-22                - Buy Minimum: -1
+
+ - OGUSDT|OG|-1
+ - Coin: OGUSDT         - Amount: 1.915269665592407E-18         - Buy Minimum: -1
+
+ - CELOBTC|CELO|-1
+ - Coin: CELOBTC                - Amount: 2.886724243444052E-23         - Buy Minimum: -1
+
+ - RIFBTC|RIF|-1
+ - Coin: RIFBTC         - Amount: 1.3395173383973038E-25                - Buy Minimum: -1
+
+ - TRUBTC|TRU|-1
+ - Coin: TRUBTC         - Amount: 3.401593872316478E-24         - Buy Minimum: -1
+
+ - TRUUSDT|TRU|-1
+ - Coin: TRUUSDT                - Amount: 4.939412772224695E-19         - Buy Minimum: -1
+
+ - DEXEETH|DEXE|-1
+ - Coin: DEXEETH                - Amount: 2.2175194327022774E-22                - Buy Minimum: -1
+
+ - CKBBTC|CKB|-1
+ - Coin: CKBBTC         - Amount: 9.039660077038993E-26         - Buy Minimum: -1
+
+ - CKBUSDT|CKB|-1
+ - Coin: CKBUSDT                - Amount: 2.0488611147540283E-21                - Buy Minimum: -1
+
+ - TWTBTC|TWT|-1
+ - Coin: TWTBTC         - Amount: 1.6300485918745125E-24                - Buy Minimum: -1
+
+ - FIROBTC|FIRO|-1
+ - Coin: FIROBTC                - Amount: 5.285143458441017E-23         - Buy Minimum: -1
+
+ - LITBTC|LIT|-1
+ - Coin: LITBTC         - Amount: 1.5765539508129673E-23                - Buy Minimum: -1
+
+ - LITUSDT|LIT|-1
+ - Coin: LITUSDT                - Amount: 9.954506454780322E-19         - Buy Minimum: -1
+
+ - SFPBTC|SFP|-1
+ - Coin: SFPBTC         - Amount: 1.046035014014363E-24         - Buy Minimum: -1
+
+ - SFPUSDT|SFP|-1
+ - Coin: SFPUSDT                - Amount: -3.8810349603020705E-19               - Buy Minimum: -1
+
+ - DODOBTC|DODO|-1
+ - Coin: DODOBTC                - Amount: 3.298783642277911E-24         - Buy Minimum: -1
+
+ - DODOUSDT|DODO|-1
+ - Coin: DODOUSDT               - Amount: 8.947916513942541E-20         - Buy Minimum: -1
+
+ - FRONTBTC|FRONT|-1
+ - Coin: FRONTBTC               - Amount: 3.1363586233034405E-24                - Buy Minimum: -1
+
+ - CAKEBTC|CAKE|-1
+ - Coin: CAKEBTC                - Amount: 5.276346234568882E-23         - Buy Minimum: -1
+
+ - CAKEUSDT|CAKE|-1
+ - Coin: CAKEUSDT               - Amount: 2.828974218000295E-19         - Buy Minimum: -1
+
+ - TVKBTC|TVK|-1
+ - Coin: TVKBTC         - Amount: 9.531493477911967E-25         - Buy Minimum: -1
+
+ - OMBTC|OM|-1
+ - Coin: OMBTC          - Amount: 5.093884428003913E-25         - Buy Minimum: -1
+
+ - OMUSDT|OM|-1
+ - Coin: OMUSDT         - Amount: 2.0025432295519587E-20                - Buy Minimum: -1
+
+ - PONDBTC|POND|-1
+ - Coin: PONDBTC                - Amount: 1.0440688750553184E-25                - Buy Minimum: -1
+
+ - PONDUSDT|POND|-1
+ - Coin: PONDUSDT               - Amount: -1.3738159699802964E-21               - Buy Minimum: -1
+
+ - DEGOBTC|DEGO|-1
+ - Coin: DEGOBTC                - Amount: 3.2745273283957425E-23                - Buy Minimum: -1
+
+ - DEGOUSDT|DEGO|-1
+ - Coin: DEGOUSDT               - Amount: 8.623702190555247E-19         - Buy Minimum: -1
+
+ - LINABTC|LINA|-1
+ - Coin: LINABTC                - Amount: -1.4999030464615042E-26               - Buy Minimum: -1
+
+ - LINAUSDT|LINA|-1
+ - Coin: LINAUSDT               - Amount: -4.957856042691355E-21                - Buy Minimum: -1
+
+ - RAMPBTC|RAMP|-1
+ - Coin: RAMPBTC                - Amount: 1.2853480997322687E-24                - Buy Minimum: -1
+
+ - RAMPUSDT|RAMP|-1
+ - Coin: RAMPUSDT               - Amount: 3.226369835192363E-20         - Buy Minimum: -1
+
+ - SUPERBTC|SUPER|-1
+ - Coin: SUPERBTC               - Amount: 1.816110211838126E-24         - Buy Minimum: -1
+
+ - SUPERUSDT|SUPER|-1
+ - Coin: SUPERUSDT              - Amount: 7.740610108552892E-20         - Buy Minimum: -1
+
+ - CFXUSDT|CFX|-1
+ - Coin: CFXUSDT                - Amount: 2.8883899567731835E-21                - Buy Minimum: -1
+
+ - EPSBTC|EPS|-1
+ - Coin: EPSBTC         - Amount: 1.1561382505289304E-24                - Buy Minimum: -1
+
+ - EPSUSDT|EPS|-1
+ - Coin: EPSUSDT                - Amount: 2.017228721309073E-20         - Buy Minimum: -1
+
+ - AUTOUSDT|AUTO|-1
+ - Coin: AUTOUSDT               - Amount: -1.7485209369056805E-16               - Buy Minimum: -1
+
+ - TKOBTC|TKO|-1
+ - Coin: TKOBTC         - Amount: 7.383999718169804E-24         - Buy Minimum: -1
+
+ - TKOUSDT|TKO|-1
+ - Coin: TKOUSDT                - Amount: 6.090695084818378E-20         - Buy Minimum: -1
+
+ - 1INCHUPUSDT|1INCHUP|-1
+ - Coin: 1INCHUPUSDT            - Amount: 3.00273576949068E-20          - Buy Minimum: -1
+
+ - MIRBTC|MIR|-1
+ - Coin: MIRBTC         - Amount: 1.3453438038682003E-23                - Buy Minimum: -1
+
+ - MIRUSDT|MIR|-1
+ - Coin: MIRUSDT                - Amount: 2.3898244766552297E-19                - Buy Minimum: -1
+
+ - FORTHBTC|FORTH|-1
+ - Coin: FORTHBTC               - Amount: 7.908701371061066E-23         - Buy Minimum: -1
+
+ - FORTHUSDT|FORTH|-1
+ - Coin: FORTHUSDT              - Amount: 1.2557682530951318E-18                - Buy Minimum: -1
+
+ - ICPBTC|ICP|-1
+ - Coin: ICPBTC         - Amount: 2.325159348904027E-22         - Buy Minimum: -1
+
+ - ICPBNB|ICP|-1
+ - Coin: ICPBNB         - Amount: 2.2698794265436587E-20                - Buy Minimum: -1
+
+ - ICPUSDT|ICP|-1
+ - Coin: ICPUSDT                - Amount: 6.907430890292281E-18         - Buy Minimum: -1
+
+ - POLSBTC|POLS|-1
+ - Coin: POLSBTC                - Amount: 1.7099602779883337E-23                - Buy Minimum: -1
+
+ - POLSBNB|POLS|-1
+ - Coin: POLSBNB                - Amount: 4.893404482944168E-22         - Buy Minimum: -1
+
+ - POLSUSDT|POLS|-1
+ - Coin: POLSUSDT               - Amount: 2.303589371819526E-19         - Buy Minimum: -1
+
+ - MASKBNB|MASK|-1
+ - Coin: MASKBNB                - Amount: 3.3274442443005304E-21                - Buy Minimum: -1
+
+ - MASKUSDT|MASK|-1
+ - Coin: MASKUSDT               - Amount: 1.1184748182253276E-18                - Buy Minimum: -1
+
+ - LPTBTC|LPT|-1
+ - Coin: LPTBTC         - Amount: 6.50024378655914E-23          - Buy Minimum: -1
+
+ - LPTBNB|LPT|-1
+ - Coin: LPTBNB         - Amount: 1.2665218771086249E-20                - Buy Minimum: -1
+
+ - LPTUSDT|LPT|-1
+ - Coin: LPTUSDT                - Amount: 3.671549137146124E-18         - Buy Minimum: -1
+
+ - AGIXBTC|AGIX|-1
+ - Coin: AGIXBTC                - Amount: 1.4917630328689326E-24                - Buy Minimum: -1
+
+ - NUBTC|NU|-1
+ - Coin: NUBTC          - Amount: 2.0883527195833285E-23                - Buy Minimum: -1
+
+ - NUBNB|NU|-1
+ - Coin: NUBNB          - Amount: 3.7073823660165514E-21                - Buy Minimum: -1
+
+ - ATABTC|ATA|-1
+ - Coin: ATABTC         - Amount: 3.1420533234252888E-24                - Buy Minimum: -1
+
+ - ATABNB|ATA|-1
+ - Coin: ATABNB         - Amount: 1.8550619842413593E-22                - Buy Minimum: -1
+
+ - ATAUSDT|ATA|-1
+ - Coin: ATAUSDT                - Amount: 1.271623745226674E-19         - Buy Minimum: -1
+
+ - GTCBTC|GTC|-1
+ - Coin: GTCBTC         - Amount: 5.132926737761662E-23         - Buy Minimum: -1
+
+ - GTCBNB|GTC|-1
+ - Coin: GTCBNB         - Amount: 9.540833699985186E-21         - Buy Minimum: -1
+
+ - TORNBTC|TORN|-1
+ - Coin: TORNBTC                - Amount: 7.01909273625308E-22          - Buy Minimum: -1
+
+ - TORNBNB|TORN|-1
+ - Coin: TORNBNB                - Amount: 1.6600704802214735E-20                - Buy Minimum: -1
+
+ - BAKEBTC|BAKE|-1
+ - Coin: BAKEBTC                - Amount: 2.1711421565443658E-24                - Buy Minimum: -1
+
+ - KEEPBTC|KEEP|-1
+ - Coin: KEEPBTC                - Amount: 6.926784307127006E-24         - Buy Minimum: -1
+
+ - ERNBNB|ERN|-1
+ - Coin: ERNBNB         - Amount: 2.6490970620970225E-21                - Buy Minimum: -1
+
+ - ERNUSDT|ERN|-1
+ - Coin: ERNUSDT                - Amount: 2.47385659553134E-18          - Buy Minimum: -1
+
+ - BONDBTC|BOND|-1
+ - Coin: BONDBTC                - Amount: 1.0311359382750854E-22                - Buy Minimum: -1
+
+ - BONDBNB|BOND|-1
+ - Coin: BONDBNB                - Amount: 1.0877767219594924E-20                - Buy Minimum: -1
+
+ - BONDUSDT|BOND|-1
+ - Coin: BONDUSDT               - Amount: 2.442652519810439E-17         - Buy Minimum: -1
+
+ - MLNBTC|MLN|-1
+ - Coin: MLNBTC         - Amount: 2.378652606517428E-22         - Buy Minimum: -1
+
+ - MLNUSDT|MLN|-1
+ - Coin: MLNUSDT                - Amount: 6.681794785943664E-18         - Buy Minimum: -1
+
+ - DEXEUSDT|DEXE|-1
+ - Coin: DEXEUSDT               - Amount: 7.514527411988158E-19         - Buy Minimum: -1
+
+ - QUICKBTC|QUICK|-1
+ - Coin: QUICKBTC               - Amount: 6.882807750487196E-22         - Buy Minimum: -1
+
+ - QUICKBNB|QUICK|-1
+ - Coin: QUICKBNB               - Amount: 1.2192133967076675E-19                - Buy Minimum: -1
+
+ - QNTBTC|QNT|-1
+ - Coin: QNTBTC         - Amount: 7.477324694910937E-21         - Buy Minimum: -1
+
+ - QNTBNB|QNT|-1
+ - Coin: QNTBNB         - Amount: 1.2911012033732466E-18                - Buy Minimum: -1
+
+ - QNTUSDT|QNT|-1
+ - Coin: QNTUSDT                - Amount: 2.0401149683227916E-17                - Buy Minimum: -1
+
+ - TVKUSDT|TVK|-1
+ - Coin: TVKUSDT                - Amount: 2.911707883849262E-20         - Buy Minimum: -1
+
+ - FARMBTC|FARM|-1
+ - Coin: FARMBTC                - Amount: 1.8786007649466835E-22                - Buy Minimum: -1
+
+ - FARMBNB|FARM|-1
+ - Coin: FARMBNB                - Amount: 8.318121583822637E-21         - Buy Minimum: -1
+
+ - FARMUSDT|FARM|-1
+ - Coin: FARMUSDT               - Amount: -5.03793360992215E-20         - Buy Minimum: -1
+
+ - ALPACABTC|ALPACA|-1
+ - Coin: ALPACABTC              - Amount: 8.031399558791332E-25         - Buy Minimum: -1
+
+ - ALPACAUSDT|ALPACA|-1
+ - Coin: ALPACAUSDT             - Amount: -5.574281560873178E-20                - Buy Minimum: -1
+
+ - QUICKUSDT|QUICK|-1
+ - Coin: QUICKUSDT              - Amount: 2.045854822135655E-17         - Buy Minimum: -1
+
+ - MBOXBTC|MBOX|-1
+ - Coin: MBOXBTC                - Amount: 1.8989808579383825E-23                - Buy Minimum: -1
+
+ - FORUSDT|FOR|-1
+ - Coin: FORUSDT                - Amount: 3.8476427800727E-19           - Buy Minimum: -1
+
+ - WAXPUSDT|WAXP|-1
+ - Coin: WAXPUSDT               - Amount: 4.0078937676513746E-20                - Buy Minimum: -1
+
+ - WAXPBNB|WAXP|-1
+ - Coin: WAXPBNB                - Amount: 1.5373649301500072E-22                - Buy Minimum: -1
+
+ - WAXPBTC|WAXP|-1
+ - Coin: WAXPBTC                - Amount: 2.030808926791524E-24         - Buy Minimum: -1
+
+ - PROMBTC|PROM|-1
+ - Coin: PROMBTC                - Amount: 3.0781657254674254E-23                - Buy Minimum: -1
+
+ - POLYUSDT|POLY|-1
+ - Coin: POLYUSDT               - Amount: 1.7340929164946944E-19                - Buy Minimum: -1
+
+ - GALAUSDT|GALA|-1
+ - Coin: GALAUSDT               - Amount: 1.2596053235466665E-20                - Buy Minimum: -1
+
+ - GALABNB|GALA|-1
+ - Coin: GALABNB                - Amount: 5.624724199949555E-23         - Buy Minimum: -1
+
+ - GALABTC|GALA|-1
+ - Coin: GALABTC                - Amount: 4.166710993209651E-25         - Buy Minimum: -1
+
+ - ILVUSDT|ILV|-1
+ - Coin: ILVUSDT                - Amount: 4.975040374487324E-17         - Buy Minimum: -1
+
+ - ILVBNB|ILV|-1
+ - Coin: ILVBNB         - Amount: 1.25031360424918E-19          - Buy Minimum: -1
+
+ - ILVBTC|ILV|-1
+ - Coin: ILVBTC         - Amount: 1.9073823481763656E-21                - Buy Minimum: -1
+
+ - YGGBTC|YGG|-1
+ - Coin: YGGBTC         - Amount: 2.663513414191083E-23         - Buy Minimum: -1
+
+ - FRONTUSDT|FRONT|-1
+ - Coin: FRONTUSDT              - Amount: 1.318735359120486E-19         - Buy Minimum: -1
+
+ - CVPUSDT|CVP|-1
+ - Coin: CVPUSDT                - Amount: 1.9230584603463408E-19                - Buy Minimum: -1
+
+ - RADBTC|RAD|-1
+ - Coin: RADBTC         - Amount: 6.512810825289015E-23         - Buy Minimum: -1
+
+ - RADBNB|RAD|-1
+ - Coin: RADBNB         - Amount: 4.387258493133641E-19         - Buy Minimum: -1
+
+ - BETABTC|BETA|-1
+ - Coin: BETABTC                - Amount: 3.0226763253323133E-23                - Buy Minimum: -1
+
+ - BETABNB|BETA|-1
+ - Coin: BETABNB                - Amount: 5.9160412868186464E-21                - Buy Minimum: -1
+
+ - BETAUSDT|BETA|-1
+ - Coin: BETAUSDT               - Amount: 4.029124166413729E-18         - Buy Minimum: -1
+
+ - RAREBTC|RARE|-1
+ - Coin: RAREBTC                - Amount: 7.445652705041396E-26         - Buy Minimum: -1
+
+ - RAREBNB|RARE|-1
+ - Coin: RAREBNB                - Amount: 2.0084352196813082E-22                - Buy Minimum: -1
+
+ DONE DONE DONE DONE DONE DONE DONE DONE DONE
