@@ -473,5 +473,13 @@ namespace Binance_API {
 			
 			return -1;
 		}
+		
+		public static List<string> getAllTradableCoins() {
+			List<string> result = new List<string>();
+			
+			
+			
+			return result;
+		}
 	}
 }

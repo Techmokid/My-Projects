@@ -3,28 +3,51 @@
 float currentError = 0;
 bool enableAmpSensorErrorDetection = false;
 
+#define SKIP_MOTOR_TEST
+//#define SKIP_MODEM_TEST
+
 void setup() {
+  //Initialize everything
   Serial.begin(115200);
-  Serial.print("Starting...");
   
   pinMode(LED_BUILTIN,OUTPUT);
-  setupMotor();
-  
+  Serial.println("Starting Motor..."); setupMotor();
+  Serial.println("Starting Modem..."); setupModem();
   Serial.println("Fully Operational!");
-  
-  setSpeed(0.5);  carefulDelay(500); setSpeed(0);carefulDelay(500);
-  setSpeed(0.5);  carefulDelay(500); setSpeed(0);carefulDelay(500);
-  setSpeed(0.5);  carefulDelay(500); setSpeed(0);carefulDelay(500);
-  
+
+  //Motor test code
+#ifndef SKIP_MOTOR_TEST
+  Serial.println("Running Motor Test Code...");
+  warningBuzz();
   setSpeed(1);    carefulDelay(5000);
   setSpeed(0);    carefulDelay(5000);
 
-  setSpeed(0.5);  carefulDelay(500); setSpeed(0);carefulDelay(500);
-  setSpeed(0.5);  carefulDelay(500); setSpeed(0);carefulDelay(500);
-  setSpeed(0.5);  carefulDelay(500); setSpeed(0);carefulDelay(500);
-
+  warningBuzz();
   setSpeed(-1);   carefulDelay(5000);
   setSpeed(0);    carefulDelay(5000);
+#else
+  Serial.println("Skipping Motor Test");
+#endif
+
+#ifndef SKIP_MODEM_TEST
+  //SIM7000 test code
+  Serial.println("Running SIM7000 Test Code...");
+  char server[] = "techmo.unity.chickenkiller.com";
+  int port = 80;
+  
+  String response = getServerResponse(server, port);
+  if (response.length() == 0) { restartArduino(); }
+  
+  response = response.substring(response.indexOf("<body>"),response.indexOf("</body>"));
+  response.replace("<br/>","\n");
+  response.replace("<body>","");
+  Serial.println("|----------------------------------------------------|");
+  Serial.println(response);
+#else
+  Serial.println("Skipping Modem Test");
+#endif
+  
+  Serial.println("Done");
 }
 
 void loop() { }
@@ -50,4 +73,10 @@ void carefulDelay(unsigned long wait) {
       }
     }
   }
+}
+
+void warningBuzz() {
+  setSpeed(0.5);  carefulDelay(500); setSpeed(0);carefulDelay(500);
+  setSpeed(0.5);  carefulDelay(500); setSpeed(0);carefulDelay(500);
+  setSpeed(0.5);  carefulDelay(500); setSpeed(0);carefulDelay(500);
 }

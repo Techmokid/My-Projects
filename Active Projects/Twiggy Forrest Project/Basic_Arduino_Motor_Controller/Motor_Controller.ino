@@ -18,23 +18,18 @@ void setSpeed(float input_speed) {
   if (input_speed == 0) {
     digitalWrite(motor_pin_A,LOW);
     digitalWrite(motor_pin_B,LOW);
-    Serial.println("Set to zero");
   } else if (input_speed == 1) {
     digitalWrite(motor_pin_B,LOW);
     digitalWrite(motor_pin_A,HIGH);
-    Serial.println("Set to 1");
   } else if (input_speed == -1) {
     digitalWrite(motor_pin_A,LOW);
     digitalWrite(motor_pin_B,HIGH);
-    Serial.println("Set to -1");
   } else if (input_speed > 0) {
     digitalWrite(motor_pin_B,LOW);
     analogWrite(motor_pin_A,input_speed*255);
-    Serial.println("Set to PWM");
   } else if (input_speed < 0) {
     digitalWrite(motor_pin_A,LOW);
     analogWrite(motor_pin_B,(-input_speed)*255);
-    Serial.println("Set to -PWM");
   } else {
     Serial.println("ERROR");
   }
@@ -52,4 +47,5 @@ float clamp(float in, float A, float B) {
   } else { return A; }
 }
 
-void restartArduino() { digitalWrite(restartPin,HIGH); }
+void(* resetFunc) (void) = 0;
+void restartArduino() { resetFunc(); digitalWrite(restartPin,HIGH); }
