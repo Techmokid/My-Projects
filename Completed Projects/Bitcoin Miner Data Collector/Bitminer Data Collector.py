@@ -73,6 +73,18 @@ time.sleep(8)
 button = None
 while(True):
         try:
+            button = driver.find_element_by_xpath("/html/body/div/div[7]/div/div/div[2]/button")
+            break
+        except:
+            print("Error finding element. Retrying...")
+            time.sleep(2)
+a = ActionChains(driver)
+a.move_to_element(button).perform()
+button.click()
+
+button = None
+while(True):
+        try:
             button = driver.find_element_by_xpath("//button[@class='btn primary medium fluid']")
             break
         except:
@@ -82,11 +94,11 @@ a = ActionChains(driver)
 a.move_to_element(button).perform()
 button.click()
 
-setPowerCost("0.26")
+setPowerCost("0.27")
 setCurrency("aud")
 time.sleep(8)
 calculateResult()
-time.sleep(5)
+time.sleep(10)
 
 def waitUntilReady():
     while(True):
@@ -121,7 +133,7 @@ while(True):
     time.sleep(2)
     calculateResult()
     waitUntilReady()
-    time.sleep(2)
+    time.sleep(8)
 
     while(True):
         try:
