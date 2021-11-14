@@ -48,10 +48,17 @@ def setDeviceName(deviceName):
 def incrementDeviceID():
     xpath = "html/body/div[1]/div[6]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/i[2]"
     #xpath = "html/body/div[1]/div[6]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/i[2]"
-    button = driver.find_element_by_xpath(xpath)
-    a = ActionChains(driver)
-    a.move_to_element(button).perform()
-    button.click()
+    while(True):
+        try:
+            button = driver.find_element_by_xpath(xpath)
+            a = ActionChains(driver)
+            a.move_to_element(button).perform()
+            button.click()
+            break
+        except:
+            print("[WARNING] Having trouble clicking element. Retrying...")
+            time.sleep(1)
+            pass
 
     time.sleep(1)
     element = driver.find_element_by_xpath("/html/body/div/div[6]/div/div[2]/div[1]/div/div[1]/div[1]/div[1]/div[2]/div[1]/div/div[2]/div[2]/div[1]/input")
@@ -76,8 +83,9 @@ while(True):
             button = driver.find_element_by_xpath("/html/body/div/div[7]/div/div/div[2]/button")
             break
         except:
-            print("Error finding element. Retrying...")
+            print("[WARNING] Having trouble locating element. Retrying...")
             time.sleep(2)
+
 a = ActionChains(driver)
 a.move_to_element(button).perform()
 button.click()
@@ -88,7 +96,7 @@ while(True):
             button = driver.find_element_by_xpath("//button[@class='btn primary medium fluid']")
             break
         except:
-            print("Error finding element. Retrying...")
+            print("[WARNING] Having trouble locating element. Retrying...")
             time.sleep(2)
 a = ActionChains(driver)
 a.move_to_element(button).perform()
@@ -106,7 +114,7 @@ def waitUntilReady():
             driver.find_element_by_xpath("//button[@class='btn primary medium fluid']")
             break
         except:
-            print("Error 1")
+            print("[INFO] Awaiting button operation...")
             time.sleep(1)
 
 dataContainerXPath = "/html/body/div/div[6]/div/div[2]/div[1]/div/div[1]/div[2]/div/div[2]/table/tbody"
@@ -133,7 +141,7 @@ while(True):
     time.sleep(2)
     calculateResult()
     waitUntilReady()
-    time.sleep(8)
+    time.sleep(2)
 
     while(True):
         try:
@@ -154,7 +162,11 @@ while(True):
             ProfitPerMonth = driver.find_element_by_xpath(dataContainerXPath + "/tr[3]/td[4]/small[1]").text
             break
         except:
-            print("Error. Trying again")
+            print("[WARNING] Experiencing a temporary issue moving to an element. Should fix itself momentarily...")
+            time.sleep(5)
+            calculateResult()
+            waitUntilReady()
+            time.sleep(5)
 
     tempData = []
     tempData.append(driver.find_element_by_xpath("//h2[@class='mb16 text-muted']").text)
@@ -169,13 +181,17 @@ while(True):
     tempData.append(ProfitPerMonth)
     ws1.append(tempData)
 
-    if (str(driver.find_element_by_xpath("//h2[@class='mb16 text-muted']").text) == "NVIDIA TITAN XP"):
+    if (str(driver.find_element_by_xpath("//h2[@class='mb16 text-muted']").text) == "iBeLink DM22G X11"):
         break
 
-print("DONE!")
+print("Saving Excel document...")
 wb.save('incomeValues.xlsx')
 driver.close()
 
-print("Waiting for user input")
+print("Completed task successfully!")
+print()
+print()
+print()
+print("Feel free to close this window now")
 while(True):
     continue
