@@ -77,6 +77,12 @@ namespace Binance_API {
 			
 			[JsonPropertyName("network")]
 			public string network { get; set; }
+			
+			[JsonPropertyName("withdrawMin")]
+			public string withdrawMin { get; set; }
+			
+			[JsonPropertyName("withdrawFee")]
+			public string withdrawFee { get; set; }
 		}
 		
 		public static bool getServerConnectivity() {
@@ -366,6 +372,9 @@ namespace Binance_API {
 		//	TAKE_PROFIT_LIMIT,
 		//	LIMITMAKER
 		//};
+		public static string createNewBuySellOrder(string symbol, string side, double quantity) {
+			return createNewBuySellOrder(symbol, side, (float)quantity);
+		}
 		public static string createNewBuySellOrder(string symbol, string side, float quantity) {
 			return API.makeSecureCall(
 				"https://api.binance.com/api/v3/order"
@@ -389,7 +398,18 @@ namespace Binance_API {
 		
 		public static List<walletDataPacket> getAllWalletContents() {
 			string API_result = API.makeSecureCall("https://api.binance.com/sapi/v1/capital/config/getall"); //"symbol=" + symbol);
-			List<walletDataPacket> outputResult = JsonSerializer.Deserialize<List<walletDataPacket>>(API_result);
+			List<walletDataPacket> outputResult;
+			
+			while(true) {
+				try {
+					outputResult = JsonSerializer.Deserialize<List<walletDataPacket>>(API_result);
+					break;
+				} catch {
+					Console.WriteLine("Error");
+					Thread.Sleep(61*10*1000);
+				}
+			}
+			
 			return outputResult;
 		}
 		
@@ -424,6 +444,40 @@ namespace Binance_API {
 					if (i.ID == symbol) { result.Add(i); }
 				}
 			}
+			
+			return result;
+		}
+		
+		public static List<List<string>> networkMinimums = new List<List<string>>();
+		public static void getNetworkMinimums() {
+			List<walletDataPacket> mins = getAllWalletContents();
+			foreach(walletDataPacket i in mins) {
+				foreach (walletDataSubnetworksPacket x in i.networkList) {
+					networkMinimums.Add(
+						new List<string> {
+							x.network + x.coin,
+							(Convert.ToDouble(x.withdrawMin) + Convert.ToDouble(x.withdrawFee)).ToString()
+						}
+					);
+				}
+			}
+		}
+		
+		public static double getBuyMinimum(string x) {
+			foreach(List<string> i in networkMinimums) {
+				 if (i[0] == x) {
+					 //Console.WriteLine("INTERNAL: " + i[1]);
+					 return Convert.ToDouble(i[1]);
+				}
+			}
+			
+			return -1;
+		}
+		
+		public static List<string> getAllTradableCoins() {
+			List<string> result = new List<string>();
+			
+			
 			
 			return result;
 		}

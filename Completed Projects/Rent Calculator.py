@@ -1,5 +1,6 @@
 allRentValues = []
 allRentValues.append(["10/06/2021",130,"Ami"])
+allRentValues.append(["01/08/2021",0,"Ami"])
 
 allRentValues.append(["9/02/2021",440 - 260,"Kieran"])     #Original $440. $260 pet bond
 allRentValues.append(["17/02/2021",180,"Kieran"])
@@ -10,12 +11,21 @@ allRentValues.append(["08/04/2021",180,"Kieran"])
 allRentValues.append(["21/04/2021",180,"Kieran"])
 allRentValues.append(["05/05/2021",300,"Kieran"])         #Paid in cash, bank messed up
 allRentValues.append(["19/05/2021",300,"Kieran"])         #Paid in cash, bank messed up
+allRentValues.append(["01/08/2021",0,"Kieran"])
 
 allRentValues.append(["08/12/2020",240,"Tyler"])
 allRentValues.append(["29/12/2020",115 + 65,"Tyler"])           #Paid for some of my things that week
 allRentValues.append(["18/01/2021",363,"Tyler"])
 allRentValues.append(["19/01/2021",180,"Tyler"])
 allRentValues.append(["19/02/2021",180,"Tyler"])
+allRentValues.append(["08/09/2021",360,"Tyler"])
+allRentValues.append(["15/09/2021",360,"Tyler"])
+allRentValues.append(["22/09/2021",360,"Tyler"])
+allRentValues.append(["29/09/2021",360,"Tyler"])
+allRentValues.append(["06/10/2021",120,"Tyler"])
+allRentValues.append(["13/10/2021",360,"Tyler"])
+allRentValues.append(["13/10/2021",60,"Tyler"])
+allRentValues.append(["20/10/2021",360,"Tyler"])
 
 allRentValues.append(["14/12/2020",240,"Daimon"])
 allRentValues.append(["21/12/2020",150,"Daimon"])
@@ -32,6 +42,10 @@ allRentValues.append(["09/04/2021",180,"Daimon"])
 allRentValues.append(["20/04/2021",20,"Daimon"])           #Paid for some of my things that week
 allRentValues.append(["03/05/2021",180,"Daimon"])
 allRentValues.append(["17/05/2021",180,"Daimon"])
+allRentValues.append(["20/08/2021",160,"Daimon"])
+allRentValues.append(["06/09/2021",180,"Daimon"])
+allRentValues.append(["14/10/2021",180,"Daimon"])
+allRentValues.append(["15/10/2021",100,"Daimon"])
 
 allRentValues.append(["16/11/2020",720,"Rent",1])
 allRentValues.append(["30/11/2020",720,"Rent",1])
@@ -51,6 +65,15 @@ allRentValues.append(["31/05/2021",720,"Rent",4])
 allRentValues.append(["14/06/2021",720,"Rent",5])
 allRentValues.append(["28/06/2021",720,"Rent",5])
 allRentValues.append(["11/07/2021",720,"Rent",5])
+allRentValues.append(["26/07/2021",720,"Rent",5])
+allRentValues.append(["09/08/2021",720,"Rent",3])
+allRentValues.append(["23/08/2021",720,"Rent",3])
+allRentValues.append(["05/09/2021",720,"Rent",3])
+allRentValues.append(["20/09/2021",720,"Rent",3])
+allRentValues.append(["04/10/2021",720,"Rent",3])
+allRentValues.append(["18/10/2021",720,"Rent",3])
+allRentValues.append(["01/11/2021",720,"Rent",3])
+
 
 #------------------------------------------------------------------------------------------------------------------------------
 
@@ -77,7 +100,6 @@ while(len(temp) > 1):
         currentIndex += 1
     rentSortedByDate.append(temp[indexOfEarliest])
     temp.pop(indexOfEarliest)
-
 
 
 rentSortedByDate.append(temp[0])
@@ -131,9 +153,14 @@ for i in peopleData:
         if (rentDataPoint[0] < startDate):
             startDate = rentDataPoint[0]
     
+    endingDate = datetime.datetime.strptime("01/01/9999", "%d/%m/%Y")
+    for rentDataPoint in i:
+        if (rentDataPoint[1] == 0):
+            endingDate = rentDataPoint[0]
+    
     personValidRentOwing = []
     for x in rentValues:
-        if (x[0] > startDate):
+        if ((x[0] > startDate) and (x[0] < endingDate)):
             personValidRentOwing.append(x)
     
     detailedRentData.append([person,startDate,personValidRentOwing,i])

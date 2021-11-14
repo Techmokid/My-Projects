@@ -1,0 +1,14 @@
+//Made by Andrey Rumming on 24/01/2018
+//Unity wouldn't let me upload the .ino file, so you have to copy this code into your editor manually
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  //Write to Unity
+  String digital = String(digitalRead(2)) + "_" + String(digitalRead(3)) + "_" + String(digitalRead(4)) + "_" + String(digitalRead(5)) + "_" + String(digitalRead(6)) + "_" + String(digitalRead(7)) + "_" + String(digitalRead(8)) + "_" + String(digitalRead(9)) + "_" + String(digitalRead(10)) + "_" + String(digitalRead(11)) + "_" + String(digitalRead(12)) + "_" + String(digitalRead(13));
+  String analog = String(analogRead(A0)) + "_" + String(analogRead(A1)) + "_" + String(analogRead(A2)) + "_" + String(analogRead(A3)) + "_" + String(analogRead(A4)) + "_" + String(analogRead(A5));
+  String sentenceToSend = digital + "_" + analog;
+  Serial.println(sentenceToSend);
+}

@@ -1,0 +1,119 @@
+//Created by Andrey Rumming (28/01/2018)
+//You are completely free to modify this file as you wish
+//I also have another asset currently pending for the market (also free) that is Arduino to Unity communications
+//Look out for my latest asset, which will be a bi-directional script, allowing people to easily talk back and forth to and from the Arduino and Unity whenever they want.
+
+void setup () {
+  Serial.begin(9600);
+  pinMode(2,OUTPUT);
+  pinMode(3,OUTPUT);
+  pinMode(4,OUTPUT);
+  pinMode(5,OUTPUT);
+  pinMode(6,OUTPUT);
+  pinMode(7,OUTPUT);
+  pinMode(8,OUTPUT);
+  pinMode(9,OUTPUT);
+  pinMode(10,OUTPUT);
+  pinMode(11,OUTPUT);
+  pinMode(12,OUTPUT);
+  pinMode(13,OUTPUT);
+}
+
+void loop () {
+  //Write To Unity
+  String digitalPins = String(digitalRead(2)) + "_" + String(digitalRead(3)) + "_" + String(digitalRead(4)) + "_" + String(digitalRead(5)) + "_" + String(digitalRead(6)) + "_" + String(digitalRead(7)) + "_" + String(digitalRead(8)) + "_" + String(digitalRead(9)) + "_" + String(digitalRead(10)) + "_" + String(digitalRead(11)) + "_" + String(digitalRead(12)) + "_" + String(digitalRead(13));
+  String analogPins = String(analogRead(A0)) + "_" + String(analogRead(A1)) + "_" + String(analogRead(A2)) + "_" + String(analogRead(A3)) + "_" + String(analogRead(A4)) + "_" + String(analogRead(A5));
+  String sentence = digitalPins + "_" + analogPins;
+  Serial.println(sentence);
+  
+  //Read From Unity
+  char data = Serial.read();
+
+  //If Unity Sends A Certain Value, Turn The Corresponding Pin On Or Off
+  if (data == 'A') {        //D2
+    digitalWrite(2,HIGH); 
+  }
+  if (data == 'a') {
+    digitalWrite(2,LOW);
+  }
+  
+  if (data == 'B') {        //D3
+    digitalWrite(3,HIGH); 
+  }
+  if (data == 'b') {
+    digitalWrite(3,LOW);
+  }
+  
+  if (data == 'C') {        //D4
+    digitalWrite(4,HIGH);
+  }
+  if (data == 'c') {
+    digitalWrite(4,LOW);
+  }
+  
+  if (data == 'D') {        //D5
+    digitalWrite(5,HIGH);
+  }
+  if (data == 'd') {
+    digitalWrite(5,LOW);
+  }
+  
+  if (data == 'E') {        //D6
+    digitalWrite(6,HIGH);
+  }
+  if (data == 'e') {
+    digitalWrite(6,LOW);
+  }
+  
+  if (data == 'F') {        //D7
+    digitalWrite(7,HIGH);
+  }
+  if (data == 'f') {
+    digitalWrite(7,LOW);
+  }
+  
+  if (data == 'G') {        //D8
+    digitalWrite(8,HIGH);
+  }
+  if (data == 'g') {
+    digitalWrite(8,LOW);
+  }
+  
+  if (data == 'H') {        //D9
+    digitalWrite(9,HIGH);
+  }
+  if (data == 'h') {
+    digitalWrite(9,LOW);
+  }
+  
+  if (data == 'I') {        //D10
+    digitalWrite(10,HIGH);
+  }
+  if (data == 'i') {
+    digitalWrite(10,LOW);
+  }
+  
+  if (data == 'J') {        //D11
+    digitalWrite(11,HIGH);
+  }
+  if (data == 'j') {
+    digitalWrite(11,LOW);
+  }
+  
+  if (data == 'K') {        //D12
+    digitalWrite(12,HIGH);
+  }
+  if (data == 'k') {
+    digitalWrite(12,LOW);
+  }
+  
+  if (data == 'L') {        //D13
+    digitalWrite(13,HIGH);
+  }
+  if (data == 'l') {
+    digitalWrite(13,LOW);
+  }
+
+  //This can be expanded indefinitely or changed so that the Arduino does something other than setting an output. It is all up to you
+  //Do whatever you want to this script. You do not have to aknowledge me in any way, as long as you do not directly steal this exact copy of the program and claim it as your own.
+}

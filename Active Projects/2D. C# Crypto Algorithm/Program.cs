@@ -20,7 +20,7 @@ namespace WebAPIClient {
 		static float tax_percentage = 0.1f;
 		static float startingWalletValue = 5000;
 		static int maxNumberOfCryptos = 10;
-		static bool liveTrading = false;
+		static bool liveTrading = true;
 		static List<deserializedSymbolJSON2> limits = new List<deserializedSymbolJSON2>();
 		
 		class deserializedJSON2 {
@@ -142,18 +142,31 @@ namespace WebAPIClient {
 			
 			//------------------------------------
 			API.filePath = filePath + "/SaveData/HistoricDataCache.txt";
-			//API.filePath = "SaveData/HistoricDataCache.txt";
-			Console.Clear();
-			foreach(API.walletDataPacket i in API.getAllWalletContents()) {
-				if (Convert.ToDouble(i.free) > 0) {
-					Console.WriteLine("Code:" + i.ID + "\t\tAmount:" + i.free);
-				}
-			}
+			API.filePath = "SaveData/HistoricDataCache.txt";
+			API.getNetworkMinimums();
 			
-			//Console.WriteLine(API.getWalletContents("USDT"));
-			//Console.WriteLine(getConvertedCode("BTCBNB"));
-			//Console.SetCursorPosition(0,40);
-			//Console.WriteLine("COMPLETE!");
+			Console.SetCursorPosition(0,30);
+			Console.WriteLine("Converted Code:  " + getConvertedCode("BNBBTC"));
+			Console.WriteLine("Wallet contents: " + API.getWalletContents("USDT"));
+			Console.WriteLine("Wallet contents of converted code: " + API.getWalletContents(getConvertedCode("BNBBTC")));
+			Console.WriteLine("Converted code:  " + getConvertedCode("BTCBNB"));
+			
+			Console.WriteLine("Network minimums: ");
+			foreach (List<string> i in API.networkMinimums) {
+				string spaces = "";
+				if (i[0] == "ETHBTC") {
+					Console.WriteLine("Fouund it!");
+					Console.WriteLine(i[1]);
+				}
+				//for (int x = 0; x < 35 - i[0].Length; x++) { spaces += " "; }
+				//Console.WriteLine(" - Code: " + i[0] + spaces + i[1]);
+			}
+			Console.WriteLine("Buy minimum of ETHBTC: " + API.getBuyMinimum("ETHBTC"));
+			
+			for(int x = 0; x < 5; x++) { Console.WriteLine(""); }
+			Console.WriteLine("COMPLETE!");
+			
+			
 			//while(true) {}
 			//------------------------------------
 			
@@ -210,7 +223,8 @@ namespace WebAPIClient {
 			AIStatusText4.data = "";
 			DisplayManager.updateDisplays();
 			
-			Console.Clear();
+			//Console.WriteLine(API.createNewBuySellOrder("BTCUSDT", "SELL", 95.0f));
+			
 			while (true) {
 				List<string> currencies = retrieveAllCurrencySymbols();
 				
@@ -238,9 +252,9 @@ namespace WebAPIClient {
 					
 					currencyReadouts.Add(parentData);
 					
-					float temp2 = API.getWalletContents(parentData.currencyName);
+					float temp2 = API.getWalletContents(getConvertedCode(parentData.currencyName));
 					string msg = "Currency Code: " + parentData.currencyName + "\t\tWallet Value: " + temp2.ToString();
-					Console.WriteLine(currencyIndex.ToString() + "/" + currencies.Count.ToString());
+					//Console.WriteLine(currencyIndex.ToString() + "/" + currencies.Count.ToString());
 					
 					//if (temp2 != 0) {
 					//	DebugFile.WriteLine(msg);
@@ -337,28 +351,34 @@ namespace WebAPIClient {
 				AIStatusText3.data = "";
 				DisplayManager.updateDisplays();
 				
-				while (buyList.Count > maxNumberOfCryptos) {
-					buyList.RemoveAt(buyList.Count - 1);
+				for (int index = 0; index < buyList.Count; index++) {
+					if (getConvertedCode(buyList[index][0]) == "UNTRUSTED BASE COIN") {
+						buyList.RemoveAt(index);
+						index--;
+					}
+				}
+				
+				for (int index = 0; index < sellList.Count; index++) {
+					if (getConvertedCode(sellList[index][0]) == "UNTRUSTED BASE COIN") {
+						sellList.RemoveAt(index);
+						index--;
+					}
 				}
 				
 				Console.SetCursorPosition(0,45);
 				
 				// Convert the crypto codes into wallet codes
-				List<List<string>> temp9 = new List<List<string>>();
-				foreach (List<string> i in sellList) {
-					string tempX = getConvertedCode(i[0]);
-					if (tempX != "ERROR") {
-						i[0] = tempX;
-						temp9.Add(i);
-					}  else {
-						Console.WriteLine("ERROR: " + i[0]);
-					}
-				}
-				sellList = temp9;
-				Console.WriteLine("========================");
-				Console.WriteLine("    Waiting for User    ");
-				Console.WriteLine("========================");
-				while(true) {}
+				//List<List<string>> temp9 = new List<List<string>>();
+				//foreach (List<string> i in sellList) {
+				//	string tempX = getConvertedCode(i[0]);
+				//	if (tempX != "ERROR") {
+				//		i[0] = tempX;
+				//		temp9.Add(i);
+				//	}  else {
+				//		Console.WriteLine("ERROR: " + i[0]);
+				//	}
+				//}
+				//sellList = temp9;
 				
 				//                     "       Starting       ";
 				AIStatusText1.color = ConsoleColor.Cyan;
@@ -384,76 +404,137 @@ namespace WebAPIClient {
 				DisplayManager.updateDisplays();
 				Console.SetCursorPosition(0,25);
 				
+				Console.Clear();
 				int count = 0;
 				foreach(List<string> i in sellList) {
-					DisplayManager.resizeCheck();
+					//DisplayManager.resizeCheck();
 					count++;
 					
 					if ((i[0] != "USDTBTC") && (i[0] != "BTCUSDT")) {
-						float sellWalletValue = API.getWalletContents(i[0]);
+						float sellWalletValue = API.getWalletContents(getConvertedCode(i[0]));
 						
 						if (sellWalletValue != -1) {
-							if (sellWalletValue > 20) {
-								Console.WriteLine("Selling: " + i[0]);
+							if (sellWalletValue > 0) {
+								sellWalletValue -= 1;
+								Console.WriteLine("Selling: " + i[0] + "\t\tAmount: " + sellWalletValue.ToString());
 								Thread.Sleep(50);
 								if (liveTrading) {
-									API.createNewBuySellOrder(i[0], "SELL", sellWalletValue - 20);
+									Console.WriteLine(API.createNewBuySellOrder(i[0], "SELL", sellWalletValue));
 								}
+							} else {
+								//Console.WriteLine("Empty Wallet Found On Token: " + i[0]);
 							}
-						} else {
-							Console.WriteLine("Error while selling: " + i[0]);
-						}
+						}// else { Console.WriteLine("Invalid Token: " + i[0]); }
 					}
 				}
+				
+				//Console.Clear();
+				//foreach (List<string> i in sellList) {
+				//	Console.WriteLine("Code: " + i[0] + "\t\t\tAmount: " + API.getWalletContents(getConvertedCode(i[0])));
+				//}
+				//while(true) {}
 				
 				apiStatusText2.data =  "  Buying New Crypto  ";
 				apiStatusText2.updateScreen();
 				
-				buyList = orderList(buyList);
-				while(buyList.Count > maxNumberOfCryptos) {
-					buyList.RemoveAt(buyList.Count - 1);
-				}
-				
-				double EbuyVal = 0.00f;
-				foreach(List<string> i in buyList) {
-					EbuyVal += Convert.ToDouble(i[1]);
-				}
-				
-				Console.SetCursorPosition(0,35);
-				
-				//Price_Of_Bitcoin / BTCUSDT = USDTBTC_Wallet_Contents
-				float Price_Of_Bitcoin = 39_000;
-				float buyWalletValue = Price_Of_Bitcoin / API.getWalletContents("BTCUSDT");
-				foreach(List<string> i in buyList) {
-					DisplayManager.resizeCheck();
-					
-					double buyPercentage = Convert.ToDouble(i[1]) / EbuyVal;
-					Console.WriteLine("Crypto Code: " + i[0]);
-					Console.WriteLine("i[1]: " + i[1]);
-					Console.WriteLine("EbuyVal: " + EbuyVal.ToString());
-					Console.WriteLine("Buy percentage: " + (buyPercentage * 100).ToString() + "%");
-					Console.WriteLine("Wallet Contents for that crypto: " + buyWalletValue.ToString());
-					Console.WriteLine("Resulting amount to buy: " + (buyPercentage*buyWalletValue).ToString());
-					Console.WriteLine("");
-					
-					if (buyPercentage * buyWalletValue > 50) {				
-						Console.WriteLine("Buying: " + i[0] + "\t\tPrice: " + (buyPercentage*buyWalletValue).ToString());
-						Thread.Sleep(50);
+				//---------------------------------------------------------------------------------------------------------------------------------------------------
+				//Read difference between network minimum values and the percentage of requested buy coins
+				Console.WriteLine("\n\nGetting network minimum value differences");
+				List<List<string>> networkDistances = new List<List<string>>();
+				for (int x = 0; x < buyList.Count; x++) {
+					double buyMinimum = API.getBuyMinimum(buyList[x][0]);		//TODO: ERROR STATE! Returns "-1" only!!
+					if (buyMinimum != -1) {
+						Console.WriteLine(" - " + buyList[x][0] + "|" +
+												  getConvertedCode(buyList[x][0]) + "|" +
+												  buyMinimum.ToString()
+										  );
 						
-						if (liveTrading) {
-							API.createNewBuySellOrder(i[0], "BUY", (float)buyPercentage*buyWalletValue);
-						}
+						networkDistances.Add(
+							new List<string> {
+								buyList[x][0],
+								buyList[x][1],
+								buyMinimum.ToString()
+							}
+						);
+						
+						Console.WriteLine(
+							" - Coin: " + networkDistances[networkDistances.Count - 1][0] +
+							"\t\t- Amount: " + networkDistances[networkDistances.Count - 1][1] +
+							"\t\t- Buy Minimum: " + networkDistances[networkDistances.Count - 1][2] + 
+							"\n"
+						);
 					}
 				}
 				
-				while(true) {}
+				Console.WriteLine(" DONE DONE DONE DONE DONE DONE DONE DONE DONE ");
+				while(true){}
+				
+				List<List<string>> sortedList = new List<List<string>>();
+				// sortedList[i][0]: Coin ID
+				// sortedList[i][1]: Amount To Buy
+				// sortedList[i][2]: Minimum Buy Value
+				sortedList = orderList(networkDistances);
+				
+				//Create the coin percentage mapping
+				List<float> coinPercentageMapping = new List<float>();
+				float current = 0.5f;
+				foreach(List<string> i in sortedList) {
+					coinPercentageMapping.Add(current);
+					current /= 2;
+				}
+				coinPercentageMapping[coinPercentageMapping.Count - 1] = coinPercentageMapping[coinPercentageMapping.Count - 2];
+				
+				//Delete coins that cannot afford the percentage mapping
+				for (int i = 0; i < sortedList.Count; i++) {
+					// TODO: Remove this
+					float temp_wallet_contents = 600.00f;
+					
+					if (
+						Convert.ToDouble(sortedList[i][2]) + Convert.ToDouble(sortedList[i][2]) * 0.05f
+						>
+						// TODO: Here we just swap "temp_wallet_contents" for whatever the function for figuring out how much money we have to work from was
+						//		-I do not for the life of me recall which of the API functions that was. This is literally all that's left before I test it
+						coinPercentageMapping[i] * temp_wallet_contents
+					) {
+						sortedList.RemoveAt(i);
+						
+						coinPercentageMapping.RemoveAt(i);
+						coinPercentageMapping[coinPercentageMapping.Count - 1] = coinPercentageMapping[coinPercentageMapping.Count - 2];
+						
+						i--;
+					}
+				}
+				
+				//Finally buy the coins
+				for (int i = 0; i < sortedList.Count; i++) {
+					DisplayManager.resizeCheck();
+					
+					Console.WriteLine(
+						"Buying: " + sortedList[i][0] +
+						"\t\tPrice: " + sortedList[i][1]
+					);
+					
+					Thread.Sleep(61);
+					
+					if (liveTrading) {
+						Console.WriteLine(
+							API.createNewBuySellOrder(
+								buyList[i][0],
+								"BUY",
+								Convert.ToDouble(buyList[i][1])
+							)
+						);
+					}
+				}
 				
 				AIStatusText4.data =   "  Paused For 10 minutes  ";
 				apiStatusText2.data =  "        Done!        ";
 				apiStatusText2.color = ConsoleColor.Green;
-				DisplayManager.updateDisplays();
+				//DisplayManager.updateDisplays();
 				
-				Thread.Sleep(1000 * 60 * 10);
+				//Thread.Sleep(1000 * 60 * 10);
+				Console.WriteLine("Done");
+				while(true) {}
 				
 				AIStatusText4.data =   "  ";
 				DisplayManager.updateDisplays();
@@ -479,6 +560,17 @@ namespace WebAPIClient {
 		}
 
 		public static string getConvertedCode(string input) {
+			if (input.Substring(len(input) - 4) == "USDT") { return input.Substring(0,len(input) - 4); }
+			if (input.Substring(len(input) - 3) == "BTC")  { return input.Substring(0,len(input) - 3); }
+			if (input.Substring(len(input) - 3) == "BNB")  { return input.Substring(0,len(input) - 3); }
+			if (input.Substring(len(input) - 3) == "ETH")  { return input.Substring(0,len(input) - 3); }
+			//if (input.Substring(len(input) - 3) == "USD")  { return input.Substring(0,len(input) - 3); }
+			//if (input.Substring(len(input) - 3) == "PAX")  { return input.Substring(0,len(input) - 3); }
+			//if (input.Substring(len(input) - 3) == "XRP")  { return input.Substring(0,len(input) - 3); }
+			//if (input.Substring(len(input) - 3) == "RUB")  { return input.Substring(0,len(input) - 3); }
+			//if (input.Substring(len(input) - 4, 3) == "USD")  { return input.Substring(0,len(input) - 4); }
+			return "UNTRUSTED BASE COIN";
+			
 			foreach(API.walletDataPacket i in API.getAllWalletContents()) {
 				foreach(API.walletDataSubnetworksPacket x in i.networkList) {
 					//Here we wanna scan to see if the input exists in "getAllWalletContents"
@@ -489,6 +581,8 @@ namespace WebAPIClient {
 				}
 			}
 			return "ERROR";
-		}	
+		}
+
+		public static int len(string x) { return x.Length; }			
 	}
 }
