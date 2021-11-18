@@ -75,4 +75,5 @@ void stopMoving() {
   Keyboard.release('d');
 }
 
-void selectInventorySlot(int slot) { Keyboard.write(slot); }
+void selectHotbarSlot(int slot) { Keyboard.write(slot); }
+void openCloseInventory() { Keyboard.write('e'); }

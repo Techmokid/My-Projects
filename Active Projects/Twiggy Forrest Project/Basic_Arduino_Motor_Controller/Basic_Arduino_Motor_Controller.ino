@@ -43,6 +43,7 @@ void setup() {
   response.replace("<body>","");
   Serial.println("|----------------------------------------------------|");
   Serial.println(response);
+  Serial.println("|----------------------------------------------------|");
 #else
   Serial.println("Skipping Modem Test");
 #endif
@@ -70,6 +71,7 @@ void carefulDelay(unsigned long wait) {
       while(true) {
         digitalWrite(LED_BUILTIN,HIGH); delay(100);
         digitalWrite(LED_BUILTIN,LOW); delay(100);
+        warningBuzz();
       }
     }
   }
