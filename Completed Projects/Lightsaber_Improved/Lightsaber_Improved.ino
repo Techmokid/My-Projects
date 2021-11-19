@@ -4,13 +4,13 @@
 #define BUTTON_PIN     7
 #define NUMPIXELS      102
 #define MAX_BRIGHTNESS 255
-#define MIN_BRIGHTNESS 100
-#define RANDOM_FLICKER 50
+#define MIN_BRIGHTNESS 80
+#define RANDOM_FLICKER 1500
 
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, LED_PIN, NEO_GRB + NEO_KHZ800);
 
 bool StripIsOn = false;
-int prevR = 0;
+int prevR = 255;
 int prevG = 0;
 int prevB = 0;
 int stateMachineVariable = 0;
@@ -76,10 +76,12 @@ bool getButtonPress() {
 
   //We have pressed the button
   unsigned long prevMillis = millis();
-  while(!digitalRead(BUTTON_PIN)) { doLEDFlicker(); }
+  while(!digitalRead(BUTTON_PIN)) {
+    if (millis() - prevMillis > 800) { return true; }
+    doLEDFlicker();
+  }
 
-  if (millis() - prevMillis < 800) { return false; }
-  return true;
+  return false;
 }
 
 void doLEDFlicker() {
@@ -95,35 +97,42 @@ void doLEDFlicker() {
 }
 
 void turnOnStrip(int R, int G, int B) {
+  turnOffStrip(true);
+
   StripIsOn = true;
   prevR = R;
   prevG = G;
   prevB = B;
-  for(int i = 0; i < NUMPIXELS; i++) {
+  for(int i = 0; i < NUMPIXELS/2; i++) {
       pixels.setPixelColor(i,pixels.Color(R,G,B));
+      pixels.setPixelColor(NUMPIXELS - i,pixels.Color(R,G,B));
+      pixels.show();
+
+      delay(25);
   }
 }
 
 void turnOffStrip(bool doAnim) {
-  StripIsOn = false;
-
   if (doAnim && StripIsOn) {
     for(int i = NUMPIXELS/2; i >= 0; i--) {
       pixels.setPixelColor(i,pixels.Color(0,0,0));
       pixels.setPixelColor(NUMPIXELS - i,pixels.Color(0,0,0));
+      pixels.show();
       delay(25);
     }
   }
+
+  StripIsOn = false;
 
   pixels.clear();
   pixels.show();
   delay(10);
 
   int LED_Brightness = 50;
-  for (int i = 0; i < 3; i++) {
+  for (int i = 0 + 2; i < 4; i++) {
     pixels.setPixelColor(i, pixels.Color(LED_Brightness,LED_Brightness,LED_Brightness));
   }
-  for (int i = NUMPIXELS; i > NUMPIXELS - 3; i--) {
+  for (int i = NUMPIXELS + 2; i > NUMPIXELS - 4; i--) {
     pixels.setPixelColor(i, pixels.Color(LED_Brightness,LED_Brightness,LED_Brightness));
   }
   pixels.show();
