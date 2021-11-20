@@ -11,6 +11,7 @@ void setup() {
   Serial.begin(115200);
   
   pinMode(LED_BUILTIN,OUTPUT);
+  
   Serial.println("Starting Motor..."); setupMotor();
   Serial.println("Starting Modem..."); setupModem();
   Serial.println("Fully Operational!");
@@ -44,6 +45,16 @@ void setup() {
   Serial.println("|----------------------------------------------------|");
   Serial.println(response);
   Serial.println("|----------------------------------------------------|");
+  
+  //Here is where we would substring the incoming data
+  int strStart = response.indexOf("{");
+  int strEnd = response.lastIndexOf("}");
+  if ((strStart != -1) && (strEnd != -1)) {
+    
+  } else {
+    Serial.println("ERROR: Incoming data not formatted as JSON");
+    Serial.println("JSON READOUT: " + response);
+  }
 #else
   Serial.println("Skipping Modem Test");
 #endif
