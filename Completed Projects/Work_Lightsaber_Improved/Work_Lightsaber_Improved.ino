@@ -5,11 +5,13 @@
 #define NUMPIXELS      102
 #define MAX_BRIGHTNESS 255
 #define MIN_BRIGHTNESS 80
-#define RANDOM_FLICKER 1500
+#define RANDOM_FLICKER 500
+#define SABER_RETRACT_SPEED 5
 
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, LED_PIN, NEO_GRB + NEO_KHZ800);
 
 bool StripIsOn = false;
+bool firstTime = true;
 int prevR = 255;
 int prevG = 0;
 int prevB = 0;
@@ -23,6 +25,7 @@ void setup() {
   pixels.begin();
 
   turnOffStrip(false);
+  firstTime = false;
 }
 
 void loop() {
@@ -43,7 +46,7 @@ void loop() {
         turnOnStrip(255,0,0); //Red
         break;
       case 1:
-        turnOnStrip(255,15,0); //Orange
+        turnOnStrip(255,25,0); //Orange
         break;
       case 2:
         turnOnStrip(255,255,0); //Yellow-Green
@@ -62,6 +65,9 @@ void loop() {
         break;
       case 7:
         turnOnStrip(190*0.3,0,255*0.3); //Purple
+        break;
+      case 8:
+        turnOnStrip(255,255,255); //White
         stateMachineVariable = -1;
         break;
     }
@@ -91,6 +97,11 @@ void doLEDFlicker() {
       if (currentBrightness > MAX_BRIGHTNESS) { currentBrightness = MAX_BRIGHTNESS; }
       if (currentBrightness < MIN_BRIGHTNESS) { currentBrightness = MIN_BRIGHTNESS; }
       pixels.setBrightness(currentBrightness);
+
+      for(int i = 0; i < NUMPIXELS; i++) {
+        pixels.setPixelColor(i,pixels.Color(prevR,prevG,prevB));
+      }
+
       pixels.show();
     }
   }
@@ -108,32 +119,50 @@ void turnOnStrip(int R, int G, int B) {
       pixels.setPixelColor(NUMPIXELS - i,pixels.Color(R,G,B));
       pixels.show();
 
-      delay(25);
+      delay(SABER_RETRACT_SPEED);
   }
 }
 
 void turnOffStrip(bool doAnim) {
-  if (doAnim && StripIsOn) {
+  int LED_Brightness = 50;
+  if (StripIsOn) {
     for(int i = NUMPIXELS/2; i >= 0; i--) {
-      pixels.setPixelColor(i,pixels.Color(0,0,0));
-      pixels.setPixelColor(NUMPIXELS - i,pixels.Color(0,0,0));
+      if (i < 3) {
+        pixels.setPixelColor(i,pixels.Color(LED_Brightness,LED_Brightness,LED_Brightness));
+        pixels.setPixelColor(NUMPIXELS - i,pixels.Color(LED_Brightness,LED_Brightness,LED_Brightness));
+      } else {
+        pixels.setPixelColor(i,pixels.Color(0,0,0));
+        pixels.setPixelColor(NUMPIXELS - i,pixels.Color(0,0,0));
+      }
+
+      if (doAnim) {
+        pixels.show();
+
+        delay(SABER_RETRACT_SPEED);
+      }
+    }
+
+    if (!doAnim) {
+      Serial.begin(115200);
+      delay(50);
+      Serial.println("Setting");
       pixels.show();
-      delay(25);
+      delay(50);
     }
   }
 
+  if (firstTime) {
+    for(int i = NUMPIXELS/2; i >= 0; i--) {
+      if (i < 3) {
+        pixels.setPixelColor(i,pixels.Color(LED_Brightness,LED_Brightness,LED_Brightness));
+        pixels.setPixelColor(NUMPIXELS - i,pixels.Color(LED_Brightness,LED_Brightness,LED_Brightness));
+      } else {
+        pixels.setPixelColor(i,pixels.Color(0,0,0));
+        pixels.setPixelColor(NUMPIXELS - i,pixels.Color(0,0,0));
+      }
+    }
+    pixels.show();
+  }
+
   StripIsOn = false;
-
-  pixels.clear();
-  pixels.show();
-  delay(10);
-
-  int LED_Brightness = 50;
-  for (int i = 0 + 2; i < 4; i++) {
-    pixels.setPixelColor(i, pixels.Color(LED_Brightness,LED_Brightness,LED_Brightness));
-  }
-  for (int i = NUMPIXELS + 2; i > NUMPIXELS - 4; i--) {
-    pixels.setPixelColor(i, pixels.Color(LED_Brightness,LED_Brightness,LED_Brightness));
-  }
-  pixels.show();
 }
