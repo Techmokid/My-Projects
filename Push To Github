@@ -1,6 +1,8 @@
 git add .
 git status
-pause
+sleep 5
 git commit -m 'Automated RPi Backup'
+echo 'Testing'
+sleep 5
 git remote add origin 'https://github.com/Techmokid/My-Projects.git'
 git push -u origin master
