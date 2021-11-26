@@ -47,7 +47,11 @@ void loop() {
     if (StripIsOn) {
       turnOffStrip(true);
     } else {
-      turnOnStrip(prevR,prevG,prevB);
+      if (isRainbow) {
+        unsheathRainbow();
+      } else {
+        turnOnStrip(prevR,prevG,prevB);
+      }
     }
   } else {
     Serial.println("short press");
@@ -109,14 +113,11 @@ bool getButtonPress() {
 }
 
 void doLEDFlicker() {
-#ifndef DO_FLICKER
-  return;
-#endif
-
   if (StripIsOn) {
     if (isRainbow) {
        rainbow(RAINBOW_SPEED);
     } else {
+#ifndef DO_FLICKER
       if (random(0,RANDOM_FLICKER) == 1) {
         currentBrightness += random(-50,50);
         if (currentBrightness > MAX_BRIGHTNESS) { currentBrightness = MAX_BRIGHTNESS; }
@@ -129,6 +130,7 @@ void doLEDFlicker() {
   
         pixels.show();
       }
+#endif
     }
   }
 }
