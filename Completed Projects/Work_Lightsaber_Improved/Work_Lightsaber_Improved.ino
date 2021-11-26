@@ -1,19 +1,28 @@
 #include <Adafruit_NeoPixel.h>
 
+//Hardware data
 #define LED_PIN        6
 #define BUTTON_PIN     7
 #define NUMPIXELS      102
+
+//Brightness
 #define MAX_BRIGHTNESS 255
 #define MIN_BRIGHTNESS 80
-#define RANDOM_FLICKER 500
+
+//Generic Saber Variables
 #define SABER_RETRACT_SPEED 5
-#define RAINBOW_ANIM_SPEED 10
+#define DO_FLICKER
+#define RANDOM_FLICKER 500
+
+//Rainbow Saber Variables
+#define RAINBOW_SPEED 25
+#define DO_RAINBOW_FLICKER
 
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, LED_PIN, NEO_GRB + NEO_KHZ800);
 
 bool StripIsOn = false;
 bool firstTime = true;
-bool StripIsRainbow = false;
+bool isRainbow = false;
 int prevR = 255;
 int prevG = 0;
 int prevB = 0;
@@ -25,14 +34,14 @@ void setup() {
   pinMode(BUTTON_PIN,INPUT_PULLUP);
 
   pixels.begin();
-
+  
   turnOffStrip(false);
   firstTime = false;
-  turnOnStripRainbow();
 }
 
 void loop() {
   if (getButtonPress()) {
+    Serial.println("Long press");
     //This is a long press
     //Turn on/off
     if (StripIsOn) {
@@ -41,11 +50,13 @@ void loop() {
       turnOnStrip(prevR,prevG,prevB);
     }
   } else {
+    Serial.println("short press");
     //This is a short press
     //Change color
 
     switch(stateMachineVariable) {
       case 0:
+        isRainbow = false;
         turnOnStrip(255,0,0); //Red
         break;
       case 1:
@@ -73,7 +84,8 @@ void loop() {
         turnOnStrip(255,255,255); //White
         break;
       case 9:
-        turnOnStripRainbow();
+        turnOffStrip(true);
+        unsheathRainbow();
         stateMachineVariable = -1;
         break;
     }
@@ -97,28 +109,39 @@ bool getButtonPress() {
 }
 
 void doLEDFlicker() {
+#ifndef DO_FLICKER
+  return;
+#endif
+
   if (StripIsOn) {
-    if (StripIsRainbow) { doRainbowAnim(); }
-
-    if (random(0,RANDOM_FLICKER) == 1) {
-      currentBrightness += random(-50,50);
-      if (currentBrightness > MAX_BRIGHTNESS) { currentBrightness = MAX_BRIGHTNESS; }
-      if (currentBrightness < MIN_BRIGHTNESS) { currentBrightness = MIN_BRIGHTNESS; }
-      pixels.setBrightness(currentBrightness);
-
-      for(int i = 0; i < NUMPIXELS; i++) {
-        pixels.setPixelColor(i,pixels.Color(prevR,prevG,prevB));
+    if (isRainbow) {
+       rainbow(RAINBOW_SPEED);
+    } else {
+      if (random(0,RANDOM_FLICKER) == 1) {
+        currentBrightness += random(-50,50);
+        if (currentBrightness > MAX_BRIGHTNESS) { currentBrightness = MAX_BRIGHTNESS; }
+        if (currentBrightness < MIN_BRIGHTNESS) { currentBrightness = MIN_BRIGHTNESS; }
+        pixels.setBrightness(currentBrightness);
+  
+        for(int i = 0; i < NUMPIXELS; i++) {
+          pixels.setPixelColor(i,pixels.Color(prevR,prevG,prevB));
+        }
+  
+        pixels.show();
       }
-
-      pixels.show();
     }
   }
 }
 
 void turnOnStrip(int R, int G, int B) {
-  StripIsRainbow = false;
+  if (isRainbow) {
+    StripIsOn = true;
+    unsheathRainbow();
+    return;
+  }
+  
   turnOffStrip(true);
-
+  
   StripIsOn = true;
   prevR = R;
   prevG = G;
@@ -130,29 +153,6 @@ void turnOnStrip(int R, int G, int B) {
 
       delay(SABER_RETRACT_SPEED);
   }
-}
-
-void turnOnStripRainbow () {
-  StripIsRainbow = true;
-  
-  //Repeats every pi interval
-  for (int i = 0; i < NUMPIXELS / 2; i++) {
-    //we want to map "i" in this instance to "From 0 to NUMPIXELS" to "From 0 to 2*Math.PI"
-    int R = dimSin(NUMPIXELS / 2, 255, i);
-    
-    //int R = 0;
-    int G = 0;
-    int B = 0;
-    pixels.setPixelColor(i,pixels.Color(R,G,B));
-    pixels.setPixelColor(NUMPIXELS - i,pixels.Color(R,G,B));
-    pixels.show();
-
-    delay(SABER_RETRACT_SPEED);
-  }
-}
-
-void doRainbowAnim() {
-
 }
 
 void turnOffStrip(bool doAnim) {
@@ -197,13 +197,4 @@ void turnOffStrip(bool doAnim) {
   }
 
   StripIsOn = false;
-}
-
-//Sine wave of the following dimension
-//Sin wave of dimensions
-//Sin of dimensions
-//Sin of Dim
-//DimSin
-float dimSin(float cycleWidth, float cycleHeight, float pos) {
-  return (sin((2*PI*pos)/cycleWidth)/2 + 0.5f) * cycleHeight;
 }
