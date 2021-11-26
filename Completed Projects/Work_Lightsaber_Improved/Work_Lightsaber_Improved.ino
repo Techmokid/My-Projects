@@ -7,11 +7,13 @@
 #define MIN_BRIGHTNESS 80
 #define RANDOM_FLICKER 500
 #define SABER_RETRACT_SPEED 5
+#define RAINBOW_ANIM_SPEED 10
 
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, LED_PIN, NEO_GRB + NEO_KHZ800);
 
 bool StripIsOn = false;
 bool firstTime = true;
+bool StripIsRainbow = false;
 int prevR = 255;
 int prevG = 0;
 int prevB = 0;
@@ -26,6 +28,7 @@ void setup() {
 
   turnOffStrip(false);
   firstTime = false;
+  turnOnStripRainbow();
 }
 
 void loop() {
@@ -68,6 +71,9 @@ void loop() {
         break;
       case 8:
         turnOnStrip(255,255,255); //White
+        break;
+      case 9:
+        turnOnStripRainbow();
         stateMachineVariable = -1;
         break;
     }
@@ -92,6 +98,8 @@ bool getButtonPress() {
 
 void doLEDFlicker() {
   if (StripIsOn) {
+    if (StripIsRainbow) { doRainbowAnim(); }
+
     if (random(0,RANDOM_FLICKER) == 1) {
       currentBrightness += random(-50,50);
       if (currentBrightness > MAX_BRIGHTNESS) { currentBrightness = MAX_BRIGHTNESS; }
@@ -108,6 +116,7 @@ void doLEDFlicker() {
 }
 
 void turnOnStrip(int R, int G, int B) {
+  StripIsRainbow = false;
   turnOffStrip(true);
 
   StripIsOn = true;
@@ -121,6 +130,29 @@ void turnOnStrip(int R, int G, int B) {
 
       delay(SABER_RETRACT_SPEED);
   }
+}
+
+void turnOnStripRainbow () {
+  StripIsRainbow = true;
+  
+  //Repeats every pi interval
+  for (int i = 0; i < NUMPIXELS / 2; i++) {
+    //we want to map "i" in this instance to "From 0 to NUMPIXELS" to "From 0 to 2*Math.PI"
+    int R = dimSin(NUMPIXELS / 2, 255, i);
+    
+    //int R = 0;
+    int G = 0;
+    int B = 0;
+    pixels.setPixelColor(i,pixels.Color(R,G,B));
+    pixels.setPixelColor(NUMPIXELS - i,pixels.Color(R,G,B));
+    pixels.show();
+
+    delay(SABER_RETRACT_SPEED);
+  }
+}
+
+void doRainbowAnim() {
+
 }
 
 void turnOffStrip(bool doAnim) {
@@ -165,4 +197,13 @@ void turnOffStrip(bool doAnim) {
   }
 
   StripIsOn = false;
+}
+
+//Sine wave of the following dimension
+//Sin wave of dimensions
+//Sin of dimensions
+//Sin of Dim
+//DimSin
+float dimSin(float cycleWidth, float cycleHeight, float pos) {
+  return (sin((2*PI*pos)/cycleWidth)/2 + 0.5f) * cycleHeight;
 }
