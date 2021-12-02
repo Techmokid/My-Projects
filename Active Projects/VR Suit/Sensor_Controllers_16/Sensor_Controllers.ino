@@ -1,16 +1,18 @@
-// This script runs on an Arduino Due
+int sensorDataArr[128];
 
 void setup() {
-  Serial.begin(115200);
-  setupMotors();
+  Serial.begin(1000000);
+  setupSensors();
 }
 
 unsigned long prevMillis = 0;
 void loop() {
-  for (int i = 0; i < 25; i++) {
-    setMotorSpeed(i,255);
-  }
+  updateSensors();
 
+  for(int i = 0; i < 128; i++) {
+  //  Serial.print(char(sensorDataArr[i]));
+  //  Serial.print(',');
+  }
   
   float timeDiff = micros() - prevMillis;
   float secondsPerIteration = timeDiff/1000000;

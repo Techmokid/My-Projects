@@ -1,11 +1,3 @@
-#define PWRKEY  6
-#define RST     7
-//#define DTR     8
-//#define RI      9
-#define TX      10
-#define RX      11
-#define ALRT    12
-
 // Select your modem:
 // #define TINY_GSM_MODEM_SIM800
 // #define TINY_GSM_MODEM_SIM808
@@ -159,18 +151,20 @@ void startServerComms() {
 }
 
 bool isServerConnected = false;
-String getServerResponse(String server, int port, char resource[]) {
+String getServerResponse(String server, int port, char resource[]) { return getServerResponse(server,port,resource, new String[0]); }
+String getServerResponse(String server, int port, char resource[], String headers[]) {
   char tempServer[16];
   server.toCharArray(tempServer,server.length()+1);
-  return getServerResponse(tempServer,port,"/");
+  return getServerResponse(tempServer,port,"/",headers);
 }
-String getServerResponse(String server, int port) { return getServerResponse(server,port,"/");}
-String getServerResponse(char server[], int port) { return getServerResponse(server, port, "/"); }
-String getServerResponse(char server[], int port, char resource[]) {
+String getServerResponse(String server, int port, String headers[]) { return getServerResponse(server,port,"/", headers);}
+String getServerResponse(char server[], int port, String headers[]) { return getServerResponse(server, port, "/", headers); }
+String getServerResponse(char server[], int port, char resource[], String headers[]) {
   Serial.println("Connecting to: " + String(server) + ":" + String(port));
   if (!isServerConnected) {startServerComms(); isServerConnected=true;}
   
   if (!client.connect(server, port)) {
+    isServerConnected = false;
     Serial.println("Failed to connect to " + String(server));
     delay(10000);
     return;
@@ -179,8 +173,10 @@ String getServerResponse(char server[], int port, char resource[]) {
   // Make a HTTP GET request:
   client.print(String("GET ") + resource + " HTTP/1.1\r\n");
   client.print(String("Host: ") + server + "\r\n");
-  //client.print(String("Testheader: 3.141\r\n"));
-  client.print("Getinfoonid:1\r\n");
+  for (int i = 0; i < sizeof(headers)/sizeof(headers[0]); i++) {
+    client.print(headers[i] + "\r\n");
+  }
+  //client.print("Getinfoonid:1\r\n");
   client.print(String("Accept: */*") + "\r\n");
   client.print("Connection: close\r\n\r\n");
   client.println();
@@ -190,7 +186,10 @@ String getServerResponse(char server[], int port, char resource[]) {
   while (client.connected() && millis() - timeout < 10000L) {
     // Print available data
     while (client.available()) {
+      
       char c = client.read();
+      if (c > 5) { Serial.print(c);}
+
       result += c;
       timeout = millis();
     }
@@ -270,4 +269,15 @@ String postServerResponse(char server[], int port, char resource[]) {
   
   isServerConnected = false;
   return result;
+}
+
+void serverSetStatus(String status) {
+  String temp[] = {"Setvalue:\"Status\"","Key:\"" + status + "\"","Id:" + (String)ID};
+  Serial.println(
+    getServerResponse(
+      "techmo.unity.chickenkiller.com",
+      80,
+      temp
+    )
+  );
 }

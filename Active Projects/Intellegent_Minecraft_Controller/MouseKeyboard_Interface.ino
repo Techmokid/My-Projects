@@ -45,6 +45,20 @@ void rotateYAngle(float angle) {
   }
 }
 
+void rotateXAngle(float angle) {
+  return;
+  
+  //W.I.P
+  int steps = floor(abs(angle)/180*100 + 0.5f);
+  for (int i = 0; i < steps; i++) {
+    if (angle > 0) {
+      Mouse.move(500,0,0); delay(10);
+    } else {
+      Mouse.move(-500,0,0); delay(10);
+    }
+  }
+}
+
 void waitNumberOfBlocks(int blocks) {
   //250ms moves us 1.073 blocks
   //500ms moves us 2.155 blocks
@@ -63,11 +77,31 @@ void moveBackwardsBlocks(int blocks) { Keyboard.press('s'); waitNumberOfBlocks(b
 void moveLeftBlocks(int blocks) { Keyboard.press('a'); waitNumberOfBlocks(blocks); Keyboard.release('a'); }
 void moveRightBlocks(int blocks) { Keyboard.press('d'); waitNumberOfBlocks(blocks); Keyboard.release('d'); }
 
+void placeSquare(int sideLength) { placeRectangle(sideLength,sideLength); }
+void placeRectangle(int x, int y) {
+  lookDown();
+  startPlacing();
+  jump();
+  
+  rotateYAngle(20);
+  moveForwardsBlocks(y-1);
+
+  //rotateXAngle(90);
+  moveRightBlocks(x-1);
+  
+  //rotateXAngle(90);
+  moveBackwardsBlocks(y-1);
+
+  //rotateXAngle(90);
+  moveLeftBlocks(x-1);
+}
+
 void moveForwards() { Keyboard.press('w'); }
 void moveBackwards() { Keyboard.press('s'); }
 void moveLeft() { Keyboard.press('a'); }
 void moveRight() { Keyboard.press('d'); }
 void crouch() { Keyboard.press(KEY_LEFT_SHIFT); }
+void jump() { Keyboard.write(char(32)); }
 void stopMoving() {
   Keyboard.release('w');
   Keyboard.release('s');

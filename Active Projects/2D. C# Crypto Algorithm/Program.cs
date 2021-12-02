@@ -45,6 +45,17 @@ namespace WebAPIClient {
 			public dynamic rateLimits { get; set; }
 		}
 		
+		class deserializedSymbolsJSON3 {
+			[JsonPropertyName("symbols")]
+			public string symbols { get; set; }
+			
+			[JsonPropertyName("baseAsset")]
+			public string baseAsset { get; set; }
+			
+			[JsonPropertyName("quoteAsset")]
+			public string quoteAsset { get; set; }
+		}
+		
 		class deserializedSymbolJSON {
 			[JsonPropertyName("symbol")]
 			public string symbol { get; set; }
@@ -114,6 +125,60 @@ namespace WebAPIClient {
 			}
 			
 			return result;
+		}
+		
+		public static List<string> getAllTradableCoins() {
+			List<string> result = new List<string>();
+			List<string[]> sharedCoins = new List<string[]>();
+			List<string> temp1 = retrieveAllCurrencySymbols();
+			List<API.walletDataPacket> temp2 = API.getAllWalletContents();
+			for(int x = 0; x < temp1.Count; x++) {
+				for(int y = 0; y < temp2.Count; y++) {
+					for (int i = 0; i < temp2[y].networkList.Count; i++) {
+						string temp = temp2[y].ID + temp2[y].networkList[i].network;
+						if (temp1[x] == temp) {
+							//Console.WriteLine("Shared Coin: " + temp);
+							sharedCoins.Add(new string[] { temp2[y].ID,temp2[y].networkList[i].network });
+							result.Add(temp1[x]);
+						}
+					}
+				}
+			}
+			
+			string msg = "";
+			for(int y = 0; y < temp2.Count; y++) {
+				for (int i = 0; i < temp2[y].networkList.Count; i++) {
+					msg += temp2[y].ID + temp2[y].networkList[i].network+ "\n";
+				}
+			}
+			File.WriteAllText("Tradable coinpairs.txt",msg);
+			
+			msg = "";
+			for(int i = 0; i < temp1.Count; i++) {
+				msg += temp1[i] + "\n";
+			}
+			File.WriteAllText("Analyzable coinpairs.txt",msg);
+			
+			msg = "";
+			for(int i = 0; i < result.Count; i++) {
+				msg += result[i] + "\n";
+			}
+			File.WriteAllText("Shared coinpairs.txt",msg);
+			
+			Console.WriteLine("Coins we have to work with:");
+			printList(result);
+			
+			return result;
+		}
+		
+		static void printList(List<string> result) {
+			string msg = "{";
+			for(int i = 0; i < result.Count; i++) {
+				msg += result[i];
+				if (i != result.Count-1) { msg += ","; }
+			}
+			msg += "}";
+			Console.WriteLine(msg);
 		}
 		
         static void Main(string[] args) {
@@ -226,8 +291,8 @@ namespace WebAPIClient {
 			//Console.WriteLine(API.createNewBuySellOrder("BTCUSDT", "SELL", 95.0f));
 			
 			while (true) {
-				List<string> currencies = retrieveAllCurrencySymbols();
-				
+				//List<string> currencies = retrieveAllCurrencySymbols();
+				List<string> currencies = getAllTradableCoins();
 				DebugFile.Create("debugging_refined.txt");
 				
 				List<currencyData> currencyReadouts = new List<currencyData>();
@@ -405,6 +470,8 @@ namespace WebAPIClient {
 				Console.SetCursorPosition(0,25);
 				
 				Console.Clear();
+				Console.WriteLine("Ready for selling");
+				
 				int count = 0;
 				foreach(List<string> i in sellList) {
 					//DisplayManager.resizeCheck();
@@ -427,12 +494,6 @@ namespace WebAPIClient {
 						}// else { Console.WriteLine("Invalid Token: " + i[0]); }
 					}
 				}
-				
-				//Console.Clear();
-				//foreach (List<string> i in sellList) {
-				//	Console.WriteLine("Code: " + i[0] + "\t\t\tAmount: " + API.getWalletContents(getConvertedCode(i[0])));
-				//}
-				//while(true) {}
 				
 				apiStatusText2.data =  "  Buying New Crypto  ";
 				apiStatusText2.updateScreen();
