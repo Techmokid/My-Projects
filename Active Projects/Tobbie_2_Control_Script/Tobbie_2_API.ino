@@ -27,6 +27,7 @@ int myColumbs[] = {4,7,3,6,10};
 bool LEDs[5][5] = {};
 
 //Speaker variables
+bool speakerInit = false;
 bool speakerOn = false;
 bool speakerWaveHalf = false;
 unsigned long speakerPrevMillis = 0;
@@ -157,10 +158,22 @@ bool getButton(int ID) {
 }
 
 void startSpeaker() { pinMode(27,OUTPUT); }
-void stopTone() {speakerOn = false;};
+void stopTone() {speakerOn = false; digitalWrite(27,LOW); };
 void setTone(float frequency) {
+  if (!speakerInit) { startSpeaker(); }
   speakerOn = true;
   speakerTimeInterval = 1000000/frequency;
+}
+void playMelody(int notes[], int durations[], int numberOfNotes) {
+  for (int thisNote = 0; thisNote < numberOfNotes; thisNote++) {
+    int noteDuration = 1000 / durations[thisNote];
+
+    setTone(notes[thisNote]);
+    int pauseBetweenNotes = noteDuration * 2;
+
+    delayYield(pauseBetweenNotes);
+    stopTone();
+  }
 }
 
 void updateTone() {

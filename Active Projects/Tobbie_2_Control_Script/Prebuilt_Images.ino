@@ -130,6 +130,18 @@ void displayFaceAngry() {
   setDisplay(temp);
 }
 
+void displayFaceEcstatic() {
+  int temp[][5] = {
+    {0,1,0,1,0},
+    {0,1,0,1,0},
+    {0,0,0,0,0},
+    {1,1,1,1,1},
+    {0,1,1,1,0}
+  };
+  
+  setDisplay(temp);
+}
+
 void displayRoadHor() {
   int temp[][5] = {
     {1,0,1,0,1},
