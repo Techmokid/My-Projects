@@ -89,8 +89,7 @@
 #define NOTE_DS8 4978
 
 void setup() {
-  clearDisplay();
-  updateDisplay();
+  startTobbie2();
 }
 
 void loop() {
@@ -152,13 +151,13 @@ void loop() {
   delayYield(1000);
   walkForwards(false);
   turnLeft(true);
-  delayYield(1000);
+  delayYield(500);
   turnLeft(false);
   walkForwards(true);
   delayYield(1000);
   walkForwards(false);
   turnRight(true);
-  delayYield(1000);
+  delayYield(500);
   turnRight(false);
   walkBackwards(true);
   delayYield(1000);
