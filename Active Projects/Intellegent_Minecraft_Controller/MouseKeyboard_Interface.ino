@@ -30,6 +30,7 @@ void mineBelow() {
 }
 
 void startMining() { Mouse.press(MOUSE_LEFT); delay(200); }
+void stopMining() { Mouse.release(MOUSE_LEFT); delay(100); }
 void startPlacing() { Mouse.press(MOUSE_RIGHT); delay(200); }
 void lookDown() { rotateYAngle(-180); }
 void lookUp() { rotateYAngle(180); }
@@ -44,17 +45,20 @@ void rotateYAngle(float angle) {
     }
   }
 }
+void placeBlock() {
+  Mouse.press(MOUSE_RIGHT);
+  delay(50);
+  Mouse.release(MOUSE_RIGHT);
+}
 
 void rotateXAngle(float angle) {
-  return;
-  
   //W.I.P
   int steps = floor(abs(angle)/180*100 + 0.5f);
   for (int i = 0; i < steps; i++) {
     if (angle > 0) {
-      Mouse.move(500,0,0); delay(10);
-    } else {
       Mouse.move(-500,0,0); delay(10);
+    } else {
+      Mouse.move(500,0,0); delay(10);
     }
   }
 }
@@ -101,6 +105,7 @@ void moveBackwards() { Keyboard.press('s'); }
 void moveLeft() { Keyboard.press('a'); }
 void moveRight() { Keyboard.press('d'); }
 void crouch() { Keyboard.press(KEY_LEFT_SHIFT); }
+void stopCrouch() { Keyboard.release(KEY_LEFT_SHIFT); }
 void jump() { Keyboard.write(char(32)); }
 void stopMoving() {
   Keyboard.release('w');
@@ -109,5 +114,39 @@ void stopMoving() {
   Keyboard.release('d');
 }
 
-void selectHotbarSlot(int slot) { Keyboard.write(slot); }
+void stripMine(int hotbar_Pickaxe, int hotbar_Torch) {
+  for (int i = 0; i < 25; i++) {
+    selectHotbarSlot(hotbar_Pickaxe);
+    delay(100);
+    
+    mineForwards(true);
+    delay(25000);
+
+    stopMining();
+    stopCrouch();
+    stopMoving();
+    
+    rotateXAngle(90);
+    lookDown(); rotateYAngle(90);
+    
+    selectHotbarSlot(hotbar_Torch);
+    delay(100);
+  
+    placeBlock();
+    rotateXAngle(-90);
+  }
+}
+
+void selectHotbarSlot(int slot) {
+  Keyboard.write( String(slot)[0] );
+}
+
 void openCloseInventory() { Keyboard.write('e'); }
+
+void printChatMsg(char msg[]) {
+  Keyboard.write('t'); delay(100);
+  for(int i = 0; i < strlen(msg); i++) {
+    Keyboard.write(msg[i]); delay(1);
+  }
+  Keyboard.write(KEY_RETURN); delay(100);
+}
