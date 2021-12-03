@@ -99,8 +99,11 @@ void loop() {
 }
 
 bool getButtonPress() {
+  delay(1);
   if (!digitalRead(BUTTON_PIN)) { while(!digitalRead(BUTTON_PIN)) { doLEDFlicker(); } }
+  delay(1);
   while(digitalRead(BUTTON_PIN)) { doLEDFlicker(); }
+  delay(1);
 
   //We have pressed the button
   unsigned long prevMillis = millis();
@@ -148,7 +151,7 @@ void turnOnStrip(int R, int G, int B) {
   prevR = R;
   prevG = G;
   prevB = B;
-  for(int i = 0; i < NUMPIXELS/2; i++) {
+  for(int i = 0; i <= NUMPIXELS/2; i++) {
       pixels.setPixelColor(i,pixels.Color(R,G,B));
       pixels.setPixelColor(NUMPIXELS - i,pixels.Color(R,G,B));
       pixels.show();

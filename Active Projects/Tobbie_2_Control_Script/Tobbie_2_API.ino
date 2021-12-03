@@ -1,25 +1,25 @@
 //Magnetometer variables
-#include <SparkFun_MAG3110.h>
-MAG3110 mag = MAG3110();
-int magX,magY,magZ;
+//#include <SparkFun_MAG3110.h>
+//MAG3110 mag = MAG3110();
+//int magX,magY,magZ;
 
 //Accelerometer data
-#include <Wire.h>
-#include <MMA8653.h>
-MMA8653 accel;
+//#include <Wire.h>
+//#include <MMA8653.h>
+//MMA8653 accel;
 
 //Combined accelerometer and magnetometer
-#include <LSM303AGR_ACC_Sensor.h>
-#include <LSM303AGR_MAG_Sensor.h>
-#if defined(ARDUINO_SAM_DUE)
-#define DEV_I2C Wire1   //Define which I2C bus is used. Wire1 for the Arduino Due
-#define SerialPort Serial
-#else
-#define DEV_I2C Wire    //Or Wire
-#define SerialPort Serial
-#endif
-LSM303AGR_ACC_Sensor Acc(&DEV_I2C);
-LSM303AGR_MAG_Sensor Mag(&DEV_I2C);
+//#include <LSM303AGR_ACC_Sensor.h>
+//#include <LSM303AGR_MAG_Sensor.h>
+//#if defined(ARDUINO_SAM_DUE)
+//#define DEV_I2C Wire1   //Define which I2C bus is used. Wire1 for the Arduino Due
+//#define SerialPort Serial
+//#else
+//#define DEV_I2C Wire    //Or Wire
+//#define SerialPort Serial
+//#endif
+//LSM303AGR_ACC_Sensor Acc(&DEV_I2C);
+//LSM303AGR_MAG_Sensor Mag(&DEV_I2C);
 
 //LED display variables
 int myRows[] = {21,22,23,24,25};
@@ -33,49 +33,49 @@ bool speakerWaveHalf = false;
 unsigned long speakerPrevMillis = 0;
 unsigned long speakerTimeInterval = 0;
 
-void walkForwards(bool walk) { digitalWrite(13,walk); }
-void walkBackwards(bool walk) { digitalWrite(14,walk); }
-void turnRight(bool walk) { digitalWrite(15,walk); }
-void turnLeft(bool walk) { digitalWrite(16,walk); }
+void walkForwards(bool walk) { pinMode(13,OUTPUT); digitalWrite(13,walk); }
+void walkBackwards(bool walk) { pinMode(14,OUTPUT); digitalWrite(14,walk); }
+void turnRight(bool walk) { pinMode(15,OUTPUT); digitalWrite(15,walk); }
+void turnLeft(bool walk) { pinMode(16,OUTPUT); digitalWrite(16,walk); }
 
-void startDistanceSensors() { digitalWrite(12,HIGH); }
-float readLeftDist() { return analogRead(1); }
-float readRightDist() { return analogRead(2); }
+void startDistanceSensors() { pinMode(12,OUTPUT); digitalWrite(12,HIGH); }
+float readLeftDist() { pinMode(1,INPUT); return analogRead(1); }
+float readRightDist() { pinMode(2,INPUT); return analogRead(2); }
 
-void startMagnetometer() {
-  mag.initialize(); //Initializes the mag sensor
-  mag.start();      //Puts the sensor in active mode
-}
+//void startMagnetometer() {
+//  mag.initialize(); //Initializes the mag sensor
+//  mag.start();      //Puts the sensor in active mode
+//}
 
-void readMagnetometer() { mag.readMag(&magX,&magY,&magZ); }
-float getMagnetometerX() { return magX; }
-float getMagnetometerY() { return magY; }
-float getMagnetometerZ() { return magZ; }
+//void readMagnetometer() { mag.readMag(&magX,&magY,&magZ); }
+//float getMagnetometerX() { return magX; }
+//float getMagnetometerY() { return magY; }
+//float getMagnetometerZ() { return magZ; }
 
-void startAccelerometer() { accel.begin(false, 2); } // 8-bit mode, 2g range
-void readAccelerometer() { accel.update(); }
-float getAccelerometerX() { return (float)accel.getX() * 0.0156; }
-float getAccelerometerY() { return (float)accel.getY() * 0.0156; }
-float getAccelerometerZ() { return (float)accel.getZ() * 0.0156; }
+//void startAccelerometer() { accel.begin(false, 2); } // 8-bit mode, 2g range
+//void readAccelerometer() { accel.update(); }
+//float getAccelerometerX() { return (float)accel.getX() * 0.0156; }
+//float getAccelerometerY() { return (float)accel.getY() * 0.0156; }
+//float getAccelerometerZ() { return (float)accel.getZ() * 0.0156; }
 
-void startAccMag() {
-  DEV_I2C.begin(); 
-  Acc.begin();
-  Acc.Enable();
-  Acc.EnableTemperatureSensor();
-  Mag.begin();
-  Mag.Enable();
+//void startAccMag() {
+//  DEV_I2C.begin(); 
+//  Acc.begin();
+//  Acc.Enable();
+//  Acc.EnableTemperatureSensor();
+//  Mag.begin();
+//  Mag.Enable();
 
-  int32_t accelerometer[3];
-  Acc.GetAxes(accelerometer);
+//  int32_t accelerometer[3];
+//  Acc.GetAxes(accelerometer);
 
   // Read temperature LSM303AGR.
-  float temperature;
-  Acc.GetTemperature(&temperature);
+//  float temperature;
+//  Acc.GetTemperature(&temperature);
   
   // Read magnetometer LSM303AGR.
-  int32_t magnetometer[3];
-  Mag.GetAxes(magnetometer);
+//  int32_t magnetometer[3];
+//  Mag.GetAxes(magnetometer);
 
   // Output data.
   //SerialPort.print("| Acc[mg]: ");
@@ -93,8 +93,12 @@ void startAccMag() {
   //SerialPort.print(" | Temp[C]: ");
   //SerialPort.print(temperature, 2);
   //SerialPort.println(" |");
-}
+//}
 
+void startTobbie2() {
+  clearDisplay();
+  updateDisplay();
+}
 
 void clearDisplay() {
   for(int x = 0; x < 5; x++) {
