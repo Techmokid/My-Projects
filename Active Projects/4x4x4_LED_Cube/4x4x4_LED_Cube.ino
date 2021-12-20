@@ -19,7 +19,7 @@ void setup() {
         for(int z = 0; z < 4; z++) {
           setPixel(x,y,z,HIGH);
           //carefulDelay(1);
-          delayMicroseconds(100);
+          delayMicroseconds(200);
           setupLEDs();
         }
       }
@@ -27,16 +27,7 @@ void setup() {
   }
 }
 
-void loop() {
-  setPixel(0,2,0,HIGH);
-  delay(500);
-  setPixel(1,2,1,HIGH);
-  delay(500);
-  setPixel(2,2,2,HIGH);
-  delay(500);
-  setPixel(3,2,3,HIGH);
-  delay(500);
-}
+void loop() { }
 
 void carefulDelay(unsigned long timer) {
   unsigned long prevMillis = millis();
