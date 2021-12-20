@@ -1,7 +1,7 @@
 import requests,os,shutil,zipfile,time
 from pathlib import Path
 
-directory = "C:/Users/aj200/Downloads/lowtechcrafting-1.16.3-0.2.0.jar"
+directory = "C:/Users/aj200/Desktop/Fabric/fabric-api-0.44.01.18.jar"
 
 #This is for decompiling the jar file
 if(os.path.exists("C:/Temp/procyon/")):

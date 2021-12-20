@@ -90,13 +90,13 @@ void placeRectangle(int x, int y) {
   rotateYAngle(20);
   moveForwardsBlocks(y-1);
 
-  //rotateXAngle(90);
+  rotateXAngle(90);
   moveRightBlocks(x-1);
   
-  //rotateXAngle(90);
+  rotateXAngle(90);
   moveBackwardsBlocks(y-1);
-
-  //rotateXAngle(90);
+  
+  rotateXAngle(90);
   moveLeftBlocks(x-1);
 }
 

@@ -1,6 +1,7 @@
 void setup() {
   setupKM();
   delay(8000);
+  startPlacing();
   
   //mineForwards(true); //Boolean tells it whether to crouch or not
   //moveForwardsBlocks(1);
@@ -13,7 +14,7 @@ void setup() {
   
   //printChatMsg("[Arduino Leonardo] - Beginning automated task 1/1: Activate Crouch Walk");
   
-  stripMine(1,6);
+  //stripMine(1,6);
 }
 
 void loop() { }

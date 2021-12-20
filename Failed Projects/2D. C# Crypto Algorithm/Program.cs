@@ -22,6 +22,7 @@ namespace WebAPIClient {
 		static int maxNumberOfCryptos = 10;
 		static bool liveTrading = true;
 		static List<deserializedSymbolJSON2> limits = new List<deserializedSymbolJSON2>();
+		static bool coinProt = false;
 		
 		class deserializedJSON2 {
 			[JsonPropertyName("id")]
@@ -136,6 +137,8 @@ namespace WebAPIClient {
 				for(int y = 0; y < temp2.Count; y++) {
 					for (int i = 0; i < temp2[y].networkList.Count; i++) {
 						string temp = temp2[y].ID + temp2[y].networkList[i].network;
+						if (coinProt)
+							temp = temp2[y].name + temp2[y].networkList[i].network;
 						if (temp1[x] == temp) {
 							//Console.WriteLine("Shared Coin: " + temp);
 							sharedCoins.Add(new string[] { temp2[y].ID,temp2[y].networkList[i].network });
@@ -144,6 +147,7 @@ namespace WebAPIClient {
 					}
 				}
 			}
+			if (coinProt) { result = new List<string> { "RENBTC" }; }
 			
 			string msg = "";
 			for(int y = 0; y < temp2.Count; y++) {
@@ -164,9 +168,6 @@ namespace WebAPIClient {
 				msg += result[i] + "\n";
 			}
 			File.WriteAllText("Shared coinpairs.txt",msg);
-			
-			Console.WriteLine("Coins we have to work with:");
-			printList(result);
 			
 			return result;
 		}
@@ -210,11 +211,16 @@ namespace WebAPIClient {
 			API.filePath = "SaveData/HistoricDataCache.txt";
 			API.getNetworkMinimums();
 			
+			Console.Clear();
 			Console.SetCursorPosition(0,30);
 			Console.WriteLine("Converted Code:  " + getConvertedCode("BNBBTC"));
 			Console.WriteLine("Wallet contents: " + API.getWalletContents("USDT"));
 			Console.WriteLine("Wallet contents of converted code: " + API.getWalletContents(getConvertedCode("BNBBTC")));
 			Console.WriteLine("Converted code:  " + getConvertedCode("BTCBNB"));
+			
+			Console.WriteLine("Coins we have to work with:");
+			//printList(getAllTradableCoins());
+			//return;
 			
 			Console.WriteLine("Network minimums: ");
 			foreach (List<string> i in API.networkMinimums) {
@@ -582,7 +588,9 @@ namespace WebAPIClient {
 							API.createNewBuySellOrder(
 								buyList[i][0],
 								"BUY",
-								Convert.ToDouble(buyList[i][1])
+								Convert.ToDouble(
+									buyList[i][1]
+								)
 							)
 						);
 					}
