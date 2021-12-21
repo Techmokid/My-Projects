@@ -20,22 +20,21 @@ void setupLEDs() {
 }
 
 void setPixel(int x, int y, int z, bool state) {
-  digitalWrite(layer_pins[y],HIGH);
-  digitalWrite(pixel_pins[x + z*4],LOW);
+  digitalWrite(layer_pins[y],state);
+  digitalWrite(pixel_pins[x + z*4],!state);
   LED_MEM[x][y][z] = state;
 }
 
-void allOff() {
+void allOff() { setupLEDs(); }
+
+void updateLEDs() {
   for (int x = 0; x < 4; x++) {
-    for(int y = 0; y < 4; y++) {
-      for(int z = 0; z < 4; z++) {
-        LED_MEM[x][y][z] = false;
-        setupLEDs();
+    for (int y = 0; y < 4; y++) {
+      for (int z = 0; z < 4; z++) {
+        setPixel(x,y,z,LED_MEM[x][y][z]);
+        delayMicroseconds(500);
+        setPixel(x,y,z,LOW);
       }
     }
   }
-}
-
-void updateLEDs() {
-  //allOff();
 }
