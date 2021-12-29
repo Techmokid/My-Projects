@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<EventGhost Version="1700" Guid="{00E4DE2F-7972-49CB-85A4-DF5AB2472AFD}" Time="1439425574.25">
+    <Autostart Name="Autostart" Expanded="True">
+        <Action Name="Demonstrates use of the Network Event Sender/Receiver EventGhost plugins.">
+            EventGhost.Comment()
+        </Action>
+        <Action Name="For use with the EtherEvent example sketches.">
+            EventGhost.Comment()
+        </Action>
+        <Action Name="Configure the Network Event Receiver/Sender Plugins with your network settings:">
+            EventGhost.Comment()
+        </Action>
+        <Plugin Identifier="NetworkSender" Guid="{B4F0DAFE-2E0B-47F3-A155-ED72C7A4E270}" File="NetworkSender">
+            gAJYDgAAADE5Mi4xNjguNjkuMTA0cQBNAARYCAAAAHBhc3N3b3JkcQGHcQIu
+        </Plugin>
+        <Plugin Identifier="NetworkReceiver" Guid="{8F35AE6D-AF12-4A94-AA91-4B63F0CBBE1C}" File="NetworkReceiver">
+            gAJNAARYCAAAAHBhc3N3b3JkcQBYAwAAAFRDUHEBh3ECLg==
+        </Plugin>
+    </Autostart>
+    <Macro Name="Send test event" Expanded="True">
+        <Event Name="TCP.test" />
+        <Action Name="This macro will send a test event every time the event TCP.test is received.">
+            EventGhost.Comment()
+        </Action>
+        <Action>
+            NetworkSender.Map(u'test')
+        </Action>
+    </Macro>
+</EventGhost>

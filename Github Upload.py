@@ -1,31 +1,34 @@
 import os,shutil
 
-normal_libraries_folders = ["C:/Users/aj200/Documents/Arduino"]
-ESP8266_libraries_folders = ["C:/Users/aj200/AppData/Local/Arduino15/packages/esp8266/hardware/esp8266/"]
+baseDir = os.getcwd()
+Arduino_folder = "C:/Users/aj200/Documents/Arduino"
+ESP8266_libraries_folder = "C:/Users/aj200/AppData/Local/Arduino15/packages/esp8266/hardware/esp8266/libraries"
+Unity3D_Projects_Folder = "C:/Users/aj200/Documents/Unity Projects"
+Python_Projects_Folder = "C:/Users/aj200/AppData/Local/Programs/Python/Python38/My Python Scripts"
 
-result = ""
-for i in ESP8266_libraries_folders:
-    if (os.path.exists(i)):
-        i += os.listdir(i)[0]
-        result = i
-if (result == ""):
-    raise Exception("Could not find ESP8266 directory")
-ESP8266_libraries_folder = result + "/libraries"
+Github_Arduino_Folder = baseDir + "/Arduino Folder"
+Github_ESP8266_Libraries_Folder = baseDir + "/ESP8266 Libraries"
+Github_Unity3D_Projects_Folder = baseDir + "/Unity3D Projects"
+Github_Python_Projects_Folder = baseDir + "/Python Projects"
 
-result = ""
-for i in normal_libraries_folders:
-    if (os.path.exists(i)):
-        result = i
-if (result == ""):
-    raise Exception("Could not find Arduino directory")
-normal_libraries_folder = result + "/libraries"
+def StartFolder(directory):
+    if (os.path.exists(directory)):
+        print("Deleting: " + directory)
+        shutil.rmtree(directory)
+    #os.mkdir(directory)
 
-if (os.path.exists(ESP8266_libraries_folder)):
-    shutil.rmtree(ESP8266_libraries_folder)
+StartFolder(Github_Arduino_Folder)
+StartFolder(Github_ESP8266_Libraries_Folder)
+StartFolder(Github_Unity3D_Projects_Folder)
+StartFolder(Github_Python_Projects_Folder)
 
-if (os.path.exists(normal_libraries_folder)):
-    shutil.rmtree(normal_libraries_folder)
-    
-print(ESP8266_libraries_folder)
-print(normal_libraries_folder)
-
+#Now we have all the required info. Just copy across
+print("Copying Arduino Projects Folder")
+shutil.copytree(Arduino_folder,Github_Arduino_Folder)
+print("Copying ESP8266 Libraries Folder")
+#shutil.copytree(ESP8266_libraries_folder,Github_ESP8266_Libraries_Folder)
+print("Copying Unity3D Projects Folder")
+shutil.copytree(Unity3D_Projects_Folder,Github_Unity3D_Projects_Folder)
+print("Copying Python Projects Folder")
+shutil.copytree(Python_Projects_Folder,Github_Python_Projects_Folder)
+print("Done!")

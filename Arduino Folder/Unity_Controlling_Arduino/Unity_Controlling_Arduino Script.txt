@@ -1,0 +1,112 @@
+//Created by Andrey Rumming
+//You are completely free to modify this file as you wish
+//I also have another asset currently pending for the market (also free) that is Arduino to Unity communications
+//Look out for my latest asset, which will be a bi-directional script, allowing people to easily talk back and forth to and from the Arduino and Unity whenever they want.
+//You will have to move this into your IDE as Unity won't let me submit .ino files as they are unknown to Unity.
+//A copy of the actual .ino file can be found here: http://www.mediafire.com/file/gssf8z5mluae01r/Unity_Controlling_Arduino.zip
+//A copy of the entire project folder can be found here: http://www.mediafire.com/file/b9qa4f2a2y3dub3/Arduino+coms+testing.zip
+
+void setup () {
+  Serial.begin(9600);
+  pinMode(2,OUTPUT);
+  pinMode(3,OUTPUT);
+  pinMode(4,OUTPUT);
+  pinMode(5,OUTPUT);
+  pinMode(6,OUTPUT);
+  pinMode(7,OUTPUT);
+  pinMode(8,OUTPUT);
+  pinMode(9,OUTPUT);
+  pinMode(10,OUTPUT);
+  pinMode(11,OUTPUT);
+  pinMode(12,OUTPUT);
+  pinMode(13,OUTPUT);
+}
+
+void loop () {
+  char data = Serial.read();
+  
+  //Digital Pins
+  if (data == 'A') {        //D2
+    digitalWrite(2,HIGH); 
+  }
+  if (data == 'a') {
+    digitalWrite(2,LOW);
+  }
+  
+  if (data == 'B') {        //D3
+    digitalWrite(3,HIGH); 
+  }
+  if (data == 'b') {
+    digitalWrite(3,LOW);
+  }
+  
+  if (data == 'C') {        //D4
+    digitalWrite(4,HIGH);
+  }
+  if (data == 'c') {
+    digitalWrite(4,LOW);
+  }
+  
+  if (data == 'D') {        //D5
+    digitalWrite(5,HIGH);
+  }
+  if (data == 'd') {
+    digitalWrite(5,LOW);
+  }
+  
+  if (data == 'E') {        //D6
+    digitalWrite(6,HIGH);
+  }
+  if (data == 'e') {
+    digitalWrite(6,LOW);
+  }
+  
+  if (data == 'F') {        //D7
+    digitalWrite(7,HIGH);
+  }
+  if (data == 'f') {
+    digitalWrite(7,LOW);
+  }
+  
+  if (data == 'G') {        //D8
+    digitalWrite(8,HIGH);
+  }
+  if (data == 'g') {
+    digitalWrite(8,LOW);
+  }
+  
+  if (data == 'H') {        //D9
+    digitalWrite(9,HIGH);
+  }
+  if (data == 'h') {
+    digitalWrite(9,LOW);
+  }
+  
+  if (data == 'I') {        //D10
+    digitalWrite(10,HIGH);
+  }
+  if (data == 'i') {
+    digitalWrite(10,LOW);
+  }
+  
+  if (data == 'J') {        //D11
+    digitalWrite(11,HIGH);
+  }
+  if (data == 'j') {
+    digitalWrite(11,LOW);
+  }
+  
+  if (data == 'K') {        //D12
+    digitalWrite(12,HIGH);
+  }
+  if (data == 'k') {
+    digitalWrite(12,LOW);
+  }
+  
+  if (data == 'L') {        //D13
+    digitalWrite(13,HIGH);
+  }
+  if (data == 'l') {
+    digitalWrite(13,LOW);
+  }
+}
