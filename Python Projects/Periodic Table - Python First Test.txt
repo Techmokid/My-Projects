@@ -1,0 +1,354 @@
+Atom number 1, which is Hydrogen
+ has the chemical symbol of H
+
+Atom number 2, which is Helium
+ has the chemical symbol of He
+
+Atom number 3, which is Lithium
+ has the chemical symbol of Li
+
+Atom number 4, which is Beryllium
+ has the chemical symbol of Be
+
+Atom number 5, which is Boron
+ has the chemical symbol of B
+
+Atom number 6, which is Carbon
+ has the chemical symbol of C
+
+Atom number 7, which is Nitrogen
+ has the chemical symbol of N
+
+Atom number 8, which is Oxygen
+ has the chemical symbol of O
+
+Atom number 9, which is Flourine
+ has the chemical symbol of F
+
+Atom number 10, which is Neon
+ has the chemical symbol of Ne
+
+Atom number 11, which is Sodium
+ has the chemical symbol of Na
+
+Atom number 12, which is Magnesium
+ has the chemical symbol of Mg
+
+Atom number 13, which is Aluminium
+ has the chemical symbol of Al
+
+Atom number 14, which is Silicon
+ has the chemical symbol of sI
+
+Atom number 15, which is Phosphorous
+ has the chemical symbol of P
+
+Atom number 16, which is Sulphur
+ has the chemical symbol of S
+
+Atom number 17, which is Chlorine
+ has the chemical symbol of Cl
+
+Atom number 18, which is Argon
+ has the chemical symbol of aR
+
+Atom number 19, which is Potassium
+ has the chemical symbol of K
+
+Atom number 20, which is Calcium
+ has the chemical symbol of Ca
+
+Atom number 21, which is Scandium
+ has the chemical symbol of Sc
+
+Atom number 22, which is Titanium
+ has the chemical symbol of Ti
+
+Atom number 23, which is Vanadium
+ has the chemical symbol of V
+
+Atom number 24, which is Chromium
+ has the chemical symbol of Cr
+
+Atom number 25, which is Manganese
+ has the chemical symbol of Mn
+
+Atom number 26, which is Iron
+ has the chemical symbol of Fe
+
+Atom number 27, which is Cobalt
+ has the chemical symbol of Co
+
+Atom number 28, which is Nickle
+ has the chemical symbol of Ni
+
+Atom number 29, which is Copper
+ has the chemical symbol of Cu
+
+Atom number 30, which is Zinc
+ has the chemical symbol of Zn
+
+Atom number 31, which is Gallium
+ has the chemical symbol of Ga
+
+Atom number 32, which is Germanium
+ has the chemical symbol of Ge
+
+Atom number 33, which is Arsenic
+ has the chemical symbol of As
+
+Atom number 34, which is Selenium
+ has the chemical symbol of Se
+
+Atom number 35, which is Bromine
+ has the chemical symbol of Be
+
+Atom number 36, which is Krypton
+ has the chemical symbol of Kr
+
+Atom number 37, which is Rubidium
+ has the chemical symbol of Rb
+
+Atom number 38, which is Strontium
+ has the chemical symbol of Sr
+
+Atom number 39, which is Yttrium
+ has the chemical symbol of Y
+
+Atom number 40, which is Zirconium
+ has the chemical symbol of Zr
+
+Atom number 41, which is Niobium
+ has the chemical symbol of Nb
+
+Atom number 42, which is Molybdinium
+ has the chemical symbol of Mo
+
+Atom number 43, which is Technetium
+ has the chemical symbol of Tc
+
+Atom number 44, which is Ruthenium
+ has the chemical symbol of Ru
+
+Atom number 45, which is Rhodium
+ has the chemical symbol of Rh
+
+Atom number 46, which is Palladium
+ has the chemical symbol of Pd
+
+Atom number 47, which is Silver
+ has the chemical symbol of Ag
+
+Atom number 48, which is Cadmium
+ has the chemical symbol of Cd
+
+Atom number 49, which is Indium
+ has the chemical symbol of In
+
+Atom number 50, which is Tin
+ has the chemical symbol of Sn
+
+Atom number 51, which is Antimony
+ has the chemical symbol of Sb
+
+Atom number 52, which is Tellurium
+ has the chemical symbol of Te
+
+Atom number 53, which is Iodine
+ has the chemical symbol of I
+
+Atom number 54, which is Xenon
+ has the chemical symbol of Xe
+
+Atom number 55, which is Caesium
+ has the chemical symbol of Cs
+
+Atom number 56, which is Barium
+ has the chemical symbol of Ba
+
+Atom number 57, which is Lanthanum
+ has the chemical symbol of La
+
+Atom number 58, which is Cerium
+ has the chemical symbol of Ce
+
+Atom number 59, which is Praseodymium
+ has the chemical symbol of Pr
+
+Atom number 60, which is Neodymium
+ has the chemical symbol of Nd
+
+Atom number 61, which is Promethium
+ has the chemical symbol of Pm
+
+Atom number 62, which is Samarium
+ has the chemical symbol of Sm
+
+Atom number 63, which is Europium
+ has the chemical symbol of Eu
+
+Atom number 64, which is Gadolinium
+ has the chemical symbol of Gd
+
+Atom number 65, which is Terbium
+ has the chemical symbol of Tb
+
+Atom number 66, which is Dysprosium
+ has the chemical symbol of Dy
+
+Atom number 67, which is Holmium
+ has the chemical symbol of Ho
+
+Atom number 68, which is Erbium
+ has the chemical symbol of Er
+
+Atom number 69, which is Thulium
+ has the chemical symbol of Tm
+
+Atom number 70, which is Ytterbium
+ has the chemical symbol of Yb
+
+Atom number 71, which is Lutetium
+ has the chemical symbol of Lu
+
+Atom number 72, which is Hafnium
+ has the chemical symbol of Hf
+
+Atom number 73, which is Tantalum
+ has the chemical symbol of Ta
+
+Atom number 74, which is Tungsten
+ has the chemical symbol of W
+
+Atom number 75, which is Rhenium
+ has the chemical symbol of Re
+
+Atom number 76, which is Osmium
+ has the chemical symbol of Os
+
+Atom number 77, which is Iridium
+ has the chemical symbol of Ir
+
+Atom number 78, which is Platinum
+ has the chemical symbol of Pt
+
+Atom number 79, which is Gold
+ has the chemical symbol of Au
+
+Atom number 80, which is Mercury
+ has the chemical symbol of Hg
+
+Atom number 81, which is Thallium
+ has the chemical symbol of Tl
+
+Atom number 82, which is Lead
+ has the chemical symbol of Pb
+
+Atom number 83, which is Bismuth
+ has the chemical symbol of Bi
+
+Atom number 84, which is Polonium
+ has the chemical symbol of Po
+
+Atom number 85, which is Astatine
+ has the chemical symbol of At
+
+Atom number 86, which is Radon
+ has the chemical symbol of Rn
+
+Atom number 87, which is Francium
+ has the chemical symbol of Fr
+
+Atom number 88, which is Radium
+ has the chemical symbol of Ra
+
+Atom number 89, which is Actinium
+ has the chemical symbol of Ac
+
+Atom number 90, which is Thorium
+ has the chemical symbol of Th
+
+Atom number 91, which is Protactinium
+ has the chemical symbol of Pa
+
+Atom number 92, which is Uranium
+ has the chemical symbol of U
+
+Atom number 93, which is Neptunium
+ has the chemical symbol of Np
+
+Atom number 94, which is Plutonium
+ has the chemical symbol of Pu
+
+Atom number 95, which is Americium
+ has the chemical symbol of Am
+
+Atom number 96, which is Curium
+ has the chemical symbol of Cm
+
+Atom number 97, which is Berkelium
+ has the chemical symbol of Bk
+
+Atom number 98, which is Californium
+ has the chemical symbol of Cf
+
+Atom number 99, which is Einsteinium
+ has the chemical symbol of Es
+
+Atom number 100, which is Fermium
+ has the chemical symbol of Fm
+
+Atom number 101, which is Mendelevium
+ has the chemical symbol of Md
+
+Atom number 102, which is Nobelium
+ has the chemical symbol of No
+
+Atom number 103, which is Lawrencium
+ has the chemical symbol of Lr
+
+Atom number 104, which is Rutherfordium
+ has the chemical symbol of Rf
+
+Atom number 105, which is Dubnium
+ has the chemical symbol of Db
+
+Atom number 106, which is Seaborgium
+ has the chemical symbol of Sg
+
+Atom number 107, which is Bohrium
+ has the chemical symbol of Bh
+
+Atom number 108, which is Hassium
+ has the chemical symbol of Hs
+
+Atom number 109, which is Meitnerium
+ has the chemical symbol of Mt
+
+Atom number 110, which is Darmstadtium
+ has the chemical symbol of Ds
+
+Atom number 111, which is Roentgenium
+ has the chemical symbol of Rg
+
+Atom number 112, which is Copernicium
+ has the chemical symbol of Cn
+
+Atom number 113, which is Nihonium
+ has the chemical symbol of Nh
+
+Atom number 114, which is Flerovium
+ has the chemical symbol of Fl
+
+Atom number 115, which is Moscovium
+ has the chemical symbol of Mc
+
+Atom number 116, which is Livermorium
+ has the chemical symbol of Lv
+
+Atom number 117, which is Tennessine
+ has the chemical symbol of Ts
+
+Atom number 118, which is Oganesson
+ has the chemical symbol of Og
+

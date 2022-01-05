@@ -1,0 +1,25 @@
+#######################################
+# Syntax Coloring Map SD
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Clockwork	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+start	KEYWORD2
+stop	KEYWORD2
+last_start	KEYWORD2
+last_stop	KEYWORD2
+last_delay	KEYWORD2
+tet	KEYWORD2
+base	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+

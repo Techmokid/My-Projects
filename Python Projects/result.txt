@@ -1,0 +1,234 @@
+ Tools for .Net 3.5
+3DMark Vantage
+3DMark03
+7-Zip 19.00 (x64)
+ASIO4ALL
+ASUS Product Register Program
+Adobe Acrobat Reader DC
+Android Studio
+Application Verifier x64 External Package
+Arduino
+Audacity 2.3.3
+ClickOnce Bootstrapper Package for Microsoft .NET Framework 4.8 on Visual Studio 2017
+Corel Graphics - Windows Shell Extension
+Corel Graphics - Windows Shell Extension
+Corel Graphics - Windows Shell Extension 64 Bit
+CorelDRAW Home & Student Suite X6
+CorelDRAW Home & Student Suite X6
+CorelDRAW Home & Student Suite X6 - BR
+CorelDRAW Home & Student Suite X6 - Capture
+CorelDRAW Home & Student Suite X6 - Common
+CorelDRAW Home & Student Suite X6 - Connect
+CorelDRAW Home & Student Suite X6 - Custom Data
+CorelDRAW Home & Student Suite X6 - Draw
+CorelDRAW Home & Student Suite X6 - EN
+CorelDRAW Home & Student Suite X6 - ES
+CorelDRAW Home & Student Suite X6 - Extra Content
+CorelDRAW Home & Student Suite X6 - FR
+CorelDRAW Home & Student Suite X6 - Filters
+CorelDRAW Home & Student Suite X6 - FontNav
+CorelDRAW Home & Student Suite X6 - IPM
+CorelDRAW Home & Student Suite X6 - PHOTO-PAINT
+CorelDRAW Home & Student Suite X6 - Redist
+CorelDRAW Home & Student Suite X6 - Setup Files
+CorelDRAW Home & Student Suite X6 - VideoBrowser
+CorelDRAW Home & Student Suite X6 - Writing Tools
+Discord
+FL Studio ASIO
+Futuremark SystemInfo
+GitHub Desktop
+Google Chrome
+Google Update Helper
+Greenshot 1.2.10.6
+Intel(R) Chipset Device Software
+Intel(R) Chipset Device Software
+Intel(R) ME UninstallLegacy
+IntelliJ IDEA Community Edition 2019.3.2
+Intel® Hardware Accelerated Execution Manager
+Java(TM) SE Development Kit 13.0.2 (64-bit)
+Kits Configuration Installer
+LockHunter 3.3, 32/64 bit
+MSI Development Tools
+MadOnion.com/3DMark2000
+MadOnion.com/3DMark2001 SE
+Malwarebytes version 4.0.4.49
+Microsoft .NET Core 3.1 Templates 3.1.101 (x64)
+Microsoft .NET Core AppHost Pack - 3.1.1 (x64)
+Microsoft .NET Core AppHost Pack - 3.1.1 (x64_arm)
+Microsoft .NET Core AppHost Pack - 3.1.1 (x64_arm64)
+Microsoft .NET Core AppHost Pack - 3.1.1 (x64_x86)
+Microsoft .NET Core Host - 3.1.1 (x64)
+Microsoft .NET Core Host FX Resolver - 3.1.1 (x64)
+Microsoft .NET Core Runtime - 3.1.1 (x64)
+Microsoft .NET Core SDK 3.1.101 (x64)
+Microsoft .NET Core Targeting Pack - 3.1.0 (x64)
+Microsoft .NET Core Toolset 3.1.101 (x64)
+Microsoft .NET Framework 3.5 Targeting Pack (enu)
+Microsoft .NET Framework 4 Multi-Targeting Pack
+Microsoft .NET Framework 4.7.1 Doc Redirected Targeting Pack (ENU)
+Microsoft .NET Framework 4.7.1 Targeting Pack
+Microsoft .NET Framework 4.8 Developer Pack
+Microsoft .NET Framework 4.8 SDK
+Microsoft .NET Framework 4.8 Targeting Pack
+Microsoft .NET Framework 4.8 Targeting Pack (ENU)
+Microsoft .NET Standard Targeting Pack - 2.1.0 (x64)
+Microsoft ASP.NET Core 3.1.0 Targeting Pack (x64)
+Microsoft ASP.NET Core 3.1.1 Shared Framework (x64)
+Microsoft OneDrive
+Microsoft Visual C++ 2010  x64 Redistributable - 10.0.30319
+Microsoft Visual C++ 2010  x86 Redistributable - 10.0.30319
+Microsoft Visual C++ 2013 Redistributable (x64) - 12.0.21005
+Microsoft Visual C++ 2013 Redistributable (x86) - 12.0.21005
+Microsoft Visual C++ 2013 x64 Additional Runtime - 12.0.21005
+Microsoft Visual C++ 2013 x64 Minimum Runtime - 12.0.21005
+Microsoft Visual C++ 2013 x86 Additional Runtime - 12.0.21005
+Microsoft Visual C++ 2013 x86 Minimum Runtime - 12.0.21005
+Microsoft Visual C++ 2017 Redistributable (x64) - 14.16.27033
+Microsoft Visual C++ 2017 Redistributable (x86) - 14.16.27033
+Microsoft Visual C++ 2017 X64 Additional Runtime - 14.16.27033
+Microsoft Visual C++ 2017 X64 Debug Runtime - 14.16.27033
+Microsoft Visual C++ 2017 X64 Minimum Runtime - 14.16.27033
+Microsoft Visual C++ 2017 X86 Additional Runtime - 14.16.27033
+Microsoft Visual C++ 2017 X86 Debug Runtime - 14.16.27033
+Microsoft Visual C++ 2017 X86 Minimum Runtime - 14.16.27033
+Microsoft Visual Studio 2017 Tools for Unity
+Microsoft Visual Studio Installer
+Microsoft Visual Studio Setup Configuration
+Microsoft Visual Studio Team Foundation Server 2017 Update 9 Office Integration (x64)
+Microsoft Visual Studio Team Foundation Server 2017 Update 9 Office Integration Language Pack (x64) - ENU
+Microsoft Windows Desktop Runtime - 3.1.1 (x64)
+Microsoft Windows Desktop Runtime - 3.1.1 (x64)
+Microsoft Windows Desktop Targeting Pack - 3.1.0 (x64)
+Minecraft Launcher
+MuseScore 3
+NVAPI Monitor plugin for NvContainer
+NVIDIA ABHub
+NVIDIA Backend
+NVIDIA Container
+NVIDIA GeForce Experience 3.20.2.34
+NVIDIA Graphics Driver 441.87
+NVIDIA HD Audio Driver 1.3.38.21
+NVIDIA Install Application
+NVIDIA LocalSystem Container
+NVIDIA Message Bus for NvContainer
+NVIDIA NetworkService Container
+NVIDIA NodeJS
+NVIDIA Optimus Update 38.0.4.0
+NVIDIA PhysX System Software 9.19.0218
+NVIDIA SHIELD Streaming
+NVIDIA SHIELD Wireless Controller Driver
+NVIDIA Session Container
+NVIDIA ShadowPlay 3.20.2.34
+NVIDIA Telemetry Client
+NVIDIA TelemetryApi helper for NvContainer
+NVIDIA Update 38.0.4.0
+NVIDIA Update Core
+NVIDIA User Container
+NVIDIA Virtual Audio 4.13.0.0
+NVIDIA Virtual Host Controller
+NVIDIA Watchdog Plugin for NvContainer
+Notepad++ (64-bit x64)
+Nvidia Share
+OBS Studio
+Oracle VM VirtualBox 6.0.14
+Python 3.8.1 (64-bit)
+Python 3.8.1 Add to Path (64-bit)
+Python 3.8.1 Core Interpreter (64-bit)
+Python 3.8.1 Development Libraries (64-bit)
+Python 3.8.1 Documentation (64-bit)
+Python 3.8.1 Executables (64-bit)
+Python 3.8.1 Standard Library (64-bit)
+Python 3.8.1 Tcl/Tk Support (64-bit)
+Python 3.8.1 Test Suite (64-bit)
+Python 3.8.1 Utility Scripts (64-bit)
+Python 3.8.1 pip Bootstrap (64-bit)
+Python Launcher
+Realtek Ethernet Controller Driver
+Realtek High Definition Audio Driver
+SDK ARM Additions
+SDK ARM Redistributables
+Steam
+TeamViewer
+Trend Micro Maximum Security
+Trend Micro Password Manager
+Trend Micro Troubleshooting Tool
+UC232A_Win 10_64bit
+Ultimaker Cura 4.4
+Unity
+Unity Hub 2.2.2
+Universal CRT Extension SDK
+Universal CRT Headers Libraries and Sources
+Universal CRT Redistributable
+Universal CRT Tools x64
+Universal CRT Tools x86
+Universal General MIDI DLS Extension SDK
+Update for  (KB2504637)
+VS Script Debugging Common
+Visual Studio Community 2017
+Wampserver64 3.2.0
+WinAppDeploy
+WinRT Intellisense Desktop - Other Languages
+WinRT Intellisense Desktop - en-us
+WinRT Intellisense IoT - Other Languages
+WinRT Intellisense IoT - en-us
+WinRT Intellisense Mobile - en-us
+WinRT Intellisense PPI - Other Languages
+WinRT Intellisense PPI - en-us
+WinRT Intellisense UAP - Other Languages
+WinRT Intellisense UAP - en-us
+Windows App Certification Kit Native Components
+Windows App Certification Kit SupportedApiList x86
+Windows App Certification Kit x64
+Windows Desktop Extension SDK
+Windows Desktop Extension SDK Contracts
+Windows IP Over USB
+Windows IoT Extension SDK
+Windows IoT Extension SDK Contracts
+Windows Mobile Extension SDK
+Windows Mobile Extension SDK Contracts
+Windows SDK
+Windows SDK ARM Desktop Tools
+Windows SDK AddOn
+Windows SDK Desktop Headers arm
+Windows SDK Desktop Headers arm64
+Windows SDK Desktop Headers x64
+Windows SDK Desktop Headers x86
+Windows SDK Desktop Libs arm
+Windows SDK Desktop Libs arm64
+Windows SDK Desktop Libs x64
+Windows SDK Desktop Libs x86
+Windows SDK Desktop Tools arm64
+Windows SDK Desktop Tools x64
+Windows SDK Desktop Tools x86
+Windows SDK DirectX x64 Remote
+Windows SDK DirectX x86 Remote
+Windows SDK EULA
+Windows SDK Facade Windows WinMD Versioned
+Windows SDK Modern Non-Versioned Developer Tools
+Windows SDK Modern Versioned Developer Tools
+Windows SDK Redistributables
+Windows SDK Signing Tools
+Windows SDK for Windows Store Apps
+Windows SDK for Windows Store Apps Contracts
+Windows SDK for Windows Store Apps DirectX x64 Remote
+Windows SDK for Windows Store Apps DirectX x86 Remote
+Windows SDK for Windows Store Apps Headers
+Windows SDK for Windows Store Apps Libs
+Windows SDK for Windows Store Apps Metadata
+Windows SDK for Windows Store Apps Tools
+Windows SDK for Windows Store Managed Apps Libs
+Windows Software Development Kit - Windows 10.0.16299.15
+Windows Team Extension SDK
+Windows Team Extension SDK Contracts
+Yenka
+vcpp_crt.redist.clickonce
+vs_FileTracker_Singleton
+vs_communitymsi
+vs_communitymsires
+vs_devenvmsi
+vs_filehandler_amd64
+vs_filehandler_x86
+vs_minshellinteropmsi
+vs_minshellmsi
+vs_minshellmsires
+vs_tipsmsi

@@ -1,0 +1,10 @@
+Start With a Number (Starting With 1)
+
+If It Is Even, Divide By 2 Until Odd or 1
+If It Is Odd, Multiply By 3 and Add 1 Until Even
+
+Once The Number Is 1, Count How Many Times The Loop Was Called And Display It On Screen
+Once The Number Is 1, Count How Many Times The Loop Was Called And Place In Text File
+
+Increment Starting Number
+Repeat
