@@ -1,4 +1,3 @@
-bool LED_MEM[4][4][4];
 int layer_pins[] = { A2,A3,A4,A5 };
 int pixel_pins[] = { 12,13,A0,A1,8,9,10,11,4,5,6,7,0,1,2,3 };
 
