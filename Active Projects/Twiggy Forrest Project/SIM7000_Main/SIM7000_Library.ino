@@ -105,7 +105,7 @@ void setupModem() {
   //if (!modem.init(180000L)) {
     DBG("Failed to restart modem, delaying 10s and retrying");
     // restart autobaud in case GSM just rebooted
-    // TinyGsmAutoBaud(SerialAT, GSM_AUTOBAUD_MIN, GSM_AUTOBAUD_MAX);
+    //TinyGsmAutoBaud(SerialAT, GSM_AUTOBAUD_MIN, GSM_AUTOBAUD_MAX);
     return;
   }
   
@@ -122,7 +122,7 @@ void startServerComms() {
   #if TINY_GSM_USE_WIFI
   // Wifi connection parameters must be set before waiting for the network
   if (!modem.networkConnect(wifiSSID, wifiPass)) {
-    Serial.println("Could not set SSID/Password");
+    Serial.println(F("Could not set SSID/Password"));
     return;
   }
 #endif
@@ -133,11 +133,11 @@ void startServerComms() {
 #endif
 
   if (!modem.waitForNetwork()) {
-    Serial.println("Could not connect to network");
+    Serial.println(F("Could not connect to network"));
     return;
   }
 
-  if (modem.isNetworkConnected()) { Serial.println("Network connected"); }
+  if (modem.isNetworkConnected()) { Serial.println(F("Network connected")); }
 
 #if TINY_GSM_USE_GPRS
   // GPRS connection parameters are usually set after network registration
@@ -146,20 +146,30 @@ void startServerComms() {
     return;
   }
 
-  if (modem.isGprsConnected()) { Serial.println("GPRS connected"); }
+  if (modem.isGprsConnected()) { Serial.println(F("GPRS connected")); }
 #endif
 }
 
 bool isServerConnected = false;
-String getServerResponse(String server, int port, char resource[]) { return getServerResponse(server,port,resource, new String[0]); }
-String getServerResponse(String server, int port, char resource[], String headers[]) {
+String getServerResponse(String server, int port, char resource[]) {
+  return getServerResponse(
+    server,
+    port,
+    resource,
+    new String[0],
+    0
+  );
+}
+
+String getServerResponse(String server, int port, char resource[], String headers[], int numHeaders) {
+  //Serial.println("DEBUG: " + server);
   char tempServer[16];
   server.toCharArray(tempServer,server.length()+1);
-  return getServerResponse(tempServer,port,"/",headers);
+  return getServerResponse(tempServer,port,"/",headers, numHeaders);
 }
-String getServerResponse(String server, int port, String headers[]) { return getServerResponse(server,port,"/", headers);}
-String getServerResponse(char server[], int port, String headers[]) { return getServerResponse(server, port, "/", headers); }
-String getServerResponse(char server[], int port, char resource[], String headers[]) {
+String getServerResponse(String server, int port, String headers[], int numHeaders) { return getServerResponse(server, port,"/", headers, numHeaders);}
+String getServerResponse(char server[], int port, String headers[], int numHeaders) { return getServerResponse(server, port, "/", headers, numHeaders); }
+String getServerResponse(char server[], int port, char resource[], String headers[], int numHeaders) {
   Serial.println("Connecting to: " + String(server) + ":" + String(port));
   if (!isServerConnected) {startServerComms(); isServerConnected=true;}
   
@@ -173,7 +183,7 @@ String getServerResponse(char server[], int port, char resource[], String header
   // Make a HTTP GET request:
   client.print(String("GET ") + resource + " HTTP/1.1\r\n");
   client.print(String("Host: ") + server + "\r\n");
-  for (int i = 0; i < sizeof(headers)/sizeof(headers[0]); i++) {
+  for (int i = 0; i < numHeaders; i++) {
     client.print(headers[i] + "\r\n");
   }
   //client.print("Getinfoonid:1\r\n");
@@ -186,20 +196,19 @@ String getServerResponse(char server[], int port, char resource[], String header
   while (client.connected() && millis() - timeout < 10000L) {
     // Print available data
     while (client.available()) {
-      
       char c = client.read();
-      if (c > 5) { Serial.print(c);}
-
-      result += c;
+      if (c > 5) {
+        result += c;
+      }
+      
       timeout = millis();
     }
   }
-
-  client.flush();
-  client.stop();
   
   //Serial.println("Response from server: " + result);
-  delay(1000);
+  delay(500);
+  client.flush();
+  client.stop();
   //return result;
   
   int temp_start = result.indexOf("http://");
@@ -222,10 +231,20 @@ String getServerResponse(char server[], int port, char resource[], String header
     
     redirectData = "";
     //startServerComms();
-    return getServerResponse(temp_server, temp_port.toInt(), resource);
+    return getServerResponse(temp_server, temp_port.toInt(), resource, headers, numHeaders);
   }
   
   isServerConnected = false;
+
+  int startString = result.indexOf("<body>") + 7;
+  int endString = result.indexOf("</body>");
+  result = result.substring(startString,endString);
+  result.replace("<br/>","\n");
+  
+  delay(1000);
+  client.flush();
+  client.stop();
+  Serial.println("==========");
   return result;
 }
 
@@ -277,7 +296,8 @@ void serverSetStatus(String status) {
     getServerResponse(
       "techmo.unity.chickenkiller.com",
       80,
-      temp
+      temp,
+      3
     )
   );
 }

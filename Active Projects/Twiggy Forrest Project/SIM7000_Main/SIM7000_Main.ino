@@ -14,37 +14,61 @@
 #define COM_PIN_2 52
 #define COM_PIN_3 51
 
+//#define resetIDOnBoot
+
 char server[] = "techmo.unity.chickenkiller.com";
 int port = 80;
 int ID = 0;
 
 void setup() {
+  while(1);
   Serial.begin(115200);
   
   pinMode(RUN_PIN,OUTPUT);
   pinMode(COM_PIN_1,INPUT_PULLUP);
   pinMode(COM_PIN_2,INPUT_PULLUP);
   pinMode(COM_PIN_3,INPUT_PULLUP);
+
+#ifdef resetIDOnBoot
+  writeEepromInt(0,-1);
+#endif
+
+  ID = readEepromInt(0);
   
-  ID = EEPROM.read(0);
+  Serial.println(F("Starting Modem...")); setupModem();
   
-  Serial.println("Starting Modem..."); setupModem();
-  //if (ID == -1) {
-  if(true) {
+  if (ID == -1) {
     //The ID hasn't been set
-    String serverResp = getServerResponse(server, port, {"Newid:1"});
-    Serial.println("|"+serverResp+"|");
-    //The response is going to look like {"ID":"13"}
+    String tmp = getServerResponse(server, port, new String {"Newid:1"}, 1);
+    if (tmp == "") { Serial.println("Error getting response from server for ID"); while(true) {}}
     
-    int strippedResp = 0;
-    //EEPROM.write(0,strippedResp);
-    while(true);
+    int strippedResp = tmp.substring(tmp.indexOf(":")+1,tmp.indexOf("}")).toInt();
+    writeEepromInt(0,strippedResp);
+    ID = strippedResp;
+    
+    Serial.println("Assigned ID by server: " + String(ID));
+  } else {
+    Serial.println("Unit ID: " + String(ID));
   }
+}
+
+void writeEepromInt(int location, int value){
+  EEPROM.write(location, value);
+  EEPROM.write(location + 1, value >> 8);
+}
+
+int readEepromInt(int location){
+  int val;
+
+  val = (EEPROM.read(location + 1) << 8);
+  val |= EEPROM.read(location);
+
+  return val;
 }
 
 void loop() {
   String temp[] = {"Getinfoonid:" + (String)ID};
-  String response = getServerResponse(server, port, temp);
+  String response = getServerResponse(server, port, temp, 1);
   //String response = "<body>{ID:1,GPSLastLat:0.00,GPSLastLong:0.00,GPSLastTime:\"AWST_20:11:41_29/11/21\",Temp:23,Status:\"Online\",RunMode:\"RLS\"}</body>";
   
   checkMotorStatus();
@@ -57,7 +81,7 @@ void loop() {
       digitalWrite(RUN_PIN,LOW);
     case 2:
       //We did not get a code returned
-      Serial.println("Potential error has occured. Trying again...");
+      Serial.println(F("Potential error has occured. Trying again..."));
       delay(1000*60);
   }
 }
@@ -105,8 +129,12 @@ int GetRunmodeFromString(String response) {
     }
     return 2;
   } else {
-    Serial.println("ERROR: Incoming data not formatted as JSON");
-    Serial.println("JSON READOUT: " + response);
+    if(response.length() > 0) {
+      Serial.println(F("ERROR: Incoming data not formatted as JSON"));
+      Serial.println("JSON READOUT: " + response);
+    } else {
+      Serial.println(F("ERROR: Blank response from server"));
+    }
   }
 }
 

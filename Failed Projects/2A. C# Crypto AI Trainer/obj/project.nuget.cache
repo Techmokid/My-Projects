@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Gb53kJpcjSJn63S/F21BbQV7jLlXwSEzeQCgBgI5hW62AOV9YEaZ6ge48l2hQ0nfMBPUmlThjjmcfZyPOqrHvg==",
+  "dgSpecHash": "rWqmFRyyKCd36BkNqTwSBo7T6Xw72PrGbKcO4550Q6UILp8XaCfSJLuA1nrgHyS/qxBJN/pq9FzI4+k4wKApqg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\Active Projects\\2A. C# Crypto AI Trainer\\Crypto AI.csproj",
+  "projectFilePath": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\Failed Projects\\2A. C# Crypto AI Trainer\\Crypto AI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\aj200\\.nuget\\packages\\ilgpu\\0.10.1\\ilgpu.0.10.1.nupkg.sha512",
     "C:\\Users\\aj200\\.nuget\\packages\\json.net\\1.0.23\\json.net.1.0.23.nupkg.sha512",
