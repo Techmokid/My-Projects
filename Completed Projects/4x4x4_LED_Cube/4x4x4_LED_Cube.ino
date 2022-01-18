@@ -4,14 +4,16 @@ int pins2[4] = {4, 5, 6, 7};
 int pins3[4] = {8, 9, 10, 11};
 int pins4[4] = {12, 13, A0, A1};
 
-void setup() { setupLEDs(); }
+void setup() {
+  setupLEDs();
+}
 
 void loop() {
   int posX = random(0,4);
   int posY = random(0,4);
   setPixel(posX,3,posY,HIGH);
-  carefulDelay(500);
-  //moveDisplayDown();
+  carefulDelay(250);
+  moveDisplayDown();
 }
 
 void carefulDelay(unsigned long timer) {
@@ -31,4 +33,3 @@ void moveDisplayDown() {
     }
   }
 }
-

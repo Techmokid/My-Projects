@@ -27,12 +27,22 @@ void setPixel(int x, int y, int z, bool state) {
 void allOff() { setupLEDs(); }
 
 void updateLEDs() {
+  for (int i = 0; i < sizeof(layer_pins)/sizeof(layer_pins[0]); i++) {
+    pinMode(layer_pins[i],OUTPUT); digitalWrite(layer_pins[i],LOW);
+  }
+  for (int i = 0; i < sizeof(pixel_pins)/sizeof(pixel_pins[0]); i++) {
+    pinMode(pixel_pins[i],OUTPUT); digitalWrite(pixel_pins[i],HIGH);
+  }
+  
   for (int x = 0; x < 4; x++) {
     for (int y = 0; y < 4; y++) {
       for (int z = 0; z < 4; z++) {
-        setPixel(x,y,z,LED_MEM[x][y][z]);
-        delayMicroseconds(500);
-        setPixel(x,y,z,LOW);
+        if (LED_MEM[x][y][z]) {
+          setPixel(x,y,z,HIGH);
+          delayMicroseconds(200);
+          setPixel(x,y,z,LOW);
+          LED_MEM[x][y][z] = true;
+        }
       }
     }
   }
