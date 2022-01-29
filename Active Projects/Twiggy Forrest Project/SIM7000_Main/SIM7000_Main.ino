@@ -14,12 +14,13 @@
 #define COM_PIN_2 52
 #define COM_PIN_3 51
 
-//#define resetIDOnBoot
+#define resetIDOnBoot
 
 char server[] = "techmo.unity.chickenkiller.com";
 int port = 80;
 int ID = 0;
 
+String serverResponse = "";
 void setup() {
   while(1);
   Serial.begin(115200);
@@ -39,7 +40,8 @@ void setup() {
   
   if (ID == -1) {
     //The ID hasn't been set
-    String tmp = getServerResponse(server, port, new String {"Newid:1"}, 1);
+    getServerResponse(server, port, new String {"Newid:1"}, 1);
+    String tmp = serverResponse;
     if (tmp == "") { Serial.println("Error getting response from server for ID"); while(true) {}}
     
     int strippedResp = tmp.substring(tmp.indexOf(":")+1,tmp.indexOf("}")).toInt();
@@ -68,7 +70,7 @@ int readEepromInt(int location){
 
 void loop() {
   String temp[] = {"Getinfoonid:" + (String)ID};
-  String response = getServerResponse(server, port, temp, 1);
+  getServerResponse(server, port, temp, 1); String response = serverResponse;
   //String response = "<body>{ID:1,GPSLastLat:0.00,GPSLastLong:0.00,GPSLastTime:\"AWST_20:11:41_29/11/21\",Temp:23,Status:\"Online\",RunMode:\"RLS\"}</body>";
   
   checkMotorStatus();
