@@ -152,23 +152,25 @@ void startServerComms() {
 
 bool isServerConnected = false;
 void getServerResponse(String server, int port, char resource[]) {
-  return getServerResponse(
+  Serial.println("DEBUG:0"); 
+  getServerResponse(
     server,
     port,
     resource,
     new String[0],
     0
-  );
+  ); return;
 }
 
 void getServerResponse(String server, int port, char resource[], String headers[], int numHeaders) {
-  //Serial.println("DEBUG: " + server);
-  char tempServer[16];
+  char tempServer[1024];
   server.toCharArray(tempServer,server.length()+1);
-  return getServerResponse(tempServer,port,"/",headers, numHeaders);
+  getServerResponse(tempServer,port,"/",headers, numHeaders);
+  return;
 }
-void getServerResponse(String server, int port, String headers[], int numHeaders) { return getServerResponse(server, port,"/", headers, numHeaders);}
-void getServerResponse(char server[], int port, String headers[], int numHeaders) { return getServerResponse(server, port, "/", headers, numHeaders); }
+void getServerResponse(String server, int port, String headers[], int numHeaders) { getServerResponse(server, port, "/", headers, numHeaders); return; }
+void getServerResponse(char server[], int port, String headers[], int numHeaders) { getServerResponse(server, port, "/", headers, numHeaders); return; }
+
 void getServerResponse(char server[], int port, char resource[], String headers[], int numHeaders) {
   Serial.println("Connecting to: " + String(server) + ":" + String(port));
   if (!isServerConnected) {startServerComms(); isServerConnected=true;}
@@ -193,16 +195,22 @@ void getServerResponse(char server[], int port, char resource[], String headers[
 
   serverResponse = "";
   uint32_t timeout = millis();
-  while (client.connected() && millis() - timeout < 10000L) {
+  while (client.connected() && millis() - timeout < 10000) {
     // Print available data
     while (client.available()) {
       char c = client.read();
       if (c > 5) {
         serverResponse += c;
+        //Serial.println("HY: " + String(c));
       }
       
       timeout = millis();
     }
+  }
+  if (millis() - timeout > 9999) {
+    Serial.println("Timed out");
+  } else {
+    //Serial.println(serverResponse);
   }
   
   //Serial.println("Response from server: " + result);
@@ -211,7 +219,7 @@ void getServerResponse(char server[], int port, char resource[], String headers[
   client.stop();
   //return result;
   
-  int temp_start = serverResponse.indexOf("http://");
+  int temp_start = serverResponse.indexOf("Location: http://");
   if (temp_start != -1) {
     String redirectData = serverResponse.substring(temp_start,serverResponse.length());
     if (redirectData.indexOf("\n") != -1) {
@@ -219,7 +227,7 @@ void getServerResponse(char server[], int port, char resource[], String headers[
     }
 
     redirectData = redirectData.substring(
-      redirectData.indexOf("http://") + String("http://").length(),
+      redirectData.indexOf("Location: http://") + String("Location: http://").length(),
       redirectData.length()-1
     );
     
@@ -231,21 +239,33 @@ void getServerResponse(char server[], int port, char resource[], String headers[
     
     redirectData = "";
     //startServerComms();
-    return getServerResponse(temp_server, temp_port.toInt(), resource, headers, numHeaders);
+    getServerResponse(temp_server, temp_port.toInt(), resource, headers, numHeaders);
+    return;
   }
   
   isServerConnected = false;
-
+  Serial.println("Resp: " + serverResponse);
+  
   int startString = serverResponse.indexOf("<body>") + 7;
+  Serial.println("Start: " + String(startString));
+  
   int endString = serverResponse.indexOf("</body>");
+  Serial.println("End: " + String(endString));
+  
   serverResponse = serverResponse.substring(startString,endString);
   serverResponse.replace("<br/>","\n");
-  
+  Serial.println("Final response: " + serverResponse);
+
+  if (serverResponse == "") {
+    getServerResponse(server,port,resource,headers,numHeaders);
+    return;
+  }
   delay(1000);
   client.flush();
   client.stop();
-  Serial.println("==========");
-  //return result;
+
+  delay(1000);
+  return;
 }
 
 String postServerResponse(String server, int port, char resource[]) {
@@ -269,7 +289,7 @@ String postServerResponse(char server[], int port, char resource[]) {
   client.print(String("POST ") + resource + " HTTP/1.1\r\n");
   client.print(String("Host: ") + server + "\r\n");
   client.print(String("Accept: */*") + "\r\n");
-  client.print("Connection: close\r\n\r\n");
+  client.print(F("Connection: close\r\n\r\n"));
   client.println();
 
   String result = "";
@@ -290,13 +310,14 @@ String postServerResponse(char server[], int port, char resource[]) {
   return result;
 }
 
-void serverSetStatus(String status) {
-  String temp[] = {"Setvalue:\"Status\"","Key:\"" + status + "\"","Id:" + (String)ID};
+void serverSetStatus(String status) { serverSetVariable("Status",status); }
+void serverSetVariable(String key,String value) {
+  String temp[] = {"Setvalue:\"" + value + "\"","Key:\"" + key + "\"","Id:" + (String)ID};
   getServerResponse(
     "techmo.unity.chickenkiller.com",
     80,
     temp,
     3
   );
-  Serial.println( serverResponse );
+  //Serial.println(serverResponse);
 }

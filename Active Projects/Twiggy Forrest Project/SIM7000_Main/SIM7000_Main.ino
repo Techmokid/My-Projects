@@ -17,12 +17,13 @@
 #define resetIDOnBoot
 
 char server[] = "techmo.unity.chickenkiller.com";
+//char server[] = "163.47.56.221";
 int port = 80;
 int ID = 0;
 
 String serverResponse = "";
 void setup() {
-  while(1);
+  //while(true);
   Serial.begin(115200);
   
   pinMode(RUN_PIN,OUTPUT);
@@ -34,7 +35,7 @@ void setup() {
   writeEepromInt(0,-1);
 #endif
 
-  ID = readEepromInt(0);
+  //ID = 5;//readEepromInt(0);
   
   Serial.println(F("Starting Modem...")); setupModem();
   
@@ -42,6 +43,7 @@ void setup() {
     //The ID hasn't been set
     getServerResponse(server, port, new String {"Newid:1"}, 1);
     String tmp = serverResponse;
+    Serial.println("Tmp: " + tmp);
     if (tmp == "") { Serial.println("Error getting response from server for ID"); while(true) {}}
     
     int strippedResp = tmp.substring(tmp.indexOf(":")+1,tmp.indexOf("}")).toInt();
@@ -49,9 +51,9 @@ void setup() {
     ID = strippedResp;
     
     Serial.println("Assigned ID by server: " + String(ID));
-  } else {
-    Serial.println("Unit ID: " + String(ID));
   }
+  
+  Serial.println("Started successfully with assigned ID: " + String(ID));
 }
 
 void writeEepromInt(int location, int value){
@@ -70,11 +72,11 @@ int readEepromInt(int location){
 
 void loop() {
   String temp[] = {"Getinfoonid:" + (String)ID};
-  getServerResponse(server, port, temp, 1); String response = serverResponse;
+  getServerResponse(server, port, temp, 1);
   //String response = "<body>{ID:1,GPSLastLat:0.00,GPSLastLong:0.00,GPSLastTime:\"AWST_20:11:41_29/11/21\",Temp:23,Status:\"Online\",RunMode:\"RLS\"}</body>";
   
   checkMotorStatus();
-  switch(GetRunmodeFromString(response)) {
+  switch(GetRunmodeFromString()) {
     case 0:
       //We got the all clear to go
       digitalWrite(RUN_PIN,HIGH);
@@ -83,7 +85,22 @@ void loop() {
       digitalWrite(RUN_PIN,LOW);
     case 2:
       //We did not get a code returned
-      Serial.println(F("Potential error has occured. Trying again..."));
+      Serial.println(F("There was no detected RUNMODE variable in server memory. Defaulting to stop mode"));
+      //{
+      //  "ID":"1",
+      //  "GPSLastLat":"0",
+      //  "GPSLastLong":"1.0",
+      //  "GPSLastTime":"AWST_20:11:41_29/11/21",
+      //  "Temp":"23",
+      //  "Status":"Online",
+      //  "RunMode":"RUN"
+      //}
+      serverSetVariable("GPSLastLat","0");
+      serverSetVariable("GPSLastLong","0");
+      serverSetVariable("GPSLastTime","0");
+      serverSetVariable("Temp","0");
+      serverSetVariable("Status","0");
+      serverSetVariable("RunMode","STP");
       delay(1000*60);
   }
 }
@@ -103,19 +120,21 @@ LinkedList<String> splitString(String str, char delimiter) {
   return result;
 }
 
-int GetRunmodeFromString(String response) {
-  if (response.length() == 0) { restartArduino(); }
-
-  response = response.substring(response.indexOf("<body>"),response.indexOf("</body>"));
-  response.replace("<br/>","\n");
-  response.replace("<body>","");
+int GetRunmodeFromString() {
+  //if (serverResponse.length() == 0) { restartArduino(); }
+  Serial.println("IN: " + serverResponse);
+  //serverResponse = serverResponse.substring(serverResponse.indexOf("<body>"),serverResponse.indexOf("</body>"));
+  //serverResponse.replace("<br/>","\n");
+  //serverResponse.replace("<body>","");
   
   //Here is where we would substring the incoming data
-  int strStart = response.indexOf("{");
-  int strEnd = response.lastIndexOf("}");
+  int strStart = serverResponse.indexOf("{");
+  int strEnd = serverResponse.lastIndexOf("}");
   int operationMode = -1;
   if ((strStart != -1) && (strEnd != -1)) {
-    String tempStr = response.substring(strStart + 1,strEnd);
+    String tempStr = serverResponse.substring(strStart + 1,strEnd);
+    Serial.println(tempStr);
+    
     LinkedList<String> splitStr = splitString(tempStr,',');
     for (int i = 0; i < splitStr.size(); i++) {
       //splitStr[i]
@@ -131,9 +150,9 @@ int GetRunmodeFromString(String response) {
     }
     return 2;
   } else {
-    if(response.length() > 0) {
+    if(serverResponse.length() > 0) {
       Serial.println(F("ERROR: Incoming data not formatted as JSON"));
-      Serial.println("JSON READOUT: " + response);
+      Serial.println("JSON READOUT: " + serverResponse);
     } else {
       Serial.println(F("ERROR: Blank response from server"));
     }
