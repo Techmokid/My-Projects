@@ -14,7 +14,7 @@
 #define COM_PIN_2 52
 #define COM_PIN_3 51
 
-#define resetIDOnBoot
+//#define resetIDOnBoot
 
 char server[] = "techmo.unity.chickenkiller.com";
 //char server[] = "163.47.56.221";
@@ -23,7 +23,6 @@ int ID = 0;
 
 String serverResponse = "";
 void setup() {
-  //while(true);
   Serial.begin(115200);
   
   pinMode(RUN_PIN,OUTPUT);
@@ -32,42 +31,47 @@ void setup() {
   pinMode(COM_PIN_3,INPUT_PULLUP);
 
 #ifdef resetIDOnBoot
+  Serial.println("Clearing ID from memory");
   writeEepromInt(0,-1);
 #endif
 
-  //ID = 5;//readEepromInt(0);
-  
+  ID = readEepromInt(0);
+  Serial.println("Current ID: " + String(ID));
   Serial.println(F("Starting Modem...")); setupModem();
   
   if (ID == -1) {
+    Serial.println(F("Getting new ID from server"));
     //The ID hasn't been set
     getServerResponse(server, port, new String {"Newid:1"}, 1);
     String tmp = serverResponse;
-    Serial.println("Tmp: " + tmp);
     if (tmp == "") { Serial.println("Error getting response from server for ID"); while(true) {}}
-    
     int strippedResp = tmp.substring(tmp.indexOf(":")+1,tmp.indexOf("}")).toInt();
     writeEepromInt(0,strippedResp);
     ID = strippedResp;
     
     Serial.println("Assigned ID by server: " + String(ID));
+    Serial.println("Now configuring Variables:");
+    serverSetVariable("GPSLastLat","0");  serverResponse = ""; Serial.println(" - 1/6: GPS Current Latitude");
+    serverSetVariable("GPSLastLong","0"); serverResponse = ""; Serial.println(" - 2/6: GPS Current Longitude");
+    serverSetVariable("GPSLastTime","0"); serverResponse = ""; Serial.println(" - 3/6: GPS Current Time");
+    
+    serverSetVariable("Temp","0");        serverResponse = ""; Serial.println(" - 4/6: Current Temperature");
+    serverSetVariable("Status","Offline");serverResponse = ""; Serial.println(" - 5/6: Current Status");
+    serverSetVariable("RunMode","STP");   serverResponse = ""; Serial.println(" - 6/6: Default Runmode to Stop");
+    Serial.println("Finished configuring variables");
   }
   
   Serial.println("Started successfully with assigned ID: " + String(ID));
+  while(1);
 }
 
-void writeEepromInt(int location, int value){
-  EEPROM.write(location, value);
-  EEPROM.write(location + 1, value >> 8);
+void writeEepromInt(int address, int number) { 
+  EEPROM.write(address, number >> 8);
+  EEPROM.write(address + 1, number & 0xFF);
 }
 
-int readEepromInt(int location){
-  int val;
-
-  val = (EEPROM.read(location + 1) << 8);
-  val |= EEPROM.read(location);
-
-  return val;
+int readEepromInt(int address) {
+  return (EEPROM.read(address) << 8) + EEPROM.read(address + 1);
 }
 
 void loop() {
@@ -95,12 +99,12 @@ void loop() {
       //  "Status":"Online",
       //  "RunMode":"RUN"
       //}
-      serverSetVariable("GPSLastLat","0");
-      serverSetVariable("GPSLastLong","0");
-      serverSetVariable("GPSLastTime","0");
-      serverSetVariable("Temp","0");
-      serverSetVariable("Status","0");
-      serverSetVariable("RunMode","STP");
+      serverSetVariable("GPSLastLat","0");  serverResponse = "";
+      serverSetVariable("GPSLastLong","0"); serverResponse = "";
+      serverSetVariable("GPSLastTime","0"); serverResponse = "";
+      serverSetVariable("Temp","0");        serverResponse = "";
+      serverSetVariable("Status","0");      serverResponse = "";
+      serverSetVariable("RunMode","STP");   serverResponse = "";
       delay(1000*60);
   }
 }

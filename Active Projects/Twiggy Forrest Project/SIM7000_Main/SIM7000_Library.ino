@@ -172,7 +172,7 @@ void getServerResponse(String server, int port, String headers[], int numHeaders
 void getServerResponse(char server[], int port, String headers[], int numHeaders) { getServerResponse(server, port, "/", headers, numHeaders); return; }
 
 void getServerResponse(char server[], int port, char resource[], String headers[], int numHeaders) {
-  Serial.println("Connecting to: " + String(server) + ":" + String(port));
+  //Serial.println("Connecting to: " + String(server) + ":" + String(port));
   if (!isServerConnected) {startServerComms(); isServerConnected=true;}
   
   if (!client.connect(server, port)) {
@@ -244,27 +244,26 @@ void getServerResponse(char server[], int port, char resource[], String headers[
   }
   
   isServerConnected = false;
-  Serial.println("Resp: " + serverResponse);
+  //Serial.println("Resp: " + serverResponse);
   
   int startString = serverResponse.indexOf("<body>") + 7;
-  Serial.println("Start: " + String(startString));
+  //Serial.println("Start: " + String(startString));
   
   int endString = serverResponse.indexOf("</body>");
-  Serial.println("End: " + String(endString));
+  //Serial.println("End: " + String(endString));
   
   serverResponse = serverResponse.substring(startString,endString);
   serverResponse.replace("<br/>","\n");
-  Serial.println("Final response: " + serverResponse);
+  //Serial.println("Final response: " + serverResponse);
 
   if (serverResponse == "") {
     getServerResponse(server,port,resource,headers,numHeaders);
     return;
   }
+  
   delay(1000);
   client.flush();
   client.stop();
-
-  delay(1000);
   return;
 }
 
@@ -312,7 +311,7 @@ String postServerResponse(char server[], int port, char resource[]) {
 
 void serverSetStatus(String status) { serverSetVariable("Status",status); }
 void serverSetVariable(String key,String value) {
-  String temp[] = {"Setvalue:\"" + value + "\"","Key:\"" + key + "\"","Id:" + (String)ID};
+  String temp[] = {"Setvalue:" + value + ",Key:" + key + ",Id:" + (String)ID};
   getServerResponse(
     "techmo.unity.chickenkiller.com",
     80,
