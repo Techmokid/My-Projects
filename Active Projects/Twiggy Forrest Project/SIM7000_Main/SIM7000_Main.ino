@@ -14,7 +14,7 @@
 #define COM_PIN_2 52
 #define COM_PIN_3 51
 
-//#define resetIDOnBoot
+#define resetIDOnBoot
 
 char server[] = "techmo.unity.chickenkiller.com";
 //char server[] = "163.47.56.221";
@@ -37,10 +37,13 @@ void setup() {
 
   ID = readEepromInt(0);
   Serial.println("Current ID: " + String(ID));
-  Serial.println(F("Starting Modem...")); setupModem();
+  Serial.println(F("[Arduino User Code]: Starting Modem..."));
+  
+  setupModem();
+  Serial.println(F("[Arduino User Code]: Modem Started!"));
   
   if (ID == -1) {
-    Serial.println(F("Getting new ID from server"));
+    Serial.println(F("[Arduino User Code]: Getting new ID from server"));
     //The ID hasn't been set
     getServerResponse(server, port, new String {"Newid:1"}, 1);
     String tmp = serverResponse;
@@ -49,8 +52,8 @@ void setup() {
     writeEepromInt(0,strippedResp);
     ID = strippedResp;
     
-    Serial.println("Assigned ID by server: " + String(ID));
-    Serial.println("Now configuring Variables:");
+    Serial.println("[Arduino User Code]: Assigned ID by server: " + String(ID));
+    Serial.println("[Arduino User Code]: Now configuring Variables:");
     serverSetVariable("GPSLastLat","0");  serverResponse = ""; Serial.println(" - 1/6: GPS Current Latitude");
     serverSetVariable("GPSLastLong","0"); serverResponse = ""; Serial.println(" - 2/6: GPS Current Longitude");
     serverSetVariable("GPSLastTime","0"); serverResponse = ""; Serial.println(" - 3/6: GPS Current Time");
@@ -58,10 +61,10 @@ void setup() {
     serverSetVariable("Temp","0");        serverResponse = ""; Serial.println(" - 4/6: Current Temperature");
     serverSetVariable("Status","Offline");serverResponse = ""; Serial.println(" - 5/6: Current Status");
     serverSetVariable("RunMode","STP");   serverResponse = ""; Serial.println(" - 6/6: Default Runmode to Stop");
-    Serial.println("Finished configuring variables");
+    Serial.println("[Arduino User Code]: Finished configuring variables");
   }
   
-  Serial.println("Started successfully with assigned ID: " + String(ID));
+  Serial.println("[Arduino User Code]: Started successfully with assigned ID: " + String(ID));
   while(1);
 }
 
@@ -89,7 +92,7 @@ void loop() {
       digitalWrite(RUN_PIN,LOW);
     case 2:
       //We did not get a code returned
-      Serial.println(F("There was no detected RUNMODE variable in server memory. Defaulting to stop mode"));
+      Serial.println(F("[Arduino User Code]: There was no detected RUNMODE variable in server memory. Defaulting to stop mode"));
       //{
       //  "ID":"1",
       //  "GPSLastLat":"0",
@@ -126,7 +129,7 @@ LinkedList<String> splitString(String str, char delimiter) {
 
 int GetRunmodeFromString() {
   //if (serverResponse.length() == 0) { restartArduino(); }
-  Serial.println("IN: " + serverResponse);
+  Serial.println("[Arduino User Code INTERNAL]: IN: " + serverResponse);
   //serverResponse = serverResponse.substring(serverResponse.indexOf("<body>"),serverResponse.indexOf("</body>"));
   //serverResponse.replace("<br/>","\n");
   //serverResponse.replace("<body>","");
@@ -155,10 +158,10 @@ int GetRunmodeFromString() {
     return 2;
   } else {
     if(serverResponse.length() > 0) {
-      Serial.println(F("ERROR: Incoming data not formatted as JSON"));
-      Serial.println("JSON READOUT: " + serverResponse);
+      Serial.println(F("[Arduino User Code]: ERROR: Incoming data not formatted as JSON"));
+      Serial.println("[Arduino User Code]: JSON READOUT: " + serverResponse);
     } else {
-      Serial.println(F("ERROR: Blank response from server"));
+      Serial.println(F("[Arduino User Code]: ERROR: Blank response from server"));
     }
   }
 }

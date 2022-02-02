@@ -45,8 +45,8 @@ const char wifiPass[] = "beezChurger";
 // Server details
 
 
-// #define DUMP_AT_COMMANDS
-// #define TINY_GSM_DEBUG Serial
+#define DUMP_AT_COMMANDS
+#define TINY_GSM_DEBUG Serial
 
 // Range to attempt to autobaud
 // NOTE:  DO NOT AUTOBAUD in production code.  Once you've established
@@ -106,7 +106,7 @@ void setupModem() {
     DBG("Failed to restart modem, delaying 10s and retrying");
     // restart autobaud in case GSM just rebooted
     //TinyGsmAutoBaud(SerialAT, GSM_AUTOBAUD_MIN, GSM_AUTOBAUD_MAX);
-    return;
+    //return;
   }
   
   modemName = modem.getModemName();
@@ -183,14 +183,15 @@ void getServerResponse(char server[], int port, char resource[], String headers[
   }
 
   // Make a HTTP GET request:
-  client.print(String("GET ") + resource + " HTTP/1.1\r\n");
-  client.print(String("Host: ") + server + "\r\n");
+  client.print(String("GET ") + resource + " HTTP/1.1\r\n"); delay(50);
+  client.print(String("Host: ") + server + "\r\n"); delay(50);
   for (int i = 0; i < numHeaders; i++) {
-    client.print(headers[i] + "\r\n");
+    Serial.println("[ARDUINO SUPER-INTERNAL]: HEADERS: " + headers[i]);
+    client.print(headers[i] + "\r\n"); delay(50);
   }
   //client.print("Getinfoonid:1\r\n");
-  client.print(String("Accept: */*") + "\r\n");
-  client.print("Connection: close\r\n\r\n");
+  client.print(String("Accept: */*") + "\r\n"); delay(50);
+  client.print("Connection: close\r\n\r\n"); delay(50);
   client.println();
 
   serverResponse = "";
@@ -214,7 +215,6 @@ void getServerResponse(char server[], int port, char resource[], String headers[
   }
   
   //Serial.println("Response from server: " + result);
-  delay(500);
   client.flush();
   client.stop();
   //return result;
