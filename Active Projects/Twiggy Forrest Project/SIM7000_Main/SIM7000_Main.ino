@@ -14,7 +14,7 @@
 #define COM_PIN_2 52
 #define COM_PIN_3 51
 
-#define resetIDOnBoot
+//#define resetIDOnBoot
 
 char server[] = "techmo.unity.chickenkiller.com";
 //char server[] = "163.47.56.221";
@@ -31,12 +31,12 @@ void setup() {
   pinMode(COM_PIN_3,INPUT_PULLUP);
 
 #ifdef resetIDOnBoot
-  Serial.println("Clearing ID from memory");
+  Serial.println("[Arduino User Code]: Clearing ID from memory");
   writeEepromInt(0,-1);
 #endif
 
   ID = readEepromInt(0);
-  Serial.println("Current ID: " + String(ID));
+  Serial.println("[Arduino User Code]: Current ID: " + String(ID));
   Serial.println(F("[Arduino User Code]: Starting Modem..."));
   
   setupModem();
@@ -47,7 +47,7 @@ void setup() {
     //The ID hasn't been set
     getServerResponse(server, port, new String {"Newid:1"}, 1);
     String tmp = serverResponse;
-    if (tmp == "") { Serial.println("Error getting response from server for ID"); while(true) {}}
+    if (tmp == "") { Serial.println("[Arduino User Code]: Error getting response from server for ID"); while(true) {}}
     int strippedResp = tmp.substring(tmp.indexOf(":")+1,tmp.indexOf("}")).toInt();
     writeEepromInt(0,strippedResp);
     ID = strippedResp;

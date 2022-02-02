@@ -44,9 +44,17 @@ const char wifiPass[] = "beezChurger";
 
 // Server details
 
-
+#define DUMP_TINYGSM_INTERFACE_DATA
 #define DUMP_AT_COMMANDS
+
+
+#ifdef DUMP_AT_COMMANDS
+#define DUMP_TINYGSM_INTERFACE_DATA
+#endif
+
+#ifdef DUMP_TINYGSM_INTERFACE_DATA
 #define TINY_GSM_DEBUG Serial
+#endif
 
 // Range to attempt to autobaud
 // NOTE:  DO NOT AUTOBAUD in production code.  Once you've established
@@ -122,8 +130,7 @@ void startServerComms() {
   #if TINY_GSM_USE_WIFI
   // Wifi connection parameters must be set before waiting for the network
   if (!modem.networkConnect(wifiSSID, wifiPass)) {
-    Serial.println(F("Could not set SSID/Password"));
-    return;
+    Serial.println(F("[TinyGSM Interface]: Could not set SSID/Password"));
   }
 #endif
 
@@ -133,26 +140,25 @@ void startServerComms() {
 #endif
 
   if (!modem.waitForNetwork()) {
-    Serial.println(F("Could not connect to network"));
+    Serial.println(F("[TinyGSM Interface]: Could not connect to network"));
     return;
   }
 
-  if (modem.isNetworkConnected()) { Serial.println(F("Network connected")); }
+  if (modem.isNetworkConnected()) { Serial.println(F("[TinyGSM Interface]: Network connected")); }
 
 #if TINY_GSM_USE_GPRS
   // GPRS connection parameters are usually set after network registration
   if (!modem.gprsConnect(apn, gprsUser, gprsPass)) {
-    Serial.println("Failed to connect to " + String(apn));
+    Serial.println("[TinyGSM Interface]: Failed to connect to " + String(apn));
     return;
   }
 
-  if (modem.isGprsConnected()) { Serial.println(F("GPRS connected")); }
+  if (modem.isGprsConnected()) { Serial.println(F("[TinyGSM Interface]: GPRS connected")); }
 #endif
 }
 
 bool isServerConnected = false;
 void getServerResponse(String server, int port, char resource[]) {
-  Serial.println("DEBUG:0"); 
   getServerResponse(
     server,
     port,
@@ -170,14 +176,16 @@ void getServerResponse(String server, int port, char resource[], String headers[
 }
 void getServerResponse(String server, int port, String headers[], int numHeaders) { getServerResponse(server, port, "/", headers, numHeaders); return; }
 void getServerResponse(char server[], int port, String headers[], int numHeaders) { getServerResponse(server, port, "/", headers, numHeaders); return; }
-
 void getServerResponse(char server[], int port, char resource[], String headers[], int numHeaders) {
+#ifdef DUMP_TINYGSM_INTERFACE_DATA
   //Serial.println("Connecting to: " + String(server) + ":" + String(port));
+#endif
+
   if (!isServerConnected) {startServerComms(); isServerConnected=true;}
   
   if (!client.connect(server, port)) {
     isServerConnected = false;
-    Serial.println("Failed to connect to " + String(server));
+    Serial.println("[TinyGSM Interface]: Failed to connect to " + String(server));
     delay(10000);
     return;
   }
@@ -186,7 +194,9 @@ void getServerResponse(char server[], int port, char resource[], String headers[
   client.print(String("GET ") + resource + " HTTP/1.1\r\n"); delay(50);
   client.print(String("Host: ") + server + "\r\n"); delay(50);
   for (int i = 0; i < numHeaders; i++) {
-    Serial.println("[ARDUINO SUPER-INTERNAL]: HEADERS: " + headers[i]);
+#ifdef DUMP_TINYGSM_INTERFACE_DATA
+    Serial.println("[TinyGSM Interface]: HEADERS: " + headers[i]);
+#endif
     client.print(headers[i] + "\r\n"); delay(50);
   }
   //client.print("Getinfoonid:1\r\n");
@@ -209,7 +219,7 @@ void getServerResponse(char server[], int port, char resource[], String headers[
     }
   }
   if (millis() - timeout > 9999) {
-    Serial.println("Timed out");
+    Serial.println("[TinyGSM Interface]: Timed out attempting to access: " + String(server) + ":" + String(port));
   } else {
     //Serial.println(serverResponse);
   }
@@ -234,7 +244,10 @@ void getServerResponse(char server[], int port, char resource[], String headers[
     String temp_server = redirectData.substring(0,redirectData.indexOf(":"));
     String temp_port = redirectData.substring(redirectData.indexOf(":")+1,redirectData.length());
 
-    Serial.println("Detected redirect to: " + temp_server + " on port " + temp_port);
+#ifdef DUMP_TINYGSM_INTERFACE_DATA
+    Serial.println("[TinyGSM Interface]: Detected redirect to: " + temp_server + " on port " + temp_port);
+#endif
+    
     serverResponse = "";
     
     redirectData = "";
@@ -275,11 +288,13 @@ String postServerResponse(String server, int port, char resource[]) {
 String postServerResponse(String server, int port) { return postServerResponse(server,port,"/");}
 String postServerResponse(char server[], int port) { return postServerResponse(server, port, "/"); }
 String postServerResponse(char server[], int port, char resource[]) {
-  Serial.println("Connecting to: " + String(server) + ":" + String(port));
+#ifdef DUMP_TINYGSM_INTERFACE_DATA
+  Serial.println("[TinyGSM Interface]: Connecting to: " + String(server) + ":" + String(port));
+#endif
   if (!isServerConnected) {startServerComms(); isServerConnected=true;}
   
   if (!client.connect(server, port)) {
-    Serial.println("Failed to connect to " + String(server));
+    Serial.println("[TinyGSM Interface]: Failed to connect to " + String(server));
     delay(10000);
     return;
   }
@@ -311,7 +326,7 @@ String postServerResponse(char server[], int port, char resource[]) {
 
 void serverSetStatus(String status) { serverSetVariable("Status",status); }
 void serverSetVariable(String key,String value) {
-  String temp[] = {"Setvalue:" + value + ",Key:" + key + ",Id:" + (String)ID};
+  String temp[] = {"Setvalue:" + value,"Key:" + key,"Id:" + (String)ID};
   getServerResponse(
     "techmo.unity.chickenkiller.com",
     80,
