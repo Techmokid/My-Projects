@@ -14,8 +14,9 @@ while(running):
     print(tmp) 
 
     endCondition = ("Starting Modem..." in tmp)
-    endCondition = endCondition or ("Started successfully with assigned ID:" in tmp)
+    #endCondition = endCondition or ("Started successfully with assigned ID:" in tmp)
     endCondition = endCondition or ("[Arduino User Code]: Error getting response from server for ID" in tmp)
+    endCondition = endCondition or ("[TinyGSM Interface]: Failed to connect to " in tmp)
     if (endCondition):
         foundStart = not foundStart
         if (foundStart == False):

@@ -41,7 +41,9 @@ void setup() {
   
   setupModem();
   Serial.println(F("[Arduino User Code]: Modem Started!"));
-  
+  //while(1);
+
+  //--------------------------------------------------------------------------
   if (ID == -1) {
     Serial.println(F("[Arduino User Code]: Getting new ID from server"));
     //The ID hasn't been set
@@ -54,18 +56,22 @@ void setup() {
     
     Serial.println("[Arduino User Code]: Assigned ID by server: " + String(ID));
     Serial.println("[Arduino User Code]: Now configuring Variables:");
-    serverSetVariable("GPSLastLat","0");  serverResponse = ""; Serial.println(" - 1/6: GPS Current Latitude");
-    serverSetVariable("GPSLastLong","0"); serverResponse = ""; Serial.println(" - 2/6: GPS Current Longitude");
-    serverSetVariable("GPSLastTime","0"); serverResponse = ""; Serial.println(" - 3/6: GPS Current Time");
     
-    serverSetVariable("Temp","0");        serverResponse = ""; Serial.println(" - 4/6: Current Temperature");
-    serverSetVariable("Status","Offline");serverResponse = ""; Serial.println(" - 5/6: Current Status");
-    serverSetVariable("RunMode","STP");   serverResponse = ""; Serial.println(" - 6/6: Default Runmode to Stop");
+    String GPS = getGPSData();
+    String GPSLat = GPS.substring(0,GPS.indexOf(","));
+    GPS = GPS.substring(GPSLat.length()+1);
+    String GPSLong = GPS.substring(0,GPS.indexOf(","));
+    serverSetVariable("GPSLastLat",GPSLat);  serverResponse = ""; Serial.println(" - 1/6: GPS Current Latitude");
+    serverSetVariable("GPSLastLong",GPSLong); serverResponse = ""; Serial.println(" - 2/6: GPS Current Longitude");
+    serverSetVariable("GPSLastTime",getTime()); serverResponse = ""; Serial.println(" - 3/6: GPS Current Time");
+    
+    serverSetVariable("Temp",String(getTemp())); serverResponse = ""; Serial.println(" - 4/6: Current Temperature");
+    serverSetVariable("Status","Offline");       serverResponse = ""; Serial.println(" - 5/6: Current Status");
+    serverSetVariable("RunMode","STP");          serverResponse = ""; Serial.println(" - 6/6: Default Runmode to Stop");
     Serial.println("[Arduino User Code]: Finished configuring variables");
   }
   
   Serial.println("[Arduino User Code]: Started successfully with assigned ID: " + String(ID));
-  while(1);
 }
 
 void writeEepromInt(int address, int number) { 
@@ -81,15 +87,26 @@ void loop() {
   String temp[] = {"Getinfoonid:" + (String)ID};
   getServerResponse(server, port, temp, 1);
   //String response = "<body>{ID:1,GPSLastLat:0.00,GPSLastLong:0.00,GPSLastTime:\"AWST_20:11:41_29/11/21\",Temp:23,Status:\"Online\",RunMode:\"RLS\"}</body>";
+
+  String GPS = getGPSData();
+  String GPSLat = GPS.substring(0,GPS.indexOf(","));
+  GPS = GPS.substring(GPSLat.length()+1);
+  String GPSLong = GPS.substring(0,GPS.indexOf(","));
+  serverSetVariable("GPSLastLat",GPSLat);       serverResponse = "";
+  serverSetVariable("GPSLastLong",GPSLong);     serverResponse = "";
+  serverSetVariable("GPSLastTime",getTime());   serverResponse = "";
+  serverSetVariable("Temp",String(getTemp()));  serverResponse = "";
   
   checkMotorStatus();
   switch(GetRunmodeFromString()) {
     case 0:
       //We got the all clear to go
       digitalWrite(RUN_PIN,HIGH);
+      serverSetVariable("Status","Running"); serverResponse = "";
     case 1:
       //We got a stop code
       digitalWrite(RUN_PIN,LOW);
+      serverSetVariable("Status","Online - Stopped"); serverResponse = "";
     case 2:
       //We did not get a code returned
       Serial.println(F("[Arduino User Code]: There was no detected RUNMODE variable in server memory. Defaulting to stop mode"));
@@ -102,14 +119,11 @@ void loop() {
       //  "Status":"Online",
       //  "RunMode":"RUN"
       //}
-      serverSetVariable("GPSLastLat","0");  serverResponse = "";
-      serverSetVariable("GPSLastLong","0"); serverResponse = "";
-      serverSetVariable("GPSLastTime","0"); serverResponse = "";
-      serverSetVariable("Temp","0");        serverResponse = "";
-      serverSetVariable("Status","0");      serverResponse = "";
-      serverSetVariable("RunMode","STP");   serverResponse = "";
-      delay(1000*60);
+      
+      serverSetVariable("Status","Online - RunMode Error"); serverResponse = "";
+      serverSetVariable("RunMode","STP"); serverResponse = "";
   }
+  delay(1000*60);
 }
 
 LinkedList<String> splitString(String str, char delimiter) {
