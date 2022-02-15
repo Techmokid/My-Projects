@@ -42,6 +42,7 @@ float clamp(float in, float A, float B) {
 }
 
 void RunMotorSafely() {
+  #ifdef USE_CURRENT_SENSOR
   if (readAverageCurrent() > MAX_CURRENT) {
     if(!tryToUnclog(6)) {
       unsigned long prevMillis = millis();
@@ -51,9 +52,10 @@ void RunMotorSafely() {
         warningBuzz();
       }
     }
-  } else {
-    setSpeed(1);
-  }
+  } else { setSpeed(1); }
+  #else
+  setSpeed(1);
+  #endif
 }
 
 bool tryToUnclog(int tries) {

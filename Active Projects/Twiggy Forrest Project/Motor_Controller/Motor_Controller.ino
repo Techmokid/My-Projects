@@ -9,6 +9,7 @@
 #define COM_PIN_3 7
 
 #define MAX_CURRENT 10
+//#define USE_CURRENT_SENSOR
 bool running = false;
 
 void setup() {
@@ -21,10 +22,10 @@ void setup() {
 
 void loop() {
   if (!digitalRead(RUN_PIN)) {
-    //if (!running) { warningBuzz(); }
+    if (!running) { warningBuzz(); }
     running = true;
     Serial.println("Yes");
-    //RunMotorSafely();
+    RunMotorSafely();
   } else {
     Serial.println("No");
     running = false;
