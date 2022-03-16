@@ -4,20 +4,31 @@ public class TimedStaticGateController : MonoBehaviour
 {
     public Transform rotatingObject, pivot, internalPivot, endPoint;
     public bool invertAngle;
-    public float startAngle, closedAngle, percOpen;
+    public float startAngle, closedAngle, numberOfGaps,startingRotationalOffset;
+
+    public float startOpeningRotation = 45;
+    public float finishClosingRotation = 120;
 
     public float openingStatus;
     public bool isOpening,isClosing;
-
+    public bool _print;
 
     void Update() {
-        float rot = Mathf.Abs(rotatingObject.eulerAngles.z);
-        if (rot > 180)
-            rot -= 180;
-        
-        if ((rot < 45) || (rot > 120)) {
-            if (rot > 120) { rot -= 120; } else { rot += 60; }
-            float openPerc = SmoothCurve(rot / 105);
+        float degreesPerPulse = 360 / numberOfGaps;
+        float rot = Mathf.Abs(rotatingObject.eulerAngles.z) + startingRotationalOffset;
+        while (rot > degreesPerPulse)
+            rot -= degreesPerPulse;
+        if (_print)
+            print(rot);
+
+        if ((rot < startOpeningRotation) || (rot > finishClosingRotation)) {
+            if (rot > finishClosingRotation) {
+                rot -= finishClosingRotation;
+            } else {
+                rot += degreesPerPulse - finishClosingRotation;
+            }
+
+            float openPerc = SmoothCurve(rot / (startOpeningRotation + degreesPerPulse - finishClosingRotation));
             SetOpenPercentage(openPerc);
             isOpening = openPerc > openingStatus;
             isClosing = openPerc < openingStatus;

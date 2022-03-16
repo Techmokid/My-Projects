@@ -6,6 +6,6 @@ public class MovementController : MonoBehaviour {
     public Transform HeightPin;
     
     void Update() {
-        transform.localPosition = new Vector3(0, HeightPin.position.y, -1.75f);
+        transform.position = new Vector3(transform.position.x, HeightPin.position.y, transform.position.z);
     }
 }

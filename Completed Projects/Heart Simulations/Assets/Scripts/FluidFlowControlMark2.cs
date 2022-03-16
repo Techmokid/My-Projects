@@ -1,7 +1,6 @@
 using UnityEngine;
 
 public class FluidFlowControlMark2 : MonoBehaviour {
-    public Rotate rotationController;
     public TimedStaticGateController controller;
     public bool isInput;
     public bool _print;
