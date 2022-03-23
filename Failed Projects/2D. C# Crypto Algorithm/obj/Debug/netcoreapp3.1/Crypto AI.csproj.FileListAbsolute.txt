@@ -213,3 +213,4 @@ C:\Users\aj200\Documents\GitHub\My-Projects\Failed Projects\2D. C# Crypto Algori
 C:\Users\aj200\Documents\GitHub\My-Projects\Failed Projects\2D. C# Crypto Algorithm\bin\Debug\netcoreapp3.1\unirest-net.dll
 C:\Users\aj200\Documents\GitHub\My-Projects\Failed Projects\2D. C# Crypto Algorithm\obj\Debug\netcoreapp3.1\Crypto AI.csproj.CopyComplete
 C:\Users\aj200\Documents\GitHub\My-Projects\Failed Projects\2D. C# Crypto Algorithm\obj\Debug\netcoreapp3.1\Crypto AI.genruntimeconfig.cache
+C:\Users\aj200\Documents\GitHub\My-Projects\Failed Projects\2D. C# Crypto Algorithm\obj\Debug\netcoreapp3.1\Crypto AI.csproj.SuggestedBindingRedirects.cache
