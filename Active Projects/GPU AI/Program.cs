@@ -10,14 +10,14 @@ namespace CryptoAI {
 		static void Main(string[] args) {
 			Console.Clear();
 			
-			SaveLoadNetwork.printTime = true;
-			SaveLoadNetwork.printModuleName = false;
-			SaveLoadNetwork.PrintFormattedMsg("CryptoAI","LOG","This is a logged message or generic output");
-			SaveLoadNetwork.PrintFormattedMsg("CryptoAI","DEBUG","This is debugging code output");
-			SaveLoadNetwork.PrintFormattedMsg("CryptoAI","WARNING","This is a warning that a function is having troubles");
-			SaveLoadNetwork.PrintFormattedMsg("CryptoAI","ERROR","This indicates something went very wrong");
-			SaveLoadNetwork.PrintFormattedMsg("CryptoAI","SUCCESS","This indicates that a function completed!");
-			SaveLoadNetwork.PrintFormattedMsg("CryptoAI","THING","This is a generic message that doesn't fit the other stuff");
+			NetworkInterface.printTime = true;
+			NetworkInterface.printModuleName = false;
+			NetworkInterface.PrintFormattedMsg("CryptoAI","LOG","This is a logged message or generic output");
+			NetworkInterface.PrintFormattedMsg("CryptoAI","DEBUG","This is debugging code output");
+			NetworkInterface.PrintFormattedMsg("CryptoAI","WARNING","This is a warning that a function is having troubles");
+			NetworkInterface.PrintFormattedMsg("CryptoAI","ERROR","This indicates something went very wrong");
+			NetworkInterface.PrintFormattedMsg("CryptoAI","SUCCESS","This indicates that a function completed!");
+			NetworkInterface.PrintFormattedMsg("CryptoAI","THING","This is a generic message that doesn't fit the other stuff");
 			
 			Console.WriteLine();
 			Console.WriteLine();
@@ -26,20 +26,14 @@ namespace CryptoAI {
 			Console.WriteLine();
 			
 			//DisplayManager.StartDisplay();
-			SaveLoadNetwork.PrintFormattedMsg("CryptoAI","LOG","Starting...");
-			SaveLoadNetwork.SetDirectory(filePath);
+			NetworkInterface.PrintFormattedMsg("CryptoAI","LOG","Starting...");
+			NetworkInterface.SetDirectory(filePath);
 			
-			//Genome Count
-			//Input Node Count
-			//Node count per hidden layer
-			//Hidden layer count
-			//Output nodes count
+			//NetworkInterface.clearSave();
+			Network N = NetworkInterface.LoadNetwork();
 			
-			
-			Network N = SaveLoadNetwork.LoadNetwork();
-			
-			//Network N = SaveLoadNetwork.NewNetwork(1000,150,400,10,4);
-			//SaveLoadNetwork.SaveNetwork(N);
+			//Network N = NetworkInterface.NewNetwork(50,150,400,10,4);
+			//NetworkInterface.SaveNetwork(N);
 		}
 		
 		//dataScreen AIStatusText1 =   DisplayManager.addScreen(40,2,"Left","Top"," Algorithm  Status ");
