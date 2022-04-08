@@ -1,23 +1,23 @@
 ﻿using System;
 using System.IO;
+using System.Diagnostics;
+using ComputeSharp;
 
-using unirest_net.http;
+using NI = CryptoAI.NetworkInterface;
 
 namespace CryptoAI {
-	class Program {
-		static string filePath = "C:/Users/aj200/Desktop/";
-		
+	public partial class Program {
 		static void Main(string[] args) {
 			Console.Clear();
 			
-			NetworkInterface.printTime = true;
-			NetworkInterface.printModuleName = false;
-			NetworkInterface.PrintFormattedMsg("CryptoAI","LOG","This is a logged message or generic output");
-			NetworkInterface.PrintFormattedMsg("CryptoAI","DEBUG","This is debugging code output");
-			NetworkInterface.PrintFormattedMsg("CryptoAI","WARNING","This is a warning that a function is having troubles");
-			NetworkInterface.PrintFormattedMsg("CryptoAI","ERROR","This indicates something went very wrong");
-			NetworkInterface.PrintFormattedMsg("CryptoAI","SUCCESS","This indicates that a function completed!");
-			NetworkInterface.PrintFormattedMsg("CryptoAI","THING","This is a generic message that doesn't fit the other stuff");
+			NI.printTime = true;
+			NI.printModuleName = false;
+			NI.PrintFormattedMsg("CryptoAI","LOG","This is a logged message or generic output");
+			NI.PrintFormattedMsg("CryptoAI","DEBUG","This is debugging code output");
+			NI.PrintFormattedMsg("CryptoAI","WARNING","This is a warning that a function is having troubles");
+			NI.PrintFormattedMsg("CryptoAI","ERROR","This indicates something went very wrong");
+			NI.PrintFormattedMsg("CryptoAI","SUCCESS","This indicates that a function completed!");
+			NI.PrintFormattedMsg("CryptoAI","THING","This is a generic message that doesn't fit the other stuff");
 			
 			Console.WriteLine();
 			Console.WriteLine();
@@ -26,14 +26,21 @@ namespace CryptoAI {
 			Console.WriteLine();
 			
 			//DisplayManager.StartDisplay();
-			NetworkInterface.PrintFormattedMsg("CryptoAI","LOG","Starting...");
-			NetworkInterface.SetDirectory(filePath);
+			NI.PrintFormattedMsg("CryptoAI","LOG","Starting...");
+			NI.SetDirectory("Z:/");
 			
-			//NetworkInterface.clearSave();
-			Network N = NetworkInterface.LoadNetwork();
+			Network N = NI.NewNetwork_CPU_MT(1000,150,200,5,2);
+			//Network N = NI.LoadNetwork_MT();
 			
-			//Network N = NetworkInterface.NewNetwork(50,150,400,10,4);
-			//NetworkInterface.SaveNetwork(N);
+			NI.RegenerateAllGenomes_CPU(ref N);
+			NI.CalculateNextNetworkIteration_CPU_MT(ref N);
+			
+			NI.PrintFormattedMsg("CryptoAI","LOG","Getting Genome output");
+			
+			//NI.SaveNetwork(N);
+			
+			NI.PrintFormattedMsg("CryptoAI","SUCCESS","Completed network tests");
+			Console.ReadKey();
 		}
 		
 		//dataScreen AIStatusText1 =   DisplayManager.addScreen(40,2,"Left","Top"," Algorithm  Status ");

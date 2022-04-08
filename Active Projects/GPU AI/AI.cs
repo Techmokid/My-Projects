@@ -28,14 +28,14 @@ namespace CryptoAI {
 	public struct NodeConnection {
 		public Node n;
 		public float w;
+		public float prev_w = -99999;
 		public NodeConnection(Node x, float y) {n=x;w=y;}
 	}
 	
-	public struct Node {
+	public class Node {
 		public string NodeActivationType = "";
 		public int ID = -1;									// The ID of this node
 		public NodeConnection[] cN = new NodeConnection[0];	// All of the connected nodes downstream (Rolling end to start)
-		public float[] previousWeights = new float[0];
 		
 		public float tT = 0;								// Minimum amount of input before triggering
 		public float prev_tT = 0;
@@ -86,7 +86,7 @@ namespace CryptoAI {
 			tS = prev_tS;
 			
 			for(int i = 0; i < cN.Length; i++) {
-				cN[i].w = previousWeights[i];
+				cN[i].w = cN[i].prev_w;
 			}
 		}
 	}
@@ -101,6 +101,7 @@ namespace CryptoAI {
 		public string GenomeType = "";
 		
 		public float fitness;
+		public float prev_fitness;
 		public int ID = 0;
 		
 		public void resetGenomeToPreviousState() {
@@ -165,6 +166,8 @@ namespace CryptoAI {
 			
 			saveDirectory = dir;
 			saveDirectory += "CryptoAI/";
+			if (Directory.Exists(saveDirectory))
+				Directory.CreateDirectory(saveDirectory);
 		}
 		
 		public static Genome LoadBestGenome(string dir) { SetDirectory(dir); return LoadBestGenome(); }
@@ -236,10 +239,10 @@ namespace CryptoAI {
 			}
 			
 			int bestID = int.Parse(File.ReadAllText(bestIDDirectory));
-			return LoadGenome(loadDirectory + "Genome " + bestID.ToString() + ".json");
+			return LoadGenome_CPU(loadDirectory + "Genome " + bestID.ToString() + ".json");
 		}
 		
-		public static Genome LoadGenome(string dir) {
+		public static Genome LoadGenome_CPU(string dir) {
 			Genome g = new Genome();
 			
 			if (!dumpAndPump) {
@@ -248,6 +251,7 @@ namespace CryptoAI {
 				string[] allNodeDirs = Directory.GetFiles(dir,"Node*.json");
 				g.nodes = new Node[allNodeDirs.Length];
 				for(int i = 0; i < g.nodes.Length; i++) {
+					g.nodes[i] = new Node(i,null);
 					g.nodes[i].ID = i;
 				}
 				
@@ -310,8 +314,8 @@ namespace CryptoAI {
 			return g;
 		}
 		
-		public static Network LoadNetwork(string dir) { SetDirectory(dir); return LoadNetwork(); }
-		public static Network LoadNetwork() {
+		public static Network LoadNetwork_MT(string dir) { SetDirectory(dir); return LoadNetwork_MT(); }
+		public static Network LoadNetwork_MT() {
 			if (saveDirectory == "") {
 				Console.ForegroundColor = ConsoleColor.Red;
 				PrintFormattedMsg("CryptoAI","ERROR","Could not load network. LoadNetwork was called without setting save directory");
@@ -336,7 +340,9 @@ namespace CryptoAI {
 						PrintFormattedMsg("AI Config","LOG","Loading AI network from primary save");
 						loadDirectory = netSaveDir;
 					} else if (result == 1) {
-						PrintFormattedMsg("AI Config","WARNING","Primary save corrupted. Loading AI network from backup save");
+						PrintFormattedMsg("AI Config","WARNING","Primary save corrupted. Attempting file repair");
+						saveFileRepair();
+						PrintFormattedMsg("AI Config","Log","Loading AI network from backup save");
 						loadDirectory = netBackupDir;
 					} else if (result == 2) {
 						PrintFormattedMsg("AI Config","WARNING","Backup save corrupted. Attempting file repair");
@@ -443,14 +449,91 @@ namespace CryptoAI {
 			return N;
 		}
 		
+		private static void CopyFilesRecursively(string sourcePath, string targetPath) {
+			//Now Create all of the directories
+			foreach (string dirPath in Directory.GetDirectories(sourcePath, "*", SearchOption.AllDirectories)) {
+				Directory.CreateDirectory(dirPath.Replace(sourcePath, targetPath));
+			}
+
+			//Copy all the files & Replaces any files with the same name
+			foreach (string newPath in Directory.GetFiles(sourcePath, "*.*",SearchOption.AllDirectories)) {
+				File.Copy(newPath, newPath.Replace(sourcePath, targetPath), true);
+			}
+		}
+		
 		public static void saveFileRepair() {
+			if (saveDirectory == "") {
+				Console.ForegroundColor = ConsoleColor.Red;
+				PrintFormattedMsg("File Repair","ERROR","Could not repair save files. saveFileRepair was called without setting save directory");
+				quit();
+			}
 			
-			PrintFormattedMsg("File Repair","ERROR","Could not repair save data. Function is W.I.P and therefore incomplete");
-			quit();
+			string netSaveDir = saveDirectory + "Network Save Orig/";
+			string netBackupDir = saveDirectory + "Network Save Backup/";
+			string netStatusFile = saveDirectory + "saveStatus.txt";
+			
+			string loadDirectory = "";
+			if (File.Exists(netStatusFile)) {
+				//0 	Means it's completely safe to read from either.							Read from the first one
+				//1 	Means it was in the middle of writing to the first copy. 				Read from the second
+				//2 	Means it was in the middle of writing to the backup copy. 				Read from the first one
+				//null  Means it was in the middle of writing to the save status directory.		Read from the first one
+				try {
+					int result = int.Parse(File.ReadAllText(netStatusFile));
+					if (result == 0) {
+					} else if (result == 1) {
+						//Primary save is corrupted
+						PrintFormattedMsg("File Repair","ERROR","Detected primary save file corruption");
+						PrintFormattedMsg("File Repair","LOG","Attempting to fix save files");
+						
+						if (Directory.Exists(netSaveDir))
+							Directory.Delete(netSaveDir,true);
+						Directory.CreateDirectory(netSaveDir);
+						PrintFormattedMsg("File Repair","LOG","Copying from backup");
+						CopyFilesRecursively(netBackupDir,netSaveDir);
+						PrintFormattedMsg("File Repair","LOG","Resetting file save status");
+						File.WriteAllText(netStatusFile,"0");
+						PrintFormattedMsg("File Repair","SUCCESS","Save files repaired!");
+					} else if (result == 2) {
+						//Backup save is corrupted
+						PrintFormattedMsg("File Repair","ERROR","Detected backup save file corruption");
+						PrintFormattedMsg("File Repair","LOG","Attempting to fix save files");
+						
+						if (Directory.Exists(netBackupDir))
+							Directory.Delete(netBackupDir,true);
+						Directory.CreateDirectory(netBackupDir);
+						PrintFormattedMsg("File Repair","LOG","Copying from primary");
+						CopyFilesRecursively(netSaveDir,netBackupDir);
+						PrintFormattedMsg("File Repair","LOG","Resetting file save status");
+						File.WriteAllText(netStatusFile,"0");
+						PrintFormattedMsg("File Repair","SUCCESS","Save files repaired!");
+					} else {
+						PrintFormattedMsg("AI Config","ERROR","Invalid save status detected in save directory. Defaulting to primary save");
+						quit();
+					}
+				} catch {
+					//Could not read from status file
+					PrintFormattedMsg("File Repair","ERROR","An internal error has occured while repairing save data");
+					quit();
+				}
+			} else {
+				PrintFormattedMsg("AI Config","ERROR","Could not find save status file");
+				quit();
+			}
 		}
 		
 		public static bool clearSave() { return clearSave(true); }
 		public static bool clearSave(bool askUser) {
+			if (saveDirectory == "") {
+				PrintFormattedMsg("CryptoAI","ERROR","Could not remove save file as save directory has not been set!");
+				quit();
+			}
+			
+			if (!Directory.Exists(saveDirectory)) {
+				PrintFormattedMsg("CryptoAI","ERROR","Could not remove save file as no save was found at directory: " + saveDirectory);
+				return true;
+			}
+			
 			//Delete the save directory from the disk. Completely wipe it
 			if (askUser) {
 				PrintFormattedMsg("CryptoAI","WARNING","Are you absolutely certain you want to clear the saved AI network? (Y/N)");
@@ -480,13 +563,14 @@ namespace CryptoAI {
 			string netBackupDir = saveDirectory + "Network Save Backup/";
 			string netStatusFile = saveDirectory + "saveStatus.txt";
 			
-			float sizeOfSingleGenome = JsonConvert.SerializeObject(N.genomes[0]).Length;
-			float genomeCount = N.inputNodesCount + N.outputNodesCount + N.hiddenLayerCount*N.hiddenLayerWidth;
-			float sizeOnDisk = genomeCount*2*sizeOfSingleGenome/1000000000;
-			Console.WriteLine(N.genomes[0].nodes.Length);
-			PrintFormattedMsg("CryptoAI","DEBUG","Saving AI network. This process using the JSON serializer would be estimated to take up: " + sizeOnDisk.ToString() + " GB of disk space");
+			//float sizeOfSingleGenome = JsonConvert.SerializeObject(N.genomes[0]).Length;
+			//float genomeCount = N.inputNodesCount + N.outputNodesCount + N.hiddenLayerCount*N.hiddenLayerWidth;
+			//float sizeOnDisk = genomeCount*2*sizeOfSingleGenome/1000000000;
+			//PrintFormattedMsg("CryptoAI","DEBUG","Saving AI network. This process using the JSON serializer would be estimated to take up: " + sizeOnDisk.ToString() + " GB of disk space");
 			if (!Directory.Exists(saveDirectory))
 				Directory.CreateDirectory(saveDirectory);
+			
+			File.WriteAllText(saveDirectory + "Network Info.json","[\n\t\"Iterations\":0\n]");
 			
 			//Save the original copy
 			File.WriteAllText(netStatusFile,"1");
@@ -498,7 +582,7 @@ namespace CryptoAI {
 			
 			PrintFormattedMsg("CryptoAI","","Saving AI network - primary copy");
 			Directory.CreateDirectory(netSaveDir);
-			SaveNetworkInternal(N,netSaveDir);
+			SaveNetworkInternal_CPU_MT(N,netSaveDir);
 			PrintFormattedMsg("CryptoAI","SUCCESS","Saved AI network - primary copy");
 			
 			//Save the backup copy
@@ -511,7 +595,7 @@ namespace CryptoAI {
 			}
 			PrintFormattedMsg("CryptoAI","","Saving AI network - backup copy");
 			Directory.CreateDirectory(netBackupDir);
-			SaveNetworkInternal(N,netBackupDir);
+			SaveNetworkInternal_CPU_MT(N,netBackupDir);
 			PrintFormattedMsg("CryptoAI","SUCCESS","Saved AI network - backup copy");
 			
 			//Now finish up
@@ -519,7 +603,7 @@ namespace CryptoAI {
 			PrintFormattedMsg("CryptoAI","SUCCESS","Saved AI network!");
 		}
 		
-		public static void SaveNetworkInternal(Network N, string dir) {
+		public static void SaveNetworkInternal_CPU_MT(Network N, string dir) {
 			//Here, all of the other stuff regarding backup copies and user interfaces is done and dealt with
 			//All that's left is the raw save object code. Go nuts!
 			if (N == null) {
@@ -666,7 +750,7 @@ namespace CryptoAI {
 			Console.ForegroundColor = startingColor;
 		}
 		
-		public static Network NewNetwork(int genomeCount, int inputNodes, int nodesPerHiddenLayer, int hiddenLayerCount, int outputNodes) {
+		public static Network NewNetwork_CPU_MT(int genomeCount, int inputNodes, int nodesPerHiddenLayer, int hiddenLayerCount, int outputNodes) {
 			PrintFormattedMsg("AI Config","WARNING","Generating new AI Network. This may take awhile...");
 			
 			Network N = new Network();
@@ -731,10 +815,24 @@ namespace CryptoAI {
 			}
 			
 			PrintFormattedMsg("AI Config","SUCCESS","Created new AI network");
+			int[] genomeTypeCounts = new int[genomeActivationTypes.Length];
+			for (int x = 0; x < N.genomes.Length; x++) {
+				for(int i = 0; i < genomeTypeCounts.Length; i++) {
+					if (N.genomes[x].nodes[0].NodeActivationType == genomeActivationTypes[i]) {
+						N.genomes[x].GenomeType = N.genomes[x].nodes[0].NodeActivationType;
+						genomeTypeCounts[i] += 1;
+					}
+				}
+			}
+			
+			for(int i = 0; i < genomeTypeCounts.Length; i++) {
+				PrintFormattedMsg("AI Config","LOG","Genome Type: " + genomeActivationTypes[i] + "\t\tQuantity: " + genomeTypeCounts[i]);
+			}
+			
 			return N;
 		}
 		
-		public static int CheckNetworkIntegrity(Network N) {
+		public static int CheckNetworkIntegrity_CPU(Network N) {
 			int nullDetected = 0;
 			for(int i = 0; i < N.genomes.Length; i++) {
 				if (N.genomes[i] == null) {
@@ -745,6 +843,69 @@ namespace CryptoAI {
 				}
 			}
 			return nullDetected;
+		}
+		
+		public static void CalculateNextNetworkIteration_CPU_MT(ref Network N) {
+			PrintFormattedMsg("CryptoAI","LOG","Iterating network");
+			
+			List<ThreadDataContainer3> TDC_List = new List<ThreadDataContainer3>();
+			bool run = true;
+			int genomeIndex = 0;
+			int maxThreadCount = 8;
+			int currentThreadCount = 0;
+			while(run) {
+				while (currentThreadCount < maxThreadCount) {
+					if(genomeIndex == N.genomes.Length) { run = false; break; }
+				
+					//HERE WE WANT TO ACTUALLY START THE THREAD PROCESS
+					ThreadClass p = new ThreadClass();
+					ThreadDataContainer3 TDC = new ThreadDataContainer3();
+					
+					TDC.g = N.genomes[genomeIndex];
+					TDC.ID = genomeIndex;
+					TDC_List.Add(TDC);
+					Thread workerThread = new Thread(p.IterateNetwork_CPUMultithreaded);  
+					workerThread.Start(TDC);
+						
+					currentThreadCount++;
+					genomeIndex++;
+				}
+				
+				if (run) {
+					for (int x = 0; x < TDC_List.Count; x++) {
+						if (TDC_List[x].threadCompletionStatus) {
+							N.genomes[TDC_List[x].g.ID] = TDC_List[x].g;
+							TDC_List.RemoveAt(x);
+							currentThreadCount--;
+							x--;
+						}
+					}
+				}
+			}
+			while(TDC_List.Count > 0) {
+				for (int x = 0; x < TDC_List.Count; x++) {
+					if (TDC_List[x].threadCompletionStatus) {
+						N.genomes[TDC_List[x].g.ID] = TDC_List[x].g;
+						TDC_List.RemoveAt(x);
+						currentThreadCount--;
+						x--;
+					}
+				}
+			}
+		}
+		
+		public static void RegenerateAllGenomes_CPU(ref Network N) {
+			PrintFormattedMsg("CryptoAI","DEBUG","Regenerating genomes...");
+			for (int gI = 0; gI < N.genomes.Length; gI++) {
+				Genome g = N.genomes[gI];
+				for (int nI = 0; nI < g.nodes.Length; nI++) {
+					if (!g.nodes[nI].nII) {
+						for (int i = 0; i < g.nodes[nI].cN.Length; i++) {
+							g.nodes[nI].cN[i].w = AI_Internal_Core.getRandomFloat();
+						}
+					}
+				}
+			}
 		}
 	}
 	
@@ -858,11 +1019,31 @@ namespace CryptoAI {
 				}
 				nodeFileData += "]";
 				
-				File.WriteAllText(genomeDirectory + "Genome " + TDC.g.ID + ".json",nodeFileData);
+				string fileDir = genomeDirectory + "Genome " + TDC.g.ID + ".json";
+				bool tmpRun = true;
+				while(tmpRun) {
+					try {
+						File.WriteAllText(fileDir,nodeFileData);
+						tmpRun = false;
+					} catch {
+						Console.WriteLine("Could not access directory: " + fileDir);
+						Thread.Sleep(5000);
+					}
+				}
 			} else {
 				//Console.WriteLine(genomeDirectory + "Genome " + TDC.g.ID + "/");
 				Directory.CreateDirectory(genomeDirectory + "Genome " + TDC.g.ID + "/");
-				File.WriteAllText(genomeDirectory + "Genome " + TDC.g.ID + "/Genome Activation Type.txt",TDC.g.GenomeType);
+				string fileDir = genomeDirectory + "Genome " + TDC.g.ID + "/Genome Activation Type.txt";
+				bool tmpRun = true;
+				while(tmpRun) {
+					try {
+						File.WriteAllText(fileDir,TDC.g.GenomeType);
+						tmpRun = false;
+					} catch {
+						Console.WriteLine("Could not access directory: " + fileDir);
+						Thread.Sleep(5000);
+					}
+				}
 				for(int i = 0; i < TDC.g.nodes.Length; i++) {
 					Node n = TDC.g.nodes[i];
 					string nodeFileData = "{\n";
@@ -895,15 +1076,26 @@ namespace CryptoAI {
 						nodeFileData += "\t]\n}";
 					}
 					
-					File.WriteAllText(genomeDirectory + "Genome " + TDC.g.ID + "/Node " + n.ID.ToString() + ".json",nodeFileData);
+					fileDir = genomeDirectory + "Genome " + TDC.g.ID + "/Node " + n.ID.ToString() + ".json";
+					tmpRun = true;
+					while(tmpRun) {
+						try {
+							File.WriteAllText(fileDir,nodeFileData);
+							tmpRun = false;
+						} catch {
+							Console.WriteLine("Could not access directory: " + fileDir);
+							Thread.Sleep(5000);
+						}
+					}
+					
 					bytesTakenByGenome += nodeFileData.Length;
 				}
 				
-				if (NetworkInterface.once) {
-					NetworkInterface.once = false;
-					bytesTakenByGenome/=10000000;
-					NetworkInterface.PrintFormattedMsg("AI Config","DEBUG","Total AI network predicted size on disk: " + bytesTakenByGenome.ToString() + " GB");
-				}
+				//if (NetworkInterface.once) {
+				//	NetworkInterface.once = false;
+				//	bytesTakenByGenome/=10000000;
+				//	NetworkInterface.PrintFormattedMsg("AI Config","DEBUG","Total AI network predicted size on disk: " + bytesTakenByGenome.ToString() + " GB");
+				//}
 			}
 			
 			TDC.threadCompletionStatus = true;
@@ -915,11 +1107,12 @@ namespace CryptoAI {
 			
 			if (!NetworkInterface.dumpAndPump) {
 				g.GenomeType = File.ReadAllText(TDC.dir + "/Genome Activation Type.txt").Replace("\t","").Replace("\n","").Replace(" ","");
+				g.ID = TDC.ID;
 				
 				string[] allNodeDirs = Directory.GetFiles(TDC.dir,"Node*.json");
 				g.nodes = new Node[allNodeDirs.Length];
 				for(int i = 0; i < g.nodes.Length; i++) {
-					g.nodes[i].ID = i;
+					g.nodes[i] = new Node(i,null);
 				}
 				
 				//Just sort the node directories in ascending order
@@ -976,6 +1169,29 @@ namespace CryptoAI {
 				
 				NetworkInterface.PrintFormattedMsg("CryptoAI","ERROR","Could not complete loading network in dumpAndPump mode. W.I.P");
 				NetworkInterface.quit();
+			}
+			
+			TDC.threadCompletionStatus = true;
+		}
+		
+		public void IterateNetwork_CPUMultithreaded(object data) {
+			ThreadDataContainer3 TDC = (ThreadDataContainer3)data;
+			
+			if (TDC.g.fitness < TDC.g.prev_fitness)
+				TDC.g.resetGenomeToPreviousState();
+				
+			for (int nI = 0; nI < TDC.g.nodes.Length; nI++) {
+				TDC.g.nodes[nI].prev_tT = TDC.g.nodes[nI].tT;
+				TDC.g.nodes[nI].prev_tS = TDC.g.nodes[nI].tS;
+				TDC.g.nodes[nI].tT = Math.Max(Math.Min(TDC.g.nodes[nI].tT + 0.0001f * (AI_Internal_Core.getRandomFloat() - 0.5f),1),0);
+				TDC.g.nodes[nI].tS = Math.Max(Math.Min(TDC.g.nodes[nI].tS + 0.0001f * (AI_Internal_Core.getRandomFloat() - 0.5f),1),0);
+				
+				if (!TDC.g.nodes[nI].nII) {
+					for (int i = 0; i < TDC.g.nodes[nI].cN.Length; i++) {
+						TDC.g.nodes[nI].cN[i].prev_w = TDC.g.nodes[nI].cN[i].w;
+						TDC.g.nodes[nI].cN[i].w = Math.Max(Math.Min(TDC.g.nodes[nI].cN[i].w + 0.0001f * (AI_Internal_Core.getRandomFloat() - 0.5f),1),0);
+					}
+				}
 			}
 			
 			TDC.threadCompletionStatus = true;
