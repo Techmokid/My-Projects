@@ -822,9 +822,37 @@ namespace CryptoAI {
 				}
 				
 				for(int iteration = 0; iteration < numberOfIterations; iteration++) {
-					CalculateNodeOutput(ThreadIds.X);
-					genomes[GetGenomeIndex(ThreadIds.X)].fitness = 0; //Temp value for testing
-					RollbackAndAdjustWeights(ThreadIds.X);
+					double fakeWallet = 1000;
+					for(int trainingDataIndex = 0; trainingDataIndex < incomingTrainingData.Length - genomeInputs.Length; trainingDataIndex++) {
+						int genomeInputsStart = genomes[GetGenomeIndex(ThreadIds.X)].Nodes_Start_Index;
+						if (nodes[ThreadIds.X].nII) {
+							//Set the training data to the node input here
+							nodes[ThreadIds.X].nIV = incomingTrainingData[trainingDataIndex + ThreadIds.X - genomeInputsStart];
+							nodes[ThreadIds.X].pO = nodes[ThreadIds.X].nIV;
+						}
+						
+						//Wait until all the input nodes are set.
+						for (int n = 0; n < genomeInputs.Length; n++) {
+							while(nodes[genomeInputsStart + n].pO == -99999) {}		
+						}
+						
+						//Now that all the input nodes are set, we can run the calculation
+						//if () {
+						//	double networkTax = 0.05;
+						//	int outputPos = ;
+						//	CalculateNodeOutput(ThreadIds.X);
+						//	if ((genomeOutputs[outputPos] > 0) && (genomeOutputs[outputPos + 1] < 0)) {
+						//		fakeWallet += incomingTrainingData[trainingDataIndex] * (1 - networkTax);		//Sell
+						//	}
+						//	
+						//	if ((genomeOutputs[outputPos] < 0) && (genomeOutputs[outputPos + 1] > 0)) {
+						//		fakeWallet += incomingTrainingData[trainingDataIndex] * (1 - networkTax);		//Sell
+						//	}
+						//}
+					}
+					
+					genomes[GetGenomeIndex(ThreadIds.X)].fitness = fakeWallet;
+					RollbackAndAdjustWeight(ThreadIds.X);
 				}
 			}
 			
@@ -874,7 +902,7 @@ namespace CryptoAI {
 				}
 			}
 			
-			public void RollbackAndAdjustWeights(int nodeID) {
+			public void RollbackAndAdjustWeight(int nodeID) {
 				int genIndex = GetGenomeIndex(nodeID);
 				if (genomes[genIndex].fitness < genomes[genIndex].prev_fitness) {
 					nodes[nodeID].tT = nodes[nodeID].pTT;
