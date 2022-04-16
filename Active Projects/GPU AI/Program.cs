@@ -37,7 +37,7 @@ namespace CryptoAI {
 			AI_GPU.trainingData = new double[1000];
 			for (int i = 0; i < AI_GPU.trainingData.Length; i++) { AI_GPU.trainingData[i] = AI_Internal_Core.getRandomFloat(); }
 			
-			AI.NewNetworkGPU(50,150,200,8,2);
+			AI.NewNetworkGPU(150,150,300,6,2);
 			AI.CreateTrainingSavingLoop();
 			//AI.SaveNetworkGPU("F:/GPU Crypto AI");
 			//AI.LoadNetworkGPU("F:/GPU Crypto AI");
