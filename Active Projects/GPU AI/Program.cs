@@ -1,10 +1,11 @@
 ﻿using System;
 using System.IO;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
+
 using ComputeSharp;
 using Newtonsoft.Json;
 using NI = CryptoAI.NetworkInterface;
-using System.Runtime.InteropServices;
 
 namespace CryptoAI {
 	public class Program {
@@ -33,13 +34,14 @@ namespace CryptoAI {
 			
 			AI_GPU AI = new AI_GPU();
 			AI_GPU.saveDirectory = desktop + "Andrey AI/";
+			AI_GPU.trainingData = new double[1000];
+			for (int i = 0; i < AI_GPU.trainingData.Length; i++) { AI_GPU.trainingData[i] = AI_Internal_Core.getRandomFloat(); }
 			
-			AI.NewNetworkGPU(1000,150,200,8,2);
+			AI.NewNetworkGPU(50,150,200,8,2);
 			AI.CreateTrainingSavingLoop();
 			//AI.SaveNetworkGPU("F:/GPU Crypto AI");
 			//AI.LoadNetworkGPU("F:/GPU Crypto AI");
 			
-			Console.WriteLine("Size of AI: " + ((double)Marshal.SizeOf(AI.NGPU)/1000000).ToString() + " MB");
 			NI.PrintFormattedMsg("CryptoAI","SUCCESS","Completed network tests");
 			while(true) {}
 		}

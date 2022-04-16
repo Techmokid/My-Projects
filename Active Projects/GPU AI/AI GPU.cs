@@ -29,10 +29,10 @@ namespace CryptoAI {
 	// - Now that we are iterating over every connection, we simply call the node in nodes[nodeConnections[i].NodeID] and do the algorithm
 	
 	public partial class AI_GPU {
-		public Network_GPU NGPU;
+		public static Network_GPU NGPU;
 		public static string saveDirectory = "";
 		public static int numberOfIndexesPerThread = 10000;
-		public double[] trainingData = null;
+		public static double[] trainingData = null;
 		static bool CPUIsReadyForCopying = false;
 		static bool GPUIsReady = false;
 		static bool once = false;
@@ -46,21 +46,21 @@ namespace CryptoAI {
 		}
 		
 		public struct Node_GPU {
-			public char nAT = ' ';				// 'c' is classic. 'n' is neural
-			public int ID = -1;									// The ID of this node
+			public int nAT = -1;		//node Activation Type		// 0 is classic. 1 is neural
+			public int ID = -1;			//Identification code		// The ID of this node
 			
-			public double tT = 0;								// Minimum amount of input before triggering
-			public double pTT = 0;
-			public double tS = 0;								// Strength of the output transmition
-			public double pTS = 0;
+			public double tT = 0;		//trigger Threshold 		// Minimum amount of input before triggering
+			public double pTT = 0;		//previous Trigger Threshold
+			public double tS = 0;		//trigger Strength  		// Strength of the output transmition
+			public double pTS = 0;		//previous Trigger Strength
 			
-			public bool nII = false; 							// Is the node is an input or not
-			public bool nIO = false; 							// Is the node is an output or not
-			public double nIV = 0;								// If the node is an input, what have we entered
-			public double pO = -99999;							// This variable just allows for quicker genome output computing
+			public bool nII = false; 	//node Is Input				// Is the node is an input or not
+			public bool nIO = false; 	//node Is Output			// Is the node is an output or not
+			public double nIV = 0;		//node Input Value			// If the node is an input, what have we entered
+			public double pO = -99999;	//precalculated Output		// This variable just allows for quicker genome output computing
 			
-			public int wSI = 0; 					// Complex. This is the position in the array where the weights are held
-			public int wEI = 0;
+			public int wSI = 0; 		//weights Start Index		// This is the position in the weights array where the start of this nodes connections are held
+			public int wEI = 0;			//weights End Index			// This is the position in the weights array where the end of this nodes connections are held
 		}
 		
 		public struct NodeConnection_GPU {
@@ -82,6 +82,7 @@ namespace CryptoAI {
 			workerThreadGPU.Start();
 			SaveNetworkGPU();
 			CPUIsReadyForCopying = true;
+			NI.PrintFormattedMsg("GPU","DEBUG","Waiting for GPU to finish...");
 			while(!GPUIsReady) {} //Do nothing
 		}
 		
@@ -252,6 +253,7 @@ namespace CryptoAI {
 		public void CheckGPUStatus() {
 			if (trainingData != null) {
 				while(!CPUIsReadyForCopying) {
+					NI.PrintFormattedMsg("CPU","DEBUG","CPU has not finished saving to disk. Iterating GPU again");
 					TrainNetwork(1000,trainingData);
 				}
 			}
@@ -530,18 +532,18 @@ namespace CryptoAI {
 			
 			using ReadWriteBuffer<double> trainingBuff = GraphicsDevice.Default.AllocateReadWriteBuffer(trainingData);
 			
-			GraphicsDevice.Default.For(NGPU.genomes.Length, new GPU_AI_PerGenome(
-				gBuff,
-				nBuff,
-				cBuff,
-				inputsBuff,
-				outputsBuff,
-				iterations,
-				(int)Math.Floor(1000000*AI_Internal_Core.getRandomFloat()),
-				NGPU.genomes.Length,
-				randOffsetBuff,
-				trainingBuff,
-				true
+			GraphicsDevice.Default.For(NGPU.nodes.Length, new GPU_AI_PerNode(
+				gBuff,					// Genomes buffer
+				nBuff,					// Nodes buffer
+				cBuff,					// Node connections buffer
+				inputsBuff,				// Inputs buffer
+				outputsBuff,			// Outputs buffer
+				iterations,				// The number of times to iterate training
+				(int)Math.Floor(1000000*AI_Internal_Core.getRandomFloat()),	//Just a random seed for the AI
+				NGPU.nodes.Length,		// The thread count (Technically there should be a variable for this, but idk what it is)
+				randOffsetBuff,			// Random offsets buffer
+				trainingBuff,			// The training data buffer
+				true					// Are we training or just getting an output
 			));
 			
 			gBuff.CopyTo(NGPU.genomes);
@@ -575,7 +577,7 @@ namespace CryptoAI {
 			
 			using ReadWriteBuffer<double> trainingBuff = GraphicsDevice.Default.AllocateReadWriteBuffer(new double[0]);
 			
-			GraphicsDevice.Default.For(NGPU.genomes.Length, new GPU_AI_PerGenome(
+			GraphicsDevice.Default.For(NGPU.genomes.Length, new GPU_AI_PerNode(
 				gBuff,
 				nBuff,
 				cBuff,
@@ -796,9 +798,9 @@ namespace CryptoAI {
 		}
 		
 		[AutoConstructor]
-		public readonly partial struct GPU_AI_PerGenome : IComputeShader {
+		public readonly partial struct GPU_AI_PerNode : IComputeShader {
 			public readonly ReadWriteBuffer<Genome_GPU> genomes;	                  	// This contains the genome objects that tell the GPU where each genome starts
-			public readonly ReadWriteBuffer<Node_GPU> nodes;		                  	// This contains the node object
+			public readonly ReadWriteBuffer<Node_GPU> nodes;		                  	// This contains the node objects
 			public readonly ReadWriteBuffer<NodeConnection_GPU> nodeConnections;		// This contains all of the node connections data
 			
 			public readonly ReadWriteBuffer<double> genomeInputs;
@@ -814,141 +816,107 @@ namespace CryptoAI {
 			public readonly bool isTraining;
 			
 			public void Execute() {
-				int x = ThreadIds.X;
-				
-				int genomeID = genomes[x].ID;
-				int nodeStartingIndex = genomes[x].Nodes_Start_Index;
-				int nodeEndingIndex = genomes[x].Nodes_End_Index;
-				
-				//The first set of nodes is going to be inputs. Set their values
-				for (int i = 0; i < genomeInputs.Length; i++) {
-					nodes[nodeStartingIndex + i].nIV = genomeInputs[i];
+				if (!isTraining) {
+					CalculateNodeOutput(ThreadIds.X);
+					return;
 				}
 				
-				//Now that we have all the input nodes set, we simply request the output nodes to give us their outputs iteratively
-				int outputNodesStart = nodeStartingIndex + genomeInputs.Length;
-				while(!nodes[outputNodesStart].nIO) { outputNodesStart++; }
-				
-				int outputNodeCount = nodeEndingIndex - outputNodesStart;
-				if (isTraining) {
-					for (int i = 0; i < numberOfIterations; i++) {
-						TrainNetwork(x, outputNodeCount*x, outputNodeCount*x + outputNodeCount - 1);
-						AdjustNetworkWeights(x);
-					}
-				} else {
-					for (int i = 0; i <= outputNodeCount; i++) {
-						//Here we just call the node to give us it's output
-						genomeOutputs[outputNodeCount*x + i] = GetNodeOutput(i);
-					}
+				for(int iteration = 0; iteration < numberOfIterations; iteration++) {
+					CalculateNodeOutput(ThreadIds.X);
+					genomes[GetGenomeIndex(ThreadIds.X)].fitness = 0; //Temp value for testing
+					RollbackAndAdjustWeights(ThreadIds.X);
 				}
 			}
 			
-			public double GetNodeOutput(int nodeMemoryPosition) {
-				if (nodes[nodeMemoryPosition].nII)							// If the node is an input, just return it's value
-					return nodes[nodeMemoryPosition].nIV;					
-				if (nodes[nodeMemoryPosition].pO != -99999)					// If the node has already calculated it's output, just return that
-					return nodes[nodeMemoryPosition].pO;
+			public void CalculateNodeOutput(int ID) {
+				int genomePos = GetGenomeIndex(ID);
 				
-				//Here we wanna calculate the nodes output
+				//If we are an input node, take the value from the inputs array
+				if (nodes[ID].nII) {
+					int i = genomes[genomePos].Nodes_Start_Index - ID;
+					nodes[ID].nIV = genomeInputs[i];
+					nodes[ID].pO = nodes[ID].nIV;
+					return;
+				}
+				
+				//If we are not an input node, we have to calculate our output value based on the previous nodes
+				//All nodes are doing this simultaneously, so we just wait a moment until the nodes before us have finished, then we can give a response
+				//Yes yes, I know that pausing execution and waiting for something on the GPU is bad. This is my code, and if it works, it can't be that bad
 				double result = 0;
-				for(int i = nodes[nodeMemoryPosition].wSI; i <= nodes[nodeMemoryPosition].wEI; i++) {
-					result += GetNodeOutput(nodeConnections[i].NodePos) * nodeConnections[i].Weight;
+				for (int i = nodes[ID].wSI; i <= nodes[ID].wEI; i++) {
+					int prevNodeIndex = nodeConnections[i].NodePos;
+					while (nodes[prevNodeIndex].pO == -99999) {}
+					result += nodes[prevNodeIndex].pO * nodeConnections[i].Weight;
 				}
 				
-				char nAT= nodes[nodeMemoryPosition].nAT;
-				if (nAT == 'c') {			// A classic node: "Output is just the sum all all the incoming values multiplied by their weight"
-				} else if (nAT == 'n') { 	// A neural node: "Output will fire with output value 'tS' when the sum of all incoming values multiplied by their weight equals or exceeds 'tT'"
-					if (result >= nodes[nodeMemoryPosition].tT)
-						result = nodes[nodeMemoryPosition].tS;
-				} else { return -999999; }
+				//Just handle the exception where SOMEHOW our output value ends up being EXACTLY the same as the error value
+				if (result == -99999) { result += 0.00001; }
 				
-				nodes[nodeMemoryPosition].pO = result;
-				return result;
-			}
-			
-			public void AdjustNetworkWeights(int genomeID) {
-				if (genomes[genomeID].fitness < genomes[genomeID].prev_fitness) {
-					for (int i = genomes[genomeID].Nodes_Start_Index; i <= genomes[genomeID].Nodes_End_Index; i++) {
-						if (!nodes[i].nII) {
-							for (int y = nodes[i].wSI; y <= nodes[i].wEI; y++) {
-								nodeConnections[y].Weight = nodeConnections[y].Prev_Weight;
-								genomes[genomeID].fitness = genomes[genomeID].prev_fitness;
-							}
-						}
+				if (nodes[ID].nAT == 0) {
+					nodes[ID].pO = result;
+				} else if (nodes[ID].nAT == 1) {
+					if (result >= nodes[ID].tT) {
+						nodes[ID].pO = nodes[ID].tS;
+					} else {
+						nodes[ID].pO = 0;
 					}
-				} else {
-					genomes[genomeID].prev_fitness = genomes[genomeID].fitness;
 				}
 				
-				//Now we just randomly add a tiny float to each connection weighting
-				for (int i = genomes[genomeID].Nodes_Start_Index; i <= genomes[genomeID].Nodes_End_Index; i++) {
-					if (!nodes[i].nII) {
-						for (int y = nodes[i].wSI; y <= nodes[i].wEI; y++) {
-							double val = 0.00001f * (2 * GetRandomFloat(genomeID) - 1);
-							nodeConnections[y].Weight += val;
-							if ((nodeConnections[y].Weight > 1) || (nodeConnections[y].Weight < 0))
-								nodeConnections[y].Weight -= 2*val;
-						}
-					}
+				//Is the node an output? If so, we must put our result into the output array of the GPU
+				if (nodes[ID].nIO) {
+					int outputsPerGenome = genomeOutputs.Length/genomes.Length;
+					//int outputArrayStartPos = outputsPerGenome*genomePos;
+					//int outputArrayEndPos = (outputsPerGenome + 1)*genomePos - 1;
+					int genomeNodesEnd = genomes[genomePos].Nodes_End_Index;
+					int outputNodesIndexStart = genomeNodesEnd - outputsPerGenome + 1;
+					int outputNodeIndex = outputsPerGenome*genomePos + ID - outputNodesIndexStart;
+					genomeOutputs[outputNodeIndex] = result;
 				}
 			}
 			
-			public double GetRandomFloat(int genomeID) {
-				int randomInputSeed = genomeID + randomOffset[genomeID] * maxThreadCount + randomSeed;
-				randomOffset[genomeID] = randomOffset[genomeID] + 1;
+			public void RollbackAndAdjustWeights(int nodeID) {
+				int genIndex = GetGenomeIndex(nodeID);
+				if (genomes[genIndex].fitness < genomes[genIndex].prev_fitness) {
+					nodes[nodeID].tT = nodes[nodeID].pTT;
+					nodes[nodeID].tS = nodes[nodeID].pTS;
+				}
+				
+				nodes[nodeID].pO = -99999;
+				
+				double adjustmentVar = 0.00001;
+				nodes[nodeID].pTT = nodes[nodeID].tT;
+				nodes[nodeID].tT = clamp(nodes[nodeID].tT + 2*adjustmentVar*GetRandomFloat(nodeID) - adjustmentVar,0,1);
+				nodes[nodeID].pTS = nodes[nodeID].tS;
+				nodes[nodeID].tS = clamp(nodes[nodeID].tS + 2*adjustmentVar*GetRandomFloat(nodeID) - adjustmentVar,0,1);
+			}
+			
+			public int GetGenomeIndex(int nodeID) { return (int)Math.Floor((float)((double)genomes.Length * (double)nodeID / (double)nodes.Length)); }
+			
+			public double clamp(double x, double m, double M) {
+				if (x > M)
+					x = M;
+				if (x < m)
+					x = m;
+				return x;
+			}
+			
+			// Simple code for getting a random number on the GPU
+			public double dot(double a1, double a2, double b1, double b2) { return a1*b1 + a2*b2; }
+			public double frac(double x) { return  x - Math.Floor((float)x); }
+			public double GetRandomFloat(int nodeID) {
+				int randomInputSeed = nodeID + randomOffset[nodeID] * maxThreadCount + randomSeed;
+				randomOffset[nodeID] = randomOffset[nodeID] + 1;
 				
 				double vec1A = (double)randomInputSeed;
-				double vec1B = (double)randomInputSeed;
+				double vec1B = 3.072 * (double)randomInputSeed + 0.518;
 				double vec2A = 12.9898;
 				double vec2B = 78.233;
 				
 				return frac(
 					Math.Sin(
-						dot(vec1A, vec1B, vec2A, vec2B)
+						(float)dot(vec1A, vec1B, vec2A, vec2B)
 					) * 43758.5453
 				);
-			}
-			
-			public double dot(double a1, double a2, double b1, double b2) { return a1*b1 + a2*b2; }
-			
-			public double frac(double x) { return  x - Math.Floor(x); }
-			
-			public void TrainNetwork(int x, int outputsStart, int outputsEnd) {
-				double fakeWallet = 0;
-				for(int iTD = 0; iTD < incomingTrainingData.Length - genomeInputs.Length; iTD++) {
-					//StartInputs		= genomeID.Nodes_Start_Index;
-					//EndInputs			= genomeID.Nodes_End_Index;
-					//StartInputData	= iTD;
-					//EndInputData		= iTD - genomeInputs.Length;
-					int genomeID = genomes[x].ID;
-					int nodeStartingIndex = genomes[x].Nodes_Start_Index;
-					int nodeEndingIndex = genomes[x].Nodes_End_Index;
-					
-					//The first set of nodes is going to be inputs. Set their values
-					for (int i = 0; i < genomeInputs.Length; i++) {
-						nodes[nodeStartingIndex + i].nIV = incomingTrainingData[i + iTD];
-					}
-					
-					//Now that we have all the input nodes set, we simply request the output nodes to give us their outputs iteratively
-					int outputNodesStart = nodeStartingIndex + genomeInputs.Length;
-					while(!nodes[outputNodesStart].nIO) { outputNodesStart++; }
-					
-					int outputNodeCount = nodeEndingIndex - outputNodesStart;
-					for (int i = 0; i <= outputNodeCount; i++) {
-						//Here we just call the node to give us it's output
-						genomeOutputs[outputNodeCount*x + i] = GetNodeOutput(i);
-					}
-					
-					double trainingVal = incomingTrainingData[iTD + genomeInputs.Length - 1];
-					if ((genomeOutputs[outputNodeCount*x] > 0) && (genomeOutputs[outputNodeCount*x+1] < 0)) {
-						fakeWallet -= trainingVal;								//BUY
-					} else if ((genomeOutputs[outputNodeCount*x] < 0) && (genomeOutputs[outputNodeCount*x+1] > 0)) {
-						fakeWallet += trainingVal + trainingVal*0.05;			//SELL
-					}
-				}
-				
-				genomes[x].prev_fitness = genomes[x].fitness;
-				genomes[x].fitness = fakeWallet;
 			}
 		}
 	}
