@@ -821,10 +821,14 @@ namespace CryptoAI {
 					return;
 				}
 				
+				double fakeCoins = 0;
+				double fakeWallet = 1000;
+				double networkBuyTax = 0.01;
+				double networkSellTax = 0.01;
 				for(int iteration = 0; iteration < numberOfIterations; iteration++) {
-					double fakeWallet = 1000;
 					for(int trainingDataIndex = 0; trainingDataIndex < incomingTrainingData.Length - genomeInputs.Length; trainingDataIndex++) {
 						int genomeInputsStart = genomes[GetGenomeIndex(ThreadIds.X)].Nodes_Start_Index;
+						int outputsPerGenome = genomeOutputs.Length/genomes.Length;
 						if (nodes[ThreadIds.X].nII) {
 							//Set the training data to the node input here
 							nodes[ThreadIds.X].nIV = incomingTrainingData[trainingDataIndex + ThreadIds.X - genomeInputsStart];
@@ -832,23 +836,40 @@ namespace CryptoAI {
 						}
 						
 						//Wait until all the input nodes are set.
-						for (int n = 0; n < genomeInputs.Length; n++) {
-							while(nodes[genomeInputsStart + n].pO == -99999) {}		
+						if (!nodes[ThreadIds.X].nII) {
+							for (int n = 0; n < genomeInputs.Length; n++) {
+								while(nodes[genomeInputsStart + n].pO == -99999) {}		
+							}
+							
+							//Now that all the input nodes are set, we can run the calculation
+							CalculateNodeOutput(ThreadIds.X);
+						} else {
+							for (int n = 0; n < outputsPerGenome; n++) {
+								while(nodes[genomeInputsStart + n].pO == -99999) {}		
+							}
 						}
 						
-						//Now that all the input nodes are set, we can run the calculation
-						//if () {
-						//	double networkTax = 0.05;
-						//	int outputPos = ;
-						//	CalculateNodeOutput(ThreadIds.X);
-						//	if ((genomeOutputs[outputPos] > 0) && (genomeOutputs[outputPos + 1] < 0)) {
-						//		fakeWallet += incomingTrainingData[trainingDataIndex] * (1 - networkTax);		//Sell
-						//	}
-						//	
-						//	if ((genomeOutputs[outputPos] < 0) && (genomeOutputs[outputPos + 1] > 0)) {
-						//		fakeWallet += incomingTrainingData[trainingDataIndex] * (1 - networkTax);		//Sell
-						//	}
-						//}
+						//One single node per genome gets the priveledge to calculate the fitness
+						if (ThreadIds.X == genomeInputsStart) {
+							int outputPos = GetGenomeIndex(ThreadIds.X) * outputsPerGenome;
+							if ((genomeOutputs[outputPos] > 0) && (genomeOutputs[outputPos + 1] < 0)) {
+								fakeWallet = fakeCoins * incomingTrainingData[trainingDataIndex] * (1 - networkSellTax);		//Sell
+								fakeCoins = 0;
+							}
+							
+							if ((genomeOutputs[outputPos] < 0) && (genomeOutputs[outputPos + 1] > 0)) {
+								if (fakeWallet > 0) {
+									fakeCoins = fakeWallet / incomingTrainingData[trainingDataIndex] * (1 - networkBuyTax);		//Buy
+									fakeWallet = 0;
+								}
+							}
+						}
+						
+						//Synchronise all threads so that the nodes don't start calculating asychronously and causing havoc in memory
+						nodes[ThreadIds.X].pO = -99999;
+						for (int i = 0; i < genomeOutputs.Length/genomes.Length; i++) {
+							while(nodes[genomeInputsStart + i].pO != -99999) {}
+						}
 					}
 					
 					genomes[GetGenomeIndex(ThreadIds.X)].fitness = fakeWallet;
