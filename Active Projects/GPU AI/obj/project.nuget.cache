@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "QkdZU0V6aHq1JRwnemhrDFDSOFMrRoaTus9vsgTwC9I4Su9LVJ/EvfoHm/fMQmNYirbr4PfuJxL0NZfe3YOX7w==",
+  "dgSpecHash": "rapjZE/DEKWwVQLaHtmPoRF6ilo287R/5Hqxop83eL6WURgE7SzwEAzFvmqxeWinN1kZV6A1fA22syytf8/umQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\Active Projects\\GPU AI\\GPU AI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\aj200\\.nuget\\packages\\communitytoolkit.diagnostics\\8.0.0-preview1\\communitytoolkit.diagnostics.8.0.0-preview1.nupkg.sha512",
     "C:\\Users\\aj200\\.nuget\\packages\\computesharp\\2.0.0-alpha.18\\computesharp.2.0.0-alpha.18.nupkg.sha512",
     "C:\\Users\\aj200\\.nuget\\packages\\computesharp.dynamic\\2.0.0-alpha.18\\computesharp.dynamic.2.0.0-alpha.18.nupkg.sha512",
+    "C:\\Users\\aj200\\.nuget\\packages\\ironxl.excel\\2022.3.0\\ironxl.excel.2022.3.0.nupkg.sha512",
     "C:\\Users\\aj200\\.nuget\\packages\\microsoft.bcl\\1.1.10\\microsoft.bcl.1.1.10.nupkg.sha512",
     "C:\\Users\\aj200\\.nuget\\packages\\microsoft.bcl.async\\1.0.168\\microsoft.bcl.async.1.0.168.nupkg.sha512",
     "C:\\Users\\aj200\\.nuget\\packages\\microsoft.bcl.build\\1.0.21\\microsoft.bcl.build.1.0.21.nupkg.sha512",

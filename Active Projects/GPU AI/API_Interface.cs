@@ -13,6 +13,10 @@ using unirest_net.http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
+using IronXL;
+
+using CryptoAI;
+
 //Kline/Candlestick data 			GET		/api/v3/klines
 //New order 						POST 	/api/v3/order 		(HMAC SHA256)
 //Test new order 					POST 	/api/v3/order/test 	(HMAC SHA256)
@@ -25,10 +29,11 @@ using Newtonsoft.Json.Linq;
 
 namespace Binance_API {
     public static class API {
-		public static string filePath = "C:/Users/aj200/Documents/GitHub/My-Projects/My-Projects/Active Projects/Crypto AI/Compiled NEAT/C#/SaveData/HistoricDataCache.txt";
+		public static string filePath = "Z:/SaveData/";
 		static string key = "wWsD2wSqNNyyzAdk6RNeHwrF0chaREPLTIQBKAKUe6QkNlXXS4eEK5zEn5IKu0I7";
 		static string secret = "IHMgTvIRQgcV0I3UiqFZqoj647K4YsaTC9DsEPK6v01HSYbsgb9h3NEiU9HEssiR";
 		public static bool createdJSON = false;
+		public static bool realTrading = false;
 		
 		public static bool getServerConnectivity() {
 			try {
@@ -122,11 +127,11 @@ namespace Binance_API {
 					} catch {}
 				}
 				
-				File.WriteAllText(filePath, fileDataResult2);
+				File.WriteAllText(filePath + "HistoricDataCache.txt", fileDataResult2);
 			}
 			
 			string fileDataResult = "";
-			StreamReader file = new StreamReader(filePath);
+			StreamReader file = new StreamReader(filePath + "HistoricDataCache.txt");
 			string line = file.ReadLine();
 			while (line != null) {
 				fileDataResult += line + "\n";
@@ -313,14 +318,45 @@ namespace Binance_API {
 		//	LIMITMAKER
 		//};
 		public static string createNewBuySellOrder(string symbol, string side, float quantity) {
-			return API.makeSecureCall(
-				"https://api.binance.com/api/v3/order"
-				, "symbol=" + symbol
-				+ "&side=" + side
-				+ "&type=MARKET"
-				+ "&quoteOrderQty=" + quantity
-				//+ "&quantity=" + quantity
-				, "POST"
+			if (realTrading) {
+				string tmp = API.makeSecureCall(
+					"https://api.binance.com/api/v3/order"
+					, "symbol=" + symbol
+					+ "&side=" + side
+					+ "&type=MARKET"
+					+ "&quoteOrderQty=" + quantity
+					//+ "&quantity=" + quantity
+					, "POST"
+				);
+				SaveTradeToJsonDocument(symbol, side, quantity);
+				return tmp;
+			} else {
+				SaveTradeToJsonDocument(symbol, side, quantity);
+				return null;
+			}
+		}
+		
+		public static void SaveTradeToJsonDocument(string symbol, string side, float quantity) {
+			if (!Directory.Exists(filePath + "Crypto Trades/"))
+				Directory.CreateDirectory(filePath + "Crypto Trades/");
+			
+			int tradeID = 0;
+			string directory = filePath + "Crypto Trades/Crypto Trade" + tradeID + ".json";
+			while (File.Exists(directory)) {
+				tradeID++;
+				directory = filePath + "Crypto Trades/Crypto Trade" + tradeID + ".json";
+			}
+			
+			File.Create(directory);
+			File.WriteAllText(directory,
+							  "{\n\t\"Date UTC\":" + DateTime.UtcNow.ToLongDateString() + 
+							  ",\n\t\"Time UTC\":" + DateTime.UtcNow.TimeOfDay.ToString() +
+							  ",\n\t\"Date Local\":" + DateTime.Now.ToLongDateString() +
+							  ",\n\t\"Time Local\":" + DateTime.Now.TimeOfDay.ToString() +
+							  ",\n\t\"Symbol\":" + symbol +
+							  ",\n\t\"BuyOrSell\":\"" + side +
+							  "\",\n\t\"Quantity\"" + quantity.ToString() +
+							  "\n}"
 			);
 		}
 		

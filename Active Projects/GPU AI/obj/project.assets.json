@@ -54,6 +54,15 @@
           }
         }
       },
+      "IronXL.Excel/2022.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/IronXL.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/IronXL.dll": {}
+        }
+      },
       "Microsoft.Bcl/1.1.10": {
         "type": "package",
         "dependencies": {
@@ -275,6 +284,24 @@
         "runtimes/win-arm64/native/dxil.dll",
         "runtimes/win-x64/native/dxcompiler.dll",
         "runtimes/win-x64/native/dxil.dll"
+      ]
+    },
+    "IronXL.Excel/2022.3.0": {
+      "sha512": "Sunj3e+i6gwwq00nOYd62Zd/bh42adpVTs2Fk3YSNa7iryM3kW0DFE2pMpfVJjHWdwFKfkf5sA3moZaQ/C6CZg==",
+      "type": "package",
+      "path": "ironxl.excel/2022.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "EULA.txt",
+        "ironxl.excel.2022.3.0.nupkg.sha512",
+        "ironxl.excel.nuspec",
+        "lib/net45/IronXL.dll",
+        "lib/net45/IronXL.xml",
+        "lib/netstandard2.0/IronXL.dll",
+        "lib/netstandard2.0/IronXL.xml",
+        "readme-setup.txt",
+        "readme.txt"
       ]
     },
     "Microsoft.Bcl/1.1.10": {
@@ -673,6 +700,7 @@
     "net6.0-windows7.0": [
       "ComputeSharp >= 2.0.0-alpha.18",
       "ComputeSharp.Dynamic >= 2.0.0-alpha.18",
+      "IronXL.Excel >= 2022.3.0",
       "Newtonsoft.Json >= 13.0.1",
       "System.Drawing.Common >= 4.5.0",
       "System.Runtime.CompilerServices.Unsafe >= 6.0.0",
@@ -730,6 +758,10 @@
             "target": "Package",
             "version": "[2.0.0-alpha.18, )"
           },
+          "IronXL.Excel": {
+            "target": "Package",
+            "version": "[2022.3.0, )"
+          },
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.1, )"
@@ -762,7 +794,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.104\\RuntimeIdentifierGraph.json"
       }
     }
   },

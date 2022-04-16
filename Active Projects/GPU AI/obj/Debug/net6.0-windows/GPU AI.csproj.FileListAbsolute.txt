@@ -38,3 +38,4 @@ C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU AI\obj\Debug\net
 C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU AI\obj\Debug\net6.0-windows\ref\GPU AI.dll
 C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU AI\obj\Debug\net6.0-windows\GPU AI.pdb
 C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU AI\obj\Debug\net6.0-windows\GPU AI.genruntimeconfig.cache
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU AI\bin\Debug\net6.0-windows\IronXL.dll

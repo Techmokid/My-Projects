@@ -16,20 +16,20 @@ namespace CryptoAI {
 		public static Network n = null;
 		
         public static void SetupRandom() { rand = new System.Random(); }
-		public static float getRandomFloat() {
+		public static double getRandomFloat() {
 			if (!initialized)
 				SetupRandom();
 			initialized = true;
 			
-			return (float)rand.NextDouble();
+			return (double)rand.NextDouble();
 		}
     }
 	
 	public struct NodeConnection {
 		public Node n;
-		public float w;
-		public float prev_w = -99999;
-		public NodeConnection(Node x, float y) {n=x;w=y;}
+		public double w;
+		public double prev_w = -99999;
+		public NodeConnection(Node x, double y) {n=x;w=y;}
 	}
 	
 	public class Node {
@@ -37,36 +37,36 @@ namespace CryptoAI {
 		public int ID = -1;									// The ID of this node
 		public NodeConnection[] cN = new NodeConnection[0];	// All of the connected nodes downstream (Rolling end to start)
 		
-		public float tT = 0;								// Minimum amount of input before triggering
-		public float prev_tT = 0;
-		public float tS = 0;								// Strength of the output transmition
-		public float prev_tS = 0;
+		public double tT = 0;								// Minimum amount of input before triggering
+		public double prev_tT = 0;
+		public double tS = 0;								// Strength of the output transmition
+		public double prev_tS = 0;
 		
 		public bool nII = false; 							// Is the node is an input or not
 		public bool nIO = false; 							// Is the node is an output or not
-		public float nIV = 0;								// If the node is an input, what have we entered
-		public float pO = -99999;							// This variable just allows for quicker genome output computing
+		public double nIV = 0;								// If the node is an input, what have we entered
+		public double pO = -99999;							// This variable just allows for quicker genome output computing
 		
 		public Node(int _ID, NodeConnection[] _connected_nodes) {
 			ID = _ID;
 			cN = _connected_nodes;
 		}
 		
-		public float getNodeOutput() {
+		public double getNodeOutput() {
 			if (pO != -99999)
 				return pO;
 			
 			if (nII)
 				return nIV;
 			
-			float inVals = 0;
+			double inVals = 0;
 			for (int i = 0; i < cN.Length; i++) {
 				inVals += cN[i].n.getNodeOutput() * cN[i].w;
 			}
 			
 			switch (NodeActivationType.ToLower()) {
 				case "neural":
-					if (tT < (inVals/((float)cN.Length))) {
+					if (tT < (inVals/((double)cN.Length))) {
 						//Enough of the inputs have triggered
 						pO = tS;
 						return tS;
@@ -74,7 +74,7 @@ namespace CryptoAI {
 					pO = 0;
 					return 0;
 				case "classic":
-					return inVals/((float)cN.Length);
+					return inVals/((double)cN.Length);
 				default:
 					return 0;
 			}
@@ -100,8 +100,8 @@ namespace CryptoAI {
 		// Neural is the all-or-nothing-response
 		public string GenomeType = "";
 		
-		public float fitness;
-		public float prev_fitness;
+		public double fitness;
+		public double prev_fitness;
 		public int ID = 0;
 		
 		public void resetGenomeToPreviousState() {
@@ -125,7 +125,7 @@ namespace CryptoAI {
 			}
 		}
 		
-		public void GetGenomeOutput(float[] inputValues, ref float[] outputValues) {
+		public void GetGenomeOutput(double[] inputValues, ref double[] outputValues) {
 			if (inputNodes.Length != inputValues.Count()) {
 				NetworkInterface.PrintFormattedMsg("CryptoAI","ERROR","Incorrect size of input array upon GetGenomeOutput()");
 				NetworkInterface.PrintFormattedMsg("CryptoAI","ERROR","Received " + inputValues.Count().ToString() +
@@ -165,19 +165,13 @@ namespace CryptoAI {
 				dir += '/';
 			
 			saveDirectory = dir;
-			saveDirectory += "CryptoAI/";
+			//saveDirectory += "CryptoAI/";
 			if (Directory.Exists(saveDirectory))
 				Directory.CreateDirectory(saveDirectory);
 		}
 		
 		public static Genome LoadBestGenome(string dir) { SetDirectory(dir); return LoadBestGenome(); }
 		public static Genome LoadBestGenome() {
-			if (saveDirectory == "") {
-				Console.ForegroundColor = ConsoleColor.Red;
-				PrintFormattedMsg("CryptoAI","ERROR","Could not load best genome. LoadBestGenome was called without setting save directory");
-				quit();
-			}
-			
 			if (saveDirectory == "") {
 				Console.ForegroundColor = ConsoleColor.Red;
 				PrintFormattedMsg("CryptoAI","ERROR","Could not load best genome. LoadBestGenome was called without setting save directory");
@@ -274,12 +268,12 @@ namespace CryptoAI {
 					n.NodeActivationType = g.GenomeType;
 					//n.NodeActivationType = (string)nodeJSON["nAT"];
 					
-					n.tT = (float)nodeJSON["tT"];
-					n.tS = (float)nodeJSON["tS"];
+					n.tT = (double)nodeJSON["tT"];
+					n.tS = (double)nodeJSON["tS"];
 					n.nII = (bool)nodeJSON["nII"];
 					n.nIO = (bool)nodeJSON["nIO"];
-					n.nIV = (float)nodeJSON["nIV"];
-					n.pO = (float)nodeJSON["pO"];
+					n.nIV = (double)nodeJSON["nIV"];
+					n.pO = (double)nodeJSON["pO"];
 					
 					if (!n.nII) {
 						List<NodeConnection> nC_List = new List<NodeConnection>();
@@ -420,7 +414,7 @@ namespace CryptoAI {
 							x--;
 							if (once2) {
 								once2 = false;
-								float predictedTime = stopwatch.Elapsed.Milliseconds * (float)N.genomes.Length/(float)maxThreadCount;
+								double predictedTime = stopwatch.Elapsed.Milliseconds * (double)N.genomes.Length/(double)maxThreadCount;
 								//PrintFormattedMsg("AI Config","DEBUG","Predicted time for this process: " + predictedTime);
 								stopwatch.Stop();
 							}
@@ -437,7 +431,7 @@ namespace CryptoAI {
 						x--;
 						if (once2) {
 							once2 = false;
-							float predictedTime = stopwatch.Elapsed.Milliseconds * (float)N.genomes.Length/(float)maxThreadCount;
+							double predictedTime = stopwatch.Elapsed.Milliseconds * (double)N.genomes.Length/(double)maxThreadCount;
 							//PrintFormattedMsg("AI Config","DEBUG","Predicted time for this process: " + predictedTime);
 							stopwatch.Stop();
 						}
@@ -449,7 +443,7 @@ namespace CryptoAI {
 			return N;
 		}
 		
-		private static void CopyFilesRecursively(string sourcePath, string targetPath) {
+		public static void CopyFilesRecursively(string sourcePath, string targetPath) {
 			//Now Create all of the directories
 			foreach (string dirPath in Directory.GetDirectories(sourcePath, "*", SearchOption.AllDirectories)) {
 				Directory.CreateDirectory(dirPath.Replace(sourcePath, targetPath));
@@ -563,9 +557,9 @@ namespace CryptoAI {
 			string netBackupDir = saveDirectory + "Network Save Backup/";
 			string netStatusFile = saveDirectory + "saveStatus.txt";
 			
-			//float sizeOfSingleGenome = JsonConvert.SerializeObject(N.genomes[0]).Length;
-			//float genomeCount = N.inputNodesCount + N.outputNodesCount + N.hiddenLayerCount*N.hiddenLayerWidth;
-			//float sizeOnDisk = genomeCount*2*sizeOfSingleGenome/1000000000;
+			//double sizeOfSingleGenome = JsonConvert.SerializeObject(N.genomes[0]).Length;
+			//double genomeCount = N.inputNodesCount + N.outputNodesCount + N.hiddenLayerCount*N.hiddenLayerWidth;
+			//double sizeOnDisk = genomeCount*2*sizeOfSingleGenome/1000000000;
 			//PrintFormattedMsg("CryptoAI","DEBUG","Saving AI network. This process using the JSON serializer would be estimated to take up: " + sizeOnDisk.ToString() + " GB of disk space");
 			if (!Directory.Exists(saveDirectory))
 				Directory.CreateDirectory(saveDirectory);
@@ -974,7 +968,7 @@ namespace CryptoAI {
 			
 			string genomeDirectory = TDC.dir;
 			
-			float bytesTakenByGenome = 0;
+			double bytesTakenByGenome = 0;
 			
 			if (NetworkInterface.dumpAndPump) {
 				//Console.WriteLine(genomeDirectory + "Genome " + TDC.g.ID + ".json");
@@ -1134,12 +1128,12 @@ namespace CryptoAI {
 					n.NodeActivationType = g.GenomeType;
 					//n.NodeActivationType = (string)nodeJSON["nAT"];
 					
-					n.tT = (float)nodeJSON["tT"];
-					n.tS = (float)nodeJSON["tS"];
+					n.tT = (double)nodeJSON["tT"];
+					n.tS = (double)nodeJSON["tS"];
 					n.nII = (bool)nodeJSON["nII"];
 					n.nIO = (bool)nodeJSON["nIO"];
-					n.nIV = (float)nodeJSON["nIV"];
-					n.pO = (float)nodeJSON["pO"];
+					n.nIV = (double)nodeJSON["nIV"];
+					n.pO = (double)nodeJSON["pO"];
 					
 					if (!n.nII) {
 						List<NodeConnection> nC_List = new List<NodeConnection>();

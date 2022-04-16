@@ -2,11 +2,14 @@
 using System.IO;
 using System.Diagnostics;
 using ComputeSharp;
-
+using Newtonsoft.Json;
 using NI = CryptoAI.NetworkInterface;
+using System.Runtime.InteropServices;
 
 namespace CryptoAI {
-	public partial class Program {
+	public class Program {
+		static string desktop = "C:/Users/aj200/Desktop/";
+		
 		static void Main(string[] args) {
 			Console.Clear();
 			
@@ -27,29 +30,18 @@ namespace CryptoAI {
 			
 			//DisplayManager.StartDisplay();
 			NI.PrintFormattedMsg("CryptoAI","LOG","Starting...");
-			NI.SetDirectory("Z:/");
 			
-			Network N = NI.NewNetwork_CPU_MT(1000,150,200,5,2);
-			//Network N = NI.LoadNetwork_MT();
+			AI_GPU AI = new AI_GPU();
+			AI_GPU.saveDirectory = desktop + "Andrey AI/";
 			
-			NI.RegenerateAllGenomes_CPU(ref N);
-			NI.CalculateNextNetworkIteration_CPU_MT(ref N);
+			AI.NewNetworkGPU(1000,150,200,8,2);
+			AI.CreateTrainingSavingLoop();
+			//AI.SaveNetworkGPU("F:/GPU Crypto AI");
+			//AI.LoadNetworkGPU("F:/GPU Crypto AI");
 			
-			NI.PrintFormattedMsg("CryptoAI","LOG","Getting Genome output");
-			
-			//NI.SaveNetwork(N);
-			
+			Console.WriteLine("Size of AI: " + ((double)Marshal.SizeOf(AI.NGPU)/1000000).ToString() + " MB");
 			NI.PrintFormattedMsg("CryptoAI","SUCCESS","Completed network tests");
-			Console.ReadKey();
+			while(true) {}
 		}
-		
-		//dataScreen AIStatusText1 =   DisplayManager.addScreen(40,2,"Left","Top"," Algorithm  Status ");
-		//dataScreen AIStatusText2 =   DisplayManager.addScreen(40,3,"Left","Top","      Offline    ");
-		//dataScreen AIStatusText3 =   DisplayManager.addScreen(40,4,"Left","Top","");
-		//dataScreen AIStatusText4 =   DisplayManager.addScreen(40,5,"Left","Top","");
-		//DisplayManager.createGroup(new List<dataScreen> {AIStatusText1,AIStatusText2,AIStatusText3,AIStatusText4});
-			
-		//AIStatusText2.data =   "    Loading Genome";
-		//DisplayManager.updateDisplays();
 	}
 }
