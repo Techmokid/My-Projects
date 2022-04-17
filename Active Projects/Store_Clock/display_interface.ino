@@ -1,96 +1,28 @@
+const int segmentMap[] = {
+  1,1,1,0,0,1,1,1,  //0
+  1,0,0,0,0,1,0,0,  //1
+  1,1,0,1,0,0,1,1,  //2
+  1,1,0,1,0,1,1,0,  //3
+  1,0,1,1,0,1,0,0,  //4
+  0,1,1,1,0,1,1,0,  //5
+  0,1,1,1,0,1,1,1,  //6
+  1,1,0,0,0,1,0,0,  //7
+  1,1,1,1,0,1,1,1,  //8
+  1,1,1,1,0,1,1,0   //9
+};
+
+//digitalWrite(dispPins[disp*8 + 4],(disp == 1 || disp == 3);
 void setDisplay(int disp,int val) {
-  if (val == 0) {
-    digitalWrite(dispPins[disp*8 + 0],HIGH);
-    digitalWrite(dispPins[disp*8 + 1],HIGH);
-    digitalWrite(dispPins[disp*8 + 2],HIGH);
-    digitalWrite(dispPins[disp*8 + 3],LOW);
-    digitalWrite(dispPins[disp*8 + 4],(disp == 1 || disp == 3);
-    digitalWrite(dispPins[disp*8 + 5],HIGH);
-    digitalWrite(dispPins[disp*8 + 6],HIGH);
-    digitalWrite(dispPins[disp*8 + 7],HIGH);
-  } else if (val == 1) {
-    digitalWrite(dispPins[disp*8 + 0],HIGH);
-    digitalWrite(dispPins[disp*8 + 1],LOW);
-    digitalWrite(dispPins[disp*8 + 2],LOW);
-    digitalWrite(dispPins[disp*8 + 3],LOW);
-    digitalWrite(dispPins[disp*8 + 4],(disp == 1 || disp == 3);
-    digitalWrite(dispPins[disp*8 + 5],HIGH);
-    digitalWrite(dispPins[disp*8 + 6],LOW);
-    digitalWrite(dispPins[disp*8 + 7],LOW);
-  } else if (val == 2) {
-    digitalWrite(dispPins[disp*8 + 0],HIGH);
-    digitalWrite(dispPins[disp*8 + 1],HIGH);
-    digitalWrite(dispPins[disp*8 + 2],LOW);
-    digitalWrite(dispPins[disp*8 + 3],HIGH);
-    digitalWrite(dispPins[disp*8 + 4],(disp == 1 || disp == 3);
-    digitalWrite(dispPins[disp*8 + 5],LOW);
-    digitalWrite(dispPins[disp*8 + 6],HIGH);
-    digitalWrite(dispPins[disp*8 + 7],HIGH);
-  } else if (val == 3) {
-    digitalWrite(dispPins[disp*8 + 0],HIGH);
-    digitalWrite(dispPins[disp*8 + 1],HIGH);
-    digitalWrite(dispPins[disp*8 + 2],LOW);
-    digitalWrite(dispPins[disp*8 + 3],HIGH);
-    digitalWrite(dispPins[disp*8 + 4],(disp == 1 || disp == 3);
-    digitalWrite(dispPins[disp*8 + 5],HIGH);
-    digitalWrite(dispPins[disp*8 + 6],HIGH);
-    digitalWrite(dispPins[disp*8 + 7],LOW);
-  } else if (val == 4) {
-    digitalWrite(dispPins[disp*8 + 0],HIGH);
-    digitalWrite(dispPins[disp*8 + 1],LOW);
-    digitalWrite(dispPins[disp*8 + 2],HIGH);
-    digitalWrite(dispPins[disp*8 + 3],HIGH);
-    digitalWrite(dispPins[disp*8 + 4],(disp == 1 || disp == 3);
-    digitalWrite(dispPins[disp*8 + 5],HIGH);
-    digitalWrite(dispPins[disp*8 + 6],LOW);
-    digitalWrite(dispPins[disp*8 + 7],LOW);
-  } else if (val == 5) {
-    digitalWrite(dispPins[disp*8 + 0],LOW);
-    digitalWrite(dispPins[disp*8 + 1],HIGH);
-    digitalWrite(dispPins[disp*8 + 2],HIGH);
-    digitalWrite(dispPins[disp*8 + 3],HIGH);
-    digitalWrite(dispPins[disp*8 + 4],(disp == 1 || disp == 3);
-    digitalWrite(dispPins[disp*8 + 5],HIGH);
-    digitalWrite(dispPins[disp*8 + 6],HIGH);
-    digitalWrite(dispPins[disp*8 + 7],LOW);
-  } else if (val == 6) {
-    digitalWrite(dispPins[disp*8 + 0],LOW);
-    digitalWrite(dispPins[disp*8 + 1],HIGH);
-    digitalWrite(dispPins[disp*8 + 2],HIGH);
-    digitalWrite(dispPins[disp*8 + 3],HIGH);
-    digitalWrite(dispPins[disp*8 + 4],(disp == 1 || disp == 3);
-    digitalWrite(dispPins[disp*8 + 5],HIGH);
-    digitalWrite(dispPins[disp*8 + 6],HIGH);
-    digitalWrite(dispPins[disp*8 + 7],HIGH);
-  } else if (val == 7) {
-    digitalWrite(dispPins[disp*8 + 0],HIGH);
-    digitalWrite(dispPins[disp*8 + 1],HIGH);
-    digitalWrite(dispPins[disp*8 + 2],LOW);
-    digitalWrite(dispPins[disp*8 + 3],LOW);
-    digitalWrite(dispPins[disp*8 + 4],(disp == 1 || disp == 3);
-    digitalWrite(dispPins[disp*8 + 5],HIGH);
-    digitalWrite(dispPins[disp*8 + 6],LOW);
-    digitalWrite(dispPins[disp*8 + 7],LOW);
-  } else if (val == 8) {
-    digitalWrite(dispPins[disp*8 + 0],HIGH);
-    digitalWrite(dispPins[disp*8 + 1],HIGH);
-    digitalWrite(dispPins[disp*8 + 2],HIGH);
-    digitalWrite(dispPins[disp*8 + 3],HIGH);
-    digitalWrite(dispPins[disp*8 + 4],(disp == 1 || disp == 3);
-    digitalWrite(dispPins[disp*8 + 5],HIGH);
-    digitalWrite(dispPins[disp*8 + 6],HIGH);
-    digitalWrite(dispPins[disp*8 + 7],HIGH);
-  } else if (val == 9) {
-    digitalWrite(dispPins[disp*8 + 0],HIGH);
-    digitalWrite(dispPins[disp*8 + 1],HIGH);
-    digitalWrite(dispPins[disp*8 + 2],HIGH);
-    digitalWrite(dispPins[disp*8 + 3],HIGH);
-    digitalWrite(dispPins[disp*8 + 4],(disp == 1 || disp == 3);
-    digitalWrite(dispPins[disp*8 + 5],HIGH);
-    digitalWrite(dispPins[disp*8 + 6],HIGH);
-    digitalWrite(dispPins[disp*8 + 7],LOW);
-  } else {
-    turnOffDisp(disp);
+  if (disp < 0 || disp > 9) { turnOffDisp(disp); return; }
+
+  for(int segmentIndex = 0; segmentIndex < 8; segmentIndex++) {
+    bool displayIsDecimalPoint = (disp == 1) || (disp == 3);
+    if ((segmentIndex != 4) || (!displayIsDecimalPoint)) {
+      digitalWrite(dispPins[disp*8 + segmentIndex], segmentMap[val*8 + segmentIndex]);
+    } else {
+      //The segment index refers to the decimal point, AND the display in question is a decimal point display
+      digitalWrite(dispPins[disp*8 + segmentIndex],HIGH);
+    }
   }
 }
 
