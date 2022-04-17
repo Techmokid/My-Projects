@@ -17,16 +17,32 @@ const int dispPins[] = {
 };
 
 void setup() {
-  for(int i = 0; i < 6; i++) {
-    turnOnDisp(i);
-    delay(200);
-  }
-  for(int i = 0; i < 6; i++) {
-    turnOffDisp(i);
-    delay(200);
-  }
-
-  digitalWrite(dispPins[8],HIGH);
+  displayTest();
+  
+  identifyDisplays();
 }
 
 void loop() { }
+
+void identifyDisplays() {
+  setDisplay(0,1);
+  setDisplay(1,2);
+  setDisplay(2,3);
+  setDisplay(3,4);
+  setDisplay(4,5);
+  setDisplay(5,6);
+}
+
+void displayTest() {
+  for(int i = 0; i < 6; i++) {
+    turnOnDisp(i);
+    delay(250);
+  }
+
+  delay(1000);
+  
+  for(int i = 0; i < 6; i++) {
+    turnOffDisp(i);
+    delay(250);
+  }
+}
