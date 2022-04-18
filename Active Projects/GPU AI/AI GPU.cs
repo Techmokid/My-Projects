@@ -32,7 +32,8 @@ namespace CryptoAI {
 		public static Network_GPU NGPU;
 		public static string saveDirectory = "";
 		public static int numberOfIndexesPerThread = 10000;
-		public static double[] trainingData = null;
+		public static List<double[]> trainingData = null;
+		public static double[] currentTrainingData = null;
 		static bool CPUIsReadyForCopying = false;
 		static bool GPUIsReady = false;
 		static bool once = false;
@@ -250,11 +251,32 @@ namespace CryptoAI {
 			NI.PrintFormattedMsg("AI","LOG","Actual save time taken: " + TimeFormatter((double)S.Elapsed.Milliseconds / 1000 / 60 / 60));
 		}
 		
+		public void CheckGPUStatus(List<double[]> data) {
+			if (trainingData != null) {
+				trainingData = data;
+				CheckGPUStatus();
+			}
+			GPUIsReady = true;
+		}
 		public void CheckGPUStatus() {
 			if (trainingData != null) {
 				while(!CPUIsReadyForCopying) {
-					NI.PrintFormattedMsg("CPU","DEBUG","CPU has not finished saving to disk. Iterating GPU again");
-					TrainNetwork(1000,trainingData);
+					for(int i = 0; i < trainingData.Count; i++) {
+						currentTrainingData = trainingData[i];
+						TrainNetwork(1000);
+						
+						double bestFitness = 0;
+						for (int x = 0; x < NGPU.genomes.Length; x++) {
+							if (NGPU.genomes[x].fitness > bestFitness)
+								bestFitness = NGPU.genomes[x].fitness;
+						}
+						NI.PrintFormattedMsg("CPU","DEBUG",i + "/" + trainingData.Count + "\t\tBest Fitness: " + bestFitness);
+					}
+					if (!CPUIsReadyForCopying) {
+						NI.PrintFormattedMsg("CPU","DEBUG","CPU has not finished saving to disk. Iterating GPU again");
+					} else {
+						NI.PrintFormattedMsg("CPU","DEBUG","CPU has finished saving to disk. Copying GPU AI to RAM");
+					}
 				}
 			}
 			GPUIsReady = true;
@@ -502,10 +524,6 @@ namespace CryptoAI {
 			}
 		}
 		
-		public void TrainNetwork(int iterations, double[] _trainingData) {
-			trainingData = _trainingData;
-			TrainNetwork(iterations);
-		}
 		public void TrainNetwork(int iterations) {
 			int inputsCount = 0;
 			int outputsCount = 0;
@@ -530,7 +548,7 @@ namespace CryptoAI {
 			
 			using ReadWriteBuffer<int> randOffsetBuff = GraphicsDevice.Default.AllocateReadWriteBuffer(new int[NGPU.genomes.Length]);
 			
-			using ReadWriteBuffer<double> trainingBuff = GraphicsDevice.Default.AllocateReadWriteBuffer(trainingData);
+			using ReadWriteBuffer<double> trainingBuff = GraphicsDevice.Default.AllocateReadWriteBuffer(currentTrainingData);
 			
 			GraphicsDevice.Default.For(NGPU.nodes.Length, new GPU_AI_PerNode(
 				gBuff,					// Genomes buffer
@@ -767,7 +785,7 @@ namespace CryptoAI {
 					}
 				}
 				
-				NGPU.nodes[i].tT = AI_Internal_Core.getRandomFloat()*(NGPU.nodes[i].wEI-NGPU.nodes[i].wSI);
+				NGPU.nodes[i].tT = (NGPU.nodes[i].wEI-NGPU.nodes[i].wSI);//*AI_Internal_Core.getRandomFloat();
 				NGPU.nodes[i].pTT = NGPU.nodes[i].tT;						// Previous Transmition Threshold
 			}
 			
@@ -852,16 +870,14 @@ namespace CryptoAI {
 						//One single node per genome gets the priveledge to calculate the fitness
 						if (ThreadIds.X == genomeInputsStart) {
 							int outputPos = GetGenomeIndex(ThreadIds.X) * outputsPerGenome;
-							if ((genomeOutputs[outputPos] > 0) && (genomeOutputs[outputPos + 1] < 0)) {
+							if ((genomeOutputs[outputPos] > 0) && (fakeCoins > 0)) {
 								fakeWallet = fakeCoins * incomingTrainingData[trainingDataIndex] * (1 - networkSellTax);		//Sell
 								fakeCoins = 0;
 							}
 							
-							if ((genomeOutputs[outputPos] < 0) && (genomeOutputs[outputPos + 1] > 0)) {
-								if (fakeWallet > 0) {
-									fakeCoins = fakeWallet / incomingTrainingData[trainingDataIndex] * (1 - networkBuyTax);		//Buy
-									fakeWallet = 0;
-								}
+							if ((genomeOutputs[outputPos + 1] > 0) && (fakeWallet > 0)) {
+								fakeCoins = fakeWallet / incomingTrainingData[trainingDataIndex];		//Buy
+								fakeWallet = 0;
 							}
 						}
 						
@@ -932,7 +948,7 @@ namespace CryptoAI {
 				
 				nodes[nodeID].pO = -99999;
 				
-				double adjustmentVar = 0.00001;
+				double adjustmentVar = 0.001;
 				nodes[nodeID].pTT = nodes[nodeID].tT;
 				nodes[nodeID].tT = clamp(nodes[nodeID].tT + 2*adjustmentVar*GetRandomFloat(nodeID) - adjustmentVar,0,1);
 				nodes[nodeID].pTS = nodes[nodeID].tS;

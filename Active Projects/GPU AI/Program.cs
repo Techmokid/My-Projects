@@ -1,9 +1,12 @@
 ﻿using System;
 using System.IO;
 using System.Diagnostics;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-using ComputeSharp;
+using BasicAlgorithm;
+using Binance_API;
+//using ComputeSharp;
 using Newtonsoft.Json;
 using NI = CryptoAI.NetworkInterface;
 
@@ -34,11 +37,20 @@ namespace CryptoAI {
 			
 			AI_GPU AI = new AI_GPU();
 			AI_GPU.saveDirectory = desktop + "Andrey AI/";
-			AI_GPU.trainingData = new double[1000];
-			for (int i = 0; i < AI_GPU.trainingData.Length; i++) { AI_GPU.trainingData[i] = AI_Internal_Core.getRandomFloat(); }
+			AI_GPU.trainingData = new List<double[]>();
 			
 			AI.NewNetworkGPU(150,150,300,6,2);
-			AI.CreateTrainingSavingLoop();
+			
+			NI.PrintFormattedMsg("CryptoAI","LOG","");
+			API.UpdateAllCoinsData(300);
+			AI_GPU.trainingData = API.allCoinsData;
+			NI.PrintFormattedMsg("CryptoAI","SUCCESS","Retrieved all crypto data");
+			
+			//CryptoAlgorithm CA = new CryptoAlgorithm();
+			//CA.analyzeData();
+			while(true) {
+				AI.CreateTrainingSavingLoop();
+			}
 			//AI.SaveNetworkGPU("F:/GPU Crypto AI");
 			//AI.LoadNetworkGPU("F:/GPU Crypto AI");
 			

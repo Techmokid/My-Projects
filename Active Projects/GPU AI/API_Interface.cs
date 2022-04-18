@@ -34,6 +34,8 @@ namespace Binance_API {
 		static string secret = "IHMgTvIRQgcV0I3UiqFZqoj647K4YsaTC9DsEPK6v01HSYbsgb9h3NEiU9HEssiR";
 		public static bool createdJSON = false;
 		public static bool realTrading = false;
+		public static List<double[]> allCoinsData = null;
+		public static JObject ExchangeInfo;
 		
 		public static bool getServerConnectivity() {
 			try {
@@ -60,15 +62,13 @@ namespace Binance_API {
 		public static string getExchangeInfo() {
 			if (!getServerConnectivity()) { throw new Exception("No Server Connection"); }
 			
-			string result;
 			while(true) {
 				try {
-					result = Unirest.get("https://api.binance.com/api/v3/exchangeInfo").asJson<string>().Body.ToString();
-					break;
+					string result = Unirest.get("https://api.binance.com/api/v3/exchangeInfo").asJson<string>().Body.ToString();
+					ExchangeInfo = (JObject)JsonConvert.DeserializeObject(result);
+					return result;
 				} catch {}
 			}
-			
-			return result;
 		}
 		
 		public static string getOrderBook(string symbol) { return getOrderBook(symbol,-1); }
@@ -127,11 +127,11 @@ namespace Binance_API {
 					} catch {}
 				}
 				
-				File.WriteAllText(filePath + "HistoricDataCache.txt", fileDataResult2);
+				File.WriteAllText(filePath + "HistoricDataCache.json", fileDataResult2);
 			}
 			
 			string fileDataResult = "";
-			StreamReader file = new StreamReader(filePath + "HistoricDataCache.txt");
+			StreamReader file = new StreamReader(filePath + "HistoricDataCache.json");
 			string line = file.ReadLine();
 			while (line != null) {
 				fileDataResult += line + "\n";
@@ -383,6 +383,25 @@ namespace Binance_API {
 			using (StreamWriter sw = File.AppendText(filePath)) {
 				foreach(string x in data.Split(",")) {
 					sw.WriteLine("\t" + x + ",");
+				}
+			}
+		}
+		
+		public static void UpdateAllCoinsData() { UpdateAllCoinsData(1); }
+		public static void UpdateAllCoinsData(int minimumDataCount) {
+			allCoinsData = new List<double[]>();
+			getExchangeInfo();
+			JArray jArr = (JArray)ExchangeInfo["symbols"];
+			for (int i = 0; i < jArr.Count; i++) {
+				string symbol = jArr[i]["symbol"].ToString();
+				string symbolData = getHistoricTrades(symbol,10000);
+				JArray tmp = (JArray)JsonConvert.DeserializeObject(symbolData);
+				
+				if (tmp.Count >= minimumDataCount) {
+					double[] result = new double[tmp.Count];
+					for(int x = 0; x < tmp.Count; x++) { result[x] = (double)tmp[x]["price"]; }
+				
+					allCoinsData.Add(result);
 				}
 			}
 		}

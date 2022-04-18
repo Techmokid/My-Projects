@@ -16,3 +16,5 @@ For creating custom commands in windows command-line using python
  - https://www.youtube.com/watch?v=-o5qOQa6j00
 List of all 280 windows 10 commandline commands:
  - https://www.lifewire.com/list-of-command-prompt-commands-4092302
+List of all linux commands:
+ - https://stackoverflow.com/questions/948008/linux-command-to-list-all-available-commands-and-aliases
