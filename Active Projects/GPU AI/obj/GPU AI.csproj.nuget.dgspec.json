@@ -67,6 +67,10 @@
               "target": "Package",
               "version": "[6.0.0, )"
             },
+            "TensorFlow.NET": {
+              "target": "Package",
+              "version": "[0.70.1, )"
+            },
             "Unirest-API": {
               "target": "Package",
               "version": "[1.0.7.6, )"

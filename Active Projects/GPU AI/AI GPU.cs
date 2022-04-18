@@ -37,6 +37,7 @@ namespace CryptoAI {
 		static bool CPUIsReadyForCopying = false;
 		static bool GPUIsReady = false;
 		static bool once = false;
+		static double trainingWanderVariable = 1.0;
 		
 		public struct Genome_GPU {
 			public int ID = -1;
@@ -263,14 +264,20 @@ namespace CryptoAI {
 				while(!CPUIsReadyForCopying) {
 					for(int i = 0; i < trainingData.Count; i++) {
 						currentTrainingData = trainingData[i];
-						TrainNetwork(1000);
+						TrainNetwork(25000);
 						
-						double bestFitness = 0;
+						double worstFitness = double.PositiveInfinity;
+						double bestFitness = double.NegativeInfinity;
+						double meanFitness = 0;
 						for (int x = 0; x < NGPU.genomes.Length; x++) {
+							meanFitness += NGPU.genomes[x].fitness;
 							if (NGPU.genomes[x].fitness > bestFitness)
 								bestFitness = NGPU.genomes[x].fitness;
+							if (NGPU.genomes[x].fitness < worstFitness)
+								worstFitness = NGPU.genomes[x].fitness;
 						}
-						NI.PrintFormattedMsg("CPU","DEBUG",i + "/" + trainingData.Count + "\t\tBest Fitness: " + bestFitness);
+						meanFitness /= NGPU.genomes.Length;
+						NI.PrintFormattedMsg("CPU","DEBUG",i + "/" + trainingData.Count + "\t\tBest Fitness: " + bestFitness + "\t\tWorst Fitness: " + worstFitness + "\t\tMean Fitness: " + meanFitness);
 					}
 					if (!CPUIsReadyForCopying) {
 						NI.PrintFormattedMsg("CPU","DEBUG","CPU has not finished saving to disk. Iterating GPU again");
@@ -742,10 +749,10 @@ namespace CryptoAI {
 			for(int i = 0; i < NGPU.nodes.Length; i++) {
 				NGPU.nodes[i].ID = i;
 				
-				char[] genomeActivationTypes = new char[] { 'c','n' };
+				//char[] genomeActivationTypes = new char[] { 'c','n' };
 				//int randomIndex = AI_Internal_Core.rand.Next(genomeActivationTypes.Length);
 				//NGPU.nodes[i].nAT = genomeActivationTypes[randomIndex];
-				NGPU.nodes[i].nAT = 'n';
+				NGPU.nodes[i].nAT = 0;
 				
 				NGPU.nodes[i].tS = AI_Internal_Core.getRandomFloat();
 				NGPU.nodes[i].pTS = NGPU.nodes[i].tS;						// Previous Transmition Strength
@@ -767,6 +774,8 @@ namespace CryptoAI {
 					for (int x = 0; x < numConnections; x++) {
 						int pos = tempWeightsCount + x;
 						NGPU.connections[pos].NodePos = firstIndex + x;
+						NGPU.connections[pos].Weight = AI_Internal_Core.getRandomFloat();
+						NGPU.connections[pos].Prev_Weight = NGPU.connections[pos].Weight;
 					}
 					
 					tempWeightsCount += numConnections;
@@ -782,10 +791,12 @@ namespace CryptoAI {
 					for (int x = 0; x < numConnections; x++) {
 						int pos = NGPU.nodes[i].wSI + x;
 						NGPU.connections[pos].NodePos = startPoint + x;
+						NGPU.connections[pos].Weight = AI_Internal_Core.getRandomFloat();
+						NGPU.connections[pos].Prev_Weight = NGPU.connections[pos].Weight;
 					}
 				}
 				
-				NGPU.nodes[i].tT = (NGPU.nodes[i].wEI-NGPU.nodes[i].wSI);//*AI_Internal_Core.getRandomFloat();
+				NGPU.nodes[i].tT = (NGPU.nodes[i].wEI-NGPU.nodes[i].wSI)*AI_Internal_Core.getRandomFloat();
 				NGPU.nodes[i].pTT = NGPU.nodes[i].tT;						// Previous Transmition Threshold
 			}
 			
@@ -841,12 +852,13 @@ namespace CryptoAI {
 				
 				double fakeCoins = 0;
 				double fakeWallet = 1000;
+				double fakeTotal = 1000;
 				double networkBuyTax = 0.01;
 				double networkSellTax = 0.01;
+				int genomeInputsStart = genomes[GetGenomeIndex(ThreadIds.X)].Nodes_Start_Index;
+				int outputsPerGenome = genomeOutputs.Length/genomes.Length;
 				for(int iteration = 0; iteration < numberOfIterations; iteration++) {
 					for(int trainingDataIndex = 0; trainingDataIndex < incomingTrainingData.Length - genomeInputs.Length; trainingDataIndex++) {
-						int genomeInputsStart = genomes[GetGenomeIndex(ThreadIds.X)].Nodes_Start_Index;
-						int outputsPerGenome = genomeOutputs.Length/genomes.Length;
 						if (nodes[ThreadIds.X].nII) {
 							//Set the training data to the node input here
 							nodes[ThreadIds.X].nIV = incomingTrainingData[trainingDataIndex + ThreadIds.X - genomeInputsStart];
@@ -886,9 +898,11 @@ namespace CryptoAI {
 						for (int i = 0; i < genomeOutputs.Length/genomes.Length; i++) {
 							while(nodes[genomeInputsStart + i].pO != -99999) {}
 						}
+						
+						fakeTotal += fakeWallet + fakeCoins*incomingTrainingData[trainingDataIndex + genomeInputs.Length];
 					}
 					
-					genomes[GetGenomeIndex(ThreadIds.X)].fitness = fakeWallet;
+					genomes[GetGenomeIndex(ThreadIds.X)].fitness = genomeOutputs[GetGenomeIndex(ThreadIds.X) * outputsPerGenome];//fakeTotal;
 					RollbackAndAdjustWeight(ThreadIds.X);
 				}
 			}
@@ -948,11 +962,11 @@ namespace CryptoAI {
 				
 				nodes[nodeID].pO = -99999;
 				
-				double adjustmentVar = 0.001;
+				double adjustmentVar = 0.1;
 				nodes[nodeID].pTT = nodes[nodeID].tT;
-				nodes[nodeID].tT = clamp(nodes[nodeID].tT + 2*adjustmentVar*GetRandomFloat(nodeID) - adjustmentVar,0,1);
+				nodes[nodeID].tT = 0.5;//clamp(nodes[nodeID].tT + (GetRandomFloat(nodeID) * adjustmentVar * 2 - adjustmentVar),0,1);
 				nodes[nodeID].pTS = nodes[nodeID].tS;
-				nodes[nodeID].tS = clamp(nodes[nodeID].tS + 2*adjustmentVar*GetRandomFloat(nodeID) - adjustmentVar,0,1);
+				nodes[nodeID].tS = 0.5;//clamp(nodes[nodeID].tS + (GetRandomFloat(nodeID) * adjustmentVar * 2 - adjustmentVar),0,1);
 			}
 			
 			public int GetGenomeIndex(int nodeID) { return (int)Math.Floor((float)((double)genomes.Length * (double)nodeID / (double)nodes.Length)); }

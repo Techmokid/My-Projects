@@ -37,18 +37,17 @@ namespace CryptoAI {
 			
 			AI_GPU AI = new AI_GPU();
 			AI_GPU.saveDirectory = desktop + "Andrey AI/";
-			AI_GPU.trainingData = new List<double[]>();
+			//AI_GPU.trainingData = new List<double[]>();
 			
 			AI.NewNetworkGPU(150,150,300,6,2);
-			
-			NI.PrintFormattedMsg("CryptoAI","LOG","");
+			NI.PrintFormattedMsg("CryptoAI","LOG","Retrieving crypto data....");
 			API.UpdateAllCoinsData(300);
 			AI_GPU.trainingData = API.allCoinsData;
 			NI.PrintFormattedMsg("CryptoAI","SUCCESS","Retrieved all crypto data");
 			
 			//CryptoAlgorithm CA = new CryptoAlgorithm();
-			//CA.analyzeData();
-			while(true) {
+			//CA.analyzeData(API.allCoinsData);
+			for(int i = 0; i < 3; i++) {
 				AI.CreateTrainingSavingLoop();
 			}
 			//AI.SaveNetworkGPU("F:/GPU Crypto AI");
