@@ -6,7 +6,6 @@ using System.Runtime.InteropServices;
 
 using BasicAlgorithm;
 using Binance_API;
-//using ComputeSharp;
 using Newtonsoft.Json;
 using NI = CryptoAI.NetworkInterface;
 
@@ -39,7 +38,7 @@ namespace CryptoAI {
 			AI_GPU.saveDirectory = desktop + "Andrey AI/";
 			//AI_GPU.trainingData = new List<double[]>();
 			
-			AI.NewNetworkGPU(150,150,300,6,2);
+			AI.NewNetworkGPU(100,150,300,6,2);
 			NI.PrintFormattedMsg("CryptoAI","LOG","Retrieving crypto data....");
 			API.UpdateAllCoinsData(300);
 			AI_GPU.trainingData = API.allCoinsData;
