@@ -616,6 +616,11 @@ namespace CryptoAI {
 				false
 			));
 			
+			outputsBuff.CopyTo(outputsArray);
+			for(int i = 0; i < outputsArray.Length; i++) {
+				Console.WriteLine(outputsArray[i]);
+			}
+			
 			//Split the outputsBuff array into a list of smaller "double" arrays
 			//genome.Nodes_End_Index - genome.Nodes_Start_Index
 			List<double[]> result = new List<double[]>();
@@ -944,6 +949,7 @@ namespace CryptoAI {
 				//Is the node an output? If so, we must put our result into the output array of the GPU
 				//W.I.P WHY DOES THIS NOT EVER TRIGGER?!?!?!?!?!?!?
 				if (nodes[ID].nIO) {
+					genomeOutputs[0] = 1;
 					int outputsPerGenome = genomeOutputs.Length/genomes.Length;
 					//int outputArrayStartPos = outputsPerGenome*genomePos;
 					//int outputArrayEndPos = (outputsPerGenome + 1)*genomePos - 1;
