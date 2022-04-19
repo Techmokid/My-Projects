@@ -1,8 +1,6 @@
 ﻿using System;
-using System.IO;
-using System.Diagnostics;
+using System.Threading;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 
 using BasicAlgorithm;
 using Binance_API;
@@ -33,22 +31,65 @@ namespace CryptoAI {
 			
 			//DisplayManager.StartDisplay();
 			NI.PrintFormattedMsg("CryptoAI","LOG","Starting...");
+			NI.PrintFormattedMsg("CryptoAI","LOG","Retrieving crypto data....");
+			API.UpdateAllCoinsData(300);
+			NI.PrintFormattedMsg("CryptoAI","SUCCESS","Retrieved all crypto data");
 			
 			AI_GPU AI = new AI_GPU();
 			AI_GPU.saveDirectory = desktop + "Andrey AI/";
-			//AI_GPU.trainingData = new List<double[]>();
 			
 			AI.NewNetworkGPU(100,150,300,6,2);
-			NI.PrintFormattedMsg("CryptoAI","LOG","Retrieving crypto data....");
-			API.UpdateAllCoinsData(300);
 			AI_GPU.trainingData = API.allCoinsData;
-			NI.PrintFormattedMsg("CryptoAI","SUCCESS","Retrieved all crypto data");
+			List<double[]> results = AI.GetNetworkOutput(AI_GPU.trainingData[0]);
+			for(int i = 0; i < results.Count; i++) {
+			//	Console.WriteLine("Genome " + i + ": " + results[i][0] + "\t\t\t" + results[i][1]);
+			}
+			
+			AI.SaveNetworkGPU();
+			
+			
+			//for(int i = 0; i < AI_GPU.NGPU.nodes.Length; i++) {
+			//	Console.WriteLine("ID: " + i + "\t\tnII: " + AI_GPU.NGPU.nodes[i].nII + "\t\tnIO: " + AI_GPU.NGPU.nodes[i].nIO);
+			//	Thread.Sleep(100);
+			//}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			//AI_GPU.trainingData = new List<double[]>();
+			//for (int i = 0; i < 15; i++) {
+			//	double[] tmp = new double[350];
+			//	for(int x = 0; x < tmp.Length; x++) {
+			//		tmp[x] = 1;
+			//	}
+			//	
+			//	AI_GPU.trainingData.Add(tmp);
+			//}
+			
 			
 			//CryptoAlgorithm CA = new CryptoAlgorithm();
 			//CA.analyzeData(API.allCoinsData);
-			for(int i = 0; i < 3; i++) {
-				AI.CreateTrainingSavingLoop();
-			}
+			//for(int i = 0; i < 2; i++) {
+			//	AI.CreateTrainingSavingLoop();
+			//}
+			
+			//AI.GetNetworkOutput(AI_GPU.trainingData);
+			//for(int i = 0; i < ; i++) {
+			//	
+			//}
+			
 			//AI.SaveNetworkGPU("F:/GPU Crypto AI");
 			//AI.LoadNetworkGPU("F:/GPU Crypto AI");
 			

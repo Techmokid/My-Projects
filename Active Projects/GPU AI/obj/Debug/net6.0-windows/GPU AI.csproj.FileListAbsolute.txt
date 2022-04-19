@@ -47,3 +47,4 @@ C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU AI\bin\Debug\net
 C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU AI\bin\Debug\net6.0-windows\Serilog.dll
 C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU AI\bin\Debug\net6.0-windows\Serilog.Sinks.Console.dll
 C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU AI\bin\Debug\net6.0-windows\Tensorflow.Binding.dll
+C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU AI\bin\Debug\net6.0-windows\NumSharp.dll

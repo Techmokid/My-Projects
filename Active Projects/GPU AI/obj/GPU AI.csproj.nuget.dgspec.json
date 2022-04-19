@@ -59,6 +59,10 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
+            "NumSharp": {
+              "target": "Package",
+              "version": "[0.30.0, )"
+            },
             "System.Drawing.Common": {
               "target": "Package",
               "version": "[4.5.0, )"
