@@ -48,9 +48,9 @@ const int segmentMap[] = {
 
 void setDisplay(int disp,char val) {
   val = tolower(val);
-  if (disp > 47 && disp < 58) {
+  if (val > 47 && val < 58) {
     val -= 48;
-  } else if (disp > 96 && disp < 123) {
+  } else if (val > 96 && val < 123) {
     val -= 97 + 10;
   } else {
     turnOffDisp(disp);
@@ -59,6 +59,7 @@ void setDisplay(int disp,char val) {
 
   for(int segmentIndex = 0; segmentIndex < 8; segmentIndex++) {
     bool displayIsDecimalPoint = (disp == 1) || (disp == 3);
+    pinMode(dispPins[disp*8 + segmentIndex],OUTPUT);
     if ((segmentIndex == 4) && (displayIsDecimalPoint)) {
       //The segment index refers to the decimal point, AND the display in question is a decimal point display
       digitalWrite(dispPins[disp*8 + segmentIndex], HIGH);
@@ -134,10 +135,10 @@ void displayTime(int h, int m, int s) {
   dispMins2 = m - 10*dispMins1;
   dispSecs1 = floor(float(s) / 10);
   dispSecs2 = s - 10*dispSecs1;
-  setDisplay(0,String(dispHrs1)[0]);
-  setDisplay(1,String(dispHrs2)[0]);
-  setDisplay(2,String(dispMins1)[0]);
-  setDisplay(3,String(dispMins2)[0]);
-  setDisplay(4,String(dispSecs1)[0]);
-  setDisplay(5,String(dispSecs2)[0]);
+  setDisplay(2,String(dispHrs1)[0]);
+  setDisplay(3,String(dispHrs2)[0]);
+  setDisplay(4,String(dispMins1)[0]);
+  setDisplay(5,String(dispMins2)[0]);
+  setDisplay(0,String(dispSecs1)[0]);
+  setDisplay(1,String(dispSecs2)[0]);
 }

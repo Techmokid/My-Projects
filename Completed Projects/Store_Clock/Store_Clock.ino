@@ -1,8 +1,9 @@
+#include <Wire.h>
 #include "RTClib.h"
 RTC_DS1307 rtc;
 
 const int dispPins[] = {
-  21, 20, 19, 18, 17, 16, 15, 14,
+  10, 11, 19, 18, 17, 16, 15, 14,
   2,  3,  4,  5,  6,  7,  8,  9,
   38, 40, 42, 44, 46, 48, 50, 52,
   39, 41, 43, 45, 47, 49, 51, 53,
@@ -11,18 +12,20 @@ const int dispPins[] = {
 };
 
 int hours = 12;
-int minutes = 56;
-int seconds = 89;
+int minutes = 00;
+int seconds = 00;
 bool militaryTime = false;
 
 void setup() {
   Serial.begin(9600);
+  Wire.begin();
   
-  displayTest();
+  //displayTest();
   identifyDisplays();
   delay(3000);
 
   if (!rtc.begin()) {
+    Serial.println("Could not start RTC");
     setDisplay(0,'r');
     setDisplay(1,'t');
     setDisplay(2,'c');
@@ -41,6 +44,15 @@ void setup() {
 
   delay(1000);
   if (!rtc.isrunning()) {
+    //rtc.adjust(DateTime(2022, 4, 17, 12, 0, 0));
+    rtc.set(RTC_HOUR,12);
+    rtc.set(RTC_MINUTE,0);
+    rtc.set(RTC_SECOND,0);
+    Serial.println("RTC is not running");
+    delay(1000);
+    if (rtc.isrunning()) {
+      Serial.println("Started RTC by setting");
+    }
     setDisplay(0,'r');
     setDisplay(1,'t');
     setDisplay(2,'c');
@@ -62,9 +74,11 @@ void setup() {
 
 void loop() {
   if (Serial.available()) {
-    delay(50);
+    delay(100);
 
     String msg = String(char(Serial.read()));
+    while(Serial.available()) { msg += String(char(Serial.read())); }
+    
     String hrs = msg.substring(0,msg.indexOf(':'));
     msg = msg.substring(hrs.length() + 1);
     String mins = "";
@@ -80,7 +94,10 @@ void loop() {
     mins = getNumsOnly(mins);
     secs = getNumsOnly(secs);
 
-    rtc.adjust(DateTime(2022, 4, 17, hrs, mins, secs));
+    //rtc.adjust(DateTime(2022, 4, 17, hrs.toInt(), mins.toInt(), secs.toInt()));
+    rtc.set(RTC_HOUR,hrs.toInt());
+    rtc.set(RTC_MINUTE,mins.toInt());
+    rtc.set(RTC_SECOND,secs.toInt());
   }
   
   DateTime now = rtc.now();
