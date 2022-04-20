@@ -1,1 +1,0 @@
-cd "C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\GPU AI" && dotnet build && dotnet run || pause
