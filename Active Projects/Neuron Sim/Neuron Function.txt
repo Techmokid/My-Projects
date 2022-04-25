@@ -1,0 +1,14 @@
+A neuron happilly sits at -70mV normally (Resting).
+If the sum of the input neurons can pull the current neuron above -55mV, the neuron fires in an event called depolarization.
+The neuron firing pushes the entire neuron input values to +40mV, where is then starts dropping back down (Repolarization).
+Once the neuron hits -70mV, it overshoots a little bit to -75mV, called hyperpolarization.
+Over a bit of time, the neuron eventually pulls itself back to -70mV.
+
+
+
+
+
+
+Still to figure out, at what point in this process is the neuron ready to refire.
+Is it all the way when it's back at -70mV?
+Or perhaps the moment it is below -55mV in it's repolarization stage that it can refire?
