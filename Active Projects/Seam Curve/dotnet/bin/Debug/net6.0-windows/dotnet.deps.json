@@ -1,0 +1,211 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "dotnet/1.0.0": {
+        "dependencies": {
+          "ComputeSharp": "2.0.0-alpha.18",
+          "ComputeSharp.Dynamic": "2.0.0-alpha.18",
+          "System.Drawing.Common": "4.5.0",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "runtime": {
+          "dotnet.dll": {}
+        }
+      },
+      "CommunityToolkit.Diagnostics/8.0.0-preview1": {
+        "runtime": {
+          "lib/net6.0/CommunityToolkit.Diagnostics.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.0.1"
+          }
+        }
+      },
+      "ComputeSharp/2.0.0-alpha.18": {
+        "dependencies": {
+          "CommunityToolkit.Diagnostics": "8.0.0-preview1",
+          "TerraFX.Interop.D3D12MemoryAllocator": "2.0.0-beta3"
+        },
+        "runtime": {
+          "lib/net6.0/ComputeSharp.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
+      "ComputeSharp.Dynamic/2.0.0-alpha.18": {
+        "dependencies": {
+          "ComputeSharp": "2.0.0-alpha.18"
+        },
+        "runtime": {
+          "lib/net6.0/ComputeSharp.Dynamic.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win-arm64/native/dxcompiler.dll": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "1.6.2106.3"
+          },
+          "runtimes/win-arm64/native/dxil.dll": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "101.6.2104.33"
+          },
+          "runtimes/win-x64/native/dxcompiler.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "1.6.2106.3"
+          },
+          "runtimes/win-x64/native/dxil.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "101.6.2106.2"
+          }
+        }
+      },
+      "Microsoft.NETCore.Platforms/2.0.0": {},
+      "Microsoft.Win32.SystemEvents/4.5.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "2.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp2.0/Microsoft.Win32.SystemEvents.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        }
+      },
+      "System.Drawing.Common/4.5.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "2.0.0",
+          "Microsoft.Win32.SystemEvents": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Drawing.Common.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp2.0/System.Drawing.Common.dll": {
+            "rid": "unix",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.26515.6"
+          },
+          "runtimes/win/lib/netcoreapp2.0/System.Drawing.Common.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
+      "TerraFX.Interop.D3D12MemoryAllocator/2.0.0-beta3": {
+        "dependencies": {
+          "TerraFX.Interop.Windows": "10.0.20348-rc2"
+        },
+        "runtime": {
+          "lib/net6.0/TerraFX.Interop.D3D12MemoryAllocator.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
+      "TerraFX.Interop.Windows/10.0.20348-rc2": {
+        "runtime": {
+          "lib/net6.0/TerraFX.Interop.Windows.dll": {
+            "assemblyVersion": "10.0.20348.0",
+            "fileVersion": "10.0.20348.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "dotnet/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CommunityToolkit.Diagnostics/8.0.0-preview1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VEAbkrJKaC6qJlrMa7EaexSfVqwK/Mk2fJrcLhoJLbpSpmslqPgVBbr18hfCE99956EpTRiKXHtc24SDVA5sGA==",
+      "path": "communitytoolkit.diagnostics/8.0.0-preview1",
+      "hashPath": "communitytoolkit.diagnostics.8.0.0-preview1.nupkg.sha512"
+    },
+    "ComputeSharp/2.0.0-alpha.18": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9TRCewrZllAgyyQY14Ua7PJ4wWP+930OA6HyrIZxRi2gBzdIwoJtHyaWxVzQJ3IU5sMOWsygOGkJqehdPzJsOA==",
+      "path": "computesharp/2.0.0-alpha.18",
+      "hashPath": "computesharp.2.0.0-alpha.18.nupkg.sha512"
+    },
+    "ComputeSharp.Dynamic/2.0.0-alpha.18": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YoDSpeRExWIPUay7dQShTIpZw+4yio4aq8cljdRX1oa63AOtO7uANm/EmKL+OOBynLdCRJnp+7cyfXMpoHLIFA==",
+      "path": "computesharp.dynamic/2.0.0-alpha.18",
+      "hashPath": "computesharp.dynamic.2.0.0-alpha.18.nupkg.sha512"
+    },
+    "Microsoft.NETCore.Platforms/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VdLJOCXhZaEMY7Hm2GKiULmn7IEPFE4XC5LPSfBVCUIA8YLZVh846gtfBJalsPQF2PlzdD7ecX7DZEulJ402ZQ==",
+      "path": "microsoft.netcore.platforms/2.0.0",
+      "hashPath": "microsoft.netcore.platforms.2.0.0.nupkg.sha512"
+    },
+    "Microsoft.Win32.SystemEvents/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LuI1oG+24TUj1ZRQQjM5Ew73BKnZE5NZ/7eAdh1o8ST5dPhUnJvIkiIn2re3MwnkRy6ELRnvEbBxHP8uALKhJw==",
+      "path": "microsoft.win32.systemevents/4.5.0",
+      "hashPath": "microsoft.win32.systemevents.4.5.0.nupkg.sha512"
+    },
+    "System.Drawing.Common/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-AiJFxxVPdeITstiRS5aAu8+8Dpf5NawTMoapZ53Gfirml24p7HIfhjmCRxdXnmmf3IUA3AX3CcW7G73CjWxW/Q==",
+      "path": "system.drawing.common/4.5.0",
+      "hashPath": "system.drawing.common.4.5.0.nupkg.sha512"
+    },
+    "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
+      "path": "system.runtime.compilerservices.unsafe/6.0.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    },
+    "TerraFX.Interop.D3D12MemoryAllocator/2.0.0-beta3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+CRy4+vvrygrNWHU8tXryXLc6zIjPupZKhNeeo2fKzaARghW7kxgwC7T0zZPMQv+aGXazuTyZViT24Ul6F7/6A==",
+      "path": "terrafx.interop.d3d12memoryallocator/2.0.0-beta3",
+      "hashPath": "terrafx.interop.d3d12memoryallocator.2.0.0-beta3.nupkg.sha512"
+    },
+    "TerraFX.Interop.Windows/10.0.20348-rc2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-V+wd9EBSYS5K9Na5RgTTSrbFJKUgabWHBMxHVWPq2Icpo24QuMrDBUiDGMgxxJ+5VeKqPpWE8ZQVjMBA9NM6Ag==",
+      "path": "terrafx.interop.windows/10.0.20348-rc2",
+      "hashPath": "terrafx.interop.windows.10.0.20348-rc2.nupkg.sha512"
+    }
+  }
+}
