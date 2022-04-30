@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "9kB4FIUbrtw7Ok60GHBJbKE2gKvkuk7Qa21KvftuDvXSnZEtiKCk5ZlQvCdRJRR7bML9dRE2Ca9b+10KQmcl4w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\Active Projects\\Seam Curve\\dotnet\\dotnet.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\aj200\\.nuget\\packages\\communitytoolkit.diagnostics\\8.0.0-preview1\\communitytoolkit.diagnostics.8.0.0-preview1.nupkg.sha512",
+    "C:\\Users\\aj200\\.nuget\\packages\\computesharp\\2.0.0-alpha.18\\computesharp.2.0.0-alpha.18.nupkg.sha512",
+    "C:\\Users\\aj200\\.nuget\\packages\\computesharp.dynamic\\2.0.0-alpha.18\\computesharp.dynamic.2.0.0-alpha.18.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
+    "C:\\Users\\aj200\\.nuget\\packages\\microsoft.win32.systemevents\\4.5.0\\microsoft.win32.systemevents.4.5.0.nupkg.sha512",
+    "C:\\Users\\aj200\\.nuget\\packages\\system.drawing.common\\4.5.0\\system.drawing.common.4.5.0.nupkg.sha512",
+    "C:\\Users\\aj200\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\aj200\\.nuget\\packages\\terrafx.interop.d3d12memoryallocator\\2.0.0-beta3\\terrafx.interop.d3d12memoryallocator.2.0.0-beta3.nupkg.sha512",
+    "C:\\Users\\aj200\\.nuget\\packages\\terrafx.interop.windows\\10.0.20348-rc2\\terrafx.interop.windows.10.0.20348-rc2.nupkg.sha512"
+  ],
+  "logs": []
+}

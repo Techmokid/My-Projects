@@ -1,0 +1,1 @@
+cd "C:/Users/aj200/Documents/GitHub/My-Projects/Active Projects/Seam Curve/dotnet" && dotnet build && dotnet run "C:/Users/aj200/Documents/GitHub/My-Projects/Active Projects/Seam Curve/dotnet/Test Image 3KP.bmp" "C:/Users/aj200/Documents/GitHub/My-Projects/Active Projects/Seam Curve/dotnet/Output Image.bmp" 3500x1800 && pause
