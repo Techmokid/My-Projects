@@ -16,7 +16,7 @@ float readRawCurrent(int pin) {
 }
 
 float readAverageCurrent() {
-  float outputCurrent =  readRawCurrent(SENSOR_PIN);;
+  float outputCurrent =  readRawCurrent(SENSOR_PIN);
   errorVals.add(outputCurrent);
 
   if (errorVals.size() > 10) {
