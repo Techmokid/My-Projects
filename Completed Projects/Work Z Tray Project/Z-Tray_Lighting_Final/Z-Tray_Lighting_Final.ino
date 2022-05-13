@@ -1,9 +1,7 @@
 //For EEPROM listings, see "Laser_Controller" script
 
 #include <ESP8266WiFi.h>
-#include <PinToGPIO.h>
 #include <EEPROM.h>
-#include <servo.h>
 #include <SPI.h>
 #include <SD.h>
 #include "SdFat.h"
@@ -32,7 +30,70 @@ extern "C" {
 }
 
 SdFat sd; SdFile root; SdFile f;
+
+struct servo {
+  float offset0Deg = 1000;
+  float offset180Deg = 2000;
+  bool offset90 = false;
+  bool oneTimeActive = false;
+  int pin = 0;
+
+  unsigned long previousTrigTimer = 0;
+  bool onHalfOfSignal = false;
+  int onTime = 1500;
+
+  float radToDeg(float x) {
+    return map(x,0,3.14159265358979323846264338,0,180);
+  }
+  
+  void writeMicroseconds(int x) { onTime = x; }//onTime = clamp(x,1000,2000); }
+  void write(int x) {
+    if (offset90) {
+      onTime = map(0,180,offset0Deg,offset180Deg,clamp(x,-90,90) + 90);
+    } else {
+      onTime = map(0,180,offset0Deg,offset180Deg,clamp(x,0,180));
+    }
+  }
+
+  float clamp(float x, float a, float b) {
+    if (a==b) {return a;}
+    if (a>b) { return min(a,max(b,x)); }
+    return min(b,max(a,x));
+  }
+  
+  void updateServo() {
+    bool statementA = (onHalfOfSignal) && (micros() - previousTrigTimer >= onTime);
+    bool statementB = (!onHalfOfSignal) && (micros() - previousTrigTimer >= 20000);
+    if (statementB) { previousTrigTimer = micros(); } else if (!statementA) { return; }
+
+    onHalfOfSignal = !onHalfOfSignal;
+    digitalWrite(pin,onHalfOfSignal);
+  }
+
+  float map(float startIn, float startOut, float endIn, float endOut, float val) {
+    val -= startIn;               // Starting values are just offsets
+    val /= startOut - startIn;    // Now get the percentage between the two points that val is
+    val *= (endOut - endIn);      // Extrapolate that percentage onto the new bounding parameters
+    return val + endIn;           // Return the result, adding on the starting offset value
+    // return ((val - startIn) / (startOut - startIn)) * (endOut - endIn) + endIn;
+  }
+};
 servo servo_X,servo_Y;
+
+struct PinToGPIO {
+  int pinToGPIO(int x) {
+    if (x == 0) {return 16;}
+    if (x == 1) {return 5;}
+    if (x == 2) {return 4;}
+    if (x == 3) {return 0;}
+    if (x == 4) {return 2;}
+    if (x == 5) {return 14;}
+    if (x == 6) {return 12;}
+    if (x == 7) {return 13;}
+    if (x == 8) {return 15;}
+    return -1;
+  }
+};
 PinToGPIO p;
 
 float width_of_tray;
@@ -41,10 +102,10 @@ float height_of_tray;
 float laser_pos_Y;
 
 void setup() {
-  servo_X.startValOffset = readValueFromEEPROM(11);
-  servo_X.endValOffset   = readValueFromEEPROM(12);
-  servo_Y.startValOffset = readValueFromEEPROM(13);
-  servo_Y.endValOffset   = readValueFromEEPROM(14);
+  servo_X.offset0Deg =   readValueFromEEPROM(11);
+  servo_X.offset180Deg = readValueFromEEPROM(12);
+  servo_Y.offset0Deg =   readValueFromEEPROM(13);
+  servo_Y.offset180Deg = readValueFromEEPROM(14);
   
   pinMode(p.pinToGPIO(laserPin),OUTPUT);
   
@@ -58,7 +119,7 @@ void setup() {
   setupWifi();
   
   Serial.println("\n---------------------- EEPROM Readout ----------------------");
-  for (int i = 0; i < 6; i++) {
+  for (int i = 0; i < 15; i++) {
     Serial.println("Value \"" + String(readValueFromEEPROM(i)) + "\" at position \"" + String(i) + "\"");
   }
   Serial.println("------------------ End Of EEPROM Readout ------------------\n");
@@ -90,7 +151,7 @@ void loop() {
     client.println(" - MNTMOD:");
     client.println(" - TSTMTR:");
     client.println(" - CONFRDOUT:");
-    client.println("\"Config Help\" for config values");
+    client.println("\"Config Help:\" for config values");
   } else if (request.substring(0,12) == "CONFIG HELP:") {
     Serial.println("Listing config help to client");
     client.println("Config Values: ");
@@ -112,7 +173,7 @@ void loop() {
   } else if (request.substring(0,10) == "CONFRDOUT:") {
     Serial.println("Writing out EEPROM data to client");
     client.println("\n---------------------- EEPROM Readout ----------------------");
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 15; i++) {
       client.println("Value \"" + String(readValueFromEEPROM(i)) + "\" at position \"" + String(i) + "\"");
     }
     client.println("------------------ End Of EEPROM Readout ------------------\n");
@@ -132,19 +193,22 @@ void loop() {
     updateClientList();
     
     int test_servo_timer = 3000;
-    servo_X.write(90); servo_Y.write(0);  unsigned long temp = millis(); while(millis() - temp < test_servo_timer) { }
-    servo_X.write(90); servo_Y.write(45); temp = millis(); while(millis() - temp < test_servo_timer) { }
-    servo_X.write(90); servo_Y.write(90); temp = millis(); while(millis() - temp < test_servo_timer) { }
-    servo_X.write(90); servo_Y.write(45); temp = millis(); while(millis() - temp < test_servo_timer) { }
-    servo_X.write(90); servo_Y.write(0);  temp = millis(); while(millis() - temp < test_servo_timer) { }
-    servo_X.write(45); servo_Y.write(0);  temp = millis(); while(millis() - temp < test_servo_timer) { }
-    servo_X.write(0); servo_Y.write(0);   temp = millis(); while(millis() - temp < test_servo_timer) { }
-    servo_X.write(45); servo_Y.write(0);  temp = millis(); while(millis() - temp < test_servo_timer) { }
-    servo_X.write(90); servo_Y.write(0);  temp = millis(); while(millis() - temp < test_servo_timer) { }
-    servo_X.write(135); servo_Y.write(0); temp = millis(); while(millis() - temp < test_servo_timer) { }
-    servo_X.write(180); servo_Y.write(0); temp = millis(); while(millis() - temp < test_servo_timer) { }
-    servo_X.write(135); servo_Y.write(0); temp = millis(); while(millis() - temp < test_servo_timer) { }
-    servo_X.write(90); servo_Y.write(0);  temp = millis(); while(millis() - temp < test_servo_timer) { }
+    servo_X.write(90); servo_Y.write(0);  unsigned long temp = millis(); while(millis() - temp < test_servo_timer) { servo_X.updateServo();servo_Y.updateServo(); } delay(1);
+    servo_X.write(90); servo_Y.write(45); temp = millis(); while(millis() - temp < test_servo_timer) { servo_X.updateServo();servo_Y.updateServo(); } delay(1);
+    servo_X.write(90); servo_Y.write(90); temp = millis(); while(millis() - temp < test_servo_timer) { servo_X.updateServo();servo_Y.updateServo(); } delay(1);
+    servo_X.write(90); servo_Y.write(45); temp = millis(); while(millis() - temp < test_servo_timer) { servo_X.updateServo();servo_Y.updateServo(); } delay(1);
+    servo_X.write(90); servo_Y.write(0);  temp = millis(); while(millis() - temp < test_servo_timer) { servo_X.updateServo();servo_Y.updateServo(); } delay(1);
+    servo_X.write(45); servo_Y.write(0);  temp = millis(); while(millis() - temp < test_servo_timer) { servo_X.updateServo();servo_Y.updateServo(); } delay(1);
+    servo_X.write(0); servo_Y.write(0);   temp = millis(); while(millis() - temp < test_servo_timer) { servo_X.updateServo();servo_Y.updateServo(); } delay(1);
+    servo_X.write(45); servo_Y.write(0);  temp = millis(); while(millis() - temp < test_servo_timer) { servo_X.updateServo();servo_Y.updateServo(); } delay(1);
+    servo_X.write(90); servo_Y.write(0);  temp = millis(); while(millis() - temp < test_servo_timer) { servo_X.updateServo();servo_Y.updateServo(); } delay(1);
+    servo_X.write(135); servo_Y.write(0); temp = millis(); while(millis() - temp < test_servo_timer) { servo_X.updateServo();servo_Y.updateServo(); } delay(1);
+    servo_X.write(180); servo_Y.write(0); temp = millis(); while(millis() - temp < test_servo_timer) { servo_X.updateServo();servo_Y.updateServo(); } delay(1);
+    servo_X.write(135); servo_Y.write(0); temp = millis(); while(millis() - temp < test_servo_timer) { servo_X.updateServo();servo_Y.updateServo(); } delay(1);
+    servo_X.write(90); servo_Y.write(0);  temp = millis(); while(millis() - temp < test_servo_timer) { servo_X.updateServo();servo_Y.updateServo(); } delay(1);
+    client.println("Servo Test Mode Finished");
+    Serial.println("Test");
+    delay(50);
   } else if (request.substring(0,7) == "MNTMOD:") {
     mountMode = !mountMode;
     running = mountMode;

@@ -11,12 +11,12 @@ IPAddress address;
 
 struct station_info *stat_info;
 struct ipv4_addr *IPaddress;
-const char *ssid = "ESP8266 v1.7";
+const char *ssid = "ESP8266 v1.8";
 
 bool dev_lock_override = false;
 
 void setupWifi() {
-  dev_lock_override = digitalRead(laserPin);
+  //dev_lock_override = digitalRead(laserPin);
   
   WiFi.mode(WIFI_AP);
   WiFi.softAP(ssid);
@@ -64,7 +64,7 @@ void updateClientList() {
 void detectDiscretions() {
   for (int i = 0; i < connectedClients.size(); i++) { 
     if(!prevListContains(connectedClients.get(i))) {
-      if (connectedClients.get(i) == "8c:79:67:8c:a:7d") {
+      if (connectedClients.get(i) == "f2:5d:80:83:3a:11") {
         Serial.println("Detected dev device");
       } else { Serial.println("WARNING: Unknown device: " + connectedClients.get(i)); }
     }
