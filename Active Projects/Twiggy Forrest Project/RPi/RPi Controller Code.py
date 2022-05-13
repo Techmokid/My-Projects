@@ -27,12 +27,12 @@ GPIO.setup(SENSOR_PIN, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 #For processes interface
 manager = Manager()
 sharedData = manager.list()
-sharedData.append("Offline")
-sharedData.append("STP")
-sharedData.append("-1")
-sharedData.append(None)
-sharedData.append([])
-sharedData.append(False)
+sharedData.append("Offline")    # Current Status
+sharedData.append("STP")        # RunMode
+sharedData.append("-1")         # ID
+sharedData.append(None)         # Temp variable for server response
+sharedData.append([])           # Amp reading average readings list
+sharedData.append(False)        # RunMode Antilock variable (W.I.P)
 
 #For web server
 def getResponseContent(x,startVal,endVal):
