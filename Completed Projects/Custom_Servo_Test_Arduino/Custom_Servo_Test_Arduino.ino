@@ -1,21 +1,18 @@
+#include <Servo.h>
+
 struct servo {
   float offset0Deg = 1000;
   float offset180Deg = 2000;
   bool offset90 = false;
-  int pin = 0;
+  Servo h;
 
   unsigned long previousTrigTimer = 0;
   bool onHalfOfSignal = false;
   int onTime = 1500;
 
-  void writeMicroseconds(int x) { onTime = x; }//onTime = clamp(x,1000,2000); }
-  void write(int x) {
-    if (offset90) {
-      onTime = map(0,180,offset0Deg,offset180Deg,clamp(x,-90,90) + 90);
-    } else {
-      onTime = map(0,180,offset0Deg,offset180Deg,clamp(x,0,180));
-    }
-  }
+  void pin(int x) { h.attach(x); }
+  void writeMicroseconds(int x) { h.writeMicroseconds(x); }
+  void write(int x) { if (offset90) {h.write(x+90);} else {h.write(x);} }
 
   float clamp(float x, float a, float b) {
     if (a==b) {return a;}
@@ -23,14 +20,7 @@ struct servo {
     return min(b,max(a,x));
   }
   
-  void updateServo() {
-    bool statementA = (onHalfOfSignal) && (micros() - previousTrigTimer >= onTime);
-    bool statementB = (!onHalfOfSignal) && (micros() - previousTrigTimer >= 20000);
-    if (statementB) { previousTrigTimer = micros(); } else if (!statementA) { return; }
-
-    onHalfOfSignal = !onHalfOfSignal;
-    digitalWrite(pin,onHalfOfSignal);
-  }
+  void updateServo() { return; }
 
   float map(float startIn, float startOut, float endIn, float endOut, float val) {
     val -= startIn;               // Starting values are just offsets
@@ -44,8 +34,8 @@ struct servo {
 servo serX;
 
 void setup() {
-  serX.pin = 12;
-  pinMode(serX.pin,OUTPUT);
+  serX.pin(12);
+  
   Serial.begin(115200);
 }
 
@@ -56,7 +46,7 @@ float timingVal = 0.01;
 unsigned long lastTime = 0;
 void loop() {
   if (millis() - lastTime > 250) {
-    Serial.println(currentPos);
+    //Serial.println(currentPos);
     lastTime = millis();
   }
   serX.updateServo();

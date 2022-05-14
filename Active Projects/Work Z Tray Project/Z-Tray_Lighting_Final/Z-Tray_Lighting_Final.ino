@@ -31,28 +31,41 @@ extern "C" {
 
 SdFat sd; SdFile root; SdFile f;
 
+#ifndef ESP8266
+  #error This code is designed to run on ESP8266 platform! Please check your Tools->Board setting.
+#endif
+
+#define TIMER_INTERRUPT_DEBUG       1
+#define ISR_SERVO_DEBUG             1
+
+#include "ESP8266_ISR_Servo.h"
+
+#define MIN_MICROS      700  //544
+#define MAX_MICROS      2450
+
 struct servo {
   float offset0Deg = 1000;
   float offset180Deg = 2000;
   bool offset90 = false;
   bool oneTimeActive = false;
+  int servoIndex = -1;
   int pin = 0;
 
   unsigned long previousTrigTimer = 0;
   bool onHalfOfSignal = false;
   int onTime = 1500;
 
+  void setPin(int pin) {
+    servoIndex = ISR_Servo.setupServo(pin, MIN_MICROS, MAX_MICROS);
+  }
+
   float radToDeg(float x) {
     return map(x,0,3.14159265358979323846264338,0,180);
   }
   
-  void writeMicroseconds(int x) { onTime = x; }//onTime = clamp(x,1000,2000); }
+  //void writeMicroseconds(int x) {  }
   void write(int x) {
-    if (offset90) {
-      onTime = map(0,180,offset0Deg,offset180Deg,clamp(x,-90,90) + 90);
-    } else {
-      onTime = map(0,180,offset0Deg,offset180Deg,clamp(x,0,180));
-    }
+    ISR_Servo.setPosition(servoIndex, 10 + x);
   }
 
   float clamp(float x, float a, float b) {
@@ -61,14 +74,7 @@ struct servo {
     return min(b,max(a,x));
   }
   
-  void updateServo() {
-    bool statementA = (onHalfOfSignal) && (micros() - previousTrigTimer >= onTime);
-    bool statementB = (!onHalfOfSignal) && (micros() - previousTrigTimer >= 20000);
-    if (statementB) { previousTrigTimer = micros(); } else if (!statementA) { return; }
-
-    onHalfOfSignal = !onHalfOfSignal;
-    digitalWrite(pin,onHalfOfSignal);
-  }
+  void updateServo() { return; }
 
   float map(float startIn, float startOut, float endIn, float endOut, float val) {
     val -= startIn;               // Starting values are just offsets
@@ -107,10 +113,10 @@ void setup() {
   servo_Y.offset0Deg =   readValueFromEEPROM(13);
   servo_Y.offset180Deg = readValueFromEEPROM(14);
   
-  pinMode(p.pinToGPIO(laserPin),OUTPUT);
+  //pinMode(p.pinToGPIO(laserPin),OUTPUT);
   
-  servo_X.pin = p.pinToGPIO(servo_X_Pin); servo_X.write(90);
-  servo_Y.pin = p.pinToGPIO(servo_Y_Pin); servo_Y.offset90 = true; servo_Y.write(0);
+  servo_X.setPin(p.pinToGPIO(servo_X_Pin)); servo_X.write(90);
+  servo_Y.setPin(p.pinToGPIO(servo_Y_Pin)); servo_Y.offset90 = true; servo_Y.write(0);
   
   unsigned long prevMill = millis();
   while (millis() - prevMill < 1000) { servo_X.updateServo(); servo_Y.updateServo(); }

@@ -1,48 +1,28 @@
-struct servo {
-  float offset0Deg = 1000;
-  float offset180Deg = 2000;
-  bool offset90 = false;
-  int pin = 0;
+#ifndef ESP8266
+  #error This code is designed to run on ESP8266 platform! Please check your Tools->Board setting.
+#endif
 
-  unsigned long previousTrigTimer = 0;
-  bool onHalfOfSignal = false;
-  int onTime = 1500;
+#define TIMER_INTERRUPT_DEBUG       1
+#define ISR_SERVO_DEBUG             1
 
-  void writeMicroseconds(int x) { onTime = x; }//onTime = clamp(x,1000,2000); }
-  void write(int x) {
-    if (offset90) {
-      onTime = map(0,180,offset0Deg,offset180Deg,clamp(x,-90,90) + 90);
-    } else {
-      onTime = map(0,180,offset0Deg,offset180Deg,clamp(x,0,180));
-    }
-  }
+#include "ESP8266_ISR_Servo.h"
 
-  float clamp(float x, float a, float b) {
-    if (a==b) {return a;}
-    if (a>b) { return min(a,max(b,x)); }
-    return min(b,max(a,x));
-  }
-  
-  void updateServo() {
-    bool statementA = (onHalfOfSignal) && (micros() - previousTrigTimer >= onTime);
-    bool statementB = (!onHalfOfSignal) && (micros() - previousTrigTimer >= 20000);
-    if (statementB) { previousTrigTimer = micros(); } else if (!statementA) { return; }
+#define MIN_MICROS      700  //544
+#define MAX_MICROS      2450
 
-    onHalfOfSignal = !onHalfOfSignal;
-    digitalWrite(pin,onHalfOfSignal);
-  }
+#define NUM_SERVOS    2
 
-  float map(float startIn, float startOut, float endIn, float endOut, float val) {
-    val -= startIn;               // Starting values are just offsets
-    val /= startOut - startIn;    // Now get the percentage between the two points that val is
-    val *= (endOut - endIn);      // Extrapolate that percentage onto the new bounding parameters
-    return val + endIn;           // Return the result, adding on the starting offset value
-    // return ((val - startIn) / (startOut - startIn)) * (endOut - endIn) + endIn;
-  }
+typedef struct
+{
+  int     servoIndex;
+  uint8_t servoPin;
+} ISR_servo_t;
+
+ISR_servo_t ISR_servo[NUM_SERVOS] =
+{
+  { -1, 0 },
+  { -1, 0 }
 };
-
-servo serX;
-servo serY;
 
 void setup() {
   Serial.begin(115200);
@@ -51,50 +31,35 @@ void setup() {
   Serial.println();
   Serial.println("Initializing");
   
-  serX.offset0Deg = 700;
-  serX.offset180Deg = 2400;
-  serY.offset0Deg = 600;
-  serY.offset180Deg = 2200;
+  //serX.offset0Deg = 700;
+  //serX.offset180Deg = 2400;
+  //serY.offset0Deg = 600;
+  //serY.offset180Deg = 2200;
 
-  serX.pin = pinToGPIO(4);
-  serY.pin = pinToGPIO(3);
+  ISR_servo[0] = {-1, pinToGPIO(6)};
+  ISR_servo[1] = {-1, pinToGPIO(7)};
+  
+  for (int index = 0; index < NUM_SERVOS; index++) {
+    ISR_servo[index].servoIndex = ISR_Servo.setupServo(ISR_servo[index].servoPin, MIN_MICROS, MAX_MICROS);
 
-  pinMode(serX.pin,OUTPUT);
-  pinMode(serY.pin,OUTPUT);
-
-  serY.offset90 = true;
-
-  serX.write(90);
-  serY.write(0);
+    if (ISR_servo[index].servoIndex != -1) {
+      Serial.print(F("Setup OK Servo index = ")); Serial.println(ISR_servo[index].servoIndex);
+    } else {
+      Serial.print(F("Setup Failed Servo index = ")); Serial.println(ISR_servo[index].servoIndex);
+    }
+  }
   Serial.println("Completed startup. Entering program loop");
 }
 
 void loop() {
-  if (Serial.available()) {
-    Serial.println("Receiving data from terminal...");
-    String temp = Serial.readString();
-    temp.replace(" ","");
-
-    String servoAxis = temp.substring(0,2);
-    servoAxis.toLowerCase();
-
-    int val = temp.substring(2).toInt();
-    
-    if (servoAxis == "xs") { serX.offset0Deg = val;   Serial.println("Set servo X start to:" + String(val)); }
-    if (servoAxis == "xl") { serX.offset180Deg = val; Serial.println("Set servo X finsh to:" + String(val)); }
-    if (servoAxis == "ys") { serY.offset0Deg = val;   Serial.println("Set servo Y start to:" + String(val)); }
-    if (servoAxis == "yl") { serY.offset180Deg = val; Serial.println("Set servo Y finsh to:" + String(val)); }
-    
-    String secondTemp = temp.substring(0,4);
-    int secondVal = temp.substring(4).toInt();
-    if (secondTemp == "SETX") { serX.write(secondVal); Serial.println("Set servo X to:" + String(secondVal) + " | " + String(serX.onTime)); }
-    if (secondTemp == "SETY") { serY.write(secondVal); Serial.println("Set servo Y to:" + String(secondVal) + " | " + String(serY.onTime)); }
-  }
-  
-  serX.write(0); unsigned long temp = millis(); while (millis() - temp < 2000) { serX.updateServo(); } delay(100);
-  serX.write(90); temp = millis(); while (millis() - temp < 2000) { serX.updateServo(); } delay(100); if (Serial.available()) {}
-  serX.write(180); temp = millis(); while (millis() - temp < 2000) { serX.updateServo(); } delay(100); if (Serial.available()) {}
-  serX.write(90); temp = millis(); while (millis() - temp < 2000) { serX.updateServo(); } delay(100); if (Serial.available()) {}
+  ISR_Servo.setPosition(ISR_servo[0].servoIndex, 10);
+  delay(3000);
+  ISR_Servo.setPosition(ISR_servo[0].servoIndex, 100);
+  delay(1000);
+  ISR_Servo.setPosition(ISR_servo[0].servoIndex, 190);
+  delay(1000);
+  ISR_Servo.setPosition(ISR_servo[0].servoIndex, 100);
+  delay(1000);
 }
 
 int pinToGPIO(int x) {
