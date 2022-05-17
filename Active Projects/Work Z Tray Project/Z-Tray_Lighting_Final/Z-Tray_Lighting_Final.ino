@@ -65,7 +65,8 @@ struct servo {
   
   //void writeMicroseconds(int x) {  }
   void write(int x) {
-    ISR_Servo.setPosition(servoIndex, 10 + x);
+    //ISR_Servo.setPosition(servoIndex, 10 + x);
+    ISR_Servo.setPosition(servoIndex, map(0,180,offset0Deg,offset180Deg,x + 90*offset90));
   }
 
   float clamp(float x, float a, float b) {
