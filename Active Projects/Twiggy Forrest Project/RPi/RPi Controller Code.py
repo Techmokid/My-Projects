@@ -15,13 +15,16 @@ warningPin = 13
 motor_pin_A = 6
 motor_pin_B = 19
 SENSOR_PIN = 26
+GPS_pin = 18
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 GPIO.setup(warningPin, GPIO.OUT)
 GPIO.setup(motor_pin_A, GPIO.OUT)
 GPIO.setup(motor_pin_B, GPIO.OUT)
+GPIO.setup(GPS_pin, GPIO.OUT)
 GPIO.setup(SENSOR_PIN, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.output(GPS_pin, 1)
 
 #For processes interface
 manager = Manager()
@@ -36,11 +39,13 @@ sharedData.append("")           # Encryption Key
 
 #For GPS interface
 sharedData.append("$GPGGA,")    # 7
-sharedData.append(serial.Serial ("/dev/ttyS0"))              #Open port with baud rate
+
+ser = serial.Serial("/dev/ttyS0")
+sharedData.append(None)              #Open port with baud rate
 sharedData.append(0)
 sharedData.append(0)
 sharedData.append(0)
-sharedData.append(0)
+sharedData.append("000000")
 
 def convert_to_degrees(raw_value):
     decimal_value = raw_value/100.00
@@ -51,7 +56,7 @@ def convert_to_degrees(raw_value):
     return position
 
 def getGPSData():
-    received_data = (str)(sharedData[8].readline())
+    received_data = (str)(ser.readline())
     GPGGA_data_available = received_data.find(sharedData[7])
     
     
@@ -80,8 +85,16 @@ def getResponseContent(x,startVal,endVal):
     x = x[x.find(startVal) + len(startVal) + 1:x.rfind(endVal)]
     return x
 
+def getDateTime():
+    serverResponse = requests.get(url=URL,headers={'Getserverdatetime':'1'})
+    if (serverResponse.ok == False):
+        raise Exception("Error when getting server response LOL")
+    tmp = str(serverResponse.content)
+    return tmp[tmp.find("<body>") + 8:tmp.rfind("</body>")]
+
 def setServerValue(val, key):
-    serverResponse = requests.get(url=URL,headers={'Setvalue':val,'Key':key,'Id':sharedData[2],'Encryptedkey':encryptData(val+key+sharedData[2],sharedData[6])})
+    currentDateTime = getDateTime()
+    serverResponse = requests.get(url=URL,headers={'Setvalue':val,'Key':key,'Id':sharedData[2],'Encryptedkey':encryptData(val+key+sharedData[2]+currentDateTime,sharedData[6]),'Datetime':currentDateTime})
     if (serverResponse.ok == False):
         raise Exception("Error when getting server response LOL")
 
@@ -111,22 +124,18 @@ def initialize():
             setServerValue("STP","RunMode")
 
             print("[WEB] Finishing up init")
-            f = open(EncryptionKey_Filepath,'w+')
-            f.write(str(sharedData[6]))
-            f.close()
-            f = open(ID_Filepath,'w+')
-            f.write(str(newID))
-            f.close()
+            with open(EncryptionKey_Filepath,"w+") as f:
+                f.write(str(sharedData[6]))
+            with open(ID_Filepath,"w+") as f:
+                f.write(str(newID))
         else:
             print("[WEB] ERROR: Could not get new ID from server. " + str(sharedData[3].status_code) + " status returned!")
     else:
         try:
-            f = open(EncryptionKey_Filepath,"r")
-            sharedData[6] = f.read()
-            f.close()
-            f = open(ID_Filepath,"r")
-            sharedData[2] = f.read()
-            f.close()
+            with open(EncryptionKey_Filepath,"r") as f:
+                sharedData[6] = f.read()
+            with open(ID_Filepath,"r") as f:
+                sharedData[2] = f.read()
 
             if (len(sharedData[2]) > 0):
                 print("[WEB] Starting Unit ID: " + sharedData[2])
