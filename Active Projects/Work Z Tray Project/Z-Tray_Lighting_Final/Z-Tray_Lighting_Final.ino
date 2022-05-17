@@ -44,8 +44,8 @@ SdFat sd; SdFile root; SdFile f;
 #define MAX_MICROS      2450
 
 struct servo {
-  float offset0Deg = 1000;
-  float offset180Deg = 2000;
+  float offset0Deg = 0;
+  float offset180Deg = 180;
   bool offset90 = false;
   bool oneTimeActive = false;
   int servoIndex = -1;
