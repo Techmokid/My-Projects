@@ -54,6 +54,7 @@ struct servo {
 servo serX,serY;
 
 void setup() {
+  Serial.begin(115200);
   serX.setPin(pinToGPIO(horServPin)); serX.write(90);
   serY.setPin(pinToGPIO(verServPin)); serY.offset90 = true; serY.write(0);
 }
@@ -67,6 +68,8 @@ void loop() {
   serX.write(90);  serY.write(-90); delayCheck(3000);
   serX.write(90);  serY.write(0);   delayCheck(3000);
   serX.write(90);  serY.write(90);  delayCheck(3000);
+  serX.write(90);  serY.write(0);   delayCheck(3000);
+  serX.write(90);  serY.write(-90); delayCheck(3000);
   serX.write(90);  serY.write(0);   delayCheck(3000);
 }
 
@@ -83,24 +86,33 @@ void delayCheck(int delayTimer) {
       char i = Serial.read();
       String msg = "";
       while(i != '\n') {
-        msg += i;
-        i = Serial.read();
+        if(Serial.available()) {
+          msg += String(i);
+          i = Serial.read();
+        }
       }
 
       //We have the completed message from the serial terminal
       if (msg.substring(0,6) == "STARTX") {
+        Serial.println(msg.substring(6));
         serX.offset0Deg = msg.substring(6).toFloat();
+        Serial.println("Set X Start To: " + String(serX.offset0Deg));
       } else if (msg.substring(0,6) == "STARTY"){
         serY.offset0Deg = msg.substring(6).toFloat();
+        Serial.println("Set Y Start To: " + String(serY.offset0Deg));
       } else if (msg.substring(0,4) == "ENDX"){
         serX.offset180Deg = msg.substring(4).toFloat();
+        Serial.println("Set X End To: " + String(serX.offset180Deg));
       } else if (msg.substring(0,4) == "ENDY"){
         serY.offset180Deg = msg.substring(4).toFloat();
+        Serial.println("Set Y End To: " + String(serY.offset180Deg));
       } else if (msg.substring(0,5) == "WRITE"){
+        Serial.println("Writing data to EEPROM...");
         writeValueToEEPROM(11,serX.offset0Deg);
         writeValueToEEPROM(12,serX.offset180Deg);
         writeValueToEEPROM(13,serY.offset0Deg);
         writeValueToEEPROM(14,serY.offset180Deg);
+        Serial.println("EEPROM written to!");
       }
     }
   }

@@ -109,10 +109,10 @@ float height_of_tray;
 float laser_pos_Y;
 
 void setup() {
-  servo_X.offset0Deg =   readValueFromEEPROM(11);
-  servo_X.offset180Deg = readValueFromEEPROM(12);
-  servo_Y.offset0Deg =   readValueFromEEPROM(13);
-  servo_Y.offset180Deg = readValueFromEEPROM(14);
+  servo_X.offset0Deg =   readValueFromEEPROM(11); // Experimentally found as: 10
+  servo_X.offset180Deg = readValueFromEEPROM(12); // Experimentally found as: 170
+  servo_Y.offset0Deg =   readValueFromEEPROM(13); // Experimentally found as: -10
+  servo_Y.offset180Deg = readValueFromEEPROM(14); // Experimentally found as: 170
   
   //pinMode(p.pinToGPIO(laserPin),OUTPUT);
   
