@@ -7,12 +7,13 @@ N - Not urgent (Personal project)
 Projects that require time (For other people or urgent):
 1  (T).	Twiggy project (Glen)
 2  (T).	Work laser project
+3  (N). Lightning power generation system
 
 
 
 Projects that require time (For myself, no stress, no time limit)
 1  (N).	ASDOS (Arduino SD Operating System)
-2 (N).	Unity3D Waterworks game
+2  (N).	Unity3D Waterworks game
 3  (N).	Minecraft weather and climate change mod
 4  (N).	Unity3D weather chase game
 5  (N).	Unity3D VR game "movie moments you've always wanted to do"

@@ -11,6 +11,7 @@ ID_Filepath = filepath + "ID.txt"
 EncryptionKey_Filepath = filepath + "key.txt"
 usingCurrentSensor = False
 
+onlineLEDPin = 5
 warningPin = 13
 motor_pin_A = 6
 motor_pin_B = 19
@@ -19,12 +20,14 @@ GPS_pin = 18
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
+GPIO.setup(onlineLEDPin, GPIO.OUT)
 GPIO.setup(warningPin, GPIO.OUT)
 GPIO.setup(motor_pin_A, GPIO.OUT)
 GPIO.setup(motor_pin_B, GPIO.OUT)
 GPIO.setup(GPS_pin, GPIO.OUT)
 GPIO.setup(SENSOR_PIN, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.output(GPS_pin, 1)
+GPIO.output(onlineLEDPin, 1)
 
 #For processes interface
 manager = Manager()
