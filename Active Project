@@ -2,32 +2,25 @@ from multiprocessing import Process,Manager,Value
 import requests,json,os,time,hashlib,hmac,serial,sys,pyttsx3
 import RPi.GPIO as GPIO
 
-onlineLEDPin = 5            #Done
-warningPin = 6              #Done
-motor_pin_A = 13
+onlineLEDPin = 5
+warningPin = 13
+motor_pin_A = 6
 motor_pin_B = 19
-SENSOR_PIN = 26             #Done
-GPS_pin = 18                #Done
-useCurrentSensorPin = 17    #Done
-localIPPin = 27             #Done
-resetIDPin = 22             #Done
+SENSOR_PIN = 26
+GPS_pin = 18
+useCurrentSensorPin = 17
+localIPPin = 27
+resetIDPin = 22
 
 URL = "http://www.techmo.unity.chickenkiller.com"
 URL_Local = "http://192.168.1.15:666/index2.php"
-filepath = "/Client Data/"
+filepath = os.environ["HOME"] + "/Desktop/"
 
-if not os.path.exists(filepath):
-    os.makedirs(filepath)
 engine = pyttsx3.init()
 engine.setProperty('rate',140)
 print("Waking up")
 engine.say("This unit is waking up. Please stand by")
 engine.runAndWait()
-
-def printAndSay(x):
-    print(x)
-    engine.say(x)
-    engine.runAndWait()
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -47,7 +40,6 @@ usingCurrentSensor = not GPIO.input(useCurrentSensorPin)
 localizeIP = GPIO.input(localIPPin)
 resetID = not GPIO.input(resetIDPin)
 
-print('Current settings are set as such')
 engine.say('Current settings are set as such')
 engine.runAndWait()
 
@@ -68,42 +60,8 @@ else:
     engine.say('Set IP to global URL')
 engine.runAndWait()
 
-print("Checking network status")
-engine.say("Checking network status")
-engine.runAndWait()
-
-while(1):
-    try:
-        requests.head("http://www.google.com",timeout=5)
-        break
-    except:
-        print("Error, no internet connection. Trying again")
-        engine.say("Error, no internet connection. Trying again")
-        engine.runAndWait()
-        time.sleep(5)
-print("Found internet connection. Attempting to contact server")
-engine.say("Found internet connection. Attempting to contact server")
-engine.runAndWait()
-
-while(1):
-    try:
-        requests.head(URL,timeout=5)
-        break
-    except:
-        print("Error talking to server. Perhaps using localhost on global connection or vice versa? Trying again")
-        engine.say("Error talking to server. Perhaps using localhost on global connection or vice versa? Trying again")
-        engine.runAndWait()
-        time.sleep(5)
-    
-print("Server connection established")
-engine.say("Server connection established")
-engine.runAndWait()
-
 ID_Filepath = filepath + "ID.txt"
 EncryptionKey_Filepath = filepath + "key.txt"
-
-with open("/home/pbody/Desktop/out.txt","w") as f:
-    f.write("Filepath: " + filepath + "\nID path: " + ID_Filepath + "\nEncryption path: " + EncryptionKey_Filepath)
 
 if (resetID):
     engine.say('Resetting ID and security key files')
@@ -139,11 +97,10 @@ engine.say("Waiting for serial communications from GPS...")
 engine.runAndWait()
 
 ser = serial.Serial("/dev/ttyS0")
-time.sleep(5)
 while(ser.inWaiting() < 1):
     engine.say("No data from GPS module. Trying again...")
     engine.runAndWait()
-    time.sleep(5)
+    time.sleep(10)
 print("Serial connection to GPS module established")
 engine.say("Serial connection to GPS module established")
 engine.runAndWait()
@@ -236,7 +193,7 @@ def initialize():
                 setServerValue(str(GPSData[1]),"GPSLastLong")
                 setServerValue(str(GPSData[2]),"GPSLastTime")
             #setServerValue(str(GPSData[3]),"Temp")
-            setServerValue("Warming Up GPS","Status")
+            setServerValue("Online","Status")
             setServerValue("STP","RunMode")
 
             engine.say("Server akno ledged. Finishing up initilization")
@@ -318,12 +275,12 @@ def doWebInterface():
         time.sleep(5)
         try:
             GPSData = getGPSData()
-            setServerValue(sharedData[0],"Status")
             if (GPSData[0] != 0 and GPSData[1] != 0):
                 setServerValue(str(GPSData[0]),"GPSLastLat")
                 setServerValue(str(GPSData[1]),"GPSLastLong")
                 setServerValue(str(GPSData[2]),"GPSLastTime")
                 sharedData[0] = "Online"
+            setServerValue(sharedData[0],"Status")
             if (sharedData[5] == True):
                 setServerValue("RUN","RunMode")
                 sharedData[5] = False
@@ -333,16 +290,14 @@ def doWebInterface():
                 servData = json.loads(getResponseContent(sharedData[3].text,"<body>","</body>"))
                 if (servData["RunMode"] == "RUN" and sharedData[1] == "STP"):
                     print("[WEB] Startup detected. Running warning tone")
-                    sharedData[0] = "Starting Motor"
                     doWarning(5)
-                    sharedData[0] = "Running"
                     print("[WEB] RUN condition passed to motor controller")
                 if (sharedData[0] != "ERROR"):
                     sharedData[1] = servData["RunMode"]
                 else:
                     sharedData[1] = "STP"
                     setServerValue("STP","RunMode")
-                    sharedData[0] = "ERROR"
+                    setServerValue("ERROR","Status")
                 print("[WEB] Run state: " + str(sharedData[1]))
             else:
                 print("[WEB] Error retreiving data from server")
