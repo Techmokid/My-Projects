@@ -352,7 +352,7 @@ def doWarning(x):
 
 def doWebInterface():
     while(1):
-        time.sleep(5)
+        time.sleep(30)
         try:
             GPSData = getGPSData()
             setServerValue(sharedData[0],"Status")
