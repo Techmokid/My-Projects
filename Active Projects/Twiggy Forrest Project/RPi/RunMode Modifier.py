@@ -11,10 +11,10 @@ def stripContent(x):
     endVal = content.rfind("</body>")
     return content[startVal+2:endVal]
 
-def setServerValue(ID,key, val,encryptedKey):
-    serverResponse = requests.get(url=URL,headers={'Setvalue':val,'Key':key,'Id':ID,'Encryptedkey':encryptData(val+key+ID,encryptedKey)})
+def setRunmode(ID,val):
+    serverResponse = requests.get(url=URL,headers={'Setrunmode':val,'Id':ID})
     if (serverResponse.ok == False):
         raise Exception("Error when getting server response LOL")
     print(stripContent(serverResponse))
 
-setServerValue(input("ID: "),"RunMode",input("Run Mode: "), input("Encryption Key: "))
+setRunmode(input("ID: "),input("Runmode: "))

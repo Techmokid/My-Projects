@@ -102,8 +102,9 @@ engine.runAndWait()
 ID_Filepath = filepath + "ID.txt"
 EncryptionKey_Filepath = filepath + "key.txt"
 
-with open("/home/pbody/Desktop/out.txt","w") as f:
-    f.write("Filepath: " + filepath + "\nID path: " + ID_Filepath + "\nEncryption path: " + EncryptionKey_Filepath)
+#Legacy code for debugging
+#with open("/home/pbody/Desktop/out.txt","w") as f:
+#    f.write("Filepath: " + filepath + "\nID path: " + ID_Filepath + "\nEncryption path: " + EncryptionKey_Filepath)
 
 if (resetID):
     engine.say('Resetting ID and security key files')
@@ -138,15 +139,42 @@ sharedData.append("$GPGGA,")    # 7
 engine.say("Waiting for serial communications from GPS...")
 engine.runAndWait()
 
-ser = serial.Serial("/dev/ttyS0")
+ser = serial.Serial("/dev/ttyS0",baudrate=9600)
 time.sleep(5)
-while(ser.inWaiting() < 1):
-    engine.say("No data from GPS module. Trying again...")
+
+runningWithoutGPS = False
+attemptsCount = 0
+while(attemptsCount <= 4):
+    isReady = True
+    try:
+        if(ser.inWaiting() < 1):
+            printAndSay("No data from GPS module. Trying again...")
+            time.sleep(5)
+            isReady = False
+        elif(sharedData[7] not in ser.readline()):
+            printAndSay("GPS module returned invalid or corrupt data. Trying again...")
+            time.sleep(5)
+            isReady = False
+    except:
+        printAndSay("GPS module returned invalid bytes. Trying again...")
+        time.sleep(5)
+        isReady = False
+    if (isReady):
+        break
+    
+    attemptsCount += 1
+    if (attemptsCount > 4):
+        printAndSay("Maximum number of GPS module communication attempts reached. GPS module unresponsive or damaged. Continueing without GPS sensor")
+        runningWithoutGPS = True
+
+if (runningWithoutGPS):
+    print("Serial connection to GPS module failed")
+    engine.say("Serial connection to GPS module failed")
     engine.runAndWait()
-    time.sleep(5)
-print("Serial connection to GPS module established")
-engine.say("Serial connection to GPS module established")
-engine.runAndWait()
+else:
+    print("Serial connection to GPS module established")
+    engine.say("Serial connection to GPS module established")
+    engine.runAndWait()
 
 sharedData.append(None)              #Open port with baud rate
 sharedData.append(0)
@@ -165,9 +193,6 @@ def convert_to_degrees(raw_value):
 
 def getGPSData():
     received_data = (str)(ser.readline())
-    return _getGPSData(received_data)
-
-def _getGPSData(received_data):
     GPGGA_data_available = received_data.find(sharedData[7])
     
     if (GPGGA_data_available>0):
@@ -208,6 +233,13 @@ def setServerValue(val, key):
     if (serverResponse.ok == False):
         raise Exception("Error when getting server response LOL")
 
+def getServerTime():
+    serverResponse = requests.get(url=URL,headers={'Getserverdatetime':'1'})
+    if (serverResponse.ok == False):
+        raise Exception("Error when getting server time LOL")
+    tmp = str(serverResponse.content)
+    return tmp[tmp.find("<body>") + 8:tmp.rfind("</body>")]
+
 def initialize():
     if ((os.path.exists(ID_Filepath) == False) or (os.stat(ID_Filepath).st_size == 0)):
         if (sharedData[2] == "-1"):
@@ -229,12 +261,17 @@ def initialize():
                 engine.say("Successfully retrieved new ID and key. Now sending data akno ledgements back to server")
                 engine.runAndWait()
             GPSData = getGPSData()
-
+            
             print("[WEB] Sending server current status")
             if (GPSData[0] != 0 and GPSData[1] != 0):
                 setServerValue(str(GPSData[0]),"GPSLastLat")
                 setServerValue(str(GPSData[1]),"GPSLastLong")
                 setServerValue(str(GPSData[2]),"GPSLastTime")
+            setServerValue(getServerTime(),"ServerLastTime")
+            if (runningWithoutGPS):
+                setServerValue("False","Using GPS")
+            else:
+                setServerValue("True","Using GPS")
             #setServerValue(str(GPSData[3]),"Temp")
             setServerValue("Warming Up GPS","Status")
             setServerValue("STP","RunMode")
@@ -322,8 +359,15 @@ def doWebInterface():
             if (GPSData[0] != 0 and GPSData[1] != 0):
                 setServerValue(str(GPSData[0]),"GPSLastLat")
                 setServerValue(str(GPSData[1]),"GPSLastLong")
-                setServerValue(str(GPSData[2]),"GPSLastTime")
+                #setServerValue(str(GPSData[2]),"GPSLastTime")
                 sharedData[0] = "Online"
+            setServerValue(getServerTime(),"ServerLastTime")
+                
+            if (runningWithoutGPS):
+                setServerValue("False","Using GPS")
+            else:
+                setServerValue("True","Using GPS")
+                
             if (sharedData[5] == True):
                 setServerValue("RUN","RunMode")
                 sharedData[5] = False
