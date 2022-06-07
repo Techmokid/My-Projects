@@ -20,7 +20,7 @@ float laserDuration = 5; //Number of seconds to display the laser for
 
 void startLaser() {
   if ((Item_Position_X >= 0) && (Item_Position_Y >= 0)) {
-    servo_X.oneTimeActive = true;
+    //servo_X.oneTimeActive = true;
     digitalWrite(p.pinToGPIO(laserPin),HIGH);
     lastTimer = millis();
     running = true;
@@ -55,8 +55,8 @@ void updateLaser() {
   
   //For X we just multiply the number of trays across by the width of a tray
   //Then we subtract half of the trays to make it centralised
-  
   if (readValueFromEEPROM(10) > 0) { laser_pos_X += sin(millis()*readValueFromEEPROM(6))*readValueFromEEPROM(7); }
+  Serial.println("laser_pos_X: " + String(laser_pos_X));
   float result_X = servo_X.radToDeg(atan(laser_pos_X / readValueFromEEPROM(0)));
   servo_X.write(result_X + 90);
   Serial.println("X:" + String(result_X));
@@ -67,6 +67,5 @@ void updateLaser() {
   float result_Y = servo_Y.radToDeg(atan(laser_pos_Y / sqrt(pow(laser_pos_X,2) + pow(readValueFromEEPROM(0),2))));
   servo_Y.write(result_Y);
   Serial.println("Y:" + String(result_Y));
-  
   return;
 }

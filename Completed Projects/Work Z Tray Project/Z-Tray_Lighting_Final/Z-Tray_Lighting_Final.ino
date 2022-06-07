@@ -60,7 +60,7 @@ struct servo {
   }
 
   float radToDeg(float x) {
-    return map(x,0,3.14159265358979323846264338,0,180);
+    return map(0,3.14159265358979323846264338,0,180,x);
   }
   
   //void writeMicroseconds(int x) {  }
@@ -114,7 +114,7 @@ void setup() {
   servo_Y.offset0Deg =   readValueFromEEPROM(13); // Experimentally found as: -10
   servo_Y.offset180Deg = readValueFromEEPROM(14); // Experimentally found as: 170
   
-  //pinMode(p.pinToGPIO(laserPin),OUTPUT);
+  pinMode(p.pinToGPIO(laserPin),OUTPUT);
   
   servo_X.setPin(p.pinToGPIO(servo_X_Pin)); servo_X.write(90);
   servo_Y.setPin(p.pinToGPIO(servo_Y_Pin)); servo_Y.offset90 = true; servo_Y.write(0);
@@ -133,7 +133,7 @@ void setup() {
 }
 
 void loop() {
-  updateClientList();
+  //updateClientList();
   updateLaser();
   
   client = server.available();

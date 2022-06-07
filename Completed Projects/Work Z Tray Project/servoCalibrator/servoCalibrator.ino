@@ -60,11 +60,11 @@ void setup() {
 }
 
 void loop() {
-  serX.write(90);  serY.write(0);   delayCheck(3000);
-  serX.write(0);   serY.write(0);   delayCheck(3000);
-  serX.write(90);  serY.write(0);   delayCheck(3000);
-  serX.write(180); serY.write(0);   delayCheck(3000);
-  serX.write(90);  serY.write(0);   delayCheck(3000);
+  //serX.write(90);  serY.write(0);   delayCheck(3000);
+  //serX.write(0);   serY.write(0);   delayCheck(3000);
+  //serX.write(90);  serY.write(0);   delayCheck(3000);
+  //serX.write(180); serY.write(0);   delayCheck(3000);
+  //serX.write(90);  serY.write(0);   delayCheck(3000);
   serX.write(90);  serY.write(-90); delayCheck(3000);
   serX.write(90);  serY.write(0);   delayCheck(3000);
   serX.write(90);  serY.write(90);  delayCheck(3000);

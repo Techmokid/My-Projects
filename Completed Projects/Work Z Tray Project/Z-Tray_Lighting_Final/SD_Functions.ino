@@ -50,7 +50,6 @@ void getItem(String itemID) {
       //Here we have a complete sentence to work with without a newline at the end. We can decode it now
       String positionData = result.substring(0,result.indexOf(':'));
       String item = result.substring(result.indexOf(':') + 1,result.length() - 1);
-      
       if (item == itemID) {
         Item_Position_X = positionData.substring(0,result.indexOf(',')).toInt();
         Item_Position_Y = positionData.substring(result.indexOf(',')+1,result.indexOf(':')).toInt();
