@@ -133,7 +133,7 @@ void setup() {
 }
 
 void loop() {
-  //updateClientList();
+  updateClientList();
   updateLaser();
   
   client = server.available();

@@ -65,8 +65,10 @@ void detectDiscretions() {
   for (int i = 0; i < connectedClients.size(); i++) { 
     if(!prevListContains(connectedClients.get(i))) {
       if (connectedClients.get(i) == "f2:5d:80:83:3a:11") {
-        Serial.println("Detected dev device");
-      } else { Serial.println("WARNING: Unknown device: " + connectedClients.get(i)); }
+        Serial.println("Dev device connected");
+      } else {
+        Serial.println("WARNING: Unknown device connected: " + connectedClients.get(i));
+      }
     }
   }
 }
