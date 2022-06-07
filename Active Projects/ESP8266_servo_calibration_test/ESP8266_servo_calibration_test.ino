@@ -36,8 +36,8 @@ void setup() {
   //serY.offset0Deg = 600;
   //serY.offset180Deg = 2200;
 
-  ISR_servo[0] = {-1, pinToGPIO(6)};
-  ISR_servo[1] = {-1, pinToGPIO(7)};
+  ISR_servo[0] = {-1, pinToGPIO(3)};
+  ISR_servo[1] = {-1, pinToGPIO(4)};
   
   for (int index = 0; index < NUM_SERVOS; index++) {
     ISR_servo[index].servoIndex = ISR_Servo.setupServo(ISR_servo[index].servoPin, MIN_MICROS, MAX_MICROS);
@@ -52,14 +52,14 @@ void setup() {
 }
 
 void loop() {
-  ISR_Servo.setPosition(ISR_servo[0].servoIndex, 10);
-  delay(3000);
+  ISR_Servo.setPosition(ISR_servo[0].servoIndex, 0);
+  delay(1000);
   ISR_Servo.setPosition(ISR_servo[0].servoIndex, 100);
   delay(1000);
   ISR_Servo.setPosition(ISR_servo[0].servoIndex, 190);
   delay(1000);
   ISR_Servo.setPosition(ISR_servo[0].servoIndex, 100);
-  delay(1000);
+  delay(3000);
 }
 
 int pinToGPIO(int x) {

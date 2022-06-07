@@ -11,7 +11,7 @@ IPAddress address;
 
 struct station_info *stat_info;
 struct ipv4_addr *IPaddress;
-const char *ssid = "ESP8266 v1.8";
+const char *ssid = "Jaycar Midland Tray Scanner v1.9";
 
 bool dev_lock_override = false;
 
