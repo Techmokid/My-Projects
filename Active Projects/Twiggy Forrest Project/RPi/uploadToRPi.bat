@@ -1,1 +1,0 @@
-scp "RPi Controller Code.py" pi@192.168.1.7:/home/pi/Desktop

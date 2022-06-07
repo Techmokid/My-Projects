@@ -1,0 +1,18 @@
+{
+  "ID":4,
+  "Time":"19:45",
+  "Date":"12/10/2021",
+  "Status":"IDLE",
+  "GPS Lat":-31.86648941040039,
+  "GPS Long":116.03729248046875,
+  "Temp":27.35,
+  "Other":"Humidity:28%,Wind:55kph"
+}
+
+Status options:
+ - OFFLINE
+ - STARTING
+ - IDLE
+ - RUNNING
+ - ERROR_GENERIC
+ - ERROR_MOTOR
