@@ -51,7 +51,7 @@ void updateSensors() {
 int getSensorOutput(int ID) { return sensorDataArr[ID]; }
 
 bool sensorDisconnected() {
-  return false;
+  //return false;
   for (int i = 0; i < sizeof(sensorDataArr)/sizeof(sensorDataArr[0]); i++) {
     if ((sensorDataArr[i] < 4) || (sensorDataArr[i] > 1018)) {
       return true;

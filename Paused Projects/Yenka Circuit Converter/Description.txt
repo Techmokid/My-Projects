@@ -1,0 +1,5 @@
+Convert a Yenka file into a modified image file. Them optimise, push things close together, sort out grouping, and then convert the resulting image into a STEP file.
+
+The image itself can be used to make a circuit the old way with etchant
+
+The STEP file can be used for the new CNC way of making circuit boards
