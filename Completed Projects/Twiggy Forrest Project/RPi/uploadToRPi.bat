@@ -1,1 +1,1 @@
-scp "RPi Controller Code.py" "SetupController.py" "uploadFromRPiToPC.sh" pbody@192.168.1.13:/home/pbody/Desktop
+scp "GPS Test.py" "RPi Controller Code.py" "SetupController.py" "uploadFromRPiToPC.sh" pbody@192.168.1.11:/home/pbody/Desktop

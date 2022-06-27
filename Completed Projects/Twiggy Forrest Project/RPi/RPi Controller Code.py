@@ -1,5 +1,5 @@
 from multiprocessing import Process,Manager,Value
-import requests,json,os,time,hashlib,hmac,serial,sys,pyttsx3
+import requests,json,os,time,hashlib,hmac,serial,sys,pyttsx3,subprocess
 import RPi.GPIO as GPIO
 
 onlineLEDPin = 5            #Done
@@ -139,24 +139,39 @@ sharedData.append("$GPGGA,")    # 7
 engine.say("Waiting for serial communications from GPS...")
 engine.runAndWait()
 
-ser = serial.Serial("/dev/ttyS0",baudrate=9600)
 time.sleep(5)
-
+#time.sleep(5)
+#    received_data = str(subprocess.Popen(['cat','/dev/ttyS0'],stdout=subprocess.PIPE.communicate()[0]))
+#
+#    passedFirst = False
+#    for i in received_data.split("\\r\\n"):
+#        if (passedFirst):
+            
 runningWithoutGPS = False
 attemptsCount = 0
 while(attemptsCount <= 4):
     isReady = True
+    subprocess.Popen(['cat','/dev/ttyS0'],stdout=subprocess.PIPE).communicate()[0]
+    time.sleep(2)
+    received_data = str(subprocess.Popen(['cat','/dev/ttyS0'],stdout=subprocess.PIPE).communicate()[0])
+    passedFirst = False
     try:
-        if(ser.inWaiting() < 1):
+        if(len(received_data.split("\\r\\n")) < 2):
             printAndSay("No data from GPS module. Trying again...")
             time.sleep(5)
             isReady = False
-        elif(sharedData[7] not in ser.readline()):
-            printAndSay("GPS module returned invalid or corrupt data. Trying again...")
-            time.sleep(5)
-            isReady = False
+        if (isReady):
+            validFound = False
+            for i in received_data.split("\\r\\n"):
+                if (sharedData[7] in i):
+                    validFound = True
+            
+            if not validFound:
+                isReady = False
+                printAndSay("GPS module returned invalid or corrupt data. Trying again...")
+                time.sleep(5)
     except:
-        printAndSay("GPS module returned invalid bytes. Trying again...")
+        printAndSay("GPS module returned error. Trying again...")
         time.sleep(5)
         isReady = False
     if (isReady):
@@ -192,24 +207,32 @@ def convert_to_degrees(raw_value):
     return position
 
 def getGPSData():
-    received_data = (str)(ser.readline())
-    GPGGA_data_available = received_data.find(sharedData[7])
-    
-    if (GPGGA_data_available>0):
-        nmea_time = []
-        nmea_latitude = []
-        nmea_longitude = []
-        sharedData[12] = sharedData[9][0]                    #extract time from GPGGA string
-        nmea_latitude = sharedData[9][1]                #extract latitude from GPGGA string
-        nmea_longitude = sharedData[9][3]               #extract longitude from GPGGA string
-        
-        #print("NMEA Time: ", nmea_time,'\n')
-        #print ("NMEA Latitude:", nmea_latitude,"NMEA Longitude:", nmea_longitude,'\n')
-        
-        lat = float(nmea_latitude)                  #convert string into float for calculation
-        longi = float(nmea_longitude)               #convertr string into float for calculation
-        sharedData[10] = convert_to_degrees(lat)
-        sharedData[11] = convert_to_degrees(longi)
+    subprocess.Popen(['cat','/dev/ttyS0'],stdout=subprocess.PIPE).communicate()[0]
+    time.sleep(3)
+    received_data = str(subprocess.Popen(['cat','/dev/ttyS0'],stdout=subprocess.PIPE).communicate()[0])
+
+    passedFirst = False
+    for i in received_data.split("\\r\\n"):
+        if (passedFirst):
+            GPGGA_data_available = i.find(sharedData[7])
+            if (GPGGA_data_available>-1):
+                try:
+                    sharedData[12] = i.split(",")[1]                    #extract time from GPGGA string
+                    nmea_latitude = i.split(",")[2]                #extract latitude from GPGGA string
+                    nmea_longitude = i.split(",")[4]               #extract longitude from GPGGA string
+                    if (i.split(",")[3] == "S"):
+                        nmea_latitude = "-" + nmea_latitude
+                    if (i.split(",")[5] == "W"):
+                        nmea_longitude = "-" + nmea_longitude
+                    
+                    lat = float(nmea_latitude)                  #convert string into float for calculation
+                    longi = float(nmea_longitude)               #convertr string into float for calculation
+                    sharedData[10] = convert_to_degrees(lat)
+                    sharedData[11] = convert_to_degrees(longi)
+                except:
+                    continue
+        else:
+            passedFirst = True
     return [sharedData[10], sharedData[11], sharedData[12][:2] + ":" + sharedData[12][2:4] + ":" + sharedData[12][4:6]]
 
 #For web server
@@ -264,8 +287,9 @@ def initialize():
             
             print("[WEB] Sending server current status")
             if (GPSData[0] != 0 and GPSData[1] != 0):
-                setServerValue(str(GPSData[0]),"GPSLastLat")
-                setServerValue(str(GPSData[1]),"GPSLastLong")
+                #setServerValue(str(GPSData[0]),"GPSLastLat")
+                #setServerValue(str(GPSData[1]),"GPSLastLong")
+                setServerValue(str(GPSData[0] + "," + str(GPSData[1])),"GPSLocation")
                 setServerValue(str(GPSData[2]),"GPSLastTime")
             setServerValue(getServerTime(),"ServerLastTime")
             if (runningWithoutGPS):
@@ -273,7 +297,7 @@ def initialize():
             else:
                 setServerValue("True","Using GPS")
             #setServerValue(str(GPSData[3]),"Temp")
-            setServerValue("Warming Up GPS","Status")
+            setServerValue("Online","Status")
             setServerValue("STP","RunMode")
 
             engine.say("Server akno ledged. Finishing up initilization")
@@ -352,22 +376,29 @@ def doWarning(x):
 
 def doWebInterface():
     while(1):
-        time.sleep(30)
+        time.sleep(5)
+        if ((sharedData[0] == "Warming Up GPS") and (not runningWithoutGPS)):
+            sharedData[0] = "Online"
+            print("[WEB] Set to online")
+            
         try:
             GPSData = getGPSData()
             setServerValue(sharedData[0],"Status")
             if (GPSData[0] != 0 and GPSData[1] != 0):
-                setServerValue(str(GPSData[0]),"GPSLastLat")
-                setServerValue(str(GPSData[1]),"GPSLastLong")
-                #setServerValue(str(GPSData[2]),"GPSLastTime")
+                #setServerValue(str(GPSData[0]),"GPSLastLat")
+                #setServerValue(str(GPSData[1]),"GPSLastLong")
+                setServerValue(str(GPSData[0] + "," + str(GPSData[1])),"GPSLocation")
+                setServerValue(str(GPSData[2]),"GPSLastTime")
                 sharedData[0] = "Online"
             setServerValue(getServerTime(),"ServerLastTime")
-                
+            
             if (runningWithoutGPS):
                 setServerValue("False","Using GPS")
             else:
                 setServerValue("True","Using GPS")
-                
+                if (sharedData[0] == "Warming Up GPS"):
+                    sharedData[0] == "Online"
+            
             if (sharedData[5] == True):
                 setServerValue("RUN","RunMode")
                 sharedData[5] = False
