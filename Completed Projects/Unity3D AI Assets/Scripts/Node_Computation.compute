@@ -1,0 +1,252 @@
+#pragma kernel CSMain
+
+
+
+// Starting off, we define the custom structs that our data is stored in
+struct Genome_GPU {
+	int ID;
+	double fitness;
+	double prev_fitness;
+	int Nodes_Start_Index;
+	int Nodes_End_Index;
+};
+
+struct Node_GPU {
+	int ID;			//Identification code		// The ID of this node
+
+	double nTT;		//Node trigger typeof		// 0 is step, 1 is sigmoid, 2 is Hyperbolic Tangent, 3 is SiLU, 4 is ReLU
+	double nB;		//Node bias
+	double pNB;		//Previous node bias
+
+	bool nII; 		//node Is Input				// Is the node is an input or not
+	bool nIO; 		//node Is Output			// Is the node is an output or not
+	double nIV;		//node Input Value			// If the node is an input, what have we entered
+	double pO;		//precalculated Output		// This variable just allows for quicker genome output computing
+
+	int wSI; 		//weights Start Index		// This is the position in the weights array where the start of this nodes connections are held
+	int wEI;		//weights End Index			// This is the position in the weights array where the end of this nodes connections are held
+};
+
+struct NodeConnection_GPU {
+	int NodePos;
+	double Weight;
+	double Prev_Weight;
+};
+
+
+
+// This is the actual variable inputs from the CPU
+RWStructuredBuffer<Genome_GPU> genomes;
+RWStructuredBuffer<Node_GPU> nodes;
+RWStructuredBuffer<NodeConnection_GPU> nodeConnections;
+RWStructuredBuffer<double> genomeInputs;
+RWStructuredBuffer<double> genomeOutputs;
+int numberOfIterations;
+int randomSeed;
+int maxThreadCount;
+RWStructuredBuffer<int> randomOffset;
+RWStructuredBuffer<double> trainingDataArray;
+bool isTraining;
+
+// Just some simple and basic helper functions direct from C# dotnet implimentation
+double Exp(double x) { return (double)pow(2.7182818284590452353602874713527, (float)x); }
+int GetGenomeIndex(int nodeID) { return (int)floor((float)((double)genomes.Length * (double)nodeID / (double)nodes.Length)); }
+double dot(double a1, double a2, double b1, double b2) { return a1 * b1 + a2 * b2; }
+double frac(double x) { return  x - floor((float)x); }
+double GetRandomFloat(int nodeID) {
+	// Simple code for getting a random number on the GPU
+	int randomInputSeed = nodeID + randomOffset[nodeID] * maxThreadCount + randomSeed;
+	randomOffset[nodeID] = randomOffset[nodeID] + 1;
+
+	double vec1A = (double)randomInputSeed;
+	double vec1B = 3.072 * (double)randomInputSeed + 0.518;
+	double vec2A = 12.9898;
+	double vec2B = 78.233;
+
+	return frac(
+		sin(
+		(float)dot(vec1A, vec1B, vec2A, vec2B)
+		) * 43758.5453
+	);
+}
+double clamp(double x, double m, double M) {
+	if (x > M)
+		x = M;
+	if (x < m)
+		x = m;
+	return x;
+}
+
+
+
+// This is our main calculation functions
+void UpdateFakeMarketData(int ticker, int ID) {
+	for (int i = 0; i < trainingDataArray.Length - 1; i++) {
+		trainingDataArray[i] = trainingDataArray[i + 1];
+	}
+
+	// This follows a specific type of random number generation that I've proven via python works
+	double oldPrice = trainingDataArray[trainingDataArray.Length - 1];
+	double MIN_PRICE = 0.1;
+	double MAX_PRICE = 9.9;
+
+	double volatility = 8;
+	double changePercent = 2 * volatility * GetRandomFloat(ID);
+
+	if (changePercent > volatility)
+		changePercent -= (2 * volatility);
+
+	double changeAmount = oldPrice * changePercent / 100;
+	double newPrice = oldPrice + changeAmount;
+
+	if (newPrice < MIN_PRICE)
+		newPrice += abs(changeAmount) * 2;
+	else if (newPrice > MAX_PRICE)
+		newPrice -= abs(changeAmount) * 2;
+
+	trainingDataArray[trainingDataArray.Length - 1] = newPrice;
+}
+
+void CalculateNodeOutput(int ID) {
+	int genomePos = GetGenomeIndex(ID);
+
+	//If we are an input node, take the value from the inputs array
+	if (nodes[ID].nII) {
+		int i = ID - genomes[genomePos].Nodes_Start_Index;
+		nodes[ID].nIV = genomeInputs[i];
+		nodes[ID].pO = genomeInputs[i];
+		return;
+	}
+	return;
+
+	//If we are not an input node, we have to calculate our output value based on the previous nodes
+	//All nodes are doing this simultaneously, so we just wait a moment until the nodes before us have finished, then we can give a response
+	//Yes yes, I know that pausing execution and waiting for something on the GPU is bad. This is my code, and if it works, it can't be that bad
+	double result = 0;
+	for (int i = nodes[ID].wSI; i <= nodes[ID].wEI; i++) {
+		int prevNodeIndex = nodeConnections[i].NodePos;
+		//while (nodes[prevNodeIndex].pO == -99999) {}
+		result += nodes[prevNodeIndex].pO * nodeConnections[i].Weight;
+	}
+
+	if (nodes[ID].nTT == 0)
+		nodes[ID].pO = (result > 0) ? 0 : 1;  						// Step Function
+	else if (nodes[ID].nTT == 1)
+		nodes[ID].pO = 1 / (1 + Exp(-result)); 						// Sigmoid
+	else if (nodes[ID].nTT == 2)
+		nodes[ID].pO = (Exp(2 * result) - 1) / (Exp(2 * result) + 1); // Hyperbolic Tangent
+	else if (nodes[ID].nTT == 3)
+		nodes[ID].pO = result / (1 + Exp(-result)); 				// SiLU
+	else if (nodes[ID].nTT == 4)
+		nodes[ID].pO = max(0, result); 						// ReLU
+
+	//Is the node an output? If so, we must put our result into the output array of the GPU
+	if (nodes[ID].nIO) {
+		int outputsPerGenome = genomeOutputs.Length / genomes.Length;
+		//int outputArrayStartPos = outputsPerGenome*genomePos;
+		//int outputArrayEndPos = (outputsPerGenome + 1)*genomePos - 1;
+		int genomeNodesEnd = genomes[genomePos].Nodes_End_Index;
+		int outputNodesIndexStart = genomeNodesEnd - outputsPerGenome + 1;
+		int outputNodeIndex = outputsPerGenome * genomePos + ID - outputNodesIndexStart;
+
+		genomeOutputs[outputsPerGenome] = nodes[ID].pO;
+	}
+
+}
+
+void RollbackAndAdjustWeight(int nodeID) {
+	int genIndex = GetGenomeIndex(nodeID);
+	if (genomes[genIndex].fitness < genomes[genIndex].prev_fitness) {
+		nodes[nodeID].nB = nodes[nodeID].pNB;
+		for (int i = nodes[nodeID].wSI; i <= nodes[nodeID].wEI; i++) {
+			nodeConnections[i].Weight = nodeConnections[i].Prev_Weight;
+		}
+	}
+
+	nodes[nodeID].pO = -99999;
+
+	double adjustmentVar = 0.05;
+	nodes[nodeID].pNB = nodes[nodeID].nB;
+	nodes[nodeID].nB += GetRandomFloat(nodeID) * adjustmentVar * 2 - adjustmentVar;
+	for (int i = nodes[nodeID].wSI; i <= nodes[nodeID].wEI; i++) {
+		nodeConnections[i].Prev_Weight = nodeConnections[i].Weight;
+		nodeConnections[i].Weight = clamp(
+			nodeConnections[i].Weight + (
+				GetRandomFloat(nodeID) * adjustmentVar * 2 - adjustmentVar
+				), -1, 1
+		);
+	}
+}
+
+
+
+// Our final main function
+[numthreads(8, 1, 1)]
+void CSMain(uint3 id : SV_DispatchThreadID) {
+	if (isTraining == false) {
+		CalculateNodeOutput(id.x);
+		return;
+	}
+	return;
+	int randomMarketDataTicker = 0;
+	double fakeCoins = 0;
+	double fakeWallet = 1000;
+	double fakeTotal = 1000;
+	double networkBuyTax = 0.01;
+	double networkSellTax = 0.01;
+	int genomeInputsStart = genomes[GetGenomeIndex(id.x)].Nodes_Start_Index;
+	int outputsPerGenome = genomeOutputs.Length / genomes.Length;
+	for (int iteration = 0; iteration < numberOfIterations; iteration++) {
+		for (int trainingDataIndex = 0; trainingDataIndex < trainingDataArray.Length - genomeInputs.Length; trainingDataIndex++) {
+			if (nodes[id.x].nII) {
+				//Set the training data to the node input here
+				nodes[id.x].nIV = trainingDataArray[trainingDataIndex + id.x - genomeInputsStart];
+				nodes[id.x].pO = 1;//nodes[id.x].nIV;
+			}
+
+			//Wait until all the input nodes are set.
+			if (!nodes[id.x].nII) {
+				for (int n = 0; n < genomeInputs.Length; n++) {
+					while (nodes[genomeInputsStart + n].pO == -99999) {}
+				}
+
+				//Now that all the input nodes are set, we can run the calculation
+				CalculateNodeOutput(id.x);
+			}
+			else {
+				for (int n = 0; n < outputsPerGenome; n++) {
+					while (nodes[genomeInputsStart + n].pO == -99999) {}
+				}
+			}
+
+			//One single node per genome gets the priveledge to calculate the fitness
+			if (id.x == genomeInputsStart) {
+				int outputPos = GetGenomeIndex(id.x) * outputsPerGenome;
+				if ((genomeOutputs[outputPos] > 0) && (fakeCoins > 0)) {
+					fakeWallet = fakeCoins * trainingDataArray[trainingDataIndex] * (1 - networkSellTax);		//Sell
+					fakeCoins = 0;
+				}
+
+				if ((genomeOutputs[outputPos + 1] > 0) && (fakeWallet > 0)) {
+					fakeCoins = fakeWallet / trainingDataArray[trainingDataIndex];		//Buy
+					fakeWallet = 0;
+				}
+
+				randomMarketDataTicker++;
+				UpdateFakeMarketData(randomMarketDataTicker, id.x);
+			}
+
+			//Synchronise all threads so that the nodes don't start calculating asychronously and causing havoc in memory
+			nodes[id.x].pO = -99999;
+			for (int i = 0; i < genomeOutputs.Length / genomes.Length; i++) {
+				while (nodes[genomeInputsStart + i].pO != -99999) {}
+			}
+
+			fakeTotal += fakeWallet + fakeCoins * trainingDataArray[trainingDataIndex + genomeInputs.Length];
+		}
+
+		//genomes[GetGenomeIndex(id.x)].fitness = genomeOutputs[GetGenomeIndex(id.x) * outputsPerGenome];//fakeTotal;
+		genomes[GetGenomeIndex(id.x)].fitness = fakeTotal;
+		RollbackAndAdjustWeight(id.x);
+	}
+}

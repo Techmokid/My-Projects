@@ -1,0 +1,5 @@
+The NEAT AI I was building from scratch did work, but alas I could not figure out how to get it onto the graphics card.
+
+EDIT (24/08/2022): NEAT AI wouldn't have worked anyways. Turns out I completely messed up how the nodes themselves worked entirely
+
+Unfortunately, these numerous problems led to this particular version of my AI being unfortunately a failure
