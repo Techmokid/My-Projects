@@ -2,6 +2,7 @@ from PIL import Image,ImageDraw,ImageFont
 import ctypes,os,shutil,datetime
 
 debtLeft = 0
+payoffAmountPerWeek = 360/2 + 100
 
 with open("C:/Temp/Zip Debt Left.txt",'r') as f:
     debtLeft = float(f.read())
@@ -27,6 +28,10 @@ d.text((350,400), "ZipMoney Debt Left: $" + str(round(debtLeft)), font=fnt1, fil
 dateTime = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
 fnt2 = ImageFont.truetype('C:/Windows/Fonts/Arial.ttf', 50)
 d.text((550,550), "Last Updated: " + dateTime, font=fnt2, fill=(250,250,250))
+
+daysToPayoff = round(debtLeft)*7 / payoffAmountPerWeek
+ETADate = datetime.datetime.now() + datetime.timedelta(days=daysToPayoff)
+d.text((550,600), "Payoff ETA: " + ETADate.strftime('%d/%m/%y'), font=fnt2, fill=(250,250,250))
 
 img.save(imgDir + "ZipMoney Status.bmp")
 ctypes.windll.user32.SystemParametersInfoW(20, 0, imgDir + "ZipMoney Status.bmp" , 0)
