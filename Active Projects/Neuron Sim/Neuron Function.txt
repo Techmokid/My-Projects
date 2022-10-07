@@ -1,9 +1,10 @@
-A neuron happilly sits at -70mV normally (Resting).
+A neuron happily sits at -70mV normally (Resting).
 If the sum of the input neurons can pull the current neuron above -55mV, the neuron fires in an event called depolarization.
 The neuron firing pushes the entire neuron input values to +40mV, where is then starts dropping back down (Repolarization).
 Once the neuron hits -70mV, it overshoots a little bit to -75mV, called hyperpolarization.
 Over a bit of time, the neuron eventually pulls itself back to -70mV.
 Only after the neuron has gone hyperpolar and reset back to -70mV can the cell retrigger.
+
 
 Neurons come in many variants, the most common is multipolar. Other variants are Unipolar, Bipolar, and Pseudounipolar neurons.
 Bipolar neurons are sensory neurons found in the retina, olfactory system (Smell), and vestibulocochlear nerve (Sound and balance).
@@ -15,7 +16,19 @@ Presence of a myelin sheath speeds up the transmition of neural signals.
 Websites:
 http://www.scholarpedia.org/article/Neural_inhibition
 https://www.ninds.nih.gov/Disorders/Patient-Caregiver-Education/Life-and-Death-Neuron#:~:text=Neurons%20are%20information%20messengers.,rest%20of%20the%20nervous%20system.
+https://www.verywellmind.com/what-is-an-action-potential-2794811
 
 
 
 NOTE: Circuit may just be easiest to create many microcontrollers for this, rather than trying any sort of complex single-use circuit
+
+
+
+
+NEW INFO:
+A neuron can fire roughly every 4ms.
+Myelin sheathed axons transmit at 90m/s. Unmyelinated axons transmit at 0.5m/s to 2m/s.
+Average axon length is approx 20 to 60µm.
+This gives a transmission time of 0.12ms to 0.03ms average for unmyelinated axons, and 0.00067ms (667ns) average for myelinated axons.
+Meaning that an axon would practically NEVER be transmitting more than 1 signal at a time.
+Neural blocks will occur if this time difference is not taken into account, as the brain is an extremely timing sensitive organ. Therefore, MUST include this timing
