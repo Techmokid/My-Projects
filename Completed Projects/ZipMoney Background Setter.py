@@ -2,7 +2,14 @@ from PIL import Image,ImageDraw,ImageFont
 import ctypes,os,shutil,datetime
 
 debtLeft = 0
-payoffAmountPerWeek = 360/2 + 100
+payoffAmountPerWeek = 360/2 + 200
+
+edgeColour = (120,0,120)
+backgroundColour = (0,80,0)
+#edgeColour = (0,125,125)
+#backgroundColour = (20,20,0)
+
+hiddenColour = (0,255,0)
 
 with open("C:/Temp/Zip Debt Left.txt",'r') as f:
     debtLeft = float(f.read())
@@ -19,7 +26,18 @@ pixels = img.load()
 for x in range(img.size[0]):
     for y in range(img.size[1]):
         if (y > 995):
-            pixels[x,y] = (0,255,0)
+            pixels[x,y] = hiddenColour
+        else:
+            if (x > 1842-50):
+                pixels[x,y] = edgeColour
+            elif (x < 50):
+                pixels[x,y] = edgeColour
+            elif (y > 945):
+                pixels[x,y] = edgeColour
+            elif (y < 50):
+                pixels[x,y] = edgeColour
+            else:
+                pixels[x,y] = backgroundColour
 
 fnt1 = ImageFont.truetype('C:/Windows/Fonts/Arial.ttf', 100)
 d = ImageDraw.Draw(img)
