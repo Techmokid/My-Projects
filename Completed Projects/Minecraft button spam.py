@@ -3,8 +3,9 @@ import mouse,keyboard,time
 running = False
 while (True):
     while(running):
-        mouse.click('right')
-        time.sleep(0.005)
+        mouse.click('left')
+        #time.sleep(0.005)
+        time.sleep(0.01)
         if keyboard.is_pressed('i'):
             running = False
             print("Off")

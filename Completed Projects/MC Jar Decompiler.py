@@ -1,15 +1,20 @@
 import requests,os,shutil,zipfile,time
+from subprocess import check_output
 from pathlib import Path
 
-directory = "C:/Users/aj200/Desktop/Fabric/fabric-api-0.44.01.18.jar"
+directory = "C:/Users/aj200/AppData/Roaming/.minecraft/mods/BrandonsCore-1.16.5-3.0.13.244-universal.jar"
+SkipModUnzipping = True
+startingMCVersion = '1.16.5'
+endingMCVersion = '1.18.2'
 
 #This is for decompiling the jar file
-if(os.path.exists("C:/Temp/procyon/")):
-    shutil.rmtree("C:/Temp/procyon/")
-os.system('cmd /c "java -jar C:/Windows/procyon.jar -jar "' + directory + '" -o C:/Temp/procyon"')
+if not SkipModUnzipping:
+    if(os.path.exists("C:/Temp/procyon/")):
+        shutil.rmtree("C:/Temp/procyon/")
+    os.system('cmd /c "java -jar C:/Windows/procyon.jar -jar "' + directory + '" -o C:/Temp/procyon"')
 
-if(os.path.exists(directory) == False):
-    print("ERROR!")
+    if(os.path.exists(directory) == False):
+        print("ERROR!")
 
 src = "C:/Temp/procyon/"
 
@@ -121,11 +126,12 @@ def correct(directory):
 getFunctionList()
 getFieldList()
 print()
-pathlist = Path(src).glob('**/*.java')
-for path in pathlist:
-    path_in_str = str(path)
-    print("Correcting File: " + path_in_str)
-    correct(path_in_str)
+if not SkipModUnzipping:
+    pathlist = Path(src).glob('**/*.java')
+    for path in pathlist:
+        path_in_str = str(path)
+        print("Correcting File: " + path_in_str)
+        correct(path_in_str)
 
 #This is for downloading the required forge version
 def scanForTerm(lines,term):
@@ -225,10 +231,13 @@ def editClassPath():
     fileContents += "</classpath>"
     
     #Remove the last line of the file
-    with open("C:/Temp/forgeVersion/forge/.classpath") as f:
-        lines = f.readlines()
-    with open("C:/Temp/forgeVersion/forge/.classpath",'w') as f:
-        f.writelines([item for item in lines[:-1]])
+    try:
+        with open("C:/Temp/forgeVersion/forge/.classpath") as f:
+            lines = f.readlines()
+        with open("C:/Temp/forgeVersion/forge/.classpath",'w+') as f:
+            f.writelines([item for item in lines[:-1]])
+    except:
+        print("Could not open classpath")
     
     #Write the extra data to the file and finish
     with open("C:/Temp/forgeVersion/forge/.classpath",'a') as f:
@@ -246,8 +255,9 @@ def editSettings():
     fileContents += "org.eclipse.jdt.core.compiler.problem.assertIdentifier=error"
     fileContents += "org.eclipse.jdt.core.compiler.problem.enumIdentifier=error"
     fileContents += "org.eclipse.jdt.core.compiler.source=1.7"
-    
-    with open("C:/Temp/forgeVersion/forge/.settings/org.eclipse.jdt.core.prefs",'w') as f:
+
+    os.mkdir("C:/Temp/forgeVersion/forge/.settings/")
+    with open("C:/Temp/forgeVersion/forge/.settings/org.eclipse.jdt.core.prefs",'w+') as f:
         f.write(fileContents)
 
 def createPOM(groupID, artifactID, mc_version, mod_version="1.0"):
@@ -308,7 +318,34 @@ def findFilenameFromDirectory(directory):
         nextLetter = directory[len(directory) - loops]
     return result
 
-downloadForgeVersion('1.12.2','Eclipse')
+downloadForgeVersion(endingMCVersion,'Eclipse')
+
+#Perform naive conversion to minecraft version
+print("Performing naive version conversion")
+pathlist = Path(src).glob('**/*.java')
+
+for path in pathlist:
+    path_in_str = str(path)
+    print("Performing naive correction on file: " + path_in_str)
+
+    dataArr = []
+    with open(path_in_str, "r") as f:
+        data = f.readlines()
+        
+        for i in data:
+            if not (i == i.replace(startingMCVersion,endingMCVersion)):
+                print("Discovered version information")
+            dataArr.append(str(i.replace(startingMCVersion,endingMCVersion)))
+    with open(path_in_str, "w+") as f:
+        f.writelines(dataArr)
+
+#Finally recompile the mod
+input("Mod successfully decompiled and naive converted. \nHit enter to attempt recompile\n\n")
+os.system('cmd /c "C:/Temp/forgeVersion/forge/gradlew.bat build && pause"')
+
+#x = check_output("C:/Temp/forgeVersion/forge/gradlew.bat build", shell=True).decode("utf-8")
+#print(x)
+
 print("Done!")
 
 
