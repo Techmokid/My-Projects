@@ -1,14 +1,14 @@
-import mouse,keyboard,time
+import keyboard,time,mouse
 
 running = False
 while (True):
     while(running):
-        mouse.click('left')
-        #time.sleep(0.005)
+        mouse.click('right')
+        #keyboard.press("q")
         time.sleep(0.01)
-        if keyboard.is_pressed('i'):
+        if keyboard.is_pressed('F6'):
             running = False
             print("Off")
-    if keyboard.is_pressed('o'):
+    if keyboard.is_pressed('F7'):
         print("RUNNING")
         running = True

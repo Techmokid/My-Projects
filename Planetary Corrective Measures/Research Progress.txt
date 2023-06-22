@@ -15,8 +15,6 @@
 
 (NS)	- Food Waste
 
-(NS)	- Ozone Repletion
-
 (NS)	- Plastic in Ocean
 
 (NS)	- Recycling Overflow and Ignorance

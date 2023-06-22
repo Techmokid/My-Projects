@@ -1,0 +1,20 @@
+220k neurons
+15k connections per neuron max
+
+Per neuron:
+Max number of connections per neuron at 15,000 connections would require 14 bits to index
+Timer var we'll set to be 16 bits per neuron
+Therefore neuron init data is 14,16 = 30 bits per neuron
+
+Per connection:
+Indexing of 100 billion neurons requires 37 bits per neuron for indexing
+Myelination can be a single boolean value
+Therefore per neuron connection data is 37,1 = 38 bit per connection
+
+Max neuron data size is 30 + (15k * 38) = 570,030 bits = 570.03kb = 71.254KB
+Average neuron data size is 30 + (1k * 38) = 38,030 bits = 38.03kb = 4.754KB
+
+38.03kb per neuron * 220k neurons = 8.367gb = 1.046GB
+
+PRAM Only:
+16 bits per neuron * 220k neurons = 3.52 mb = 440 KB
