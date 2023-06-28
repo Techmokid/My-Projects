@@ -1,0 +1,2 @@
+The TTS voice in question that I am trying to replicate in python is MacAndTalk's "Ralph". However I do not have a pure enough vocal starting point to be able to run a ring modulator on it.
+If I had a more suitable starting voice, I could get it to work

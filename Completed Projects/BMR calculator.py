@@ -12,6 +12,10 @@
 #Roughly 1Kg is 7700cal
 
 import keyboard,math
+from datetime import datetime
+
+def kj_to_kcal(x):
+    return x/4.184
 
 #Drinks
 kcal_mountain_dew_500ml = 240
@@ -22,13 +26,17 @@ kcal_1L_sodastream_creaming_soda = 9.92
 
 #Zambreros
 kcal_Zambreros_red_chilli_sauce = 28
+kcal_Zambreros_chipotle_sauce = 98
+
 kcal_Zambreros_burrito_without_sauce = 749
 kcal_Zambreros_small_burrito_without_sauce = 521
 kcal_Zambreros_nachos_without_sauce = 809
+kcal_Zambreros_bowl_without_sauce = 465
 
-kcal_Zambreros_burrito = kcal_Zambreros_burrito_without_sauce + kcal_Zambreros_red_chilli_sauce
-kcal_Zambreros_small_burrito = kcal_Zambreros_small_burrito_without_sauce + kcal_Zambreros_red_chilli_sauce
-kcal_Zambreros_nachos = kcal_Zambreros_nachos_without_sauce + kcal_Zambreros_red_chilli_sauce
+kcal_Zambreros_burrito = kcal_Zambreros_burrito_without_sauce + kcal_Zambreros_red_chilli_sauce + kcal_Zambreros_chipotle_sauce
+kcal_Zambreros_small_burrito = kcal_Zambreros_small_burrito_without_sauce + kcal_Zambreros_red_chilli_sauce + kcal_Zambreros_chipotle_sauce
+kcal_Zambreros_nachos = kcal_Zambreros_nachos_without_sauce + kcal_Zambreros_red_chilli_sauce + kcal_Zambreros_chipotle_sauce
+kcal_Zambreros_bowl = kcal_Zambreros_bowl_without_sauce + kcal_Zambreros_red_chilli_sauce + kcal_Zambreros_chipotle_sauce
 
 #Subway
 kcal_Subway_6_inch_meatball_sub = 585
@@ -37,6 +45,13 @@ kcal_Subway_cookie = 0.148
 
 kcal_Subway_6_inch_meatball_sub_and_drink = kcal_Subway_6_inch_meatball_sub + kcal_raspberry_fanta_600ml
 kcal_Subway_12_inch_meatball_sub_and_drink = kcal_Subway_12_inch_meatball_sub + kcal_raspberry_fanta_600ml
+
+#Chicken Treat
+kcal_Chicken_Treat_chicken_bacon_cheeseburger = kj_to_kcal(1600)
+kcal_Chicken_Treat_baconary_burger = 679
+kcal_Chicken_Treat_large_chips = 590
+kcal_Chicken_Treat_baconary_burger_combo = kcal_Chicken_Treat_baconary_burger + kcal_Chicken_Treat_large_chips + kcal_raspberry_fanta_600ml
+kcal_Chicken_Treat_chicken_bacon_cheeseburger_combo = kcal_Chicken_Treat_chicken_bacon_cheeseburger + kcal_Chicken_Treat_large_chips + kcal_raspberry_fanta_600ml
 
 #Dominos
 kcal_Dominos_Meatlovers_Pasta = 949
@@ -56,8 +71,10 @@ kcal_white_bread_slice = 66
 kcal_peanut_butter_sandwich = 2*kcal_white_bread_slice + 6.285851*73.60875 #1g peanut butter = 6.285851kcal
 
 #Overrides
-BMR_Override = 1898
-kcal_already_consumed = kcal_lipton_peach_iced_tea_500ml + kcal_Zambreros_burrito
+BMR_Override = ""
+kcal_already_consumed = ""
+birthdayOverride = "21/08/2000"
+genderOverride = "m"
 
 #----------------------------------------------------------------------------------------------------------------------
 #----------------------------------------------------------------------------------------------------------------------
@@ -73,28 +90,43 @@ print()
 
 if ((BMR_Override=="") or (BMR_Override=="")):
     print()
-    print("Question 1/5: Are you (M)ale or (F)emale in biology?")
 
-    male_selected = False
-    while True:  # making a loop
-        try:  # used try so that if user pressed other than the given key error will not be shown
-            m_key = keyboard.is_pressed('m')
-            f_key = keyboard.is_pressed('f')
-            if m_key:  # if key 'q' is pressed 
-                print('You selected male')
-                male_selected = True
-                break  # finishing the loop
-            if f_key:  # if key 'q' is pressed 
-                print('You selected female')
-                break  # finishing the loop
-        except:
-            break  # if user pressed a key other than the given key the loop will break
+    if (genderOverride != ""):
+        if ((genderOverride.lower() == "m") or (genderOverride.lower() == "male") or (genderOverride.lower() == "man") or (genderOverride.lower() == "boy")):
+            male_selected = True
+            print("Question 1/5: SKIPPED - Male selected")
+        elif ((genderOverride.lower() == "f") or (genderOverride.lower() == "female") or (genderOverride.lower() == "woman") or (genderOverride.lower() == "girl")):
+            print("Question 1/5: SKIPPED - Female selected")
+        else:
+            raise Exception("Invalid gender override option used")
+    else:
+        print("Question 1/5: Are you (M)ale or (F)emale in biology?")
 
-    print()
+        male_selected = False
+        while True:  # making a loop
+            try:  # used try so that if user pressed other than the given key error will not be shown
+                m_key = keyboard.is_pressed('m')
+                f_key = keyboard.is_pressed('f')
+                if m_key:  # if key 'q' is pressed 
+                    print('You selected male')
+                    male_selected = True
+                    break  # finishing the loop
+                if f_key:  # if key 'q' is pressed 
+                    print('You selected female')
+                    break  # finishing the loop
+            except:
+                break  # if user pressed a key other than the given key the loop will break
+
     weight = float(input("Question 2/5: What is your weight (Kg)?  "))
     height = float(input("Question 3/5: What is your height (cm)?  "))
-    age    = float(input("Question 4/5: What is your age (years)?  "))
-
+    
+    birthday = birthdayOverride
+    if (birthdayOverride == ""):
+        birthday = input("Question 4/5: What is your birthday(DD/MM/YYYY)?  ")
+    else:
+        print("Question 4/5: SKIPPED")
+    age = (datetime.now() - datetime.strptime(birthday, '%d/%m/%Y')).total_seconds()/60/60/24/365.25
+    
     resultingBMR = 0
     if (male_selected):
         resultingBMR = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age)
@@ -172,6 +204,9 @@ printMealPercentages(kcal_Subway_6_inch_meatball_sub_and_drink,                 
 printMealPercentages(kcal_Subway_6_inch_meatball_sub_and_drink + kcal_Subway_cookie,  "Subway 6 inch meatball sub, 600mL raspberry fanta, and cookie")
 printMealPercentages(kcal_Subway_12_inch_meatball_sub_and_drink,                      "Subway 12 inch meatball sub and 600mL raspberry fanta")
 printMealPercentages(kcal_Subway_12_inch_meatball_sub_and_drink + kcal_Subway_cookie, "Subway 12 inch meatball sub, 600mL raspberry fanta, and cookie")
+
+printMealPercentages(kcal_Chicken_Treat_baconary_burger_combo,                        "Chicken Treat baconary burger, large chips and drink combo")
+printMealPercentages(kcal_Chicken_Treat_chicken_bacon_cheeseburger_combo,             "Chicken Treat chicken bacon cheeseburger, large chips, and drink combo")
 
 printMealPercentages(kcal_Suimin_braised_beef,                                        "Suimin braised beef noodle cup")
 printMealPercentages(kcal_peanut_butter_sandwich,                                     "Peanut Butter Sandwich")
