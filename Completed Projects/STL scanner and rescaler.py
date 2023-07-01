@@ -8,9 +8,9 @@ import os,trimesh,shutil
 #---------------------                      Start Of User Variables                      ----------------------------------
 #--------------------------------------------------------------------------------------------------------------------------
 
-origDir = 'C:\\Users\\aj200\\Downloads\\ISS_International_Space_Station_4293302\\files\\ISS'
-modifiedDir = 'C:\\Users\\aj200\\Downloads\\ISS_International_Space_Station_4293302\\files\\ISS_Rescaled'
-rescalePercentage = 250
+origDir = 'C:\\Users\\Techmo\\Desktop\\STL Files\\ISS'
+modifiedDir = origDir + '_Rescaled'
+rescalePercentage = 170
 
 Printers = []
 #Printers.append(["E3P",[300,300,300]])

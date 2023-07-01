@@ -6,8 +6,8 @@ bool running = false;
 
 void start() { running = true; currentIndex = 0; currentIndex_2 = 0; }
 byte updateScrollingDisplay(const uint8_t *font) {
-  if (!running) { return; }
-  if (millis() - timer < scrollSpeed) { return; } timer = millis();
+  if (!running) { return 0; }
+  if (millis() - timer < scrollSpeed) { return 0; } timer = millis();
   
   shiftDisplayLeft();
   getNextCharSlice(font);

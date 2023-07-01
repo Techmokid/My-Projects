@@ -1,12 +1,14 @@
 #include <EEPROM.h>
 #include <DMD2.h>
-#include "Arial14.h";
+//#include <glcd.h>
+
+//#include "fonts/SystemFont5x7.h";
 
 #define scrollSpeed 100
 
 //          Wide,High
 SoftDMD dmd(2,   1);
-String sentence = "Welcome     To     Jaycar     Malaga!                                             ";
+String sentence = "Welcome     To     Jaycar     Midland!                                             ";
 bool state = false;
 
 void setup() {
@@ -22,5 +24,5 @@ void setup() {
 }
 
 void loop() {
-  updateScrollingDisplay(Arial_14);
+  //updateScrollingDisplay(SystemFont5x7);
 }
