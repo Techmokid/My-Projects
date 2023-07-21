@@ -8,22 +8,7 @@
 #1.9 points for an extra active person who either has a physically demanding job or has a particularly challenging exercise routine
 
 #Calories burned per day = points * BMR
-
 #Roughly 1Kg is 7700cal
-
-def install_and_import(package):
-    import importlib
-    try:
-        importlib.import_module(package)
-    except ImportError:
-        import pip
-        pip.main(['install', package])
-    finally:
-        globals()[package] = importlib.import_module(package)
-
-install_and_import("keyboard")
-import math,time
-from datetime import datetime
 
 def kj_to_kcal(x):
     return round(x/4.184)
@@ -115,13 +100,27 @@ kcal_Up_And_Go_Protein_strawberry = 426
 
 #Overrides
 BMR_Override = ""
-kcal_already_consumed = kcal_Hungry_Jacks_bacon_deluxe_medium_combo_HC
+kcal_already_consumed = kcal_Zambreros_burrito + kcal_mountain_dew_600ml + kj_to_kcal(1456) + 426
 birthdayOverride = "21/08/2000"
 genderOverride = "m"
 
 #----------------------------------------------------------------------------------------------------------------------
 #----------------------------------------------------------------------------------------------------------------------
 #----------------------------------------------------------------------------------------------------------------------
+
+def install_and_import(package):
+    import importlib
+    try:
+        importlib.import_module(package)
+    except ImportError:
+        import pip
+        pip.main(['install', package])
+    finally:
+        globals()[package] = importlib.import_module(package)
+
+install_and_import("keyboard")
+import math,time
+from datetime import datetime
 
 print()
 print("------------------------------------------------------------------------")
@@ -245,7 +244,13 @@ def printMealPercentages(kcal_meal, mealStr):
     spacer5 = " " * (6 - len(str(round(leftOverKcal*4.184,1))))
     
     stableWeight = "Unknown"
-    print(" - " + str(round(kcal_meal)) + spacer + " kcal or " + str(round(kcal_meal*4.184)) + " KJ" + spacer2 + " (" + str(mealCombo) + ")  " + str(mealComboRounded) + " " + mealStr + " meals with: " + spacer3 + str(leftOverKcal) + spacer4 + " kCal / " + str(round(leftOverKcal*4.184,1)) + spacer5 + " kJ left over")#, which would stabilize your weight at " + str(stableWeight) + " Kg")
+    msg = " - " + str(round(kcal_meal)) + spacer + " kcal or " + str(round(kcal_meal*4.184)) + " KJ" + spacer2 + " (" + str(mealCombo) + ")  " + str(mealComboRounded) + " " + mealStr + " meals"
+    
+    if (mealComboRounded >= 1):
+        msg += " with: " + spacer3 + str(leftOverKcal) + spacer4 + " kCal / " + str(round(leftOverKcal*4.184,1)) + spacer5 + " kJ left over"#, which would stabilize your weight at " + str(stableWeight) + " Kg")
+    else:
+        msg += " " + "-" * (107 - len(mealStr))
+    print(msg)
 
 print("Zambreros")
 printMealPercentages(kcal_Zambreros_burrito + kcal_mountain_dew_600ml,                  "Zambreros burrito and 600mL mountain dew")
