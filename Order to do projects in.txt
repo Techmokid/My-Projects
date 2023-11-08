@@ -5,19 +5,19 @@ N - Not urgent (Personal project)
 
 
 Projects that require time (For other people or urgent):
-1  (T).	Twiggy project (Glen)
-2  (T).	Work laser project
-3  (N). Lightning power generation system
-
+1  (N). Nicola RPi Koha/Biblioteq server
+2  (T). Work ISS 3D Print
+3  (T). Work 3D Floor Plans
+4  (N). Crypto AI
 
 
 Projects that require time (For myself, no stress, no time limit)
-1  (N).	ASDOS (Arduino SD Operating System)
-2  (N).	Unity3D Waterworks game
-3  (N).	Minecraft weather and climate change mod
-4  (N).	Unity3D weather chase game
-5  (N).	Unity3D VR game "movie moments you've always wanted to do"
-6  (N). Windows/Linux file for complete commandline compatibility
+1  (N).	Unity3D weather chase game
+2  (N).	Unity3D VR game "movie moments you've always wanted to do"
+3  (N). Neural Simulation Engine
+4  (N). Planetary mesh generator
+5  (N). Lightning power generation system
+
 
 
 
@@ -25,10 +25,3 @@ Projects that require time AND money:
 1  (N). M.I.B 3 monocycle
 2  (N).	VR suit
 3  (N).	Project Firefly
-4  (N).	Project Dropship
-
-
-
-Projects that require pickup:
-1.	Germicide device
-2.	Old lady multiple USB duplicate image finder code

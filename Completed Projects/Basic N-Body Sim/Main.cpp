@@ -4,7 +4,7 @@
 #define windowWidth 1600
 #define windowHeight 900
 
-#define particleCount 10
+#define particleCount 5000
 
 struct _vec2 { float x; float y; };
 struct Color { float r; float g; float b; };
@@ -32,7 +32,7 @@ int main() {
 		b.color.r = getRandomFloat(0,1);
 		b.color.g = getRandomFloat(0,1);
 		b.color.b = getRandomFloat(0,1);
-		b.mass = getRandomFloat(1,100);
+		b.mass = getRandomFloat(1,10);
 		b.collided = false;
 		
 		bodies.push_back(b);

@@ -34,7 +34,8 @@ void main() {
 	for (int i = 0; i < bodyCount; i++) {
 		bool withinX = withinDist(bodies[i].position.x,x,0.001);
 		bool withinY = withinDist(bodies[i].position.y,y,0.001);
-		bool withinBounds = (withinX && withinY) && (!bodies[i].collided);
+		//bool withinBounds = (withinX && withinY) && (!bodies[i].collided);
+		bool withinBounds = (withinX && withinY);
 		isParticle = withinBounds || isParticle;
 		if (withinBounds) { particleID = i; }
 	}
