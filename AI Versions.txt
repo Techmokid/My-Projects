@@ -1,0 +1,13 @@
+Version:
+1 - Python	initial attempt at Evans
+2 - Python	initial genuine attempt
+3 - Unity C#	First C-style port. Could not GPU and CPU multitask
+4 - DotNet C#	GPU compiler ComputeSharp failed catastrophically
+5 - C++		Single threaded attempt
+6 - C++		Multithreaded attempt
+7 - C++		GPU acceleration
+
+To Try:
+Multicomputer processing
+Cluster computing
+Hardware-independant cluster computing
