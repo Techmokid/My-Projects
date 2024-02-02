@@ -321,27 +321,27 @@ def findFilenameFromDirectory(directory):
 downloadForgeVersion(endingMCVersion,'Eclipse')
 
 #Perform naive conversion to minecraft version
-print("Performing naive version conversion")
-pathlist = Path(src).glob('**/*.java')
+#print("Performing naive version conversion")
+#pathlist = Path(src).glob('**/*.java')
 
-for path in pathlist:
-    path_in_str = str(path)
-    print("Performing naive correction on file: " + path_in_str)
-
-    dataArr = []
-    with open(path_in_str, "r") as f:
-        data = f.readlines()
-        
-        for i in data:
-            if not (i == i.replace(startingMCVersion,endingMCVersion)):
-                print("Discovered version information")
-            dataArr.append(str(i.replace(startingMCVersion,endingMCVersion)))
-    with open(path_in_str, "w+") as f:
-        f.writelines(dataArr)
+#for path in pathlist:
+#    path_in_str = str(path)
+#    print("Performing naive correction on file: " + path_in_str)
+#
+#    dataArr = []
+#    with open(path_in_str, "r") as f:
+#        data = f.readlines()
+#        
+#        for i in data:
+#            if not (i == i.replace(startingMCVersion,endingMCVersion)):
+#                print("Discovered version information")
+#            dataArr.append(str(i.replace(startingMCVersion,endingMCVersion)))
+#    with open(path_in_str, "w+") as f:
+#        f.writelines(dataArr)
 
 #Finally recompile the mod
-input("Mod successfully decompiled and naive converted. \nHit enter to attempt recompile\n\n")
-os.system('cmd /c "C:/Temp/forgeVersion/forge/gradlew.bat build && pause"')
+#input("Mod successfully decompiled and naive converted. \nHit enter to attempt recompile\n\n")
+#os.system('cmd /c "C:/Temp/forgeVersion/forge/gradlew.bat build && pause"')
 
 #x = check_output("C:/Temp/forgeVersion/forge/gradlew.bat build", shell=True).decode("utf-8")
 #print(x)
