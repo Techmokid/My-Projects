@@ -1,5 +1,8 @@
 import keyboard,time,mouse
 
+def leftClickSpam(t):
+    mouse.click('left')
+    time.sleep(t)
 def rightClickSpam(t):
     mouse.click('right')
     time.sleep(t)
@@ -13,7 +16,7 @@ running = False
 while (True):
     while(running):
         #keySpam("shift",0.05)
-        rightClickSpam(0.001)
+        leftClickSpam(0.01)
         if keyboard.is_pressed('F6'):
             running = False
             print("Off")
