@@ -29,7 +29,9 @@ packages = ["requests",         #HTML web page handler
             "scikit-learn",     #Data anlysis AI tools
             "Flask",            #Web framework for building web applications and APIs
             "Django",           #High level web framework. Auth, ORM, etc
-            "torch"             #AI Machine Learning library
+            "torch",            #AI Machine Learning library
+            "serial",           #Serial communications
+            "pyttsx3"           #TTS Engine
             ]
 
 print("Upgrading pip")
