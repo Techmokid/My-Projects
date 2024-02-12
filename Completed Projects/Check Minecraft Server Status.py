@@ -54,28 +54,31 @@ def play_tone(frequency, duration, volume=0.5, sample_rate=44100):
 engine = pyttsx3.init()
 engine.setProperty('rate',150)
 engine.setProperty('volume',1)
+engine.say('Performing startup check')
+engine.runAndWait()
+
 serverStatus = None
 while True:
     server_info = ping_minecraft_server(server_address, server_port)
     if server_info:
         if not (serverStatus == True):
             print("Server Online")
-            print(json.dumps(server_info, indent=4))
-            play_tone(262,0.1)
-            play_tone(392,0.1)
-            play_tone(330,0.1)
-            play_tone(523,0.1)
-            engine.say('Minecraft server is now online')
+            #print(json.dumps(server_info, indent=4))
+            play_tone(262,0.2)
+            play_tone(392,0.2)
+            play_tone(330,0.2)
+            play_tone(523,0.2)
+            engine.say('Braydons minecraft server is now online')
             engine.runAndWait()
         serverStatus = True
     else:
         if not (serverStatus == False):
             print("Server Offline")
-            play_tone(523,0.1)
-            play_tone(330,0.1)
-            play_tone(392,0.1)
-            play_tone(262,0.1)
-            engine.say('Minecraft server is offline')
+            play_tone(523,0.2)
+            play_tone(330,0.2)
+            play_tone(392,0.2)
+            play_tone(262,0.2)
+            engine.say('Braydons minecraft server is offline')
             engine.runAndWait()
         serverStatus = False
     time.sleep(30)
