@@ -5,13 +5,18 @@ def upgrade_pip():
     try:
         subprocess.check_call([sys.executable, "-m", "pip", "install", "--upgrade","pip"])
     except subprocess.CalledProcessError:
-        print("Error installing package")
+        print("Error upgrading pip")
+
+    try:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "--upgrade","setuptools", "wheel"])
+    except subprocess.CalledProcessError:
+        print("Error upgrading setuptools")
 
 def install_package(package_name):
     try:
         subprocess.check_call([sys.executable, "-m", "pip", "install", package_name])
     except subprocess.CalledProcessError:
-        print("Error installing package")
+        print(f"Error installing package {package_name}: {e.output}")
     
 packages = ["requests",         #HTML web page handler
             "keyboard",         #Keyboard reading/control
@@ -20,7 +25,7 @@ packages = ["requests",         #HTML web page handler
             "numpy",            #Maths analysis and arrays support
             "pygame",
             "chime",            #Windows audio engine
-            "PySocks",          #Part of pygame
+            "PySocks",          #Networking sockets handler
             "opencv-python",    #Computer Vision AI library
             "trimesh",          #3D mesh manipulation tool
             "bs4",              #beautifulsoup4, HTML parser
@@ -31,7 +36,8 @@ packages = ["requests",         #HTML web page handler
             "Django",           #High level web framework. Auth, ORM, etc
             "torch",            #AI Machine Learning library
             "serial",           #Serial communications
-            "pyttsx3"           #TTS Engine
+            "pyttsx3",          #TTS engine
+            "playsound"         #Sound engine
             ]
 
 print("Upgrading pip")
