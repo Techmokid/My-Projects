@@ -1,5 +1,8 @@
-import socket,json,time,pyaudio
+import socket,json,time,pyaudio,pyttsx3
 import numpy as np
+
+server_address = "122.109.10.54"
+server_port = 25565
 
 def ping_minecraft_server(address, port=25565):
     # Create a socket connection to the server
@@ -47,11 +50,10 @@ def play_tone(frequency, duration, volume=0.5, sample_rate=44100):
     stream.stop_stream()
     stream.close()
     p.terminate()
-    
-# Example usage
-server_address = "122.109.10.54"
-server_port = 25565
 
+engine = pyttsx3.init()
+engine.setProperty('rate',150)
+engine.setProperty('volume',1)
 serverStatus = None
 while True:
     server_info = ping_minecraft_server(server_address, server_port)
@@ -63,6 +65,8 @@ while True:
             play_tone(392,0.1)
             play_tone(330,0.1)
             play_tone(523,0.1)
+            engine.say('Minecraft server is now online')
+            engine.runAndWait()
         serverStatus = True
     else:
         if not (serverStatus == False):
@@ -71,6 +75,8 @@ while True:
             play_tone(330,0.1)
             play_tone(392,0.1)
             play_tone(262,0.1)
+            engine.say('Minecraft server is offline')
+            engine.runAndWait()
         serverStatus = False
     time.sleep(30)
 
