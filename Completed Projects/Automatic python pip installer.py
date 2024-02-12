@@ -37,7 +37,8 @@ packages = ["requests",         #HTML web page handler
             "torch",            #AI Machine Learning library
             "serial",           #Serial communications
             "pyttsx3",          #TTS engine
-            "playsound"         #Sound engine
+            "playsound",        #Sound engine
+            "pyaudio"           #Audio engine
             ]
 
 print("Upgrading pip")

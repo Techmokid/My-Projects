@@ -1,4 +1,5 @@
-import socket,json,time,playsound
+import socket,json,time,pyaudio
+import numpy as np
 
 def ping_minecraft_server(address, port=25565):
     # Create a socket connection to the server
@@ -30,6 +31,23 @@ def ping_minecraft_server(address, port=25565):
         else:
             return None
 
+def play_tone(frequency, duration, volume=0.5, sample_rate=44100):
+    p = pyaudio.PyAudio()
+    stream = p.open(format=pyaudio.paFloat32,
+                    channels=1,
+                    rate=sample_rate,
+                    output=True)
+
+    # Generate sine wave
+    samples = (np.sin(2 * np.pi * np.arange(sample_rate * duration) * frequency / sample_rate)).astype(np.float32)
+
+    # Play audio
+    stream.write(volume * samples)
+
+    stream.stop_stream()
+    stream.close()
+    p.terminate()
+    
 # Example usage
 server_address = "122.109.10.54"
 server_port = 25565
@@ -41,10 +59,18 @@ while True:
         if not (serverStatus == True):
             print("Server Online")
             print(json.dumps(server_info, indent=4))
+            play_tone(262,0.1)
+            play_tone(392,0.1)
+            play_tone(330,0.1)
+            play_tone(523,0.1)
         serverStatus = True
     else:
         if not (serverStatus == False):
             print("Server Offline")
+            play_tone(523,0.1)
+            play_tone(330,0.1)
+            play_tone(392,0.1)
+            play_tone(262,0.1)
         serverStatus = False
     time.sleep(30)
 
