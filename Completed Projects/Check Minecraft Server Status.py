@@ -2,6 +2,7 @@ import socket,json,time,pyaudio,pyttsx3
 import numpy as np
 
 server_address = "122.109.10.54"
+#server_address = "192.168.1.15"
 server_port = 25565
 
 def ping_minecraft_server(address, port=25565):
@@ -63,7 +64,7 @@ while True:
     if server_info:
         if not (serverStatus == True):
             print("Server Online")
-            #print(json.dumps(server_info, indent=4))
+            print(json.dumps(server_info, indent=4))
             play_tone(262,0.2)
             play_tone(392,0.2)
             play_tone(330,0.2)

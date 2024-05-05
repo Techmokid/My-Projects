@@ -1,9 +1,11 @@
 usrDist = float(input("(1/6) Please enter the distance to your location (Km): "))
-usrCnsmptn = float(input("(2/6) Please enter your fuel consumpmtion (L/100Km): "))
-usrFlTtl = float(input("(3/6) Please enter your fuel tank capacity (L): "))
-usrTicks = int(input("(4/6) How many lines are on your fuel gauge: "))
-usFlLft = int(input("(5/6) How many fuel lines do you have left: "))
-usrReturn = bool(input("(6/6) Finally, will this be a return trip: "))
+usrReturn = bool(input("(2/6) Finally, will this be a return trip: "))
+
+usrCnsmptn = float(input("(3/6) Please enter your fuel consumption (L/100Km): "))
+usrFlTtl = float(input("(4/6) Please enter your fuel tank capacity (L): "))
+usrTicks = int(input("(5/6) How many lines are on your fuel gauge: "))
+usFlLft = int(input("(6/6) How many fuel lines do you have left: "))
+
 
 if (usrReturn == True):
     usrDist *= 2

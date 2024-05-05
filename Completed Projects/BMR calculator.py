@@ -37,7 +37,7 @@ kcal_Zambreros_bowl = kcal_Zambreros_bowl_without_sauce + kcal_Zambreros_red_chi
 #Subway
 kcal_Subway_6_inch_meatball_sub = 585
 kcal_Subway_12_inch_meatball_sub = 1170
-kcal_Subway_cookie = 0.148
+kcal_Subway_cookie = 220
 
 kcal_Subway_6_inch_meatball_sub_and_drink = kcal_Subway_6_inch_meatball_sub + kcal_raspberry_fanta_600ml
 kcal_Subway_12_inch_meatball_sub_and_drink = kcal_Subway_12_inch_meatball_sub + kcal_raspberry_fanta_600ml
