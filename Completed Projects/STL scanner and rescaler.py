@@ -8,21 +8,23 @@ import os,trimesh,shutil
 #---------------------                      Start Of User Variables                      ----------------------------------
 #--------------------------------------------------------------------------------------------------------------------------
 
-origDir = 'C:\\Users\\Techmo\\Desktop\\STL Files\\ISS'
+origDir = r"C:\Users\Techmo\Desktop\STL Files\NASA Space Shuttle"
 modifiedDir = origDir + '_Rescaled'
-rescalePercentage = 170
+rescalePercentage = float(input('Please enter your desired scaling: '))
 
 Printers = []
 #Printers.append(["E3P",[300,300,300]])
 #Printers.append(["E3N",[220,220,250]])
 #Printers.append(["E5P",[220,220,280]])
 #Printers.append(["G2S",[280,250,300]])
-Printers.append(["Ender 3 Pro   ",[300,300,300]])
-Printers.append(["Ender 3 V2 Neo",[220,220,250]])
-Printers.append(["Ender 5 S1    ",[220,220,280]])
-Printers.append(["Guider II S   ",[280,250,300]])
-Printers.append(["Protech Resin ",[160,129,80 ]])
-Printers.append(["Protech FPE1  ",260,260,260])
+Printers.append(["Ender 3 S1 Plus",[300,300,300]])
+Printers.append(["Ender 3 V3 Neo ",[220,220,250]])
+Printers.append(["Ender 5 S1     ",[220,220,280]])
+Printers.append(["Guider II S    ",[280,250,300]])
+Printers.append(["Protech Resin  ",[160,129,80 ]])
+Printers.append(["Protech FPE1   ",[260,260,260]])
+Printers.append(["Creality K1    ",[220,200,250]])
+Printers.append(["Creality K1 Max",[300,300,300]])
 
 #--------------------------------------------------------------------------------------------------------------------------
 #----------------------                      End Of User Variables                      -----------------------------------
@@ -128,18 +130,24 @@ rescalePercentage /= 100
 
 print("Running script")
 for i, loaded_mesh in enumerate(STLs):
+    print("Rescaling: " + files[i])
     scaleSTL(loaded_mesh,rescalePercentage)
     loaded_mesh.export(files[i])
-
     for printer in Printers:
         if(doesSTLFitOnPrinter(loaded_mesh,printer[1][0],printer[1][1],printer[1][2])):
             printer[2] += 1
 
 print()
+canPrint = False
 for printer in Printers:
-     print(" - " + printer[0] + " - STLs that fit: " + str(printer[2]) + "/" + str(len(files)) + " = " + str(round(100*printer[2]/len(files),2)) + " %     " + str(len(files) - printer[2]) + " STL files failed to fit on the bed")
+    print(" - " + printer[0] + " - STLs that fit: " + str(printer[2]) + "/" + str(len(files)) + " = " + str(round(100*printer[2]/len(files),2)) + " %     " + str(len(files) - printer[2]) + " STL files failed to fit on the bed")
+    if printer[2] == len(files):
+        canPrint = True
 
-
+if not canPrint:
+    print()
+    print("ERROR: Print files too large for any printer. Impossible to print using these dimensions")
+input()
 
 
 
