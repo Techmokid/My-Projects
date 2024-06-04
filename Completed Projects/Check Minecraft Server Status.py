@@ -1,9 +1,11 @@
 import socket,json,time,pyaudio,pyttsx3
 import numpy as np
 
-server_address = "122.109.10.54"
+#server_address = "122.109.10.54"
 #server_address = "192.168.1.15"
-server_port = 25565
+server_address = "134.255.198.4"
+#server_port = 25565
+server_port = 53201
 
 def ping_minecraft_server(address, port=25565):
     # Create a socket connection to the server
@@ -69,7 +71,7 @@ while True:
             play_tone(392,0.2)
             play_tone(330,0.2)
             play_tone(523,0.2)
-            engine.say('Braydons minecraft server is now online')
+            engine.say('Minecraft server is now online')
             engine.runAndWait()
         serverStatus = True
     else:
@@ -79,7 +81,7 @@ while True:
             play_tone(330,0.2)
             play_tone(392,0.2)
             play_tone(262,0.2)
-            engine.say('Braydons minecraft server is offline')
+            engine.say('Minecraft server is offline')
             engine.runAndWait()
         serverStatus = False
     time.sleep(30)

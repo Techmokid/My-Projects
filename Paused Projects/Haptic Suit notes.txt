@@ -31,3 +31,4 @@ Types of receptors within the somatosensory system:
 
 Potential solution:
  - Array of custom peltier modules/rods attached to the end of small hydraulic rams.
+ - Microfluidic arrays pumping hot/cold water into tiny flexible array of balloons?

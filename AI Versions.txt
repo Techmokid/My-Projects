@@ -1,13 +1,10 @@
 Version:
-1 - Python	initial attempt at Evans
-2 - Python	initial genuine attempt
-3 - Unity C#	First C-style port. Could not GPU and CPU multitask
-4 - DotNet C#	GPU compiler ComputeSharp failed catastrophically
-5 - C++		Single threaded attempt
-6 - C++		Multithreaded attempt
-7 - C++		GPU acceleration
-
-To Try:
-Multicomputer processing
-Cluster computing
-Hardware-independant cluster computing
+1 - Python	Failure		Initial attempt at Evans
+2 - Python	Part Success	Initial genuine attempt
+3 - Unity C#	Failure		First C-style port. Could not GPU and CPU multitask
+4 - DotNet C#	Part Success	GPU compiler ComputeSharp failed catastrophically
+5 - C++		Success		Single threaded attempt
+6 - C++		Success		Multithreaded attempt
+7 - C++		In Progress	GPU acceleration - OpenGL                                       < --- This version is first proper training variant
+8 - C++		Not Started	Processor acceleration - OpenCL
+9 - C++		Not Started	Distributed Supercomputing Cluster (DSC)

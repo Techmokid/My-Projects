@@ -6,17 +6,15 @@ N - Not urgent (Personal project)
 
 Projects that require time (For other people or urgent):
 1  (N). Nicola RPi Koha/Biblioteq server
-2  (T). Work ISS 3D Print
-3  (T). Work 3D Floor Plans
+3  (N). Work 3D Floor Plans
 4  (N). Crypto AI
 
 
 Projects that require time (For myself, no stress, no time limit)
-1  (N).	Unity3D weather chase game
+1  (N).	Unity3D VR/Desktop weather chase game
 2  (N).	Unity3D VR game "movie moments you've always wanted to do"
 3  (N). Neural Simulation Engine
 4  (N). Planetary mesh generator
-5  (N). Lightning power generation system
 
 
 

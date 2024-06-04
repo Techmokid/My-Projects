@@ -57,7 +57,7 @@ def get_memory_info():
 
 
 _,memAvailable = get_memory_info()
-range_start, range_end = 1, 10000001*math.floor(memAvailable-1)  # Calculate for 1 to 1,000,000,000
+range_start, range_end = 1, 1000001*math.floor(memAvailable-1)  # Calculate for 1 to 1,000,000,000
 batch_size = 100000
     
 print("Starting computation...")

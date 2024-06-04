@@ -1,14 +1,28 @@
-Get Pegboard out of car
-Vacuum Car
-Basic car clean
-Pressure wash pavement/concrete
-Clear out gutters
-Mow the lawn front and back
+Chores:
 Clean up cabling behind PC setup
-Fix audio amplifier
-Setup audio 5.1 setup in front room
-Setup shed pegboard
+Pressure wash pavement/concrete
+Mow the lawn front and back - In progress
+Buy automower (Related to above)
 Clean up shed
-Create cluster compute prints
-Glue ISS
-Make 3D Jaycar model
+Clean bedroom
+Clean out car of random stuff
+Crack Tylers Dads laptop encryption
+
+To Build/Fix:
+1 - Fix Nicola Leonardo Tiny
+2 - Get car fixed - Automasters 7/06/2024 service. Vacuum leak?
+3 - Fix Robovac S8
+4 - Fix Ender 3 v3 SE		Current issue: Firmware fault
+5 - Fix Ender 3 v3 SE		Current issue: Rough printing, belt slip?
+6 - Fix Guider 2S		Current issue: Custom PCB, arduino software fault, RPi coding
+7 - Fix CRX			Current issue: Blocked head
+8 - Fix Photon Mono		Current issue: Needs test run
+9 - Fix CR-30			Current issue: ...yes
+10 - Convert dead Ender 3 v3 SE into filament recycler
+11 - Setup Protech/ElegooMars resin printer
+12 - Buy compute serverrack
+13 - Put NAS in server 1U shelf
+14 - Build compute cluster
+15 - Go to Dentist
+16 - Go to Doctors
+17 - Go to Psychologist about head injury, emotions, and ADHD
