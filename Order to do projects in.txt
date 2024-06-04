@@ -5,9 +5,12 @@ N - Not urgent (Personal project)
 
 
 Projects that require time (For other people or urgent):
-1  (N). Nicola RPi Koha/Biblioteq server
-3  (N). Work 3D Floor Plans
-4  (N). Crypto AI
+1  (T). Nicola RPi Koha/Biblioteq server
+2  (N). Work 3D Floor Plans
+3  (N). Crypto AI
+4  (N). Build G2S Software
+
+
 
 
 Projects that require time (For myself, no stress, no time limit)
@@ -23,3 +26,4 @@ Projects that require time AND money:
 1  (N). M.I.B 3 monocycle
 2  (N).	VR suit
 3  (N).	Project Firefly
+4  (N). Build G2S PCB

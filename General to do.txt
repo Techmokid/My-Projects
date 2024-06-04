@@ -26,3 +26,6 @@ To Build/Fix:
 15 - Go to Dentist
 16 - Go to Doctors
 17 - Go to Psychologist about head injury, emotions, and ADHD
+
+Other:
+Lose weight
