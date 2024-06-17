@@ -1,5 +1,4 @@
 Urgent:
-Replace rear windscreen wiper
 Tyre change
 Clean brake fluid
 Replace PCV valve (Rocker cover replacement)
@@ -12,4 +11,3 @@ Not Urgent:
 Pollen filter replacement/clean
 Air filter replacement/clean
 Clean throttle body
-
