@@ -1,8 +1,13 @@
-salary = 80000
+salary = 63537
+taxPaid = 12428
+
+
+
+
 taxBrackets = [18200, 45200, 135000, 190000]
 taxValues = [0.16, 0.30, 0.37, 0.45]
 noTaxThreshold = 22575
-taxPaid = 17000
+
 
 
 
@@ -38,3 +43,4 @@ if taxPaid != None:
         print(f"After paying ${taxPaid}, your will be getting back ${taxPaid - tax}")
     else:
         print(f"After paying ${taxPaid}, you will owe the government ${tax - taxPaid}")
+input()
