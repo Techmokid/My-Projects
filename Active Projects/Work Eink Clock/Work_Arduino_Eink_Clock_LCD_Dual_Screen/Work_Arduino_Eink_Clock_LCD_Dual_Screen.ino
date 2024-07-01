@@ -231,7 +231,7 @@ void Handle_LCD_Menu() {
     delay(10);
   }
   
-  // Update_Eink()
+  Update_Eink()
   lcd.noDisplay();
   lcd.setBacklight(0);
   ESP.deepSleep(6 * 60 * 60 * 1000000); // Reset deep sleep timer after handling menu
