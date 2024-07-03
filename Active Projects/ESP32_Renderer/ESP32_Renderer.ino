@@ -1,6 +1,6 @@
-#include <cmath>
 #include <LinkedList.h>
 #include <Arduino.h>
+#include <cmath>
 
 struct Vector2 { float x,y; };
 
