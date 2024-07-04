@@ -1,6 +1,7 @@
 import os
 import subprocess
 import sys
+import time
 
 path = "systemInfo/"
 
@@ -20,7 +21,8 @@ upgrade_pip()
 print("Pip upgraded")
 
 print("Updating and checking install of required libraries")
-os.system(f"{sys.executable} -m pip install psutil GPUtil pandas xlrd openpyxl py-cpuinfo platform")
+os.system(f"{sys.executable} -m pip install psutil py-cpuinfo GPUtil pandas xlrd openpyxl py-cpuinfo platform")
+time.sleep(5)
 import re
 import cpuinfo
 import psutil
