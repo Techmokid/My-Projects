@@ -1,6 +1,16 @@
-from ArduinoCommunicationsInterface import Arduino
+from ArduinoInstance import get_arduino_instance
+import Colors
+import random
 
-arduino = Arduino(port="COM4", baudrate=115200)
+arduino = get_arduino_instance()
+NetworkStatus = 0
+
+header_titles = ["Fleshforge","Fleshfart","Florshfert","Flashfert","Flashnt","Fleshnt","Blinkforge", "Crafty Cortex", "Pixel Pioneer", "GizmoGrafter", "Pi-lot Print", "Arpino Gizmo"]
+header_title = random.choice(header_titles)
+
+def setNetworkStatus(status):
+    global NetworkStatus
+    NetworkStatus = status
 
 def draw_shape(shape, x, y, width, height=None, col=None, fill=False):
     msg = f"{'F' if fill else ''}{shape}:{x}:{y}:{width}"
@@ -39,21 +49,20 @@ def clearScreen():
     fillScreen([0, 0, 0])
 
 def drawTopBar():
-    network_connection = check_network_connection()
     drawRect(0, 0, 320, 30, [30, 30, 30], True)
     drawRect(0, 30, 320, 210, [0, 0, 0], True)
     drawRotatedRect(16, 16, 13, 13, 45, [200, 200, 200], True)
     drawTriangle(17, 5, 17, 26, 27, 15, [100, 100, 100], True)
     drawRect(12, 13, 5, 6, [120, 0, 120], True)
     drawRect(17, 13, 5, 6, [0, 200, 120], True)
-    drawText(45, 8, 2, header_title, colors["WHITE"])
+    drawText(45, 8, 2, header_title, Colors.colors["WHITE"])
     drawRect(289, 5, 25, 20, [120, 120, 120], True)
-    drawRect(291, 7, 21, 15, colors["BLACK"], True)
-    if network_connection == 0:
-        drawRotatedRect(301, 14, 2, 30, 55, colors["RED"], True)
-        drawRotatedRect(301, 14, 2, 30, -55, colors["RED"], True)
-    elif network_connection == 1:
-        drawText(296, 8, 2, "?", colors["ORANGE"])
-    elif network_connection == 2:
-        drawRotatedRect(305, 14, 2, 15, 55, colors["GREEN"], True)
-        drawRotatedRect(298, 17, 2, 5, -55, colors["GREEN"], True)
+    drawRect(291, 7, 21, 15, Colors.colors["BLACK"], True)
+    if NetworkStatus == 0:
+        drawRotatedRect(301, 14, 2, 30, 55, Colors.colors["RED"], True)
+        drawRotatedRect(301, 14, 2, 30, -55, Colors.colors["RED"], True)
+    elif NetworkStatus == 1:
+        drawText(296, 8, 2, "?", Colors.colors["ORANGE"])
+    elif NetworkStatus == 2:
+        drawRotatedRect(305, 14, 2, 15, 55, Colors.colors["GREEN"], True)
+        drawRotatedRect(298, 17, 2, 5, -55, Colors.colors["GREEN"], True)

@@ -1,79 +1,55 @@
+import serial
+import time
+
 class Arduino:
-    def __init__(self, port, baudrate):
-        ser = serial.Serial(port="COM4", baudrate=115200)
+    _instance = None
+
+    def __new__(cls, port=None, baudrate=None):
+        if cls._instance is None:
+            cls._instance = super(Arduino, cls).__new__(cls)
+            cls._instance._initialized = False
+        return cls._instance
+
+    def __init__(self, port=None, baudrate=None):
+        if self._initialized:
+            return
+        self.ser = serial.Serial(port=port, baudrate=baudrate)
+        self.buffer = []
         time.sleep(2)
+        self._initialized = True
+
+    def clear_touch_commands(self):
+        self.buffer = [line for line in self.buffer if not (line.startswith("TOUCH") or line.startswith("RELEASE"))]
+
+    def clear_buffer(self):
+        self.buffer = []
+
+    def read_touch_input(self):
+        self.read_serial()
         
+        if len(self.buffer) > 0:
+            for i in range(len(self.buffer)-1, -1, -1):
+                line = self.buffer[i]
+                
+                if line.startswith("TOUCH"):
+                    command = self.buffer.pop(i)
+                    _, x, y, _ = command.split(':')
+                    return int(x), int(y), True
+                if line.startswith("RELEASE"):
+                    command = self.buffer.pop(i)
+                    _, x, y, _ = command.split(':')
+                    return int(x), int(y), False
+        return None, None, None
 
-class Button:
-    def __init__(self, x, y, width, height, color, text, text_color):
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height = height
-        self.color = color
-        self.text = text
-        self.text_color = text_color
+    def read_serial(self):
+        while self.ser.in_waiting > 0:
+            data = self.ser.readline().decode('utf-8').strip()
+            self.buffer.append(data)
+            if "ERR" in data:
+                print("ERR")
 
-    def draw(self):
-        drawRect(self.x, self.y, self.width, self.height, self.color, True)
-        drawText(self.x + 10, self.y + self.height - 20, 2, self.text, self.text_color)
+    def send_command(self, msg):
+        self.ser.write((msg + "\n").encode('utf-8'))
 
-    def is_touched(self, touch_x, touch_y):
-        return self.x <= touch_x <= self.x + self.width and self.y <= touch_y <= self.y + self.height
-
-def read_touch_input():
-    global ser
-    if ser.in_waiting > 0:
-        data = ser.readline().decode('utf-8').strip()
-        if data.startswith("TOUCH"):
-            _, x, y = data.split(':')
-            return int(x), int(y)
-    return None
-
-# Arduino Serial Communication Commands
-def read_serial():
-    global ser
-    if ser.in_waiting > 0:
-        data = ser.readline().decode('utf-8').strip()
-        print(f"Received command: {data}")
-        if "ERR" in data:
-            print("ERR")
-
-def send_command(msg):
-    ser.write((msg + "\n").encode('utf-8'))
-
-def draw_shape(shape, x, y, width, height=None, col=None, fill=False):
-    msg = f"{'F' if fill else ''}{shape}:{x}:{y}:{width}"
-    if height is not None:
-        msg += f":{height}"
-    if col is not None:
-        msg += f":{col[0]}:{col[1]}:{col[2]}"
-    send_command(msg)
-
-def drawCircle(x, y, radius, col, fill):
-    draw_shape("CIRCLE", x, y, radius, col=col, fill=fill)
-
-def drawSquare(x, y, size, col, fill):
-    draw_shape("SQUARE", x, y, size, col=col, fill=fill)
-
-def drawRect(x, y, width, height, col, fill):
-    draw_shape("RECT", x, y, width, height=height, col=col, fill=fill)
-
-def drawText(x, y, size, msg, col):
-    send_command(f"TEXT:{x}:{y}:{size}:{msg}:{col[0]}:{col[1]}:{col[2]}")
-
-def drawRotatedRect(x, y, width, height, angle, col, fill):
-    draw_shape("ROT", x, y, width, height=height, col=col, fill=fill)
-    send_command(f"ROT:{x}:{y}:{width}:{height}:{angle}:{col[0]}:{col[1]}:{col[2]}")
-
-def drawTriangle(x0, y0, x1, y1, x2, y2, col, fill):
-    msg = f"TRIG:{x0}:{y0}:{x1}:{y1}:{x2}:{y2}:{col[0]}:{col[1]}:{col[2]}"
-    if fill:
-        msg = "F" + msg
-    send_command(msg)
-
-def fillScreen(col):
-    send_command(f"FRECT:0:0:320:240:{col[0]}:{col[1]}:{col[2]}")
-
-def clearScreen():
-    fillScreen(colors["BLACK"])
+    def close(self):
+        self.ser.close()

@@ -106,6 +106,8 @@ int countChar(const String& str, char c) {
 String msg;
 String command;
 String order;
+bool prevRelease = true;
+int loopsSinceLastTouch = 0;
 void loop() {
   delay(10);
 
@@ -118,8 +120,18 @@ void loop() {
     pinMode(XM, OUTPUT);
     digitalWrite(YP, HIGH);
     digitalWrite(XM, HIGH);
-    if (p.z <= 0) { return; }
-    if (p.z > 1000) { return; }
+
+    if ((p.z <= 0) || (p.z > 1000)) {
+      if (loopsSinceLastTouch > 3) {
+        if (!prevRelease) {
+          prevRelease = true;
+          Serial.println("RELEASED:" + String(Point_X) + ":" + String(Point_Y) + ":" + String(p.z));
+        }
+      }
+
+      loopsSinceLastTouch++;
+      return;
+    }
     
     if (X_Max < p.x) { X_Max = p.x; }
     if (Y_Max < p.y) { Y_Max = p.y; }
@@ -128,6 +140,8 @@ void loop() {
     Point_X = map(p.x, 960, 115, 0, 320);
     Point_Y = map(p.y, 920, 102, 0, 240);
     Serial.println("TOUCH:" + String(Point_X) + ":" + String(Point_Y) + ":" + String(p.z));
+    loopsSinceLastTouch = 0;
+    prevRelease = false;
     return;
   }
 
@@ -151,7 +165,7 @@ void loop() {
       int g = GetNextElement(command, &isLast).toInt();
       int b = GetNextElement(command, &isLast).toInt();
       tft.fillCircle(x, y, radius, RGBTo565(r, g, b));  // Draw the circle
-      //Serial.println("FILL OK");
+      Serial.println("FILL OK");
     } else if (order == "FRECT") {
       //if (countChar(command, ':') != 5) {Serial.println("ERR");}
       int x = GetNextElement(command, &isLast).toInt();
@@ -162,7 +176,7 @@ void loop() {
       int g = GetNextElement(command, &isLast).toInt();
       int b = GetNextElement(command, &isLast).toInt();
       tft.fillRect(x, y, width, height, RGBTo565(r, g, b));
-      //Serial.println("FILL OK");
+      Serial.println("FILL OK");
     } else if (order == "FSQUARE") {
       //if (countChar(command, ':') != 5) {Serial.println("ERR");}
       int x = GetNextElement(command, &isLast).toInt();
@@ -172,7 +186,7 @@ void loop() {
       int g = GetNextElement(command, &isLast).toInt();
       int b = GetNextElement(command, &isLast).toInt();
       tft.fillRect(x, y, size, size, RGBTo565(r, g, b));
-      //Serial.println("FILL OK");
+      Serial.println("FILL OK");
     } else if (order == "CIRCLE") {
       //if (countChar(command, ':') != 5) {Serial.println("ERR");}
       int x = GetNextElement(command, &isLast).toInt();
@@ -182,7 +196,7 @@ void loop() {
       int g = GetNextElement(command, &isLast).toInt();
       int b = GetNextElement(command, &isLast).toInt();
       tft.drawCircle(x, y, radius, RGBTo565(r, g, b));  // Draw the circle
-      //Serial.println("DRAW OK");
+      Serial.println("DRAW OK");
     } else if (order == "RECT") {
       //if (countChar(command, ':') != 5) {Serial.println("ERR");}
       int x = GetNextElement(command, &isLast).toInt();
@@ -193,7 +207,7 @@ void loop() {
       int g = GetNextElement(command, &isLast).toInt();
       int b = GetNextElement(command, &isLast).toInt();
       tft.drawRect(x, y, width, height, RGBTo565(r, g, b));
-      //Serial.println("DRAW OK");
+      Serial.println("DRAW OK");
     } else if (order == "SQUARE") {
       //if (countChar(command, ':') != 5) {Serial.println("ERR");}
       int x = GetNextElement(command, &isLast).toInt();
@@ -203,7 +217,7 @@ void loop() {
       int g = GetNextElement(command, &isLast).toInt();
       int b = GetNextElement(command, &isLast).toInt();
       tft.drawRect(x, y, size, size, RGBTo565(r, g, b));
-      //Serial.println("DRAW OK");
+      Serial.println("DRAW OK");
     } else if (order == "TRIG") {
       //if (countChar(command, ':') != 5) {Serial.println("ERR");}
       int x1 = GetNextElement(command, &isLast).toInt();
@@ -216,7 +230,7 @@ void loop() {
       int g = GetNextElement(command, &isLast).toInt();
       int b = GetNextElement(command, &isLast).toInt();
       tft.drawTriangle(x1,y1,x2,y2,x3,y3, RGBTo565(r, g, b));
-      //Serial.println("DRAW OK");
+      Serial.println("DRAW OK");
     } else if (order == "FTRIG") {
       //if (countChar(command, ':') != 5) {Serial.println("ERR");}
       int x1 = GetNextElement(command, &isLast).toInt();
@@ -229,7 +243,7 @@ void loop() {
       int g = GetNextElement(command, &isLast).toInt();
       int b = GetNextElement(command, &isLast).toInt();
       tft.fillTriangle(x1,y1,x2,y2,x3,y3, RGBTo565(r, g, b));
-      //Serial.println("DRAW OK");
+      Serial.println("DRAW OK");
     } else if (order == "TEXT") {
       //if (countChar(command, ':') != 5) {Serial.println("ERR");}
       int x = GetNextElement(command, &isLast).toInt();
@@ -243,7 +257,7 @@ void loop() {
       tft.setCursor(x, y);
       tft.setTextColor(RGBTo565(r, g, b));
       tft.print(msg);
-      //Serial.println("TEXT OK");
+      Serial.println("TEXT OK");
     } else if (order == "LINE") {
       int x0 = GetNextElement(command, &isLast).toInt();
       int y0 = GetNextElement(command, &isLast).toInt();
@@ -253,7 +267,7 @@ void loop() {
       int g = GetNextElement(command, &isLast).toInt();
       int b = GetNextElement(command, &isLast).toInt();
       tft.drawLine(x0, y0, x1, y1, RGBTo565(r, g, b));
-      //Serial.println("LINE OK");
+      Serial.println("LINE OK");
     } else if (order == "ROT") {
       // Rotated rectangle using 2 triangles
       int pivotX = GetNextElement(command, &isLast).toInt();
@@ -286,6 +300,7 @@ void loop() {
       // Draw two triangles to form the rectangle
       tft.drawTriangle(x0, y0, x1, y1, x2, y2, RGBTo565(r, g, b)); // First triangle
       tft.drawTriangle(x0, y0, x2, y2, x3, y3, RGBTo565(r, g, b)); // Second triangle
+      Serial.println("ROT OK");
     } else if (order == "FROT") {
       int pivotX = GetNextElement(command, &isLast).toInt();
       int pivotY = GetNextElement(command, &isLast).toInt();
@@ -317,6 +332,7 @@ void loop() {
       // Draw two triangles to form the rectangle
       tft.fillTriangle(x0, y0, x1, y1, x2, y2, RGBTo565(r, g, b)); // First triangle
       tft.fillTriangle(x0, y0, x2, y2, x3, y3, RGBTo565(r, g, b)); // Second triangle
+      Serial.println("FROT OK");
     //} else if (order == "HEAD") {
       //if (countChar(command, ':') != 5) {Serial.println("ERR");}
     //  desiredHeadTemp = GetNextElement(command, &isLast).toInt();
