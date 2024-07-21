@@ -55,6 +55,13 @@ void setup() {
   tft.setFont(NULL);
   tft.setTextSize(1);
 
+  // Display logo
+  tft.fillScreen(RGBTo565(30, 30, 30));
+  tft.fillTriangle(80, 120, 160, 200, 160, 40, RGBTo565(200,200,200)); // First triangle
+  tft.fillTriangle(160, 40, 160, 200, 240, 120, RGBTo565(100,100,100)); // First triangle
+  tft.fillRect(120, 100, 40, 40, RGBTo565(120,0,120));
+  tft.fillRect(160, 100, 40, 40, RGBTo565(0,200,120));
+
   Serial.println("AWAKE:"+String(TFT_ID));
 }
 

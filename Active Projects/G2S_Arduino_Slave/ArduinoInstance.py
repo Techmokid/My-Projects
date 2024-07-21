@@ -1,4 +1,5 @@
 if __name__ == "__main__":
+    import Main
     exit()
 
 from ArduinoCommunicationsInterface import Arduino

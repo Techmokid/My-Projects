@@ -20,17 +20,17 @@ def buttonResponseFunction(msg):
 
 # Start of buttons script
 buttonsHandler = Buttons()
-buttonsHandler.add_button(5, 50, 95, 170,
+buttonsHandler.add_button(5, 50, 95, 170, 18, 70,
                    Colors.colors["CYAN"], Colors.colors["WHITE"],
                    Colors.colors["LIME"], Colors.colors["WHITE"],
                    "Build", lambda: buttonResponseFunction("You selected Build!"), None
                    )
-buttonsHandler.add_button(110, 50, 95, 170,
+buttonsHandler.add_button(110, 50, 95, 170, 5, 70,
                    Colors.colors["CYAN"], Colors.colors["WHITE"],
                    Colors.colors["LIME"], Colors.colors["WHITE"],
                    "Preheat", lambda: buttonResponseFunction("You selected Preheat!"), None
                    )
-buttonsHandler.add_button(215, 50, 95, 170,
+buttonsHandler.add_button(215, 50, 95, 170, 18, 70,
                    Colors.colors["CYAN"], Colors.colors["WHITE"],
                    Colors.colors["LIME"], Colors.colors["WHITE"],
                    "Tools", lambda: buttonResponseFunction("You selected Tools!"), None
