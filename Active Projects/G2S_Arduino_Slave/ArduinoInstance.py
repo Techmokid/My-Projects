@@ -1,3 +1,6 @@
+if __name__ == "__main__":
+    exit()
+
 from ArduinoCommunicationsInterface import Arduino
 
 def get_arduino_instance():

@@ -1,3 +1,6 @@
+if __name__ == "__main__":
+    exit()
+
 colors = {
     "WHITE": [255, 255, 255],
     "CYAN": [0, 150, 255],

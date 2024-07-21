@@ -1,3 +1,6 @@
+if __name__ == "__main__":
+    exit()
+
 from DrawFunctions import drawRect, drawText
 
 class Button:
@@ -5,7 +8,7 @@ class Button:
                  x, y, width, height,
                  color, text_color,
                  pressed_color, pressed_text_color,
-                 text, press_function):
+                 text, press_function, draw_image_function):
         self.x = x
         self.y = y
         self.width = width
@@ -16,15 +19,20 @@ class Button:
         self.pressed_color = pressed_color
         self.pressed_text_color = pressed_text_color
         self.press_function = press_function
+        self.draw_image_function = draw_image_function
         self.prevPressed = False
 
     def draw(self):
         drawRect(self.x, self.y, self.width, self.height, self.color, True)
         drawText(self.x + 10, self.y + self.height - 20, 2, self.text, self.text_color)
+        if self.draw_image_function is not None:
+            self.draw_image_function()
 
     def draw_pressed(self):
         drawRect(self.x, self.y, self.width, self.height, self.pressed_color, True)
         drawText(self.x + 10, self.y + self.height - 20, 2, self.text, self.pressed_text_color)
+        if self.draw_image_function is not None:
+            self.draw_image_function()
 
     def is_touched(self, touch_x, touch_y):
         return self.x <= touch_x <= self.x + self.width and self.y <= touch_y <= self.y + self.height
@@ -39,8 +47,8 @@ class Buttons:
     def add_preexisting_button(self, button):
         self.buttons_list.append(button)
         
-    def add_button(self, x, y, width, height, color, text_color, pressed_color, pressed_text_color, text, press_function):
-        button = Button(x, y, width, height, color, text_color, pressed_color, pressed_text_color, text, press_function)
+    def add_button(self, x, y, width, height, color, text_color, pressed_color, pressed_text_color, text, press_function, draw_image_function):
+        button = Button(x, y, width, height, color, text_color, pressed_color, pressed_text_color, text, press_function, draw_image_function)
         self.buttons_list.append(button)
         button.draw()
 
@@ -64,7 +72,7 @@ class Buttons:
                     try:
                         b.press_function()
                     except:
-                        print("Error: No function was set for this button")
+                        print("Error: No function was set for button \"" + b.text + "\"")
                         b.draw()
                         b.prevPressed = False
 

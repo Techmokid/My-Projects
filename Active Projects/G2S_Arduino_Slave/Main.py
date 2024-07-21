@@ -6,6 +6,7 @@ import Colors
 from ArduinoInstance import get_arduino_instance
 from Button import *
 from DrawFunctions import *
+from DrawImages import *
 
 print("Arduino communications opening...")
 arduino = get_arduino_instance()
@@ -54,15 +55,20 @@ def drawMainMenu():
     buttonsHandler.add_button(5, 50, 95, 170,
                            Colors.colors["CYAN"], Colors.colors["WHITE"],
                            Colors.colors["LIME"], Colors.colors["WHITE"],
-                           "Build", None)
+                           "Build",
+                           None, lambda: DrawMainMenuBuild())
     buttonsHandler.add_button(110, 50, 95, 170,
                             Colors.colors["CYAN"], Colors.colors["WHITE"],
                            Colors.colors["LIME"], Colors.colors["WHITE"],
-                           "Preheat", None)
+                           "Preheat",
+                           None, lambda: DrawMainMenuPreheat())
     buttonsHandler.add_button(215, 50, 95, 170,
                           Colors.colors["CYAN"], Colors.colors["WHITE"],
                            Colors.colors["LIME"], Colors.colors["WHITE"],
-                           "Tools", None)
+                           "Tools",
+                           None, lambda: DrawMainMenuTools())
+
+
 
 setNetworkStatus(check_network_connection())
 

@@ -1,6 +1,10 @@
+if __name__ == "__main__":
+    exit()
+
 from ArduinoInstance import get_arduino_instance
 import Colors
 import random
+import time
 
 arduino = get_arduino_instance()
 NetworkStatus = 0
@@ -33,9 +37,12 @@ def drawText(x, y, size, msg, col):
     arduino.send_command(f"TEXT:{x}:{y}:{size}:{msg}:{col[0]}:{col[1]}:{col[2]}")
 
 def drawRotatedRect(x, y, width, height, angle, col, fill):
-    draw_shape("ROT", x, y, width, height=height, col=col, fill=fill)
-    arduino.send_command(f"ROT:{x}:{y}:{width}:{height}:{angle}:{col[0]}:{col[1]}:{col[2]}")
-
+    #draw_shape("ROT", x, y, width, height=height, col=col, fill=fill)
+    msg = f"ROT:{x}:{y}:{width}:{height}:{angle}:{col[0]}:{col[1]}:{col[2]}"
+    if fill:
+        msg = "F" + msg
+    arduino.send_command(msg)
+ 
 def drawTriangle(x0, y0, x1, y1, x2, y2, col, fill):
     msg = f"TRIG:{x0}:{y0}:{x1}:{y1}:{x2}:{y2}:{col[0]}:{col[1]}:{col[2]}"
     if fill:
@@ -48,9 +55,16 @@ def fillScreen(col):
 def clearScreen():
     fillScreen([0, 0, 0])
 
+
+
+
+
+
+
+
 def drawTopBar():
     drawRect(0, 0, 320, 30, [30, 30, 30], True)
-    drawRect(0, 30, 320, 210, [0, 0, 0], True)
+    #drawRect(0, 30, 320, 210, [0, 0, 0], True)
     drawRotatedRect(16, 16, 13, 13, 45, [200, 200, 200], True)
     drawTriangle(17, 5, 17, 26, 27, 15, [100, 100, 100], True)
     drawRect(12, 13, 5, 6, [120, 0, 120], True)
@@ -58,6 +72,7 @@ def drawTopBar():
     drawText(45, 8, 2, header_title, Colors.colors["WHITE"])
     drawRect(289, 5, 25, 20, [120, 120, 120], True)
     drawRect(291, 7, 21, 15, Colors.colors["BLACK"], True)
+    
     if NetworkStatus == 0:
         drawRotatedRect(301, 14, 2, 30, 55, Colors.colors["RED"], True)
         drawRotatedRect(301, 14, 2, 30, -55, Colors.colors["RED"], True)

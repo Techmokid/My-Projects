@@ -23,17 +23,17 @@ buttonsHandler = Buttons()
 buttonsHandler.add_button(5, 50, 95, 170,
                    Colors.colors["CYAN"], Colors.colors["WHITE"],
                    Colors.colors["LIME"], Colors.colors["WHITE"],
-                   "Build", lambda: buttonResponseFunction("You selected Build!")
+                   "Build", lambda: buttonResponseFunction("You selected Build!"), None
                    )
 buttonsHandler.add_button(110, 50, 95, 170,
                    Colors.colors["CYAN"], Colors.colors["WHITE"],
                    Colors.colors["LIME"], Colors.colors["WHITE"],
-                   "Preheat", lambda: buttonResponseFunction("You selected Preheat!")
+                   "Preheat", lambda: buttonResponseFunction("You selected Preheat!"), None
                    )
 buttonsHandler.add_button(215, 50, 95, 170,
                    Colors.colors["CYAN"], Colors.colors["WHITE"],
                    Colors.colors["LIME"], Colors.colors["WHITE"],
-                   "Tools", lambda: buttonResponseFunction("You selected Tools!")
+                   "Tools", lambda: buttonResponseFunction("You selected Tools!"), None
                    )
 def getTouchSpot():
     x, y, touched = arduino.read_touch_input()
