@@ -25,7 +25,7 @@
 
 // Values
 #define LED_BRIGHTNESS    255
-#define UNLOCK_TIME       30    // Seconds
+#define UNLOCK_TIME       20    // Seconds
 #define SECRET_KEY        "MYSECRETKEY41139"
 
 LiquidCrystal lcd(LCD_PIN_RS, LCD_PIN_E, LCD_PIN_D4, LCD_PIN_D5, LCD_PIN_D6, LCD_PIN_D7);
@@ -116,13 +116,22 @@ void loop()  {
     printLCD(0,0,"    UNLOCKED    ");
     analogWrite(LED_G_PIN,LED_BRIGHTNESS);
     digitalWrite(RELAY_PIN, HIGH);
-    
-    delay(UNLOCK_TIME * 1000);
+    delay(1000);
+
+    unsigned long prevMillisInternal = millis();
+    while (millis() - prevMillisInternal < UNLOCK_TIME * 1000) {
+      if ((millis() - prevMillisInternal)%1000 == 0) {
+        digitalWrite(LED_G_PIN,!digitalRead(LED_G_PIN));
+        delay(2);
+      }
+    }
 
     printLCD(0,0,"     LOCKED     ");
     digitalWrite(RELAY_PIN, LOW);
     digitalWrite(LED_G_PIN, LOW);
-    delay(1000);
+    digitalWrite(LED_R_PIN, HIGH);
+    delay(3000);
+    digitalWrite(LED_R_PIN, LOW);
   } else {
     // Wrong card used
     printLCD(0,0," INCORRECT AUTH ");
