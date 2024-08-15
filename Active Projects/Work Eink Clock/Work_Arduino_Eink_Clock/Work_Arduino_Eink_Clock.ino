@@ -1,10 +1,10 @@
-#include <SPI.h>                         // EInk libraries
-#include <GxEPD.h>                       //     |
-#include <GxIO/GxIO_SPI/GxIO_SPI.h>      //     ↓
-//#include <GxGDEW075Z09/GxGDEW075Z09.h> // 3-color 640x384
-//#include <GxGDEW075Z08/GxGDEW075Z08.h> // 3-color 800x480
+#include <GxEPD2_BW.h>                   // EInk libraries
+#include <GxEPD2_3C.h>                   //     |
+#include <Fonts/FreeMonoBold9pt7b.h>     //     ↓
+
 #include <Wire.h>                        // RTC Libraries
 #include "RTClib.h"                      //     ↓
+
 #include <ESP8266WiFi.h>                 // Memory/Sleep Libraries
 #include <EEPROM.h>                      //     ↓
 
@@ -13,18 +13,21 @@
 #define BUTTON_SELECT    3   //     |
 #define BUTTON_UP        4   //     |
 #define BUTTON_DOWN      5   //     ↓
-#define SPI_PIN       6   // EInk Pins
-#define SS_PIN        7   //     |
-#define DC_PIN        8   //     |
-#define RST_PIN       9   //     |
-#define BUSY_PIN      10  //     ↓
+
+#define CLK_PIN          13  // Auto-defined SPI pin
+#define DIN_PIN          11  // Auto-defined SPI pin
+#define CS_PIN           10  // EInk Pins
+#define DC_PIN           9   //     |
+#define RST_PIN          8   //     |
+#define BUSY_PIN         7   //     ↓
+
 #define YEAR_ADDR        0   // EEPROM addresses
 #define MONTH_ADDR       1
 #define DAY_ADDR         2
-#define wrapAround    // Do the menus wrap around to the other side, or just stop at the ends
+#define wrapAround           // Do the menus wrap around to the other side, or just stop at the ends
 
-GxIO_Class io(SPI, SS_PIN, DC_PIN, RST_PIN); // Define your IO class, adjust parameters as needed
-GxEPD_Class display(io, RST_PIN, BUSY_PIN); // Initialize your display
+// Initialize the display class for a specific e-ink display model
+GxEPD2_3C<GxEPD2_154c, GxEPD2_154c::HEIGHT> display(GxEPD2_154c(CS_PIN, DC_PIN, RST_PIN, BUSY_PIN));
 
 int displayWidth;
 int displayHeight;
@@ -41,13 +44,12 @@ void SaveLastInjuryDate(int day, int month, int year);
 
 void setup() {
   // Initialize SPI and the display
-  SPI.begin();
   display.init();
-  display.setRotation(0);
-  display.fillScreen(GxEPD_WHITE);
-  display.setTextColor(GxEPD_BLACK);
-  //display.setFont(&FreeMonoBold9pt7b);
-  display.update();
+  display.setRotation(1);
+
+  // Clear the screen
+  clearScreen();
+  display.setFont(&FreeMonoBold9pt7b);
   
   int displayWidth = display.width();
   int displayHeight = display.height();
@@ -89,6 +91,39 @@ void setup() {
 }
 
 void loop() { }
+
+
+
+
+
+
+
+
+// E-ink functions
+void clearScreen() {
+  display.setFullWindow();
+  display.firstPage();
+  do {
+    display.fillScreen(GxEPD_WHITE);
+  } while (display.nextPage());
+}
+void writeText(int x, int y, const char* text, uint16_t color) {
+  display.setFullWindow();
+  display.firstPage();
+  do {
+    display.setCursor(x, y);
+    display.setTextColor(color);
+    display.setFont(&FreeMonoBold9pt7b);
+    display.print(text);
+  } while (display.nextPage());
+}
+
+
+
+
+
+
+
 
 void Update_Eink() {
   now = rtc.now();
