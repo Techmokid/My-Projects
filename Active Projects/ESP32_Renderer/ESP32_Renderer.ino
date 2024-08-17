@@ -9,10 +9,6 @@ LinkedList<Vector2> RenderPipelineA;
 LinkedList<Vector2> RenderPipelineB;
 bool PipelineSelector = false;
 
-
-
-
-
 float getDistance(Vector2 point1, Vector2 point2) {
   return sqrt(
     pow(point1.x - point2.x, 2) +
@@ -87,29 +83,6 @@ void RenderingEngine(void *parameter) {
   }
 }
 void Core0Renderer(void *parameter) {while (true) {RenderingEngine(parameter);}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 void setup() {
   Serial.begin(115200);
