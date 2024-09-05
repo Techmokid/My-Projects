@@ -1,3 +1,13 @@
+network_name = "Jeg-Team"
+capture_portal_url = "https://clearpass.jeg.systems/guest/Jeg-Team.php"
+NETWORK_USERNAME = "6992@jeg.systems"
+NETWORK_PASSWORD = "ocean-desert-ocean-tree"
+
+
+
+
+
+
 import subprocess
 import platform
 import time
@@ -7,9 +17,6 @@ from selenium.webdriver.firefox.service import Service as FirefoxService
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.service import Service as FirefoxService
-
-NETWORK_USERNAME = "6992@jeg.systems"
-NETWORK_PASSWORD = "ocean-desert-ocean-tree"
 
 def check_current_connection():
     os_type = platform.system().lower()
@@ -117,10 +124,9 @@ def navigate_to_capture_portal(url):
     finally:
         driver.quit()
 
-network_name = "Jeg-Team"
+
 
 if scan_and_connect(network_name):
-    capture_portal_url = "https://clearpass.jeg.systems/guest/Jeg-Team.php"
     final_url = navigate_to_capture_portal(capture_portal_url)
     if final_url:
         print(f"Final URL after navigation: {final_url}")
