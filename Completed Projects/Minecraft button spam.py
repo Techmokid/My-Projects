@@ -16,7 +16,7 @@ running = False
 while (True):
     while(running):
         #keySpam("shift",0.05)
-        leftClickSpam(0.01)
+        rightClickSpam(0.005)
         if keyboard.is_pressed('F6'):
             running = False
             print("Off")
