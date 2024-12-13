@@ -16,4 +16,6 @@ public:
     bool writeToCard(const String& data);
     String readFromCard();
     bool newCardDetected();
+};
+
 #endif

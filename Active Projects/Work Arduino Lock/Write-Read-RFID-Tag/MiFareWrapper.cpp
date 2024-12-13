@@ -10,8 +10,9 @@ bool MiFareWrapper::initialize() {
 
 bool MiFareWrapper::writeToCard(const String& data) {
     if (data.length() > 16) {
-        Serial.println(F("Error: Data exceeds block size (16 bytes)."));
-        return false;
+      //data = data.substring(0, 16); // Truncate data to the first 16 characters
+      //Serial.print(F("Warning: Data exceeds block size (16 bytes). Data will be truncated to: "));
+      //Serial.println(data);
     }
 
     Serial.println(F("Waiting for a tag to write..."));

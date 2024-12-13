@@ -6,13 +6,19 @@
 MiFareWrapper rfid(SS_PIN, RST_PIN);
 
 void setup() {
-    Serial.begin(115200);
-    Serial.println("-------------------------------");
-    for (int i = 0; i < 5; i++) { Serial.println(); }
+  Serial.begin(115200);
+  Serial.println();
+  Serial.println();
+  Serial.println("-------------------------------");
+  Serial.println();
 
-    if (rfid.initialize()) {
-        Serial.println(F("RFID initialized successfully"));
-    }
+  // Initialize RFID
+  if (!rfid.initialize()) {
+    Serial.println(F("RFID failed to initialize :("));
+    while (true);
+  }
+
+  Serial.println(F("RFID initialized successfully"));
 }
 
 void loop() {
@@ -36,5 +42,8 @@ void loop() {
 
   Serial.print(F("Data read from block: "));
   Serial.println(dataRead);
+  Serial.println();
+  Serial.println("-------------------------------");
+  Serial.println();
   delay(2000);
 }
