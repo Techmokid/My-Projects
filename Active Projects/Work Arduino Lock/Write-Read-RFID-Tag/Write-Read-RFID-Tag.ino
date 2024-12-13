@@ -2,6 +2,7 @@
 
 #define SS_PIN 10
 #define RST_PIN 9
+#define PASSCODE "Xq7!v2$Kd@9Rf^pLPHELLOLOL"
 
 MiFareWrapper rfid(SS_PIN, RST_PIN);
 
@@ -25,8 +26,7 @@ void loop() {
   if (!rfid.newCardDetected()) { delay(100); return; }
 
   // Write to card
-  String data = "RealSecretCodeLOL";
-  if (!rfid.writeToCard(data)) {
+  if (!rfid.writeToCard(PASSCODE)) {
     Serial.println(F("Failed to write data"));
     delay(500);
     return;
