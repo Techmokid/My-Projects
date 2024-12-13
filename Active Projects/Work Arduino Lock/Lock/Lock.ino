@@ -13,10 +13,13 @@ MiFareWrapper rfid(ss, rst);
 const int rs = 6, en = 7, d4 = 2, d5 = 3, d6 = 4, d7 = 5;
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
+unsigned long prevMillis;
+
 void setup() {
   Serial.begin(115200);
   Serial.println();
-  SerialSeperator();
+  Serial.println("-------------------------------");
+  Serial.println();
 
   pinMode(LED_RED_PIN,OUTPUT);
   pinMode(LED_GRN_PIN,OUTPUT);
@@ -51,14 +54,31 @@ void setup() {
   delay(2000);
 
   lcd.clear();
+
+  prevMillis = millis();
 }
 
 void loop() {
+  // Reset the display periodically to HOPEFULLY avoid the LCD data corruption glitch
+  if (millis() - prevMillis > 60000) {
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    prevMillis = millis();
+  }
+
+  // If no new card was detected, just cancel out
   if (!rfid.newCardDetected()) { delay(100); return; }
 
-  SerialSeperator();
+  // Try and avoid LCD data corruption glitch by clearing the LCD
+  lcd.clear();
+  lcd.setCursor(0, 0);
+
+  Serial.println();
+  Serial.println("-------------------------------");
+  Serial.println();
   Serial.println("Detected Card");
 
+  // Read key from our RFID card
   String dataRead = rfid.readFromCard().substring(0,16);
   dataRead.trim();
   if (dataRead == "") {
@@ -73,9 +93,10 @@ void loop() {
     lcd.clear();
     return;
   }
-  Serial.print(F("Data read from block: "));
-  Serial.println(dataRead);
+  //Serial.print(F("Data read from block: "));
+  //Serial.println(dataRead);
   
+  // Decide whether to allow the card or not
   if (dataRead == PASSCODE) {
     // Correct code
     Serial.println("Code is valid. Opening lock...");
@@ -107,12 +128,7 @@ void loop() {
     }
   }
 
+  // Finally clear the display again
   delay(500);
   lcd.clear();
-}
-
-void SerialSeperator() {
-  Serial.println();
-  Serial.println("-------------------------------");
-  Serial.println();
 }
