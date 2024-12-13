@@ -23,6 +23,7 @@ void setup() {
 
   pinMode(LED_RED_PIN,OUTPUT);
   pinMode(LED_GRN_PIN,OUTPUT);
+  pinMode(RELAY_UNLOCK_PIN,OUTPUT);
   for (int i = 0; i < 3; i++) {
     digitalWrite(LED_RED_PIN,HIGH);
     digitalWrite(LED_GRN_PIN,HIGH);
