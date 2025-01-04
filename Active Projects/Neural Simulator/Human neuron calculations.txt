@@ -1,0 +1,23 @@
+100 trillion connections
+100 billion neurons (Technically 86 billion)
+1k connections per neuron average
+15k connections per neuron max
+
+Per neuron:
+Max number of connections per neuron at 15,000 connections would require 14 bits to index (14 bits is 16,384 address indexes)
+Timer var we'll set to be 16 bits per neuron
+Therefore neuron init data is 14+16 = 30 bits per neuron
+
+Per connection:
+Indexing of 100 billion neurons requires 37 bits per neuron for indexing
+Myelination can be a single boolean value
+Therefore per neuron connection data is 37+1 = 38 bit per connection
+Hamming code error detection for 38 bits would need 5 bits, so total 43 bits per connection
+
+Max neuron data size is 30 + (15k * 43) = 645,030 bits = 645.03kb = 80.629KB
+Average neuron data size is 30 + (1k * 43) = 43,030 bits = 43.03kb = 5.379KB
+
+43.03kb per neuron * 100 billion neurons = 4,303Tb = 537.875 TB
+
+PRAM Only:
+16 bits per neuron * 100 billion neurons = 1,600gb = 200GB
