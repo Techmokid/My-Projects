@@ -1,5 +1,5 @@
-salary = 63537
-taxPaid = 12428
+salary = 85000
+taxPaid = 0
 
 
 
