@@ -15,7 +15,7 @@ def keySpam(key,t):
 running = False
 while (True):
     while(running):
-        keySpam("space",0.005)
+        keySpam("e",0.05)
         #rightClickSpam(0.005)
         if keyboard.is_pressed('F6'):
             running = False
