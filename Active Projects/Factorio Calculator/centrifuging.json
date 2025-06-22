@@ -1,0 +1,132 @@
+[
+  {
+    "allow_productivity": true,
+    "category": "centrifuging",
+    "energy_required": 60,
+    "icon_col": 13,
+    "icon_row": 7,
+    "ingredients": [
+      {
+        "amount": 40,
+        "name": "uranium-235"
+      },
+      {
+        "amount": 5,
+        "name": "uranium-238"
+      }
+    ],
+    "key": "kovarex-enrichment-process",
+    "localized_name": {
+      "en": "Kovarex enrichment process"
+    },
+    "order": "b[uranium-products]-c[kovarex-enrichment-process]",
+    "results": [
+      {
+        "amount": 41,
+        "name": "uranium-235"
+      },
+      {
+        "amount": 2,
+        "name": "uranium-238"
+      }
+    ],
+    "subgroup": "uranium-processing",
+    "Items per Minute - Assembling Machine 1": 0.5,
+    "Items per Minute - Assembling Machine 2": 0.75,
+    "Items per Minute - Assembling Machine 3": 1.25
+  },
+  {
+    "allow_productivity": true,
+    "category": "centrifuging",
+    "energy_required": 90,
+    "icon_col": 5,
+    "icon_row": 9,
+    "ingredients": [
+      {
+        "amount": 1,
+        "name": "uranium-235"
+      },
+      {
+        "amount": 1,
+        "name": "rocket-fuel"
+      }
+    ],
+    "key": "nuclear-fuel",
+    "localized_name": {
+      "en": "Nuclear fuel"
+    },
+    "order": "b[uranium-products]-d[nuclear-fuel]",
+    "results": [
+      {
+        "amount": 1,
+        "name": "nuclear-fuel"
+      }
+    ],
+    "subgroup": "uranium-processing",
+    "Items per Minute - Assembling Machine 1": 0.3333333333333333,
+    "Items per Minute - Assembling Machine 2": 0.5,
+    "Items per Minute - Assembling Machine 3": 0.8333333333333333
+  },
+  {
+    "allow_productivity": true,
+    "category": "centrifuging",
+    "energy_required": 60,
+    "icon_col": 6,
+    "icon_row": 9,
+    "ingredients": [
+      {
+        "amount": 5,
+        "name": "depleted-uranium-fuel-cell"
+      }
+    ],
+    "key": "nuclear-fuel-reprocessing",
+    "localized_name": {
+      "en": "Nuclear fuel reprocessing"
+    },
+    "order": "b[uranium-products]-b[nuclear-fuel-reprocessing]",
+    "results": [
+      {
+        "amount": 3,
+        "name": "uranium-238"
+      }
+    ],
+    "subgroup": "uranium-processing",
+    "Items per Minute - Assembling Machine 1": 0.5,
+    "Items per Minute - Assembling Machine 2": 0.75,
+    "Items per Minute - Assembling Machine 3": 1.25
+  },
+  {
+    "allow_productivity": true,
+    "category": "centrifuging",
+    "energy_required": 12,
+    "icon_col": 14,
+    "icon_row": 15,
+    "ingredients": [
+      {
+        "amount": 10,
+        "name": "uranium-ore"
+      }
+    ],
+    "key": "uranium-processing",
+    "localized_name": {
+      "en": "Uranium processing"
+    },
+    "order": "a[uranium-processing]-a[uranium-processing]",
+    "results": [
+      {
+        "amount": 1,
+        "name": "uranium-235",
+        "probability": 0.007
+      },
+      {
+        "amount": 1,
+        "name": "uranium-238",
+        "probability": 0.993
+      }
+    ],
+    "subgroup": "uranium-processing",
+    "Items per Minute - Assembling Machine 1": 2.5,
+    "Items per Minute - Assembling Machine 2": 3.75,
+    "Items per Minute - Assembling Machine 3": 6.25
+  }
+]

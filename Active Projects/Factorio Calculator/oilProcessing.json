@@ -1,0 +1,114 @@
+[
+  {
+    "allow_productivity": true,
+    "category": "oil-processing",
+    "energy_required": 5,
+    "icon_col": 4,
+    "icon_row": 0,
+    "ingredients": [
+      {
+        "amount": 50,
+        "name": "water"
+      },
+      {
+        "amount": 100,
+        "name": "crude-oil"
+      }
+    ],
+    "key": "advanced-oil-processing",
+    "localized_name": {
+      "en": "Advanced oil processing"
+    },
+    "order": "a[oil-processing]-b[advanced-oil-processing]",
+    "results": [
+      {
+        "amount": 25,
+        "name": "heavy-oil"
+      },
+      {
+        "amount": 45,
+        "name": "light-oil"
+      },
+      {
+        "amount": 55,
+        "name": "petroleum-gas"
+      }
+    ],
+    "subgroup": "fluid-recipes",
+    "Items per Minute - Assembling Machine 1": 6.0,
+    "Items per Minute - Assembling Machine 2": 9.0,
+    "Items per Minute - Assembling Machine 3": 15.0
+  },
+  {
+    "allow_productivity": true,
+    "category": "oil-processing",
+    "energy_required": 5,
+    "icon_col": 0,
+    "icon_row": 1,
+    "ingredients": [
+      {
+        "amount": 100,
+        "name": "crude-oil"
+      }
+    ],
+    "key": "basic-oil-processing",
+    "localized_name": {
+      "en": "Basic oil processing"
+    },
+    "order": "a[oil-processing]-a[basic-oil-processing]",
+    "results": [
+      {
+        "amount": 45,
+        "name": "petroleum-gas"
+      }
+    ],
+    "subgroup": "fluid-recipes",
+    "Items per Minute - Assembling Machine 1": 6.0,
+    "Items per Minute - Assembling Machine 2": 9.0,
+    "Items per Minute - Assembling Machine 3": 15.0
+  },
+  {
+    "allow_productivity": true,
+    "category": "oil-processing",
+    "energy_required": 5,
+    "icon_col": 10,
+    "icon_row": 2,
+    "ingredients": [
+      {
+        "amount": 10,
+        "name": "coal"
+      },
+      {
+        "amount": 25,
+        "name": "heavy-oil"
+      },
+      {
+        "amount": 50,
+        "name": "steam"
+      }
+    ],
+    "key": "coal-liquefaction",
+    "localized_name": {
+      "en": "Coal liquefaction"
+    },
+    "order": "a[oil-processing]-c[coal-liquefaction]",
+    "results": [
+      {
+        "amount": 90,
+        "name": "heavy-oil"
+      },
+      {
+        "amount": 20,
+        "name": "light-oil"
+      },
+      {
+        "amount": 10,
+        "name": "petroleum-gas"
+      }
+    ],
+    "subgroup": "fluid-recipes",
+    "Items per Minute - Assembling Machine 1": 6.0,
+    "Items per Minute - Assembling Machine 2": 9.0,
+    "Items per Minute - Assembling Machine 3": 15.0
+  }
+]

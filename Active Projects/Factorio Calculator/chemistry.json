@@ -1,0 +1,382 @@
+[
+  {
+    "allow_productivity": true,
+    "category": "chemistry",
+    "energy_required": 4,
+    "icon_col": 1,
+    "icon_row": 1,
+    "ingredients": [
+      {
+        "amount": 20,
+        "name": "sulfuric-acid"
+      },
+      {
+        "amount": 1,
+        "name": "iron-plate"
+      },
+      {
+        "amount": 1,
+        "name": "copper-plate"
+      }
+    ],
+    "key": "battery",
+    "localized_name": {
+      "en": "Battery"
+    },
+    "order": "b[chemistry]-d[battery]",
+    "results": [
+      {
+        "amount": 1,
+        "name": "battery"
+      }
+    ],
+    "subgroup": "raw-material",
+    "Items per Minute - Assembling Machine 1": 7.5,
+    "Items per Minute - Assembling Machine 2": 11.25,
+    "Items per Minute - Assembling Machine 3": 18.75
+  },
+  {
+    "allow_productivity": true,
+    "category": "chemistry",
+    "energy_required": 4,
+    "icon_col": 8,
+    "icon_row": 5,
+    "ingredients": [
+      {
+        "amount": 1,
+        "name": "sulfur"
+      },
+      {
+        "amount": 1,
+        "name": "coal"
+      },
+      {
+        "amount": 10,
+        "name": "water"
+      }
+    ],
+    "key": "explosives",
+    "localized_name": {
+      "en": "Explosives"
+    },
+    "order": "b[chemistry]-e[explosives]",
+    "results": [
+      {
+        "amount": 2,
+        "name": "explosives"
+      }
+    ],
+    "subgroup": "raw-material",
+    "Items per Minute - Assembling Machine 1": 7.5,
+    "Items per Minute - Assembling Machine 2": 11.25,
+    "Items per Minute - Assembling Machine 3": 18.75
+  },
+  {
+    "allow_productivity": false,
+    "category": "chemistry",
+    "energy_required": 6,
+    "icon_col": 7,
+    "icon_row": 6,
+    "ingredients": [
+      {
+        "amount": 5,
+        "name": "steel-plate"
+      },
+      {
+        "amount": 100,
+        "name": "crude-oil"
+      }
+    ],
+    "key": "flamethrower-ammo",
+    "localized_name": {
+      "en": "Flamethrower ammo"
+    },
+    "order": "e[flamethrower]",
+    "results": [
+      {
+        "amount": 1,
+        "name": "flamethrower-ammo"
+      }
+    ],
+    "subgroup": "ammo",
+    "Items per Minute - Assembling Machine 1": 5.0,
+    "Items per Minute - Assembling Machine 2": 7.5,
+    "Items per Minute - Assembling Machine 3": 12.5
+  },
+  {
+    "allow_productivity": true,
+    "category": "chemistry",
+    "energy_required": 2,
+    "icon_col": 5,
+    "icon_row": 7,
+    "ingredients": [
+      {
+        "amount": 30,
+        "name": "water"
+      },
+      {
+        "amount": 40,
+        "name": "heavy-oil"
+      }
+    ],
+    "key": "heavy-oil-cracking",
+    "localized_name": {
+      "en": "Heavy oil cracking to light oil"
+    },
+    "order": "b[fluid-chemistry]-a[heavy-oil-cracking]",
+    "results": [
+      {
+        "amount": 30,
+        "name": "light-oil"
+      }
+    ],
+    "subgroup": "fluid-recipes",
+    "Items per Minute - Assembling Machine 1": 15.0,
+    "Items per Minute - Assembling Machine 2": 22.5,
+    "Items per Minute - Assembling Machine 3": 37.5
+  },
+  {
+    "allow_productivity": true,
+    "category": "chemistry",
+    "energy_required": 2,
+    "icon_col": 5,
+    "icon_row": 8,
+    "ingredients": [
+      {
+        "amount": 30,
+        "name": "water"
+      },
+      {
+        "amount": 30,
+        "name": "light-oil"
+      }
+    ],
+    "key": "light-oil-cracking",
+    "localized_name": {
+      "en": "Light oil cracking to petroleum gas"
+    },
+    "order": "b[fluid-chemistry]-b[light-oil-cracking]",
+    "results": [
+      {
+        "amount": 20,
+        "name": "petroleum-gas"
+      }
+    ],
+    "subgroup": "fluid-recipes",
+    "Items per Minute - Assembling Machine 1": 15.0,
+    "Items per Minute - Assembling Machine 2": 22.5,
+    "Items per Minute - Assembling Machine 3": 37.5
+  },
+  {
+    "allow_productivity": true,
+    "category": "chemistry",
+    "energy_required": 1,
+    "icon_col": 14,
+    "icon_row": 8,
+    "ingredients": [
+      {
+        "amount": 10,
+        "name": "heavy-oil"
+      }
+    ],
+    "key": "lubricant",
+    "localized_name": {
+      "en": "Lubricant"
+    },
+    "order": "c[oil-products]-a[lubricant]",
+    "results": [
+      {
+        "amount": 10,
+        "name": "lubricant"
+      }
+    ],
+    "subgroup": "fluid-recipes",
+    "Items per Minute - Assembling Machine 1": 30.0,
+    "Items per Minute - Assembling Machine 2": 45.0,
+    "Items per Minute - Assembling Machine 3": 75.0
+  },
+  {
+    "allow_productivity": true,
+    "category": "chemistry",
+    "energy_required": 1,
+    "icon_col": 1,
+    "icon_row": 11,
+    "ingredients": [
+      {
+        "amount": 20,
+        "name": "petroleum-gas"
+      },
+      {
+        "amount": 1,
+        "name": "coal"
+      }
+    ],
+    "key": "plastic-bar",
+    "localized_name": {
+      "en": "Plastic bar"
+    },
+    "order": "b[chemistry]-b[plastic-bar]",
+    "results": [
+      {
+        "amount": 2,
+        "name": "plastic-bar"
+      }
+    ],
+    "subgroup": "raw-material",
+    "Items per Minute - Assembling Machine 1": 30.0,
+    "Items per Minute - Assembling Machine 2": 45.0,
+    "Items per Minute - Assembling Machine 3": 75.0
+  },
+  {
+    "allow_productivity": true,
+    "category": "chemistry",
+    "energy_required": 1,
+    "icon_col": 9,
+    "icon_row": 13,
+    "ingredients": [
+      {
+        "amount": 20,
+        "name": "heavy-oil"
+      }
+    ],
+    "key": "solid-fuel-from-heavy-oil",
+    "localized_name": {
+      "en": "Solid fuel from heavy oil"
+    },
+    "order": "b[fluid-chemistry]-e[solid-fuel-from-heavy-oil]",
+    "results": [
+      {
+        "amount": 1,
+        "name": "solid-fuel"
+      }
+    ],
+    "subgroup": "fluid-recipes",
+    "Items per Minute - Assembling Machine 1": 30.0,
+    "Items per Minute - Assembling Machine 2": 45.0,
+    "Items per Minute - Assembling Machine 3": 75.0
+  },
+  {
+    "allow_productivity": true,
+    "category": "chemistry",
+    "energy_required": 1,
+    "icon_col": 10,
+    "icon_row": 13,
+    "ingredients": [
+      {
+        "amount": 10,
+        "name": "light-oil"
+      }
+    ],
+    "key": "solid-fuel-from-light-oil",
+    "localized_name": {
+      "en": "Solid fuel from light oil"
+    },
+    "order": "b[fluid-chemistry]-d[solid-fuel-from-light-oil]",
+    "results": [
+      {
+        "amount": 1,
+        "name": "solid-fuel"
+      }
+    ],
+    "subgroup": "fluid-recipes",
+    "Items per Minute - Assembling Machine 1": 30.0,
+    "Items per Minute - Assembling Machine 2": 45.0,
+    "Items per Minute - Assembling Machine 3": 75.0
+  },
+  {
+    "allow_productivity": true,
+    "category": "chemistry",
+    "energy_required": 1,
+    "icon_col": 11,
+    "icon_row": 13,
+    "ingredients": [
+      {
+        "amount": 20,
+        "name": "petroleum-gas"
+      }
+    ],
+    "key": "solid-fuel-from-petroleum-gas",
+    "localized_name": {
+      "en": "Solid fuel from petroleum gas"
+    },
+    "order": "b[fluid-chemistry]-c[solid-fuel-from-petroleum-gas]",
+    "results": [
+      {
+        "amount": 1,
+        "name": "solid-fuel"
+      }
+    ],
+    "subgroup": "fluid-recipes",
+    "Items per Minute - Assembling Machine 1": 30.0,
+    "Items per Minute - Assembling Machine 2": 45.0,
+    "Items per Minute - Assembling Machine 3": 75.0
+  },
+  {
+    "allow_productivity": true,
+    "category": "chemistry",
+    "energy_required": 1,
+    "icon_col": 2,
+    "icon_row": 15,
+    "ingredients": [
+      {
+        "amount": 30,
+        "name": "water"
+      },
+      {
+        "amount": 30,
+        "name": "petroleum-gas"
+      }
+    ],
+    "key": "sulfur",
+    "localized_name": {
+      "en": "Sulfur"
+    },
+    "order": "b[chemistry]-c[sulfur]",
+    "results": [
+      {
+        "amount": 2,
+        "name": "sulfur"
+      }
+    ],
+    "subgroup": "raw-material",
+    "Items per Minute - Assembling Machine 1": 30.0,
+    "Items per Minute - Assembling Machine 2": 45.0,
+    "Items per Minute - Assembling Machine 3": 75.0
+  },
+  {
+    "allow_productivity": true,
+    "category": "chemistry",
+    "energy_required": 1,
+    "icon_col": 3,
+    "icon_row": 15,
+    "ingredients": [
+      {
+        "amount": 5,
+        "name": "sulfur"
+      },
+      {
+        "amount": 1,
+        "name": "iron-plate"
+      },
+      {
+        "amount": 100,
+        "name": "water"
+      }
+    ],
+    "key": "sulfuric-acid",
+    "localized_name": {
+      "en": "Sulfuric acid"
+    },
+    "order": "c[oil-products]-b[sulfuric-acid]",
+    "results": [
+      {
+        "amount": 50,
+        "name": "sulfuric-acid"
+      }
+    ],
+    "subgroup": "fluid-recipes",
+    "Items per Minute - Assembling Machine 1": 30.0,
+    "Items per Minute - Assembling Machine 2": 45.0,
+    "Items per Minute - Assembling Machine 3": 75.0
+  }
+]
