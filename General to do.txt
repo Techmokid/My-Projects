@@ -1,23 +1,25 @@
 Chores:
 Pressure wash pavement/concrete
 Mow the lawn front and back - In progress
-Buy automower (Related to above)
-Crack Tylers Dads laptop encryption
 
 To Build/Fix:
-4 - Fix Ender 3 v3 SE		Current issue: Firmware fault
-5 - Fix Ender 3 v3 SE		Current issue: Rough printing, belt slip?
-6 - Fix Guider 2S		Current issue: Custom PCB, arduino software fault, RPi coding
-7 - Fix CRX			Current issue: Blocked head
-8 - Fix Photon Mono		Current issue: Needs test run
-9 - Fix CR-30			Current issue: ...yes
-10 - Convert dead Ender 3 v3 SE into filament recycler
-12 - Buy compute serverrack
-13 - Put NAS in server 1U shelf
-14 - Build compute cluster
-15 - Go to Dentist
-16 - Go to Doctors
-17 - Go to Psychologist about head injury, emotions, and ADHD
+ - Diagnose arcade machine for Nick
+ - 3D model clip for instantpancakes
+ - Diagnose my own arcade machine
+ - Build NAS case / swap hard drives
+ - Get 2x4TB SSDs for main gaming rig
+ - Fix Ender 3 v3 SE		Current issue: Firmware fault
+ - Fix Ender 3 v3 SE		Current issue: Rough printing, belt slip?
+ - Fix Guider 2S		Current issue: Custom PCB, arduino software fault, RPi coding
+ - Fix CRX			Current issue: Blocked head
+ - Fix Photon Mono		Current issue: Needs test run
+ - Fix CR-30			Current issue: ...yes
+ - Convert dead Ender 3 v3 SE into filament recycler
+ - Buy compute serverrack
+ - Build heterogenous distributed computing engine (HDCE)
+ - Go to Dentist
+ - Go to Doctors
+ - Go to Psychologist about head injury, emotions, and ADHD
 
 Other:
 Lose weight

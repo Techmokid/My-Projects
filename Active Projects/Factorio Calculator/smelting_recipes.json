@@ -1,0 +1,114 @@
+[
+  {
+    "allow_productivity": true,
+    "category": "smelting",
+    "energy_required": 3.2,
+    "icon_col": 3,
+    "icon_row": 3,
+    "ingredients": [
+      {
+        "amount": 1,
+        "name": "copper-ore"
+      }
+    ],
+    "key": "copper-plate",
+    "localized_name": {
+      "en": "Copper plate"
+    },
+    "order": "a[smelting]-b[copper-plate]",
+    "results": [
+      {
+        "amount": 1,
+        "name": "copper-plate"
+      }
+    ],
+    "subgroup": "raw-material",
+    "Items per Minute - Assembling Machine 1": 9.375,
+    "Items per Minute - Assembling Machine 2": 14.0625,
+    "Items per Minute - Assembling Machine 3": 23.4375
+  },
+  {
+    "allow_productivity": true,
+    "category": "smelting",
+    "energy_required": 3.2,
+    "icon_col": 11,
+    "icon_row": 7,
+    "ingredients": [
+      {
+        "amount": 1,
+        "name": "iron-ore"
+      }
+    ],
+    "key": "iron-plate",
+    "localized_name": {
+      "en": "Iron plate"
+    },
+    "order": "a[smelting]-a[iron-plate]",
+    "results": [
+      {
+        "amount": 1,
+        "name": "iron-plate"
+      }
+    ],
+    "subgroup": "raw-material",
+    "Items per Minute - Assembling Machine 1": 9.375,
+    "Items per Minute - Assembling Machine 2": 14.0625,
+    "Items per Minute - Assembling Machine 3": 23.4375
+  },
+  {
+    "allow_productivity": true,
+    "category": "smelting",
+    "energy_required": 16,
+    "icon_col": 9,
+    "icon_row": 14,
+    "ingredients": [
+      {
+        "amount": 5,
+        "name": "iron-plate"
+      }
+    ],
+    "key": "steel-plate",
+    "localized_name": {
+      "en": "Steel plate"
+    },
+    "order": "a[smelting]-c[steel-plate]",
+    "results": [
+      {
+        "amount": 1,
+        "name": "steel-plate"
+      }
+    ],
+    "subgroup": "raw-material",
+    "Items per Minute - Assembling Machine 1": 1.875,
+    "Items per Minute - Assembling Machine 2": 2.8125,
+    "Items per Minute - Assembling Machine 3": 4.6875
+  },
+  {
+    "allow_productivity": true,
+    "category": "smelting",
+    "energy_required": 3.2,
+    "icon_col": 11,
+    "icon_row": 14,
+    "ingredients": [
+      {
+        "amount": 2,
+        "name": "stone"
+      }
+    ],
+    "key": "stone-brick",
+    "localized_name": {
+      "en": "Stone brick"
+    },
+    "order": "a[stone-brick]",
+    "results": [
+      {
+        "amount": 1,
+        "name": "stone-brick"
+      }
+    ],
+    "subgroup": "terrain",
+    "Items per Minute - Assembling Machine 1": 9.375,
+    "Items per Minute - Assembling Machine 2": 14.0625,
+    "Items per Minute - Assembling Machine 3": 23.4375
+  }
+]

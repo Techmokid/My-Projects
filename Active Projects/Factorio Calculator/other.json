@@ -1,0 +1,38 @@
+[
+  {
+    "allow_productivity": true,
+    "category": "rocket-building",
+    "energy_required": 3,
+    "icon_col": 11,
+    "icon_row": 12,
+    "ingredients": [
+      {
+        "amount": 10,
+        "name": "processing-unit"
+      },
+      {
+        "amount": 10,
+        "name": "low-density-structure"
+      },
+      {
+        "amount": 10,
+        "name": "rocket-fuel"
+      }
+    ],
+    "key": "rocket-part",
+    "localized_name": {
+      "en": "Rocket part"
+    },
+    "order": "d[rocket-parts]-d[rocket-part]",
+    "results": [
+      {
+        "amount": 1,
+        "name": "rocket-part"
+      }
+    ],
+    "subgroup": "intermediate-product",
+    "Items per Minute - Assembling Machine 1": 10.0,
+    "Items per Minute - Assembling Machine 2": 15.0,
+    "Items per Minute - Assembling Machine 3": 25.0
+  }
+]
