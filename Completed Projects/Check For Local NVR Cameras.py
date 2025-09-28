@@ -124,9 +124,6 @@ def scan_for_all_cameras(ip_range):
         if check_rtsp_and_onvif(ip):
             print(f"Discovered Camera: {ip}, MAC: {device['mac']}")
 
-def setup_motioneye():
-    
-
 if __name__ == "__main__":
     update_system()
     remove_unnecessary_packages()
