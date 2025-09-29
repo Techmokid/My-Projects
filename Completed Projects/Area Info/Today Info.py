@@ -13,7 +13,20 @@ MY_BIRTHDAY           = date(2000,8,21)
 ESTIMATED_LIFESPAN    = 78
 LGA                   = "Helena Valley"
 COUNTRY_CODE          = "AU"
-API_KEY = os.environ["OpenWeatherMap_API_KEY"] # Sign in to "home.openweathermap.org" and grab a free API key
+
+API_KEY = ""
+try:
+    API_KEY = os.environ["OpenWeatherMap_API_KEY"] # Sign in to "home.openweathermap.org" and grab a free API key
+except:
+    pass
+
+if API_KEY == "":
+    print("WARNING: OpenWeatherMap API key not found")
+    print("         Please add \"OpenWeatherMap_API_KEY\" to your OS environment variables with your API key")
+    print("         Don't worry, the API key is free, you just gotta sign up for one :)")
+    print()
+    print()
+    print()
 
 dt =        datetime.now()
 year =      int(dt.strftime("%Y"))
