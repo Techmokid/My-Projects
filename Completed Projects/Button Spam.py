@@ -15,11 +15,13 @@ def keySpam(key,t):
 running = False
 while (True):
     while(running):
-        keySpam("n",0.1)
         #leftClickSpam(0.005)
+        #rightClickSpam(0.005)
+        keySpam("r",0.01)
         if keyboard.is_pressed('F6'):
             running = False
             print("Off")
     if keyboard.is_pressed('F7'):
         print("RUNNING")
         running = True
+    time.sleep(0.1)
