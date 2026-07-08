@@ -1,23 +1,140 @@
-100 trillion connections
-100 billion neurons (Technically 86 billion)
-1k connections per neuron average
-15k connections per neuron max
+Raw basic data:
+ - 100 trillion connections (Assume worst case scenario 128 trillion connections just in case)
+ - 86 billion neurons (Assume worst case scenario 100 billion just in case)
+ - 1k connections per neuron average
+ - 15k connections per neuron max
 
-Per neuron:
-Max number of connections per neuron at 15,000 connections would require 14 bits to index (14 bits is 16,384 address indexes)
-Timer var we'll set to be 16 bits per neuron
-Therefore neuron init data is 14+16 = 30 bits per neuron
 
-Per connection:
-Indexing of 100 billion neurons requires 37 bits per neuron for indexing
-Myelination can be a single boolean value
-Therefore per neuron connection data is 37+1 = 38 bit per connection
-Hamming code error detection for 38 bits would need 5 bits, so total 43 bits per connection
 
-Max neuron data size is 30 + (15k * 43) = 645,030 bits = 645.03kb = 80.629KB
-Average neuron data size is 30 + (1k * 43) = 43,030 bits = 43.03kb = 5.379KB
+Useful info to keep in mind:
+ - We'll assume instead of 100 trillion connections, 128 trillion to take into account human brain variation
+ - We'll assume instead of 86 billion neurons, 100 billion to take into account human brain variation
+ - Indexing of 128 trillion connections requires 47 bits per connection (This bit range is capable of a maximum 140,737,488,355,328 connections if necessary) <- UNUSED
+ - Indexing of 100 billion neurons requires 37 bits per neuron (This bit range is capable of a maximum 137,438,953,472 neurons if necessary)
+ - 15k connections per neuron max needs 14 bits for indexing minimum
 
-43.03kb per neuron * 100 billion neurons = 4,303Tb = 537.875 TB
 
-PRAM Only:
-16 bits per neuron * 100 billion neurons = 1,600gb = 200GB
+
+"Synapse connection" comprises of the following:
+ - 37 bits - Index to the target neuron ID/index (What this neuron connects to)
+ - 32 bits - Neuron propagation delay. To account for signal propagation delay between longer distances. Counted in picoseconds
+ - 16 bits - Amount of myelination on the connection, from 0 to 65,535
+ - 16 bits - Synapse weight
+ - 08 bits - Plasticity value
+ - 02 bits - Neurotransmitter class
+ - 01 bits - Excitatory vs Inhibitory synapse
+TOTAL = 112 bits/connection = 14 Bytes/connection
+
+
+
+"Neuron" comprises of the following:
+ - 37 bits - Neuron ID/index (Correlates to "Synapse connection" ID for simplicity)
+ - 32 bits - Neuron soma X coordinate (For building 3D visual neural models if desired)
+ - 32 bits - Neuron soma Y coordinate (For building 3D visual neural models if desired)
+ - 32 bits - Neuron soma Z coordinate (For building 3D visual neural models if desired)
+ - 16 bits - Neuron type
+ - 16 bits - Neuron firing threshold (float measured in Volts)
+ - 16 bits - Neuron refractory period
+ - 15 bits - Number of Synapse definitions following this neuron definition
+ - 08 bits - Activation function parameters
+ - 04 bits - Spare bits not yet assigned (Used for forward compatibility and aligning bits)
+TOTAL = 208 bits/neuron = 26 Bytes/neuron
+
+
+
+Therefore the the data structure would look as such:
+Neuron 1
+ - Synapse connection 1
+ - Synapse connection 2
+ - Synapse connection 3
+ - Synapse connection 4
+ - Synapse connection 5
+ - etc
+Neuron 2
+ - Synapse connection 1
+ - Synapse connection 2
+ - Synapse connection 3
+ - Synapse connection 4
+ - Synapse connection 5
+ - etc
+Neuron 3
+ - Synapse connection 1
+ - Synapse connection 2
+ - Synapse connection 3
+ - Synapse connection 4
+ - Synapse connection 5
+ - etc
+etc
+
+We have taken a data shortcut with synapse connections.
+All connections are assumed that they start at the current neuron in the data to save space.
+E.g. "Synapse connection 4" under Neuron 2 will automatically be assumed coming from neuron 2 and going out to whichever neuron it's 37 bit "Next neuron ID" points to.
+This saves a heap of space by removing 37 bits from the synapse definition
+
+
+
+Synapse Connection bit packed definition:
+Byte 00 - Neuron Prop Delay (bits 0-7)
+Byte 01 - Neuron Prop Delay (bits 8-15)
+Byte 02 - Neuron Prop Delay (bits 16-23)
+Byte 03 - Neuron Prop Delay (bits 24-31)
+Byte 04 - Myelination (bits 0-7)
+Byte 05 - Myelination (bits 8-15)
+Byte 06 - Synapse Weighting (bits 0-7)
+Byte 07 - Synapse Weighting (bits 8-15)
+Byte 08 - Plasticity
+Byte 09 - Target Index (bits 0-7)
+Byte 10 - Target Index (bits 8-15)
+Byte 11 - Target Index (bits 16-23)
+Byte 12 - Target Index (bits 24-31)
+Byte 13 - bits 0-4: Target Neuron ID/Index (bits 32-36)
+          bits 5-6: Neurotransmitter Class
+          bit  7:   Excitatory/Inhibitory
+
+Neuron:
+Byte 00 - Neuron Soma X (bits 0-7)
+Byte 01 - Neuron Soma X (bits 8-15)
+Byte 02 - Neuron Soma X (bits 16-23)
+Byte 03 - Neuron Soma X (bits 24-31)
+Byte 04 - Neuron Soma Y (bits 0-7)
+Byte 05 - Neuron Soma Y (bits 8-15)
+Byte 06 - Neuron Soma Y (bits 16-23)
+Byte 07 - Neuron Soma Y (bits 24-31)
+Byte 08 - Neuron Soma Z (bits 0-7)
+Byte 09 - Neuron Soma Z (bits 8-15)
+Byte 10 - Neuron Soma Z (bits 16-23)
+Byte 11 - Neuron Soma Z (bits 24-31)
+Byte 12 - Neuron Type (bits 0-7)
+Byte 13 - Neuron Type (bits 8-15)
+Byte 14 - Firing Threshold (bits 0-7)
+Byte 15 - Firing Threshold (bits 8-15)
+Byte 16 - Refractory Period (bits 0-7)
+Byte 17 - Refractory Period (bits 8-15)
+Byte 18 - Activation Params (bits 0-7)
+Byte 19 - Neuron ID/Index (bits 0-7)
+Byte 20 - Neuron ID/Index (bits 8-15)
+Byte 21 - Neuron ID/Index (bits 16-23)
+Byte 22 - Neuron ID/Index (bits 24-31)
+Byte 23 - bits 0-4: Neuron ID/Index (bits 32-36)
+          bits 5-7: Synapse Count (bits 0-2)
+Byte 24 - Synapse Count (bits 3-10)
+Byte 25 - bits 0-3: Synapse Count (bits 11-14)
+          bits 4-7: Spare Bits (bits 0-3)
+
+
+
+
+Resulting output:
+112 bits/connection
+208 bits/neuron
+
+100 trillion connections would take 11.2 Pb = 1.4 PB
+128 trillion connections would take 14.336 Pb = 1.792 PB
+
+86  billion neurons would take 17.888 Tb = 2.236 TB
+100 billion neurons would take 20.8 Tb = 2.6 TB
+
+
+
+
+

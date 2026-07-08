@@ -1,0 +1,115 @@
+{
+    "system": {
+        "os": "Windows",
+        "os_version": "10.0.19045",
+        "architecture": "AMD64",
+        "hostname": "DESKTOP-2P2JFNB",
+        "platform": "Windows-10-10.0.19045-SP0",
+        "kernel": "10"
+    },
+    "cpu": {
+        "brand": "Intel(R) Core(TM) i7-9700K CPU @ 3.60GHz",
+        "arch": "X86_64",
+        "bits": 64,
+        "count_logical": 8,
+        "count_physical": 8,
+        "max_frequency_mhz": 3600.0
+    },
+    "ram": {
+        "total_gb": 63.93,
+        "per_module_speed_mhz": [
+            2667,
+            2667
+        ]
+    },
+    "disks": [
+        {
+            "device": "C:\\",
+            "mountpoint": "C:\\",
+            "fstype": "NTFS",
+            "total_gb": 1805.59
+        },
+        {
+            "device": "D:\\",
+            "mountpoint": "D:\\",
+            "fstype": "NTFS",
+            "total_gb": 57.2
+        }
+    ],
+    "gpu": [
+        "Meta Virtual Monitor",
+        "NVIDIA GeForce RTX 3080"
+    ],
+    "network": {
+        "Hamachi": {
+            "IPv4": "25.3.118.3",
+            "IPv6": "fe80::16ea:ce32:7496:533"
+        },
+        "Ethernet 2": {
+            "IPv4": "169.254.68.120",
+            "IPv6": "fe80::18dc:e00c:edde:ce26"
+        },
+        "x-ovpn-tap": {
+            "IPv4": "169.254.107.105",
+            "IPv6": "fe80::b684:b000:f8dd:8d0c"
+        },
+        "Local Area Connection 2": {
+            "IPv4": "169.254.81.199",
+            "IPv6": "fe80::b4dd:3c20:34ef:29a4"
+        },
+        "Wi-Fi": {
+            "IPv4": "169.254.68.68",
+            "IPv6": "fe80::69ce:c09a:dce4:6284"
+        },
+        "Local Area Connection* 1": {
+            "IPv4": "169.254.111.204",
+            "IPv6": "fe80::bd5b:e6c6:427d:5255"
+        },
+        "Local Area Connection* 2": {
+            "IPv4": "169.254.23.0",
+            "IPv6": "fe80::890:b5db:d41e:27b8"
+        },
+        "Ethernet": {
+            "IPv4": "192.168.1.10",
+            "IPv6": "fe80::68a1:23e0:2645:d373"
+        },
+        "Bluetooth Network Connection": {
+            "IPv4": "169.254.27.180",
+            "IPv6": "fe80::7f12:41b8:dfbd:2e7"
+        },
+        "vEthernet (Default Switch)": {
+            "IPv4": "172.28.48.1",
+            "IPv6": "fe80::7efc:34f:8174:b253"
+        },
+        "Local Area Connection": {
+            "IPv4": "169.254.58.62",
+            "IPv6": "fe80::65e1:5179:8c22:bc2c"
+        },
+        "Tailscale": {
+            "IPv4": "100.122.212.28",
+            "IPv6": "fe80::d8ff:5060:f230:9168"
+        },
+        "NordLynx": {
+            "IPv4": "10.5.0.2",
+            "IPv6": "fe80::723e:7ca:789d:a5aa"
+        },
+        "OpenVPN Data Channel Offload for NordVPN": {
+            "IPv4": "169.254.149.9",
+            "IPv6": "fe80::3a58:39c5:19ed:4c99"
+        },
+        "Loopback Pseudo-Interface 1": {
+            "IPv4": "127.0.0.1",
+            "IPv6": "::1"
+        }
+    },
+    "motherboard": {
+        "manufacturer": "ASRock",
+        "product": "B365 Pro4",
+        "serial": "M80-D3008300936"
+    },
+    "bios": {
+        "vendor": "American Megatrends Inc.",
+        "version": "P4.20",
+        "release_date": "20190515000000.000000+000"
+    }
+}

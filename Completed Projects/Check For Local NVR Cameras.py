@@ -132,13 +132,13 @@ if __name__ == "__main__":
 
     hostname = socket.gethostname()
     device_ip = socket.gethostbyname(hostname)
-    device_ip = "192.168.0.222"
+    device_ip = "192.168.1.222"
     print(f"My Local IP Address: {device_ip}")
     
     ip_range = get_ip_range(device_ip)
     scan_for_all_cameras(ip_range)
 
-    setup_motioneye()
+    #setup_motioneye()
 
 
 

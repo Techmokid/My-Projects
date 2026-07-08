@@ -1,0 +1,2 @@
+PID=13384 EXE=C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\Hardware Monitor\dist\Hardware Monitor.exe ARGS=['C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\Active Projects\\Hardware Monitor\\dist\\Hardware Monitor.exe']
+PID=17836 EXE=C:\Users\aj200\Documents\GitHub\My-Projects\Active Projects\Hardware Monitor\dist\Hardware Monitor.exe ARGS=['C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\Active Projects\\Hardware Monitor\\dist\\Hardware Monitor.exe', '--multiprocessing-fork', 'parent_pid=13384', 'pipe_handle=644']

@@ -1,0 +1,1 @@
+PID=14484 EXE=C:\Python314\pythonw.exe ARGS=['C:\\Users\\aj200\\Documents\\GitHub\\My-Projects\\Active Projects\\Hardware Monitor\\Hardware Monitor.py']
