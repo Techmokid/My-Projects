@@ -159,6 +159,7 @@ def open_login_portal_firefox(url):
     print("Opening Firefox with Selenium...")
 
     options = Options()
+    options.add_argument("--headless")
     driver = webdriver.Firefox(options=options)
     wait = WebDriverWait(driver, 20)
 
