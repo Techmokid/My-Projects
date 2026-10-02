@@ -15,7 +15,8 @@ def keySpam(key,t):
 running = False
 while (True):
     while(running):
-        leftClickSpam(0.2)
+        #leftClickSpam(0.2)
+        keySpam("e",0.01)
         #rightClickSpam(0.005)
         #keySpam("r",0.01)
         if keyboard.is_pressed('F6'):
